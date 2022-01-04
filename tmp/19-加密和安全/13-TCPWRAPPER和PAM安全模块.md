@@ -1,2 +1,0 @@
-# 第13节. TCPWRAPPER和PAM安全模块
-
