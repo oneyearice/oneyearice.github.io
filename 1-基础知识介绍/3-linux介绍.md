@@ -1,6 +1,6 @@
 # 第3节. linux介绍
 
-![Unix_history-simple](D:\gitbook\1-基础知识介绍\pics\Unix_history-simple.svg)
+![Unix_history-simple](./pics/Unix_history-simple.svg)
 
 
 
@@ -23,7 +23,7 @@ redhat:REHEL、CentOS
 
 
 
-![linux_version](D:\gitbook\1-基础知识介绍\pics\linux_version.png)
+![linux_version](D:./pics\linux_version.png)
 
 
 
