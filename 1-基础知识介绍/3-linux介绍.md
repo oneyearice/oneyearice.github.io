@@ -23,7 +23,7 @@ redhat:REHEL、CentOS
 
 
 
-![linux_version](D:./pics/linux_version.png)
+![linux_version](./pics/linux_version.png)
 
 
 
