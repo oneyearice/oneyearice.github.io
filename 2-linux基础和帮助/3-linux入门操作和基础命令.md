@@ -1,5 +1,9 @@
 # 第3节. linux入门操作和基础命令
 
+
+
+##### 入门操作
+
 1、看版本 cat 
 
 ```
@@ -69,6 +73,8 @@ CentOS Linux release 8.2.2004 (Core)
 ![image-20220106102030833](pics/3/image-20220106102030833.png)
 
 
+
+##### 基础cli-1
 
 1、root也不一定就是管理员，这是由UID的设置来影响的，UID=0就是超级用户 也就是管理员。
 
@@ -258,7 +264,7 @@ PATH变量就是存放了一个个文件夹，
 
 ![img](pics/3/clip_image053.jpg)
 
-34、上面的也可以不将外部命令移回去，可以清一下缓存就行了。
+8、上面的也可以不将外部命令移回去，可以清一下缓存就行了。
 
 hash -d hostname 就行了
 
@@ -268,11 +274,207 @@ hash -r 全删
 
  
 
-35、上面就意味着，自己做的程序，就要放到PATH变量里的路径或加一个新路径。
+9、上面就意味着，自己做的程序，就要放到PATH变量里的路径或加一个新路径。
+
+
+
+
+
+---
+
+----
+
+##### 基础cli-2
+
+ 1、内部命令和外部命令的本质区别，首先都会放入内存中的，本质区别是，内部命令在shell（bin/bash）二进制文件中；外部命令不在二进制文件里，是独立的文件。还一个内存方面一个是登入加载，一个是首次运行加载。
+
+内外之分在于是否在/bin/bash文件里，在就是内部，不在就是外部。
+
+ 
+
+2、问题：内部命令放在/bin/bash下，那么外部命令放在哪？首先放哪都行，关键是外部命令要运行，就得保证PATH变量里有该路径，然后规范行为是，外部命令放到PATH变量下的路径里去。所以外部命令一般来讲就在PATH下。
+
+ 
+
+3、除了内部命令和外部命令，还有别名。 
+
+**alias cdnet="cd /etc/sysconfig/network-scripts/"**
+
+![img](3-linux入门操作和基础命令.assets/clip_image002.jpg)
+
+退出后失效，要想存住，就要将其放到文件里，别名的文件在家目录里的.bashrc里
+
+![img](3-linux入门操作和基础命令.assets/clip_image004.jpg)
+
+重新登入后依然有效
+
+ 
+
+4、alias列出所有别名，unalias cdnet可以临时删掉，但由于之前写在了配置文件里，所以重新登入后，还是没删掉 还在。所以配置文件的需要进配置文件删除
+
+![img](3-linux入门操作和基础命令.assets/clip_image005.png)
+
+ 
+
+5、如果有一个字符串，既是 别名、又是内部命令、还是外部命令，那么执行的顺序是什么，这就是命令的执行优先级问题。
+
+以echo（这个即使内部又是外部命令）为例，将其定义成别名，进行测试
+
+![img](3-linux入门操作和基础命令.assets/clip_image007.jpg)
+
+说明，别名优先
+
+总结：命令的执行顺序：
+
+①**首先判断是否是别名，如果是别名，别名是在内存中定义的，所以直接就执行了**。所谓直接就是指已经在内存中了，不像外部命令那样首次执行还需要在PATH变量里进行查找。
+
+助记词alias别名
+
+②**其次，如果不是别名，判读是否是内部命令，如果是，直接执行内部命令**（因为内部命令是内置在shell中的，用户登入就已经加载到内存中了），
+
+助记词 内部命令
+
+③**最后，如果既不是别名也不是内部命令，那就按外部命令处理，就会看HASH表**（表里记录了已经被执行过了外部命令的路径）**，如果HASH表里有该命令，就按表内记录的路径去搜索该外部命令去执行；如果HASH表里没有，就在PATH变量里查找，找到后执行。**当然所谓执行也是加载到内存中执行的。对于首次运行的外部命令，也会产生的新的HASH表项。
+
+助记词 外部命令（hash $PATH变量）
+
+④**如果找不着，就报错，此命令不存在**。
+
+ 
+
+PS：缓存为王，如果想提供一个慢速设备上（比如硬盘）的数据的执行效率，就把它放到内存里，下次从内存访问，速度就提升了。外部命令就是该逻辑思想。后面还有很多次这种套路。
+
+ 
+
+6、加别名用~/.bashrc，这是只针对当前用户有效，家目录嘛，肯定的了。
+
+对所有用户有效是编辑/etc/bashrc
+
+ 
+
+7、别名修改后使之生效的方法，这也是很多配置文件修改后使其生效的通用方法：
+
+**source /path/to/config_file** #就是source 后跟你的配置文件路径
+
+**. /path/to/config_file** # 就是. 后跟配置文件全路径
+
+比如 **. ~/.bashrc**
+
+![img](3-linux入门操作和基础命令.assets/clip_image009.jpg)
+
+![img](3-linux入门操作和基础命令.assets/clip_image011.jpg)
+
+比如：
+
+![img](3-linux入门操作和基础命令.assets/clip_image013.jpg)
 
  
 
  
+
+8、之前的echo既是别名又是内部命令还是外部命令，如何不执行默认的别名优先呢，
+
+\ ‘ “ 路径 command都是可以的
+
+![img](3-linux入门操作和基础命令.assets/clip_image014.png)
+
+![img](3-linux入门操作和基础命令.assets/clip_image015.png)
+
+![img](3-linux入门操作和基础命令.assets/clip_image017.jpg)
+
+![img](3-linux入门操作和基础命令.assets/clip_image019.jpg)
+
+ 
+
+9、命令的格式，COMMAND [OPTIONS…] [ARGUMENTS…]
+
+这点可以联系网络设备的cli 以及python argparse 自定义命令的格式或者规范问题。
+
+-c 这种短选项，以及bsd风格的只有c没有-的用法，freeBSD这种好像cisco的wsa esa底层是这个。
+
+![img](3-linux入门操作和基础命令.assets/clip_image021.jpg)
+
+ls -l 这个l就没有长格式
+
+很多命令使用风格已经变了
+
+![img](3-linux入门操作和基础命令.assets/clip_image022.png)
+
+可以理解成多层子命令的嵌套
+
+ 
+
+10、ctrl+d 是正常退出
+
+sleep 100就不能ctrl+d正常退出，得用ctrl+c强行退出。
+
+ 
+
+11、ctrl+z
+
+![img](3-linux入门操作和基础命令.assets/clip_image024.jpg)
+
+12、多个命令写在一行里用分号隔开
+
+![img](3-linux入门操作和基础命令.assets/clip_image026.jpg)
+
+![img](3-linux入门操作和基础命令.assets/clip_image028.jpg)
+
+上图就是命令太长后认为换行用的。比如pycharm里面也是这么玩的。不过pycharm后来新版本直接回车也没有\了，也能实现一套命令认为换行的效果。
+
+![img](3-linux入门操作和基础命令.assets/clip_image030.jpg)
+
+![img](3-linux入门操作和基础命令.assets/clip_image032.jpg)
+
+ 
+
+13、date
+
+系统时间：有软件操系统内核维护，通过CPU的工作频率维护的，date查看
+
+硬件时间：主板上的CMOS，有块小电池（银币状）可供电5年。clock查看
+
+ 
+
+timedatectl 看的最全
+
+clock -s 将system time改一下，改成硬件时间
+
+clock -w 将hardware time改一下，改成系统时间。
+
+date -s ‘20200101 12:02:01’
+
+系统时间和硬件时间
+
+![img](3-linux入门操作和基础命令.assets/clip_image034.jpg)
+
+![img](3-linux入门操作和基础命令.assets/clip_image036.jpg)
+
+或者date 010101012008.01
+
+![img](3-linux入门操作和基础命令.assets/clip_image038.jpg)
+
+缺点就是看着乱七八糟，优点就是不用写引号便于python调用时的字符串拼接入库啥的。
+
+![img](3-linux入门操作和基础命令.assets/clip_image040.jpg)
+
+ 
+
+14、时间其实内部一般用NTP去同步的 
+
+![img](3-linux入门操作和基础命令.assets/clip_image042.jpg)
+
+这里我先停掉ntpd服务，再去同步时间就好了
+
+![img](3-linux入门操作和基础命令.assets/clip_image044.jpg)
+
+注意，ntp只会同步系统时间，不会同步硬件时间。
+
+如果硬件时间不对，就先ntp保证系统时间准确后，再clock -w让硬件时间去同步系统时间就可以了。
+
+ 
+
+15、ntp后面细讲，如果企业里时间不同步，涉及加密、集群就会出问题。
 
  
 
