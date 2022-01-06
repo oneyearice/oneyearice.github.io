@@ -126,7 +126,7 @@ PS1="\[\e[1;32m\][\[\e[0m\]\t \[\e[1;33m\]\u\[\e[36m\]@\h\[\e[1;31m\] \W\[\e[1;3
 
 16、sleep 10，然后看pstree -p可以看到bash下面有一个sleep
 
-![img](file:///C:/Users/MingYi/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg)
+![img](pics/3/clip_image008.jpg)
 
 17、还有很多程序不依赖于bash，不需要和人进行交互，后台直接运行了。
 
@@ -246,11 +246,11 @@ PATH变量就是存放了一个个文件夹，
 
 ![img](pics/3/clip_image045.jpg)
 
-![img](file:///C:/Users/MingYi/AppData/Local/Temp/msohtmlclip1/01/clip_image047.jpg)
+![img](pics/3/clip_image047.jpg)
 
 图示为hash记录的上一次hostname的路径。
 
-![img](file:///C:/Users/MingYi/AppData/Local/Temp/msohtmlclip1/01/clip_image049.jpg)
+![img](pics/3/clip_image049.jpg)
 
 再移回去就可以了，
 
