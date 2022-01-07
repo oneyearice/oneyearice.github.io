@@ -3483,9 +3483,131 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><b></b>&#x7B2C;2&#x8282;. &#x6587;&#x4EF6;&#x7BA1;&#x7406;</a></li></ul></div><h1 id="&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><a name="&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;2&#x8282;. &#x6587;&#x4EF6;&#x7BA1;&#x7406;</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><b></b>&#x7B2C;2&#x8282;. &#x6587;&#x4EF6;&#x7BA1;&#x7406;</a></li><ul><li><span class="title-icon "></span><a href="#1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux"><b></b>1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux</a></li><li><span class="title-icon "></span><a href="#2&#x3001;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;"><b></b>2&#x3001;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;</a></li><li><span class="title-icon "></span><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><b></b>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</a></li></ul></ul></div><h1 id="&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><a name="&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;2&#x8282;-&#x6587;&#x4EF6;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;2&#x8282;. &#x6587;&#x4EF6;&#x7BA1;&#x7406;</h1>
+<h2 id="1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux"><a name="1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux" class="anchor-navigation-ex-anchor" href="#1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux"><i class="fa fa-link" aria-hidden="true"></i></a><strong>1&#x3001;centos6&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7981;&#x7528;selinux</strong></h2>
+<p>vi /etc/selinux/config</p>
+<p>SELINUX=disabled</p>
+<p>chkconfig iptables off</p>
+<p>service firewalld stop # &#x5E94;&#x8BE5;&#x662F;&#x8FD9;&#x4E2A;&#x5427;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x4E00;&#x6761;&#x91CD;&#x542F;&#x4E0D;&#x81EA;&#x542F;&#x52A8;&#x5C31;&#x884C;&#x4E86;</p>
+<h2 id="2&#x3001;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;"><a name="2&#x3001;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;" class="anchor-navigation-ex-anchor" href="#2&#x3001;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>2</strong>&#x3001;<strong>&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;</strong></h2>
+<p><strong>&#x2605;&#x6587;&#x4EF6;&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x5339;&#x914D;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x7684;&#xFF0C;&#x522B;&#x60F3;&#x591A;&#x4E86;&#x3002;</strong></p>
+<p>* &#x5339;&#x914D;&#x96F6;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5B57;&#x7B26;</p>
+<p>? &#x5339;&#x914D;&#x4EFB;&#x4F55;&#x5355;&#x4E2A;&#x5B57;&#x7B26;</p>
+<p>~ &#x5F53;&#x524D;&#x7528;&#x6237;&#x5BB6;&#x76EE;&#x5F55;</p>
+<p>~haiwang &#x7528;&#x6237;haiwang&#x5BB6;&#x76EE;&#x5F55;</p>
+<p>~+ &#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;</p>
+<p>~- &#x524D;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;  # &#x7B49;&#x540C;&#x4E8E;cd -&#xFF0C;&#x4F46;&#x662F;ls &#x4E0D;&#x80FD;ls -&#x8FD9;&#x4E48;&#x7528;&#xFF0C;&#x8981;ls ~-&#x8FD9;&#x6837;</p>
+<p>[0-9] &#x5339;&#x914D;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6570;&#x5B57;</p>
+<p>[a-z] &#x4EFB;&#x610F;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x4E00;&#x4E2A;</p>
+<p>[A-Z] &#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5927;&#x5199;&#x5B57;&#x6BCD;</p>
+<p>[haiwang] &#x5339;&#x914D;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;</p>
+<p><sup><a href="#fn_yingxiong" id="reffn_yingxiong">yingxiong</a></sup> &#x5339;&#x914D;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x4EE5;&#x5916;&#x7684;&#x5B57;&#x7B26;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image002.jpg" alt="img"> </p>
+<p>y&#x5F00;&#x5934;&#x7684;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image004.jpg" alt="img"></p>
+<p>&#x5305;&#x542B;x&#x7684;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image006.jpg" alt="img"></p>
+<p>.txt&#x7ED3;&#x5C3E;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x5305;&#x62EC;.txt&#xFF0C;&#x56E0;&#x4E3A;*&#x4E0D;&#x4F1A;&#x5305;&#x542B;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x3002;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image008.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image010.jpg" alt="img"></p>
+<p>*&#x5728;&#x6587;&#x4EF6;&#x540D;&#x901A;&#x914D;&#x7B26;&#x9886;&#x57DF;&#x91CC;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x4F4D;&#x7F6E;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#xFF0C;&#x6216;&#x8005;&#x6CA1;&#x6709;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;</p>
+<p>&#x8981;&#x5728;&#x975E;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x91CC;&#x627E;&#x9700;&#x8981;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;ls *&#x6765;&#x505A;</p>
+<p>&#x800C;&#x8981;&#x5728;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x91CC;&#x627E;&#xFF0C;&#x5C31;&#x7528;&#x6B63;&#x5219;&#x5C31;&#x884C;&#x4E86;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image012.jpg" alt="img"></p>
+<p>&#x800C;&#x67E5;&#x770B;&#x9690;&#x85CF;&#x7684;&#x6211;&#x73B0;&#x5728;&#x60F3;&#x5230;&#x7684;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x6B63;&#x5219;&#x6765;&#x505A;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image014.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image016.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image018.jpg" alt="img"></p>
+<p>ls ??? &#x8868;&#x793A;&#x5C31;&#x770B;3&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x6587;&#x4EF6;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image020.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image022.jpg" alt="img"></p>
+<p>&#x6C49;&#x5B57;unicode&#xFF0C;&#x4E00;&#x4E2A;&#x6C49;&#x5B57;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x6C49;&#x5B57;&#x8FD9;&#x4E00;&#x4E2A;&#x5B57;&#x7B26; &#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x4FDD;&#x5B58;&#x4E0D;&#x662F;&#x5360;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
+<p>unicode &#x6C49;&#x5B57;&#xFF0C;&#x53EF;&#x80FD;&#x5360;2-4&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
+<p>&#x5728;&#x901A;&#x914D;&#x7B26;&#x91CC;&#x9762;&#x6CA1;&#x6709;^[xxx]&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x548C;&#x6B63;&#x5219;regex&#x76F8;&#x4F3C;&#x53C8;&#x4E0D;&#x4E00;&#x6837;</p>
+<p>&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x8FC7;&#x6EE4;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD9;&#x662F;&#x4E0D;&#x662F;&#x901A;&#x914D;&#x7B26;&#x7684;&#x6D3B;&#xFF0C;&#x901A;&#x914D;&#x7B26;&#x662F;&#x5339;&#x914D;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4EA4;&#x7ED9;regex</p>
+<h2 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a name="&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="anchor-navigation-ex-anchor" href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</strong></h2>
+<p>ls /data/f[a-c].html&#x8868;&#x793A;&#x5565;</p>
+<p>[a-c]&#x4EE3;&#x8868;aAbBc&#xFF0C;&#x8FD9;&#x4E2A;regex&#x53C8;&#x4E0D;&#x540C;&#x4E86;</p>
+<p>[A-C]&#x7B49;&#x4EF7;&#x4E8E;AbBcC</p>
+<p>&#x89C1;&#x4E0B;&#x56FE;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image024.jpg" alt="img"></p>
+<p>&#x5982;&#x679C;&#x5C31;&#x662F;&#x60F3;&#x8981;&#x5C0F;&#x5199;&#x6216;&#x5927;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5199;</p>
+<p>[:digit:] &#x4EFB;&#x610F;&#x6570;&#x5B57;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;0-9</p>
+<p>[:lower:] &#x4EFB;&#x610F;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;</p>
+<p>[:upppere:] &#x4EFB;&#x610F;&#x5927;&#x5199;&#x5B57;&#x6BCD;</p>
+<p>[:alpha:] &#x4EFB;&#x610F; &#x5927; &#x5C0F; &#x5199;&#x5B57;&#x6BCD;</p>
+<p>[:alnum:] &#x4EFB;&#x610F;&#x6570;&#x5B57;&#x6216;&#x5B57;&#x6BCD;</p>
+<p>[:blank:] &#x6C34;&#x5E73;&#x7A7A;&#x767D;&#x5B57;&#x7B26;</p>
+<p>[:space:] &#x6C34;&#x5E73;&#x6216;&#x5782;&#x76F4;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#xFF0C;&#x5782;&#x76F4;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x662F;&#x5565;&#xFF1F;&#x56DE;&#x8F66;&#xFF1F;&#x8FD8;&#x662F;&#x2193;</p>
+<p>[:punct:] &#x6807;&#x70B9;&#x7B26;&#x53F7;</p>
+<p>[:print:] &#x53EF;&#x6253;&#x5370;&#x5B57;&#x7B26;</p>
+<p>[:cntrl:] &#x63A7;&#x5236;&#xFF08;&#x975E;&#x6253;&#x5370;&#xFF09;&#x5B57;&#x7B26;</p>
+<p>[:graph:] &#x56FE;&#x5F62;&#x5B57;&#x7B26;</p>
+<p>[:xdigit:] &#x5341;&#x516D;&#x8FDB;&#x5236;&#x5B57;&#x7B26;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image026.jpg" alt="img"></p>
+<p>&#x6CE8;&#x610F;&#x4E24;&#x4E2A;[[:lower:]] &#x65B9;&#x62EC;&#x53F7;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x91CC;&#x9762;&#x7684;[:lower:]&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x4F53;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5C0F;&#x5199;&#x5B57;&#x7B26;&#xFF0C;&#x5916;&#x9762;&#x7684;&#x8868;&#x793A;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;&#x3002;</p>
+<p>&#x7B49;&#x4EF7;&#x4E8E;&#x6B63;&#x5219;&#x91CC;&#x7684;[a-z]&#x5199;&#x6CD5;&#x3002;</p>
+<p>&#x53EA;&#x770B;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x7684;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image028.jpg" alt="img"></p>
+<p>l.&#x7684;&#x7F3A;&#x9677;&#xFF0C;&#x53EA;&#x80FD;&#x770B;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4E0B;&#x56FE;&#x5C31;&#x662F;&#xFF0C;&#x660E;&#x660E;cli&#x91CC;&#x5199;&#x7684;ls -d /data/ .*&#x4F46;&#x662F;&#x770B;&#x5F97;&#x8FD8;&#x662F;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image030.jpg" alt="img"></p>
+<p>&#x4E0A;&#x56FE;&#x6709;&#x4E00;&#x4E2A;&#x601D;&#x8DEF;&#x5BF9;&#x4E86;&#xFF0C;&#x624B;&#x6B8B;&#x6572;&#x9519;&#x4E86;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4E0B;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image032.jpg" alt="img"></p>
+<p>&#x53EA;&#x770B;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x65B9;&#x6CD5;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image034.jpg" alt="img"></p>
+<p>&#x4E00;&#x4E2A;&#x662F;&#x770B;&#x975E;&#x9690;&#x85CF;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x770B;&#x9690;&#x85CF;&#x7684;&#x6587;&#x4EF6;&#x5939;</p>
+<p>&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x5728;py&#x7684;os.xx&#x6A21;&#x5757;&#x91CC;&#xFF0C;&#x597D;&#x50CF;&#x5C31;&#x4E0D;&#x662F;regex&#x800C;&#x662F;&#x901A;&#x914D;&#x7B26;</p>
+<p>&#x6309;&#x7406;&#x8BF4;&#x7EC3;&#x4E60;&#x5E94;&#x8BE5;&#x653E;&#x5728;&#x5916;&#x9762;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x662F;&#x8BFE;&#x5802;&#x89C6;&#x9891;&#x91CC;&#x7684;&#x7EC3;&#x4E60;&#xFF0C;&#x4E0D;&#x662F;&#x4F5C;&#x4E1A;&#xFF0C;&#x5C31;&#x4E0D;&#x653E;&#x5728;&#x5916;&#x9762;&#x5355;&#x72EC;&#x6587;&#x7AE0;&#x4E86;</p>
+<p>1&#x3001;&#x663E;&#x793A;/var&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x4EE5;l&#x5F00;&#x5934;&#xFF0C;&#x4EE5;&#x4E00;&#x4E2A;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x7ED3;&#x5C3E;&#xFF0C;&#x4E14;&#x4E2D;&#x95F4;&#x51FA;&#x73B0;&#x81F3;&#x5C11;&#x4E00;&#x4F4D;&#x6570;&#x5B57;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ls /var l<em>[0-9]</em>[[:lower:]]</p>
+<p>2&#x3001;&#x663E;&#x793A;/etc&#x76EE;&#x5F55;&#x4E0B;&#x4EFB;&#x610F;&#x4E00;&#x4F4D;&#x6570;&#x5B57;&#x5F00;&#x5934;&#xFF0C;&#x4E14;&#x4EE5;&#x975E;&#x6570;&#x5B57;&#x7ED3;&#x5C3E;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ll -d /etc/[0-9]*<sup><a href="#fn_0-9" id="reffn_0-9">0-9</a></sup> # &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5427;-d&#x53BB;&#x6389;&#xFF0C;&#x4E3A;&#x7684;&#x5C31;&#x662F;&#x904D;&#x5386;&#x4E00;&#x4E0B;/etc&#x4E0B;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x66F4;&#x6DF1;&#x5C42;&#x6B21;</p>
+<p>3&#x3001;&#x663E;&#x793A;/etc&#x76EE;&#x5F55;&#x4E0B;&#x4EE5;&#x975E;&#x5B57;&#x6BCD;&#x5F00;&#x5934;&#xFF0C;&#x540E;&#x9762;&#x8DDF;&#x4E86;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;&#x53CA;&#x5176;&#x4ED6;&#x4EFB;&#x610F;&#x957F;&#x5EA6;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ll -d /etc/<sup><a href="#fn_[:%20alpha:]" id="reffn_[: alpha:]">[: alpha:]</a></sup>[[:alpha:]]*</p>
+<p>4&#x3001;&#x663E;&#x793A;/etc/&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x4EE5;rc&#x5F00;&#x5934;&#xFF0C;&#x5E76;&#x540E;&#x9762;&#x662F;0-6&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x5176;&#x4ED6;&#x4E3A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ls -d /etc/rc[0-6]*</p>
+<p>5&#x3001;&#x663E;&#x793A;/etc&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6240;&#x6709;&#x4EE5;.d&#x7ED3;&#x5C3E;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ls -d /etc/*.d # &#x6CE8;&#x610F;.d&#x6587;&#x4EF6;&#x4E5F;&#x7B97;&#x662F;.d&#x7ED3;&#x5C3E;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x770B;&#x4E0D;&#x5230;&#x4E86;</p>
+<p>ls -d /etc/*.d;ls -d /etc/.d</p>
+<p>6&#x3001;&#x663E;&#x793A;/etc&#x76EE;&#x4E0B;&#xFF0C;&#x6240;&#x6709;.conf&#x7ED3;&#x5C3E;&#x7684;&#xFF0C;&#x4E14;&#x4EE5;m.n,r,p&#x5F00;&#x5934;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</p>
+<p>ls -d /etc/[mnrp]*.conf</p>
+<p>7&#x3001;&#x53EA;&#x663E;&#x793A;/root&#x4E0B;&#x7684;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;</p>
+<p>ls -d /root/.*</p>
+<p>8&#x3001;&#x53EA;&#x663E;&#x793A;/etc&#x4E0B;&#x7684;&#x975E;&#x9690;&#x85CF;&#x76EE;&#x5F55;</p>
+<p>ls -d /etc/*/</p>
+<p><strong>3&#x3001;touch</strong></p>
+<p>1&#x3001;&#x521B;&#x5EFA;&#x6587;&#x4EF6;</p>
+<p>2&#x3001;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#xFF0C;&#x53EA;&#x662F;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF08;atime&#x3001;ctime&#x3001;mtime&#xFF09;&#x90FD;&#x7ED9;&#x4F60;&#x6539;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x4E86;</p>
+<p>&#x8865;&#x5145;&#xFF1A;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image036.jpg" alt="img"></p>
+<p>&#x9ED8;&#x8BA4;ll&#x7684;&#x65F6;&#x95F4;&#x662F;mtime</p>
+<p>3&#x3001;&#x603B;&#x7ED3;&#xFF0C;touch&#x662F;&#x5B89;&#x5168;&#x7684;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;</p>
+<p>&#x8FD8;&#x6709;&#x4E2A;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x7684;&#x72AF;&#x6CD5;</p>
+<p><strong>&gt;</strong> </p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image038.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image040.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image042.jpg" alt="img"></p>
+<p>echo &gt;&gt; f5.txt &#x8FFD;&#x52A0;&#x5185;&#x5BB9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9053;&#x7406;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image044.jpg" alt="img"></p>
+<p>&#x4EE5;&#x4E0A;&#x7684;&gt; &#x6216; &gt;&gt; &#x662F;&#x4F9D;&#x8D56;&#x4E8E;shell&#x7684;&#xFF0C;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image046.jpg" alt="img"></p>
+<p>&#x4E0A;&#x56FE;&#x6362;&#x6210;csh&#x5C31;&#x4E0D;&#x884C;&#x4E86;</p>
+<p>&gt; &#x3001;&gt;&gt;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x91CD;&#x5B9A;&#x5411;&#x3002;</p>
+<p><strong>&gt;</strong> &#x5E38;&#x7528;&#x6765;&#x5FEB;&#x901F;&#x7ED9;&#x6587;&#x4EF6;&#x6E05;&#x7A7A;&#xFF0C;&#x65E0;&#x8BBA;&#x6587;&#x4EF6;&#x6709;&#x591A;&#x5927;&#xFF0C;&#x90FD;&#x7ED9;&#x4F60;&#x5FEB;&#x901F;&#x6E05;&#x7A7A;&#x3002;&#x636E;&#x8BF4;&#x7070;&#x5E38;&#x597D;&#x7684;&#x5C0F;&#x529F;&#x80FD;&#x3002;</p>
+<p>touch [OPTION]... FILE...</p>
+<p>-a &#x4EC5;&#x6539;&#x53D8;atime&#x548C;ctime</p>
+<p>-m &#x4EC5;&#x6539;&#x53D8;mtime&#x548C;ctime</p>
+<p>-t [[CC]YY]MMDDhhmm[ss] &#x6307;&#x5B9A;atime&#x548C;mtime&#x7684;&#x65F6;&#x95F4;&#x6233;</p>
+<p>-c &#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4E0D;&#x4E88;&#x521B;&#x5EFA;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E00;&#x770B;&#x5C31;&#x4E0D;&#x9519;</p>
+<p><strong>4&#x3001;&#x5E38;&#x7528;&#x6280;&#x5DE7;</strong></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image048.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image050.jpg" alt="img"></p>
+<p>&#x751F;&#x6210;&#x6628;&#x5929;&#x65E5;&#x671F;&#x4F5C;&#x4E3A;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E0A;&#x56FE;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x4F1A;&#x81EA;&#x5DF1;&#x5751;&#x81EA;&#x5DF1;</p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image052.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image054.jpg" alt="img"></p>
+<p><img src="2-&#x6587;&#x4EF6;&#x7BA1;&#x7406;.assets/clip_image056.jpg" alt="img"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-04 12:12:48
+2022-01-07 18:35:58
 </span></footer>
                                 
                                 </section>
@@ -3529,7 +3651,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节 文件管理","level":"1.5.2","depth":2,"next":{"title":"第3节 cp和mv","level":"1.5.3","depth":2,"path":"3-文件管理/3-cp和mv.md","ref":"./3-文件管理/3-cp和mv.md","articles":[]},"previous":{"title":"第1节 文件系统","level":"1.5.1","depth":2,"path":"3-文件管理/1-文件系统.md","ref":"./3-文件管理/1-文件系统.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"3-文件管理/2-文件管理.md","mtime":"2022-01-04T04:12:48.138Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-07T07:28:30.851Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节 文件管理","level":"1.5.2","depth":2,"next":{"title":"第3节 cp和mv","level":"1.5.3","depth":2,"path":"3-文件管理/3-cp和mv.md","ref":"./3-文件管理/3-cp和mv.md","articles":[]},"previous":{"title":"第1节 文件系统","level":"1.5.1","depth":2,"path":"3-文件管理/1-文件系统.md","ref":"./3-文件管理/1-文件系统.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"3-文件管理/2-文件管理.md","mtime":"2022-01-07T10:35:58.249Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-07T10:38:01.318Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
