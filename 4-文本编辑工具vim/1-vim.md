@@ -40,6 +40,8 @@ s/要查找的内容/替换的内容/修饰符
 
 
 
+
+
 ![image-20220110205751552](1-vim.assets/image-20220110205751552.png) 
 
 ![image-20220110205806067](1-vim.assets/image-20220110205806067.png) 
@@ -54,25 +56,53 @@ s/要查找的内容/替换的内容/修饰符
 
 
 
-![img](1-vim.assets/clip_image002.jpg)
 
- 
+
+![image-20220111113314428](1-vim.assets/image-20220111113314428.png) 
+
+
+
+这是正则，后面到了正则再说
+
+![image-20220111113535161](1-vim.assets/image-20220111113535161.png) 
+
+
+
+
+
+![image-20220111113548143](1-vim.assets/image-20220111113548143.png) 
+
+
+
+![image-20220111113624830](1-vim.assets/image-20220111113624830.png) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+![image-20220111113657395](1-vim.assets/image-20220111113657395.png) 
 
 整个文件的内容vim里替换用%s
 
-%s/XXX/YYY/g
+```
+:%s/XXX/YYY/g
+```
 
 /可以替换的
 
-%s#/dev#/tmp#g
+```
+:%s#/dev#/tmp#g
+```
 
  
-
- 
-
- 
-
-正则表达式，后补
 
  
 
@@ -98,25 +128,45 @@ cat也看不到
 
 00000000这是位置，后面00 00 00是内容
 
-![img](1-vim.assets/clip_image016.jpg)
+![image-20220111133808914](1-vim.assets/image-20220111133808914.png) 
+
+
+
+
 
 ![img](1-vim.assets/clip_image018.jpg)
 
-![img](1-vim.assets/clip_image020.jpg)
+![image-20220111133840511](1-vim.assets/image-20220111133840511.png) 
+
+批量注释会有用
+
+
 
 ![img](1-vim.assets/clip_image022.jpg)
 
  
 
-![img](1-vim.assets/clip_image024.jpg)
+![image-20220111141200363](1-vim.assets/image-20220111141200363.png) 
 
- 
 
-![img](1-vim.assets/clip_image026.jpg)
 
- 
 
-![img](1-vim.assets/clip_image028.jpg)
+
+复制到vim里，空行格式错位，可以试试
+
+```
+:set paste
+```
+
+![image-20220111142817455](1-vim.assets/image-20220111142817455.png) 
+
+
+
+
+
+![image-20220112132942632](1-vim.assets/image-20220112132942632.png) 
+
+
 
 这个比较好用，
 
@@ -132,11 +182,13 @@ cat也看不到
 
 跳行同学的福音
 
- 
+
 
 ![img](1-vim.assets/clip_image038.jpg)
 
- 
+ ![img](1-vim.assets/vi-vim-cheat-sheet.gif)
+
+
 
  
 
