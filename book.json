@@ -26,7 +26,7 @@
     "include-codeblock",
     "tbfed-pagefooter",
     "back-to-top-button",
-    "anchor-navigation-ex",
+    "-anchor-navigation-ex",
     "-ad",
     "ace"
   ],
