@@ -50,7 +50,7 @@
 ```
 1、首先pull下来，得到最新的版本，如果是第一次git clone即可
 2、复制oneyearice.github.io并重命名为gitbook；如果是git clone的就复制文件夹里的内容到gitbook下，选择替换原文件，得到最新的版本。  注意gitbook是本地编辑目录，oneyearice.gitbhu.io是pull和push目录
-3、进入gitbook下运行gitbook install安装插件
-3、在gitbook里编辑md文件，也就是主要工作内容
-4、运行脚本自动上传
+4、进入gitbook下运行gitbook install安装插件
+5、在gitbook里编辑md文件，也就是主要工作内容
+6、运行脚本自动上传
 ```
