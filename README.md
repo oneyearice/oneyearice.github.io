@@ -54,3 +54,11 @@
 3、在gitbook里编辑md文件，也就是主要工作内容
 4、运行脚本自动上传
 ```
+
+```
+1、进入D盘git clone，如果有Oneyearice.github.io文件夹，进去后git pull
+2、将oneyearice.github.io文件夹复制，并改名为gitbook
+3、进入gitbook，删除node_module文件夹，cmd在gitbook文件夹下运行gitbook install
+4、运行脚本自动push
+```
+
