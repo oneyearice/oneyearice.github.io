@@ -3624,7 +3624,7 @@ Enter the new value, or press ENTER for the default
         Password Inactive [-1]:
         Account Expiration Date (YYYY-MM-DD) [-1]: 2023-01-16
 [12:34:26 root@localhost ~]#
-
+----&#x6539;&#x65F6;&#x95F4;----
 &#x8FD9;&#x91CC;rockety-linux&#x8FD8;&#x5F04;&#x51FA;&#x4E2A;-1&#x51FA;&#x6765;&#xFF0C;&#x5475;&#x5475;&#xFF0C;&#x53CD;&#x6B63;&#x4F30;&#x8BA1;&#x4E5F;&#x662F;&#x4E0D;&#x9650;&#x5236;&#x7684;&#x610F;&#x601D;
 [12:36:06 root@localhost ~]#getent shadow ming
 ming:$6$AUsIFTgTuY/hWn8Y$0PgiuhWLxBGeGRtbd/Niz5R1EsMRvV3gdSRT45jnXMyZisgBzcCybETswhJzuuUQeIPkO/gMzo3rKyXvRAE6h.:19008:2:33:7::19373:
@@ -3939,6 +3939,8 @@ Never logged in.
 No mail.
 No Plan.
 [root@centos7 ~]#
+
+-----&#x6539;&#x63CF;&#x8FF0;------desc---------
 
 [root@centos7 ~]# chfn dalao001
 Changing finger information for dalao001.
@@ -4640,17 +4642,19 @@ newgrp g12 user1
 <p>&#x56E0;&#x4E3A;user3&#x521B;&#x5EFA;&#x4E4B;&#x524D;&#x5C31;&#x6709;&#x540C;&#x540D;&#x7684;&#x5BB6;&#x76EE;&#x5F55;&#xFF0C;&#x6240;&#x4EE5;&#x5E26;&#x6765;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF1A;&#x8FD9;&#x4E5F;&#x662F;su user3&#x4E3A;&#x4EC0;&#x4E48;&#x663E;&#x793A;<font color="red">-bash-4.2$</font> &#x7684;&#x539F;&#x56E0;</p>
 <p><img src="2-&#x7528;&#x6237;&#x548C;&#x7EC4;&#x7684;&#x6743;&#x9650;&#x7BA1;&#x7406;.assets/image-20220117203845483.png" alt="image-20220117203845483"> </p>
 <h2 id="&#x67E5;&#x770B;&#x9644;&#x52A0;&#x7EC4;">&#x67E5;&#x770B;&#x9644;&#x52A0;&#x7EC4;</h2>
-<p>[root@centos7 ~]# id ming
+<pre><code>[root@centos7 ~]# id ming
 uid=1001(ming) gid=1001(ming) groups=1001(ming)
 [root@centos7 ~]#
 [root@centos7 ~]#
 [root@centos7 ~]# groupmems --help
-Usage: groupmems [options] [action]</p>
-<p>Options:
+Usage: groupmems [options] [action]
+
+Options:
   -g, --group groupname         change groupname instead of the user&apos;s group
                                 (root only)
-  -R, --root CHROOT_DIR         directory to chroot into</p>
-<p>Actions:
+  -R, --root CHROOT_DIR         directory to chroot into
+
+Actions:
   -a, --add username            add username to the members of the group
   -d, --delete username         remove username from the members of the group
   -h, --help                    display this help message and exit
@@ -4662,8 +4666,9 @@ Usage: groupmems [options] [action]</p>
 [root@centos7 ~]# groupadd g3
 [root@centos7 ~]# usermod -G ming g1,g2,g3
 usermod: user &apos;g1,g2,g3&apos; does not exist
-[root@centos7 ~]# usermod -G ming g1 g2 g3</p>
-<p>[root@centos7 ~]# usermod -G g1,g2,g3 ming          # &#x6CE8;&#x610F;&#x6B21;&#x5E8F;
+[root@centos7 ~]# usermod -G ming g1 g2 g3
+
+[root@centos7 ~]# usermod -G g1,g2,g3 ming          # &#x6CE8;&#x610F;&#x6B21;&#x5E8F;
 [root@centos7 ~]# id ming
 uid=1001(ming) gid=1001(ming) groups=1001(ming),1015(g1),1016(g2),1017(g3)
 [root@centos7 ~]# groupmes -l -g ming
@@ -4675,9 +4680,428 @@ ming
 ming
 [root@centos7 ~]# groupmems -l -g g3
 ming
-[root@centos7 ~]#</p>
-<footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-17 21:20:53
+[root@centos7 ~]#
+</code></pre><p>-----&#x5982;&#x679C;&#x672C;&#x8EAB;&#x5C31;&#x662F;group&#x7684;&#x9644;&#x52A0;&#x7EC4;&#xFF0C;newgrp&#x76F4;&#x63A5;&#x5207;&#x6210;&#x4E3B;&#x7EC4; &#x65E0;&#x9700;&#x5BC6;&#x7801;-----&#x1F447;----</p>
+<pre><code class="lang-shell">[11:41:27 root@localhost ~]#usermod -G g12 user1
+[11:41:43 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:41:47 root@localhost ~]#id
+uid=0(root) gid=0(root) groups=0(root) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[11:41:48 root@localhost ~]#su - user1
+Last login: Mon Jan 17 20:48:42 CST 2022 on pts/0
+[11:41:55 user1@localhost ~]$id
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[11:42:01 user1@localhost ~]$id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:42:03 user1@localhost ~]$newgrp g12
+[11:42:09 user1@localhost ~]$id
+uid=1008(user1) gid=1013(g12) groups=1013(g12),1009(user1) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[11:42:10 user1@localhost ~]$exit
+exit
+[11:42:25 user1@localhost ~]$exit
+logout
+[11:42:29 root@localhost ~]#groupmems -l -g g12
+user1
+[11:42:35 root@localhost ~]#
+</code></pre>
+<h2 id="&#x5220;&#x9664;&#x9644;&#x52A0;&#x7EC4;&#x6210;&#x5458;">&#x5220;&#x9664;&#x9644;&#x52A0;&#x7EC4;&#x6210;&#x5458;</h2>
+<pre><code class="lang-shell">[11:42:29 root@localhost ~]#groupmems -l -g g12
+user1
+[11:45:06 root@localhost ~]#groupmems -l -g g12
+user1
+[11:45:08 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:45:24 root@localhost ~]#groupmems -d user1 -g g12
+[11:45:30 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1)
+[11:45:32 root@localhost ~]#
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x53EA;&#x662F;&#x9644;&#x52A0;&#x7EC4;&#x91CC;&#x7684;&#x6210;&#x5458;</p>
+<pre><code>[11:47:07 root@localhost ~]#groupmems -d user1 -g user1
+groupmems: user &apos;user1&apos; is not a member of &apos;user1&apos;
+[11:47:12 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1)
+</code></pre><p>&#x5176;&#x5B9E;usermod&#x5C31;&#x633A;&#x597D;&#xFF0C;&#x65B9;&#x6CD5;&#x6709;&#x70B9;&#x591A;&#xFF0C;&#x54C8;&#x54C8;</p>
+<pre><code>[11:49:06 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1014(g13)
+[11:49:08 root@localhost ~]#usermod -G g12,g13 user1
+[11:49:19 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12),1014(g13)
+[11:49:21 root@localhost ~]#usermod -G g12 user1
+[11:49:46 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:49:48 root@localhost ~]#
+</code></pre><p>&#x6E05;&#x7A7A;&#x7EC4;&#x4E2D;&#x6240;&#x6709;&#x6210;&#x5458;</p>
+<p>&#x5DE5;&#x5177;&#x5404;&#x6709;&#x6240;&#x957F;</p>
+<pre><code class="lang-shell">[11:51:22 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:51:24 root@localhost ~]#usermod -G g12 user2
+[11:51:44 root@localhost ~]#usermod -G g12 user3
+[11:51:46 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1),1013(g12)
+[11:51:48 root@localhost ~]#id user2
+uid=1009(user2) gid=1010(user2) groups=1010(user2),1013(g12)
+[11:51:48 root@localhost ~]#id user3
+uid=1010(user3) gid=1011(user3) groups=1011(user3),1013(g12)
+[11:51:49 root@localhost ~]#
+[11:51:49 root@localhost ~]#groupmems -l -g g12
+user1  user2  user3
+[11:51:57 root@localhost ~]#
+</code></pre>
+<p>&#x60C5;&#x51B5;&#x9644;&#x52A0;&#x7EC4;&#x6210;&#x5458;&#x5C31;&#x7528;groupmems </p>
+<pre><code>[11:51:49 root@localhost ~]#groupmems -l -g g12
+user1  user2  user3
+[11:51:57 root@localhost ~]#
+[11:52:28 root@localhost ~]#groupmems -p -g g12
+[11:52:53 root@localhost ~]#groupmems -l -g g12
+[11:52:56 root@localhost ~]#id user1
+uid=1008(user1) gid=1009(user1) groups=1009(user1)
+[11:52:59 root@localhost ~]#id user2
+uid=1009(user2) gid=1010(user2) groups=1010(user2)
+[11:53:02 root@localhost ~]#id user3
+uid=1010(user3) gid=1011(user3) groups=1011(user3)
+[11:53:02 root@localhost ~]#
+</code></pre><p>&#x4E0D;&#x77E5;&#x9053;&#x4E3B;&#x7EC4;&#x6210;&#x5458;&#x80FD;&#x4E0D;&#x80FD;&#x6E05;</p>
+<pre><code>[11:53:55 root@localhost ~]#usermod -g g12 user1
+[11:54:03 root@localhost ~]#id user1
+uid=1008(user1) gid=1013(g12) groups=1013(g12)
+[11:54:05 root@localhost ~]#groupmems -l -g g12
+[11:54:18 root@localhost ~]#groupmems -p -g g12
+[11:54:35 root@localhost ~]#groupmems -l -g g12
+[11:54:35 root@localhost ~]#
+--------&#x1F446;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x4E86;&#xFF0C;&#x4E3B;&#x7EC4;&#x662F;&#x4E0D;&#x5F52;groupmems&#x7BA1;&#x7684;-----------
+
+useradd\usermod\userdel&#x57FA;&#x672C;&#x4E0A;&#x8FD9;&#x4E9B;&#x4E8B;&#x90FD;&#x80FD;&#x505A;&#xFF0C;
+</code></pre><p>groupmems&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x6709;&#x95EE;&#x9898;&#x554A;</p>
+<pre><code>[root@centos7 ~]# id user1
+uid=1000(user1) gid=1000(user1) groups=1000(user1),1014(g12)
+[root@centos7 ~]# whatis groupmems
+groupmems (8)        - administer members of a user&apos;s primary group
+[root@centos7 ~]# groupmems -l -g user1
+[root@centos7 ~]# groupmems -l -g g12
+user1
+[root@centos7 ~]#
+---------&#x6BDB;&#x7684;primary group&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x4E2A;&#x9644;&#x52A0;&#x7EC4;&#x7BA1;&#x7406;&#x5DE5;&#x5177;------------&#x1F446;------------
+</code></pre><h2 id="&#x7EC3;&#x4E60;">&#x7EC3;&#x4E60;</h2>
+<p>&#x521B;&#x5EFA;&#x7528;&#x6237;cacti&#xFF0C;&#x9644;&#x52A0;&#x7EC4;&#x4E3A;bin&#x548C;root&#xFF0C;&#x9ED8;&#x8BA4;shell&#x4E3A;/bin/csh&#xFF0C;&#x6CE8;&#x91CA;&#x4FE1;&#x606F;&#x4E3A;&quot;i am a cacti&quot;</p>
+<pre><code>useradd -s /bin/csh -G bin,root -c &quot;i am a cacti&quot; cacti
+</code></pre><pre><code>[root@centos7 ~]# useradd -s /bin/csh -G bin,root -c &quot;i am a cacti&quot; cacti
+[root@centos7 ~]# id cacti
+uid=1007(cacti) gid=1007(cacti) groups=1007(cacti),0(root),1(bin)
+[root@centos7 ~]# getent passwd cacti
+cacti:x:1007:1007:i am a cacti:/home/cacti:/bin/csh
+[root@centos7 ~]# finger cacti
+Login: cacti                            Name: i am a cacti
+Directory: /home/cacti                  Shell: /bin/csh
+Never logged in.
+No mail.
+No Plan.
+[root@centos7 ~]#
+</code></pre><p>&#x521B;&#x5EFA;&#x4E0B;&#x9762;&#x7684;&#x7528;&#x6237;&#x3001;&#x7EC4;&#x548C;&#x7EC4;&#x6210;&#x5458;&#x5173;&#x7CFB;&#xFF0C;</p>
+<pre><code>&#x540D;&#x5B57;&#x4E3A;webs&#x7684;&#x7EC4;&#xFF0C;
+&#x7528;&#x6237;nginx&#xFF0C;&#x4F7F;&#x7528;webs&#x4F5C;&#x4E3A;&#x9644;&#x52A0;&#x7EC4;
+&#x7528;&#x6237;varnish&#xFF0C;&#x4F7F;&#x7528;webs&#x4F5C;&#x4E3A;&#x9644;&#x52A0;&#x7EC4;
+&#x7528;&#x6237;mysql&#xFF0C;&#x4E0D;&#x53EF;&#x4EA4;&#x4E92;&#x767B;&#x5165;&#x897F;&#x8DEF;&#xFF0C;&#x4E14;&#x4E0D;&#x662F;webs&#x7684;&#x6210;&#x5458;
+nginx,varnish,mysql&#x5BC6;&#x7801;&#x90FD;&#x662F;cisco
+</code></pre><pre><code>groupadd webs
+useradd -G webs nginx
+useradd -G webs varnish
+useradd -s /sbin/nologin mysql
+cat &lt;&lt; EOF &gt;p.set
+nginx:cisco
+varnish:cisco
+mysql:cisco
+EOF
+cat p.set |chpasswd
+</code></pre><p>---------------------------&#x1F447;&#x68C0;&#x67E5;&#x4E0B;&#xFF0C;&#x6548;&#x679C;&#x6760;&#x6760;&#x7684;-----------------------</p>
+<p><img src="2-&#x7528;&#x6237;&#x548C;&#x7EC4;&#x7684;&#x6743;&#x9650;&#x7BA1;&#x7406;.assets/image-20220118121111755.png" alt="image-20220118121111755" style="zoom:67%;"> </p>
+<p>--------&#x1F446;&#x4E0A;&#x9762;&#x8BB2;&#x4E86;&#x7528;&#x6237;&#x548C;&#x7EC4;&#xFF0C;&#x1F447;&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x6574;&#x7406;&#x6587;&#x4EF6;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x7528;&#x6237;&#x548C;&#x7EC4;&#x7684;&#x6743;&#x9650;-------</p>
+<p>QoS&#xFF0C; diff serv &#xFF08;&#x6253;&#x6807;\&#x5206;&#x7C7B;+&#x540E;&#x9762;&#x7684;&#x7BA1;&#x5236;&#x3001;&#x9650;&#x901F;&#x3001;&#x961F;&#x5217;&#xFF09;&#x4E5F;&#x662F;&#x8FD9;&#x4E2A;&#x9053;&#x7406;&#xFF0C;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x7528;&#x6237;&#x548C;&#x7EC4;&#x5C31;&#x662F;&#x533A;&#x522B;&#xFF0C;&#x4E0B;&#x9762;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x4EBA;&#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x6587;&#x4EF6;&#x7684;&#x8BBF;&#x95EE;&#x5C31;&#x662F;&#x5BF9;&#x5F85;&#x3002;</p>
+<h2 id="&#x6587;&#x4EF6;&#x6743;&#x9650;">&#x6587;&#x4EF6;&#x6743;&#x9650;</h2>
+<h3 id="chown&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6240;&#x5C5E;">chown&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6240;&#x5C5E;</h3>
+<p><img src="2-&#x7528;&#x6237;&#x548C;&#x7EC4;&#x7684;&#x6743;&#x9650;&#x7BA1;&#x7406;.assets/image-20220118122456908.png" alt="image-20220118122456908" style="zoom: 50%;"> </p>
+<pre><code>[root@centos7 ~]# touch /data/f1
+[root@centos7 ~]# su - user1
+Last login: Mon Feb  7 12:33:30 CST 2022 on pts/0
+[user1@centos7 ~]$ ll /data/f1
+-rw-r--r--. 1 root root 0 Feb  7 12:33 /data/f1
+[user1@centos7 ~]$ cat /data/f1
+[user1@centos7 ~]$ echo 111 &gt; /data/f1
+-bash: /data/f1: Permission denied
+-------&#x1F446;user1&#x4F5C;&#x4E3A;other&#x6CA1;&#x6709;f1&#x7684;&#x5199;&#x6743;&#x9650;-----------
+-------&#x1F447;chown&#x5C31;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x8005;&#x548C;&#x6240;&#x5C5E;&#x7EC4;&#xFF0C;&#x597D;&#x50CF;&#x4E5F;&#x7528;&#x4E0D;&#x5230;chgrp-------
+[user1@centos7 ~]$
+[user1@centos7 ~]$ exit
+logout
+[root@centos7 ~]# chown user1 /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 user1 root 0 Feb  7 12:33 /data/f1
+[root@centos7 ~]# chown :g12 /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 user1 g12 0 Feb  7 12:33 /data/f1
+
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 user1 g12 0 Feb  7 12:33 /data/f1
+[root@centos7 ~]# chown root:g13 /data/f1
+chown: invalid group: &#x2018;root:g13&#x2019;
+[root@centos7 ~]# chown root:g1 /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 root g1 0 Feb  7 12:33 /data/f1
+[root@centos7 ~]# chown user1.g12 /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 user1 g12 0 Feb  7 12:33 /data/f1
+--------&#x1F447;chgrp&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x5C5E;&#x7EC4;----------
+[root@centos7 ~]# chgrp g2 /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 user1 g2 0 Feb  7 12:33 /data/f1
+[root@centos7 ~]#
+</code></pre><h2 id="chmod&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6743;&#x9650;">chmod&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6743;&#x9650;</h2>
+<pre><code>&#x6A21;&#x5F0F;&#x6CD5;&#xFF1A;
+chmod who opt per file
+who: u,g,o,a
+opt: +,-,=
+per: r,w,x
+</code></pre><pre><code>&#x53BB;&#x6389;&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x8005;r&#x6743;&#x9650;&#xFF1A;chmod u-r file
+[user1@centos7 ~]$ ll
+total 4
+-rw-rw-r--. 1 user1 user1   0 Feb  6 20:23 file1
+[user1@centos7 ~]$ chmod u-r file1
+[user1@centos7 ~]$ ll
+total 4
+--w-rw-r--. 1 user1 user1   0 Feb  6 20:23 file1
+[user1@centos7 ~]$
+---------&#x6B64;&#x65F6;&#x518D;&#x770B;&#x1F447;user1&#x7528;&#x6237;&#x5BF9;file1&#x7684;&#x6743;&#x9650;&#x7684;&#x60C5;&#x51B5;-----------
+[user1@centos7 ~]$ cat file1
+cat: file1: Permission denied
+[user1@centos7 ~]$ echo xx &gt;&gt; file1
+[user1@centos7 ~]$ ll
+total 8
+--w-rw-r--. 1 user1 user1   3 Feb  7 13:43 file1
+-rwxrwxrwx. 1 root  root  839 Jan 10 14:20 fstab
+[user1@centos7 ~]$
+-----------&#x53EF;&#x89C1;&#x1F446;&#x6743;&#x9650;&#x662F;&#x6240;&#x5C5E;&#x8005;&#x9002;&#x7528;&#x5C31;&#x53EA;&#x770B;&#x6240;&#x5C5E;&#x8005;&#x4E86;---------------
+---------------user&gt;group&gt;other-----3&#x4E2A;&#x6743;&#x9650;&#x53EA;&#x4E00;&#x4E2A;&#x6709;&#x6548;---------
+</code></pre><pre><code>[root@centos7 ~]# chmod u=-,g=r,o=rwx /data/f1
+[root@centos7 ~]# ll /data/f1
+----r--rwx. 1 user1 g2 3 Feb  7 13:48 /data/f1
+[root@centos7 ~]# su user1
+[user1@centos7 root]$ cat /data/f1
+cat: /data/f1: Permission denied
+[user1@centos7 root]$ echo xx &gt; /data/f1
+bash: /data/f1: Permission denied
+[user1@centos7 root]$ exit
+exit
+[root@centos7 ~]# su user2
+[user2@centos7 root]$ cat /data/f1
+11
+[user2@centos7 root]$ echo xx &gt; /data/f1
+[user2@centos7 root]$ cat /data/f1
+xx
+[user2@centos7 root]$
+--------------user1&#x7684;&#x6587;&#x4EF6;&#x6743;&#x9650;user1&#x81EA;&#x7136;&#x53EF;&#x4EE5;&#x52A0;&#x56DE;&#x53BB;-------&#x1F447;---
+[user1@centos7 root]$ ll /data/f1
+----r--rwx. 1 user1 g2 3 Feb  7 13:52 /data/f1
+[user1@centos7 root]$ chmod u=rwx /data/f1
+[user1@centos7 root]$ ll /data/f1
+-rwxr--rwx. 1 user1 g2 3 Feb  7 13:52 /data/f1
+[user1@centos7 root]$ cat /data/f1
+xx
+[user1@centos7 root]$ echo yy &gt;&gt; /data/f1
+[user1@centos7 root]$ cat /data/f1
+xx
+yy
+[user1@centos7 root]$
+
+----------&#x975E;&#x6587;&#x4EF6;&#x62E5;&#x6709;&#x8005;&#x81EA;&#x7136;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x1F447;-------------
+[root@centos7 ~]# su user2
+[user2@centos7 root]$ ll /data/f1
+-rwxr--rwx. 1 user1 g2 6 Feb  7 13:53 /data/f1
+[user2@centos7 root]$ chmod u=rx /data/f1
+chmod: changing permissions of &#x2018;/data/f1&#x2019;: Operation not permitted
+[user2@centos7 root]$ chmod g=- /data/f1
+chmod: changing permissions of &#x2018;/data/f1&#x2019;: Operation not permitted
+[user2@centos7 root]$
+</code></pre><pre><code>[root@centos7 ~]# chmod a=rwx /data/f1
+[root@centos7 ~]# ll /data/f1
+-rwxrwxrwx. 1 user1 g2 6 Feb  7 13:53 /data/f1
+[root@centos7 ~]# chmod a=- /data/f1
+[root@centos7 ~]# ll /data/f1
+----------. 1 user1 g2 6 Feb  7 13:53 /data/f1
+[root@centos7 ~]# chmod a=r /data/f1
+[root@centos7 ~]# ll /data/f1
+-r--r--r--. 1 user1 g2 6 Feb  7 13:53 /data/f1
+[root@centos7 ~]# chmod a= /data/f1
+[root@centos7 ~]# ll /data/f1
+----------. 1 user1 g2 6 Feb  7 13:53 /data/f1
+[root@centos7 ~]#
+------------&#x8C01;&#x90FD;&#x4E0D;&#x884C;&#xFF0C;root&#x8FD8;&#x884C;&#x1F447;------root&#x8D85;&#x8131;&#x1F41F;&#x6743;&#x9650;&#x9664;&#x4E86;x&#x6267;&#x884C;&#x6743;&#x9650;-----
+[root@centos7 ~]# chown root.root /data/f1
+[root@centos7 ~]# ll /data/f1
+----------. 1 root root 9 Feb  7 13:59 /data/f1
+[root@centos7 ~]# cat /data/f1
+xx
+yy
+zz
+[root@centos7 ~]# echo ee &gt;&gt; /data/f1
+[root@centos7 ~]# cat /data/f1
+xx
+yy
+zz
+ee
+[root@centos7 ~]#
+---------&#x1F447;--&#x6267;&#x884C;&#x6743;&#x9650;root&#x8981;&#x662F;&#x6CA1;&#x6709;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x884C;&#xFF0C;root&#x4E5F;&#x5C31;rw&#x8BFB;&#x5199;&#x4E0D;&#x53D7;&#x6743;&#x9650;&#x5F71;&#x54CD;-----
+[root@centos7 ~]# ll /bin/cat
+-rwxr-xr-x. 1 root root 54080 Aug 20  2019 /bin/cat
+[root@centos7 ~]#
+[root@centos7 ~]# chow a-x /bin/cat
+-bash: chow: command not found
+[root@centos7 ~]# chmod a-x /bin/cat
+[root@centos7 ~]# ll /bin/cat
+-rw-r--r--. 1 root root 54080 Aug 20  2019 /bin/cat
+[root@centos7 ~]# cat /data/f1
+-bash: /usr/bin/cat: Permission denied
+[root@centos7 ~]# /bin/cat /data/f1
+-bash: /bin/cat: Permission denied
+[root@centos7 ~]# chmod +x /bin/cat  # &#x8FD9;&#x91CC;&#x7B49;&#x4EF7;&#x4E8E;a+x
+[root@centos7 ~]# cat /data/f1
+xx
+yy
+zz
+ee
+-------&#x1F447;----root&#x6BD4;&#x8F83;&#x725B;&#x903C;&#xFF0C;&#x53EA;&#x8981;u&#x3001;g&#x3001;o&#x91CC;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x6709;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x90A3;&#x4ED6;&#x5C31;&#x6709;&#x6743;&#x9650;&#x4E86;---------
+[root@centos7 ~]# ll /bin/cat
+-rwxr-xr-x. 1 root root 54080 Aug 20  2019 /bin/cat
+[root@centos7 ~]# chmod u-x,g-x /bin/cat
+[root@centos7 ~]# ll /bin/cat
+-rw-r--r-x. 1 root root 54080 Aug 20  2019 /bin/cat
+[root@centos7 ~]# cat /data/f1
+xx
+yy
+zz
+ee
+[root@centos7 ~]#
+</code></pre><p>&#x4FEE;&#x6539;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x548C;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x8FD9;&#x4E2A;<font color="red">R</font>&#x7279;&#x522B;&#x7684;&#x5751;&#x548C;<font color="red">rm</font>&#x4E5F;&#x5DEE;&#x4E0D;&#x591A;&#x4E86;</p>
+<pre><code>[root@centos7 ~]# ll /data/
+total 8
+-rw-r--r--. 1 root root 151 Feb  6 19:31 change_passwd.sh
+----------. 1 root root  12 Feb  7 14:19 f1
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f10
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f11
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f12
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f13
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f14
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f15
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f16
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f17
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f18
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f19
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f2
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f20
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f3
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f4
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f5
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f6
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f7
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f8
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f9
+[root@centos7 ~]# chmod a+x -R /data/
+[root@centos7 ~]# ll /data/ -d
+drwxr-xr-x. 2 root root 241 Feb  7 14:19 /data/
+[root@centos7 ~]# ll /data/
+total 8
+-rwxr-xr-x. 1 root root 151 Feb  6 19:31 change_passwd.sh
+---x--x--x. 1 root root  12 Feb  7 14:19 f1
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f10
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f11
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f12
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f13
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f14
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f15
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f16
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f17
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f18
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f19
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f2
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f20
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f3
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f4
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f5
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f6
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f7
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f8
+-rwxr-xr-x. 1 root root   0 Feb  7 14:19 f9
+[root@centos7 ~]#
+[root@centos7 ~]# ll /data/
+total 8
+-rw-r--r--. 1 root root 151 Feb  6 19:31 change_passwd.sh
+----------. 1 root root  12 Feb  7 14:19 f1
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f10
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f11
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f12
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f13
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f14
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f15
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f16
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f17
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f18
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f19
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f2
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f20
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f3
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f4
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f5
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f6
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f7
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f8
+-rw-r--r--. 1 root root   0 Feb  7 14:19 f9
+[root@centos7 ~]# chown -R user1 /data/
+[root@centos7 ~]# ll /data/
+total 8
+-rw-r--r--. 1 user1 root 151 Feb  6 19:31 change_passwd.sh
+----------. 1 user1 root  12 Feb  7 14:19 f1
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f10
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f11
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f12
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f13
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f14
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f15
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f16
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f17
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f18
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f19
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f2
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f20
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f3
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f4
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f5
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f6
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f7
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f8
+-rw-r--r--. 1 user1 root   0 Feb  7 14:19 f9
+[root@centos7 ~]#
+[root@centos7 ~]# ll /data/ -d
+drw-r--r--. 2 user1 root 241 Feb  7 14:19 /data/
+
+
+-------&#x5751;&#x5728;&#x8FD9;&#x91CC;&#x1F447;-----
+rm -rf / data              #&#x5C0F;&#x624B;&#x4E00;&#x6296;&#xFF0C;&#x7A7A;&#x683C;&#x5168;&#x6CA1;&#x6709;
+chmod -R a=rwx / data      #&#x5C0F;&#x624B;&#x518D;&#x90FD;&#xFF0C;&#x5927;&#x5988;&#x98DF;&#x5802;&#x6709;
+------&#x1F446;&#x4F60;&#x628A;/&#x6839;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x548C;&#x5B50;&#x6587;&#x4EF6;&#x6743;&#x9650;&#x90FD;&#x5F04;&#x4E86;&#xFF0C;&#x66F4;&#x72E0;&#x7684;&#x6765;&#x4E86;&#x1F447;----
+chown -R user1 / data       #/&#x6839;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5939;&#x548C;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x90FD;&#x53D8;&#x6210;&#x4E86;user1&#x4E86;
+</code></pre><h3 id="&#x53C2;&#x8003;&#x522B;&#x7684;&#x6587;&#x4EF6;&#x8BBE;&#x7F6E;&#x540C;&#x6837;&#x7684;&#x7528;&#x6237;&#x548C;&#x7EC4;&#xFF0C;&#x4EE5;&#x53CA;&#x6743;&#x9650;">&#x53C2;&#x8003;&#x522B;&#x7684;&#x6587;&#x4EF6;&#x8BBE;&#x7F6E;&#x540C;&#x6837;&#x7684;&#x7528;&#x6237;&#x548C;&#x7EC4;&#xFF0C;&#x4EE5;&#x53CA;&#x6743;&#x9650;</h3>
+<pre><code>[root@centos7 ~]# ll /etc/fstab
+-rw-r--r--. 1 root root 595 Jan  5 17:41 /etc/fstab
+[root@centos7 ~]# ll /data/f1
+----------. 1 user1 root 12 Feb  7 14:19 /data/f1
+[root@centos7 ~]# chown --reference /etc/fstab /data/f1
+[root@centos7 ~]# ll /data/f1
+----------. 1 root root 12 Feb  7 14:19 /data/f1
+[root@centos7 ~]# chmod --reference /etc/fstab /data/f1
+[root@centos7 ~]# ll /data/f1
+-rw-r--r--. 1 root root 12 Feb  7 14:19 /data/f1
+[root@centos7 ~]#
+</code></pre><footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2022-01-18 14:46:29
 </span></footer>
                                 
                                 </section>
@@ -4721,7 +5145,7 @@ ming
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节 用户和组的权限管理","level":"1.8.2","depth":2,"next":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"previous":{"title":"第1节 用户和组的增删改查","level":"1.8.1","depth":2,"path":"6-用户、用户组和权限/1-用户和组的增删改查.md","ref":"./6-用户、用户组和权限/1-用户和组的增删改查.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/2-用户和组的权限管理.md","mtime":"2022-01-17T13:20:53.102Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-18T03:06:46.758Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节 用户和组的权限管理","level":"1.8.2","depth":2,"next":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"previous":{"title":"第1节 用户和组的增删改查","level":"1.8.1","depth":2,"path":"6-用户、用户组和权限/1-用户和组的增删改查.md","ref":"./6-用户、用户组和权限/1-用户和组的增删改查.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/2-用户和组的权限管理.md","mtime":"2022-01-18T06:46:29.634Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-18T06:46:42.491Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
