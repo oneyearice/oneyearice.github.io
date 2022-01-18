@@ -2,7 +2,7 @@
 
 * [课程介绍和<font color=red>·</font><font color=green>小</font><font color=red>·</font>目标](./introduction/课程介绍和小目标.md)
 
- 		linxu~PY，go
+ 		linxu~PY，-go~>
 
 
 
@@ -60,7 +60,7 @@
 2、将oneyearice.github.io文件夹复制，并改名为gitbook
 3、进入gitbook，删除node_module文件夹，cmd在gitbook文件夹下运行gitbook install
 ---开始编写md文章---完了就👇---
-4、运行脚本自动push
+4、my笔记本需要注释掉book.json里的"-anchor-navigation-ex"👈这样注释，运行脚本自动push
 ```
 
 ```
