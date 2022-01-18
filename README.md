@@ -59,6 +59,11 @@
 1、进入D盘git clone，如果有Oneyearice.github.io文件夹，进去后git pull
 2、将oneyearice.github.io文件夹复制，并改名为gitbook
 3、进入gitbook，删除node_module文件夹，cmd在gitbook文件夹下运行gitbook install
+---开始编写md文章---完了就👇---
 4、运行脚本自动push
+```
+
+```
+后面看心情，可以弄成两个脚本，pull和push，pull就上面的1 2 3，push就是4
 ```
 
