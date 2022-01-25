@@ -3480,8 +3480,143 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;">&#x7B2C;4&#x8282;. umask&#x6743;&#x9650;</h1>
-<footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-17 21:20:53
+<h2 id="chattr">chattr</h2>
+<p><strong>i</strong> :&#x6587;&#x4EF6;&#x4E0D;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x3001;&#x5305;&#x542B;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x4E5F;&#x4E0D;&#x80FD;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+<pre><code>[19:40:28 root@localhost data]#chattr +i f1
+[19:40:37 root@localhost data]#ll
+total 0
+-rw-r--r--. 1 root root 0 Jan 19 19:40 f1
+[19:40:38 root@localhost data]#lsattr f1
+----i--------------- f1
+[19:41:22 root@localhost data]#rm -rf f1
+rm: cannot remove &apos;f1&apos;: Operation not permitted
+[19:41:29 root@localhost data]#echo xx &gt; f1
+-bash: f1: Operation not permitted
+[19:41:32 root@localhost data]#mv f1 f2
+mv: cannot move &apos;f1&apos; to &apos;f2&apos;: Operation not permitted
+[19:41:36 root@localhost data]#cd ..
+[19:41:38 root@localhost /]#rm -rf /data/
+rm: cannot remove &apos;/data/f1&apos;: Operation not permitted
+[19:41:44 root@localhost /]#
+</code></pre><p><strong>a</strong>:&#x6587;&#x4EF6;&#x4EC5;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#xFF0C;&#x540C;&#x6837;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x4E0D;&#x80FD;&#x88AB;&#x5220;&#x9664;</p>
+<pre><code>[19:45:29 root@localhost data]#chattr +a f1
+[19:45:36 root@localhost data]#lsattr f1
+----ia-------------- f1
+[19:45:39 root@localhost data]#echo xx &gt; f1
+-bash: f1: Operation not permitted
+[19:45:45 root@localhost data]#echo xx &gt;&gt; f1
+-bash: f1: Operation not permitted
+[19:45:48 root@localhost data]#chattr -i f1
+[19:46:05 root@localhost data]#lsattr f1
+-----a-------------- f1
+[19:46:09 root@localhost data]#echo xx &gt; f1
+-bash: f1: Operation not permitted
+[19:46:13 root@localhost data]#echo xx &gt;&gt; f1
+[19:46:16 root@localhost data]#cat f1
+xx
+[19:46:19 root@localhost data]#rm -rf f1
+rm: cannot remove &apos;f1&apos;: Operation not permitted
+[19:46:22 root@localhost data]#exit
+logout
+[19:46:54 root@localhost /]#rm -rf /data/
+rm: cannot remove &apos;/data/f1&apos;: Operation not permitted
+---&#x4F46;&#x662F;&#x1F447;vi&#x8FDB;&#x53BB;&#x540E;&#x5728;&#x6700;&#x540E;&#x4E00;&#x884C;&#x6DFB;&#x52A0;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#xFF0C;&#x7CFB;&#x7EDF;&#x5224;&#x5B9A;&#x4E0D;&#x51FA;&#x6765;&#x4F60;&#x662F;&#x4E0D;&#x662F;&#x8FFD;&#x52A0;&#x6240;&#x4EE5;&#x8FD9;&#x79CD;&#x8FFD;&#x52A0;&#x65F6;&#x4E0D;&#x884C;&#x7684;&#x3002;
+</code></pre><p><img src="4-umask&#x6743;&#x9650;.assets/image-20220119195019714.png" alt="image-20220119195019714" style="zoom:67%;"> </p>
+<h2 id="umask">umask</h2>
+<p>1&#x3001;root&#x7528;&#x6237;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x53EF;&#x53D1;&#x73B0;&#x9ED8;&#x8BA4;&#x7684;&#x6743;&#x9650;&#x5206;&#x522B;&#x65F6;644&#x548C;755</p>
+<pre><code>[19:57:42 root@localhost data]#ll
+total 0
+drwxr-xr-x. 2 root root 6 Jan 19 19:57 dir
+-rw-r--r--. 1 root root 0 Jan 19 19:57 f1
+[19:57:42 root@localhost data]#
+</code></pre><p>2&#x3001;&#x6362;&#x666E;&#x901A;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x6743;&#x9650;&#x5C31;&#x4E0D;&#x4E00;&#x6837;</p>
+<pre><code>[putong@centos7 data]$ ll |grep putong
+drwxrwxr-x. 2 putong putong 6 Feb  8 20:02 dir2
+-rw-rw-r--. 1 putong putong 0 Feb  8 20:02 f2
+[putong@centos7 data]$
+</code></pre><pre><code>[putong@centos7 data]$ type umask
+umask is a shell builtin
+[putong@centos7 data]$ umask
+0002
+[putong@centos7 data]$ exit
+exit
+[root@centos7 data]# umask
+0022
+[root@centos7 data]#
+</code></pre><h2 id="umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;">umask+default_value=777&#x76EE;&#x5F55;|666&#x6587;&#x4EF6;</h2>
+<p>000+default=777&#xFF0C;&#x5047;&#x8BBE;&#x6587;&#x4EF6;&#x4E5F;&#x7528;777&#x603B;&#x548C;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x5C31;&#x5E26;&#x4E0A;&#x4E86;x&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x5E26;&#x6765;&#x4E00;&#x5B9A;&#x7684;&#x98CE;&#x9669;&#x3002;</p>
+<p>022+default=777|666&#xFF0C;&#x6587;&#x4EF6;&#x5939;default=755&#xFF0C;&#x6587;&#x4EF6;default=644</p>
+<p>&#x1F446;&#x4E0A;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x4E0D;&#x6B63;&#x786E;</p>
+<p>umask&#xFF0C;mask&#x65F6;&#x63A9;&#x7801;&#xFF0C;user&#x7684;mask&#x5C31;&#x662F;&#x7528;&#x6237;&#x7684;&#x63A9;&#x7801;&#x7684;&#x610F;&#x601D;&#x3002;</p>
+<p>umask ugo   &#x4E5F;&#x5206;user group other</p>
+<p>umask&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C06;777&#x6216;&#x8005;666&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x6743;&#x9650;&#x53BB;&#x6389;&#xFF0C;&#x5F97;&#x51FA;&#x9ED8;&#x8BA4;&#x6743;&#x9650;&#x3002;</p>
+<pre><code>777
+022
+&#x2193;&#x8F6C;&#x6210;&#x4E8C;&#x8FDB;&#x5236;,0&#x9501;&#x6B7B;&#xFF0C;1&#x653E;&#x5F00;&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x914D;&#x7B26;&#x6216;&#x8005;&#x53CD;&#x63A9;&#x7801;&#x7684;&#x7B97;&#x6CD5;.
+111 111 111
+000 010 010
+------------
+111 101 101  = 755 &#x8FD9;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x5939;&#x521B;&#x5EFA;&#x9ED8;&#x8BA4;&#x6743;&#x9650;
+
+666
+022
+110 110 110
+000 010 010
+------------
+110 100 100  = 644 &#x8FD9;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x9ED8;&#x8BA4;&#x6743;&#x9650;
+
+----&#x1F447;&#x4FEE;&#x6539;umask&#x503C;&#x518D;&#x6765;&#x770B;&#xFF0C;&#x53D1;&#x73B0;777|666-umask&#x5C31;&#x4E0D;&#x51C6;&#x786E;&#x4E86;----
+[root@centos7 data]# umask 123
+[root@centos7 data]# touch f1
+[root@centos7 data]# mkdir dir
+[root@centos7 data]# ll
+total 0
+drw-r-xr--. 2 root root 6 Feb  8 20:18 dir
+-rw-r--r--. 1 root root 0 Feb  8 20:18 f1
+[root@centos7 data]#
+-------
+&#x5206;&#x6790;&#xFF1A;
+777
+123
+111 111 111
+001 010 011
+--------------
+110 101 100  =&gt; &#x63A9;&#x51FA;&#x6765;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#xFF1A;654&#xFF0C;&#x8FD9;&#x4E2A;&#x786E;&#x5B9E;&#x5C31;&#x662F;777-123=654
+
+&#x5982;&#x679C;&#x662F;&#x6587;&#x4EF6;
+666
+123
+110 110 110
+001 010 011
+--------------
+110 100 100  =&gt; &#x5F97;&#x5230;&#xFF1A;644&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x4E0D;&#x662F;666-123=543&#xFF0C;&#x4F7F;&#x7528;&#x5947;&#x6570;+1&#x7684;&#x89C4;&#x5F8B;=644&#xFF0C;&#x6240;&#x4EE5;&#x901F;&#x7B97;&#x6CD5;&#x5C31;&#x662F;
+543&#x91CC;&#x9762;&#x5E26;&#x4E0A;&#x4E86;&#x6267;&#x884C;&#x6743;&#x9650;&#x4E86;&#xFF0C;&#x80AF;&#x5B9A;&#x4E0D;&#x53EF;&#x80FD;&#x7684;&#x3002;
+&#x1F447;
+&#x5982;&#x679C;&#x662F;&#x6587;&#x4EF6;&#x5939;777-umask=default
+&#x5982;&#x679C;&#x662F;&#x6587;&#x4EF6;666-umask=default(3&#x4E2A;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5947;&#x6570;&#x5C31;+1&#xFF0C;&#x5076;&#x6570;&#x4E0D;&#x53D8;)
+</code></pre><p>umask&#x9000;&#x51FA;&#x540E;&#x4E22;&#x5931;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x5230;.bashrc&#x6216;&#x8005;/etc/bashrc&#x91CC;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x6709;&#x4E2A;&#x70B9;&#x5C31;&#x662F;&#x51E0;&#x4E2A;&#x6587;&#x4EF6;&#x91CC;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7B49;&#xFF0C;&#x8C01;&#x4F18;&#x5148;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x6D89;&#x53CA;&#x6587;&#x4EF6;&#x6709;/etc/profile  bashrc&#x7B49;&#xFF0C;&#x8FD9;&#x4E2A;&#x540E;&#x9762;&#x8BB2;&#x3002;</p>
+<pre><code>[root@centos7 ~]# cat /etc/bashrc | tail -3
+fi
+# vim:ts=4:sw=4
+umask 123
+[root@centos7 ~]#
+
+[root@centos7 ~]# umask
+0022
+[root@centos7 ~]# umask -p
+umask 0022
+[root@centos7 ~]# umask -p &gt;&gt; .bashrc    # &#x5C06;&#x5F53;&#x524D;umaks&#x503C;&#x5199;&#x5165;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;
+[root@centos7 ~]# tail -1 .bashrc
+umask 0022
+[root@centos7 ~]#
+</code></pre><h2 id="facl">FACL</h2>
+<p>&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#xFF0C;&#x666E;&#x901A;&#x6743;&#x9650;&#x89E3;&#x51B3;&#x4E0D;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;</p>
+<p>user1&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;f1&#xFF0C;user2&#x80FD;&#x5BF9;f1&#x5B8C;&#x5168;&#x63A7;&#x5236;&#xFF0C;user3&#x53EA;&#x80FD;&#x8BFB;f1&#xFF0C;user4&#x53EA;&#x80FD;&#x5199;f1</p>
+<p>&#x6B64;&#x65F6;ugo&#x4E09;&#x4E2A;&#x89D2;&#x8272;&#xFF0C;user&#x3001;group&#x3001;other&#xFF0C;&#x7528;&#x6237;&#x6743;&#x9650;&#x8D85;&#x8FC7;3&#x4E2A;&#xFF0C;&#x5C31;&#x9700;&#x8981;ACL&#x4E86;&#x3002; </p>
+<pre><code>setfacl -m u:user1:0 f1
+setfacl -m u:user1:- f1
+</code></pre><footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2022-01-25 20:28:13
 </span></footer>
                                 
                                 </section>
@@ -3525,7 +3660,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"next":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","ref":"./6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","articles":[]},"previous":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/4-umask权限.md","mtime":"2022-01-17T13:20:53.106Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-19T10:16:52.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"next":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","ref":"./6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","articles":[]},"previous":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/4-umask权限.md","mtime":"2022-01-25T12:28:13.456Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-25T12:30:13.315Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
