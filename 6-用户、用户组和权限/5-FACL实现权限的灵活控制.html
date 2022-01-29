@@ -3480,8 +3480,348 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7B2C;5&#x8282;-facl&#x5B9E;&#x73B0;&#x6743;&#x9650;&#x7684;&#x7075;&#x6D3B;&#x63A7;&#x5236;">&#x7B2C;5&#x8282;. FACL&#x5B9E;&#x73B0;&#x6743;&#x9650;&#x7684;&#x7075;&#x6D3B;&#x63A7;&#x5236;</h1>
+<h2 id="&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#xFF0C;&#x666E;&#x901A;&#x6743;&#x9650;&#x89E3;&#x51B3;&#x4E0D;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;">&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#xFF0C;&#x666E;&#x901A;&#x6743;&#x9650;&#x89E3;&#x51B3;&#x4E0D;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;</h2>
+<p>user1&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;f1&#xFF0C;user2&#x80FD;&#x5BF9;f1&#x5B8C;&#x5168;&#x63A7;&#x5236;&#xFF0C;user3&#x53EA;&#x80FD;&#x5199;f1&#xFF0C;user4&#x53EA;&#x80FD;&#x8BFB;f1</p>
+<p>&#x6B64;&#x65F6;ugo&#x4E09;&#x4E2A;&#x89D2;&#x8272;&#xFF0C;user&#x3001;group&#x3001;other&#xFF0C;&#x7528;&#x6237;&#x6743;&#x9650;&#x8D85;&#x8FC7;3&#x4E2A;&#xFF0C;&#x5C31;&#x9700;&#x8981;ACL&#x4E86;&#x3002; </p>
+<pre><code>setfacl -m u:user1:0 f1    &#x1F448;&#x8868;&#x793A;&#x5565;&#x6743;&#x9650;&#x90FD;&#x6CA1;&#x6709;
+setfacl -m u:user1:- f1    &#x1F448;&#x8868;&#x793A;&#x5565;&#x6743;&#x9650;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;0
+
+&#x1F449;user1&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;f1
+[10:03:19 root@localhost data]#ll f1
+-rw-r--r--+ 1 root root 4 Jan 29 10:03 f1
+[10:04:59 root@localhost data]#su user2 -c &quot;cat f1&quot;&#x1F448;&#x5207;&#x6362;&#x7528;&#x6237;&#x8F93;&#x5165;cli&#x540E;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#x6765;
+123
+[10:05:00 root@localhost data]#su user1 -c &quot;cat f1&quot;
+cat: f1: Permission denied
+</code></pre><pre><code>&#x1F449;user2&#x5B8C;&#x5168;&#x63A7;&#x5236;f1
+[10:20:21 root@localhost data]#su user2 -c &apos;cat f1&apos;
+123
+[10:20:39 root@localhost data]#su user2 -c &apos;echo 123 &gt; f1&apos;
+bash: f1: Permission denied
+[10:20:43 root@localhost data]#setfacl -m u:user2:rw f1
+[10:20:59 root@localhost data]#su user2 -c &apos;echo 321 &gt; f1&apos;
+[10:21:05 root@localhost data]#su user2 -c &apos;cat  f1&apos;
+321
+[10:21:11 root@localhost data]#
+</code></pre><pre><code>&#x1F449;user3&#x53EA;&#x80FD;&#x5199;f1
+[10:24:33 root@localhost data]#setfacl -m u:user3:w f1
+[10:25:44 root@localhost data]#su user3 -c &apos;cat f1&apos;
+cat: f1: Permission denied
+[10:25:52 root@localhost data]#su user3 -c &apos;echo aaa &gt;&gt;  f1&apos;
+[10:26:01 root@localhost data]#su user3 -c &apos;cat f1&apos;
+cat: f1: Permission denied
+[10:26:03 root@localhost data]#cat f1
+321
+aaa
+[10:26:15 root@localhost data]#
+</code></pre><pre><code>&#x1F449;user4&#x53EA;&#x80FD;&#x8BFB;f1,&#x5C31;&#x5F52;&#x5230;other&#x6574;&#x4F53;&#x6743;&#x9650;&#x53BB;&#xFF0C;&#x65E0;&#x9700;&#x4FEE;&#x6539;
+</code></pre><pre><code>&#x1F449;&#x67E5;&#x770B;facl
+[10:26:15 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:---
+user:user2:rw-
+user:user3:-w-
+group::r--
+mask::rw-
+other::r--
+</code></pre><h2 id="&#x9488;&#x5BF9;group&#x8BBE;&#x7F6E;facl">&#x9488;&#x5BF9;group&#x8BBE;&#x7F6E;facl</h2>
+<pre><code>[10:28:34 root@localhost data]#setfacl -m g:g1:rw f1
+[10:36:27 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:---
+user:user2:rw-
+user:user3:-w-
+group::r--
+group:g1:rw-       &#x1F448;g1&#x6709;&#x4E86;rw
+mask::rw-
+other::r--
+[10:38:33 root@localhost data]#su user5 -c &quot;echo 123 &gt; f1&quot;
+bash: f1: Permission denied
+[10:38:37 root@localhost data]#usermod -G g1 user5   &#x1F448;user5&#x52A0;&#x5165;g1&#x6269;&#x5C55;&#x7EC4;
+[10:39:09 root@localhost data]#id user5
+uid=1012(user5) gid=1016(user5) groups=1016(user5),1001(g1)
+[10:39:11 root@localhost data]#
+[10:39:15 root@localhost data]#su user5 -c &quot;echo aaa &gt; f1&quot;
+[10:39:28 root@localhost data]#cat f1
+aaa
+</code></pre><h2 id="&#x9488;&#x5BF9;user1-&#x540C;&#x65F6;&#x8BBE;&#x7F6E;facl&#x7684;user&#x548C;group&#x6743;&#x9650;&#xFF0C;user&#x4F18;&#x5148;&#x3002;">&#x9488;&#x5BF9;user1 &#x540C;&#x65F6;&#x8BBE;&#x7F6E;facl&#x7684;user&#x548C;group&#x6743;&#x9650;&#xFF0C;user&#x4F18;&#x5148;&#x3002;</h2>
+<pre><code>
+[11:03:16 root@localhost data]#setfacl -m u:user1:- f1
+[11:03:37 root@localhost data]#su user1 -c &apos;cat f1&apos;
+cat: f1: Permission denied
+[11:03:46 root@localhost data]#su user1 -c &apos;echo 123 &gt; f1&apos;
+bash: f1: Permission denied
+[11:03:49 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:---
+user:user2:rw-
+user:user3:-w-
+group::r--
+group:g1:rw-
+mask::rw-
+other::r--
+[11:03:55 root@localhost data]#id user1
+uid=1008(user1) gid=1013(g12) groups=1013(g12),1015(grp001)
+[11:03:59 root@localhost data]#usermod -G g1 user1
+[11:04:08 root@localhost data]#id user1
+uid=1008(user1) gid=1013(g12) groups=1013(g12),1001(g1)
+[11:04:46 root@localhost data]#su user1 -c &apos;echo 123 &gt; f1&apos;
+bash: f1: Permission denied
+[11:05:06 root@localhost data]#su user1 -c &apos;cat f1&apos;
+cat: f1: Permission denied
+</code></pre><h2 id="&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x6743;&#x9650;&#x5224;&#x5B9A;&#x89C4;&#x5219;&#xFF1A;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#x4F18;&#x5148;&#xFF0C;&#x5148;&#x4E2D;&#x5148;&#x5F97;">&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x6743;&#x9650;&#x5224;&#x5B9A;&#x89C4;&#x5219;&#xFF1A;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#x4F18;&#x5148;&#xFF0C;&#x5148;&#x4E2D;&#x5148;&#x5F97;</h2>
+<p>1&#x3001;&#x5148;&#x770B;&#x6240;&#x6709;&#x8005;</p>
+<p>2&#x3001;&#x518D;&#x770B;FACL&#xFF1A;</p>
+<p>&#x200B;        2.1&#x770B;&#x9488;&#x5BF9;user&#x7684;FACL</p>
+<p>&#x200B;        2.2&#x770B;&#x9488;&#x5BF9;group&#x7684;FACL</p>
+<p>3&#x3001;&#x770B;&#x6240;&#x5C5E;&#x7EC4;</p>
+<p>4&#x3001;&#x770B;other</p>
+<p><img src="5-FACL&#x5B9E;&#x73B0;&#x6743;&#x9650;&#x7684;&#x7075;&#x6D3B;&#x63A7;&#x5236;.assets/image-20220129112114516.png" alt="image-20220129112114516" style="zoom:67%;"> </p>
+<pre><code>&#x1F447;&#x5224;&#x65AD;&#x6240;&#x6709;&#x8005;&#x4F18;&#x4E8E;facl&#x7684;user
+[11:12:11 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:---
+user:user2:rw-
+user:user3:-w-
+group::r--
+group:g1:rw-
+mask::rw-
+other::r--
+
+[11:12:18 root@localhost data]#ll f1
+-rw-rw-r--+ 1 root root 7 Jan 29 10:53 f1
+[11:12:21 root@localhost data]#chown user1 f1
+[11:12:35 root@localhost data]#ll f1
+-rw-rw-r--+ 1 user1 root 7 Jan 29 10:53 f1
+[11:12:36 root@localhost data]#su user1 -c &apos;cat f1&apos;
+aaa
+bb
+[11:15:58 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user2:rw-
+user:user3:-w-
+group::r--
+group:g1:rw-
+mask::rw-
+other::r--
+
+&#x1F447;&#x5224;&#x65AD;facl&#x7684;group &#x4F18;&#x5148;&#x4E8E;&#x672C;&#x6765;&#x7684;group
+[11:16:01 root@localhost data]#su user1 -c &apos;catf1&apos;
+bash: catf1: command not found
+[11:16:10 root@localhost data]#su user1 -c &apos;echo aa &gt; f1&apos;
+[11:16:16 root@localhost data]#su user1 -c &apos;cat f1&apos;
+aa
+[11:16:21 root@localhost data]#setfacl -x g:g1 f1
+[11:16:48 root@localhost data]#su user1 -c &apos;cat f1&apos;
+aa
+[11:16:54 root@localhost data]#su user1 -c &apos;echo 11 &gt;&gt; f1&apos;
+bash: f1: Permission denied
+[11:16:59 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user2:rw-
+user:user3:-w-
+group::r--
+mask::rw-
+other::r--
+
+[11:17:04 root@localhost data]#
+</code></pre><h2 id="&#x5220;&#x9664;facl&#x4E24;&#x79CD;&#x65B9;&#x6CD5;">&#x5220;&#x9664;facl&#x4E24;&#x79CD;&#x65B9;&#x6CD5;</h2>
+<p>-x&#x5220;&#x4E00;&#x4E2A;</p>
+<p>-b&#x5168;&#x5220;</p>
+<p>-R -b dir &#x9012;&#x5F52;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x6240;&#x6709;&#x7684;acl&#xFF0C;&#x636E;&#x8BF4;&#x76F8;&#x5F53;&#x6709;&#x7528;</p>
+<pre><code>[11:19:58 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:---
+user:user2:rw-
+user:user3:-w-
+group::r--
+group:g1:rw-
+mask::rw-
+other::r--
+
+[11:28:31 root@localhost data]#setfacl -x u:user1 f1
+[11:28:41 root@localhost data]#setfacl -x g:g1 f1
+[11:28:46 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user2:rw-
+user:user3:-w-
+group::r--
+mask::rw-
+other::r--
+
+[11:28:48 root@localhost data]#setfacl -b f1
+[11:28:54 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+group::r--
+other::r--
+
+[11:28:57 root@localhost data]#
+</code></pre><h2 id="&#x7ECF;&#x5178;&#x6848;&#x4F8B;">&#x7ECF;&#x5178;&#x6848;&#x4F8B;</h2>
+<p>&#x6211;&#x4EEC;&#x590D;&#x5236;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x65F6;&#x5019;&#x603B;&#x62C5;&#x5FC3;&#x6743;&#x9650;&#x3001;&#x6240;&#x6709;&#x8005;&#x3001;&#x6240;&#x5C5E;&#x7EC4;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x7684;&#x4E22;&#x5931;&#xFF0C;cp -a &#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x601D;&#x8DEF;</p>
+<p>&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x6743;&#x9650;&#x6BD4;&#x5982;chmod -R 777 dir/   , &#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x4EE5;&#x540E;&#x60F3;&#x8981;&#x56DE;&#x6536;&#x6743;&#x9650;&#xFF0C;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;facl&#x5C31;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x597D;&#x7684;&#x601D;&#x8DEF;&#x3002;</p>
+<pre><code>[11:40:55 root@localhost ~]#setfacl -R -m u:user1:r data/
+[11:41:02 root@localhost ~]#ll
+total 12
+-rw-r--r--. 1 root root    3 Jan 12 16:53 1
+-rw-------. 1 root root 1031 Jan  5 16:52 anaconda-ks.cfg
+drwxrwxrwx+ 4 root root   61 Jan 29 10:59 data
+-rw-r--r--. 1 root root    0 Jan 12 16:53 f1
+-rw-r--r--. 1 root root    0 Jan 12 16:53 f2
+-rw-r--r--. 1 root root    4 Jan 12 17:51 hello.txt
+[11:41:03 root@localhost ~]#cd data/
+[11:41:04 root@localhost data]#ll
+total 8
+drwxr-xr-x+ 2 root  root  6 Jan 19 19:57 dir
+drwxr-xr-x+ 2 user1 g12   6 Jan 19 19:58 dir2
+-rw-r--r--+ 1 root  root  3 Jan 29 11:16 f1
+-rw-r--r--+ 1 user1 g12   0 Jan 19 19:58 f2
+-rw-r--r--+ 1 root  root 65 Jan 29 10:59 test
+[11:41:05 root@localhost data]#getfacl f2
+# file: f2
+# owner: user1
+# group: g12
+user::rw-
+user:user1:r--
+group::r--
+mask::r--
+other::r--
+
+[11:41:31 root@localhost ~]#getfacl data
+# file: data
+# owner: root
+# group: root
+user::rwx
+user:user1:r--
+group::rwx
+mask::rwx
+other::rwx
+
+[11:41:56 root@localhost ~]#setfacl -R -b data/
+[11:42:08 root@localhost ~]#
+[11:42:09 root@localhost ~]#ll
+total 12
+-rw-r--r--. 1 root root    3 Jan 12 16:53 1
+-rw-------. 1 root root 1031 Jan  5 16:52 anaconda-ks.cfg
+drwxrwxrwx. 4 root root   61 Jan 29 10:59 data
+-rw-r--r--. 1 root root    0 Jan 12 16:53 f1
+-rw-r--r--. 1 root root    0 Jan 12 16:53 f2
+-rw-r--r--. 1 root root    4 Jan 12 17:51 hello.txt
+[11:42:11 root@localhost ~]#ll data/
+total 8
+drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+-rw-r--r--. 1 root  root  3 Jan 29 11:16 f1
+-rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+-rw-r--r--. 1 root  root 65 Jan 29 10:59 test
+[11:42:19 root@localhost ~]#
+</code></pre><h2 id="&#x5176;&#x4ED6;&#x7528;&#x6CD5;&#x53C2;&#x8003;setfacl--h">&#x5176;&#x4ED6;&#x7528;&#x6CD5;&#x53C2;&#x8003;setfacl -h</h2>
+<p>&#x6BD4;&#x5982;</p>
+<pre><code>setfacl -m d:u:ming:rx dir&#x1F448;&#x610F;&#x601D;&#x662F;dir&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x521B;&#x5EFA;&#x7684;&#x6587;&#x4EF6;&#x9ED8;&#x8BA4;&#x5C31;&#x5E26;&#x9488;&#x5BF9;ming&#x7684;rx&#x6743;&#x9650;&#xFF0C;d&#x8BBE;&#x7F6E;&#x7684;&#x9ED8;&#x8BA4;&#x6743;&#x9650;&#xFF0C;&#x5220;&#x9664;&#x7528;setfac -k dir&#x6765;&#x5220;
+setfacl -X file.acl dir&#x1F448;&#x610F;&#x601D;&#x662F;file.acl&#x91CC;&#x5199;&#x597D;g:sales:rw&#x8FD9;&#x4E9B;facl&#x7684;&#x660E;&#x7EC6;&#xFF0C;&#x8FD9;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x3002;
+setfacl -m u:user1:rwX dir&#x1F448;X&#x662F;&#x53EA;&#x662F;&#x9488;&#x5BF9;&#x6587;&#x4EF6;&#x5939;&#x8BBE;&#x7F6E;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x7528;x&#x4E00;i&#x6768;&#x7684;&#x6548;&#x679C;&#x3002;&#x8981;&#x4E48;&#x662F;rocky-linux&#x81EA;&#x5E26;&#x7684;&#xFF0C;&#x8981;&#x5417;&#x662F;&#x7248;&#x672C;&#x9AD8;&#x7684;&#x597D;&#x5904;&#xFF0C;&#x4E0D;&#x7BA1;&#x3002;
+getfacl file1 | setfacl --set-file=- file2&#x1F448;&#x53C2;&#x8003;chmod&#x91CC;&#x7684;--reference&#x4E00;&#x4E2A;&#x6548;&#x679C;&#xFF0C;&#x5C31;&#x662F;&#x5C06;f2&#x7684;&#x6743;&#x9650;&#x8BBE;&#x7F6E;&#x6210;f1&#x4E00;&#x6837;&#x7684;&#x3002;
+</code></pre><h2 id="facl&#x91CC;&#x7684;mask">FACL&#x91CC;&#x7684;mask</h2>
+<p>mask&#x5C31;&#x662F;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6700;&#x9AD8;&#x6743;&#x9650;&#xFF0C;&#x8C01;&#x90FD;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;</p>
+<p>ll&#x53EF;&#x89C1;group&#x7684;rwx3&#x4F4D;&#x73B0;&#x5728;&#x7528;&#x6765;&#x586B;&#x5145;mask&#x7684;&#x503C;&#x4E86;&#x3002;</p>
+<p>mask&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E86;facl&#x540E;&#x4F4D;rwx&#xFF0C;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#x540E;getfacl &#x53EF;&#x89C1;#effective:rw-&#x8FD9;&#x79CD;</p>
+<p>mask&#x53EA;&#x5F71;&#x54CD;&#x5355;&#x4E2A;&#x4EBA;&#xFF0C;&#x6240;&#x6709;&#x8005;&#x548C;other&#x4E0D;&#x53D7;&#x5F71;&#x54CD;</p>
+<pre><code>
+[11:59:54 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+group::r--
+other::r--
+
+[11:59:57 root@localhost data]#ll
+total 8
+drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+-rw-r--r--. 1 root  root  3 Jan 29 11:16 f1
+-rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+-rw-r--r--. 1 root  root 65 Jan 29 10:59 test
+[12:00:03 root@localhost data]#setfacl -m u:user1:rw f1
+[12:00:25 root@localhost data]#ll f1
+-rw-rw-r--+ 1 root root 3 Jan 29 11:16 f1
+[12:00:27 root@localhost data]#setfacl -m u:user2:rwx f1
+[12:00:42 root@localhost data]#ll
+total 8
+drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+-rw-rwxr--+ 1 root  root  3 Jan 29 11:16 f1
+-rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+-rw-r--r--. 1 root  root 65 Jan 29 10:59 test
+[12:00:44 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:rw-
+user:user2:rwx
+group::r--
+mask::rwx            &#x1F448;mask&#x9ED8;&#x8BA4;&#x503C;
+other::r--
+
+[12:00:57 root@localhost data]#setfacl -m mask::r f1
+[12:01:14 root@localhost data]#ll
+total 8
+drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+-rw-r--r--+ 1 root  root  3 Jan 29 11:16 f1        &#x1F448;&#x4FEE;&#x6539;mask&#x540E;group&#x4F4D;&#x7684;3&#x4F4D;&#x7528;&#x6765;&#x8868;&#x793A;mask&#x7684;3&#x4F4D;
+-rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+-rw-r--r--. 1 root  root 65 Jan 29 10:59 test
+[12:01:15 root@localhost data]#getfacl f1
+# file: f1
+# owner: root
+# group: root
+user::rw-
+user:user1:rw-                  #effective:r--        &#x1F448;&#x6CE8;&#x610F;mask&#x5F71;&#x54CD;&#x4E86;&#x5355;&#x4E2A;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x4E0A;&#x9650;
+user:user2:rwx                  #effective:r--
+group::r--
+mask::r--
+other::r--
+
+[12:01:20 root@localhost data]#
+</code></pre><h2 id="facl&#x7684;&#x5907;&#x4EFD;">facl&#x7684;&#x5907;&#x4EFD;</h2>
+<p>&#x600E;&#x4E48;&#x5907;&#x4EFD;&#x548C;&#x8FD8;&#x539F;</p>
+<pre><code>getfacl -R /tmp/dir1 &gt; acl.txt        &#x1F448;&#x5907;&#x4EFD;&#x5230;acl.txt
+setfacl -R -b /tmp/dir1        &#x1F448;&#x6E05;&#x7A7A;&#x4E0B;
+setfacl -R --set-file=acl.txt /tmp/dir1        &#x1F448;&#x6062;&#x590D;&#x65B9;&#x6CD5;1
+setfacl --restore acl.txt  &#x1F448;&#x6062;&#x590D;&#x65B9;&#x6CD5;2
+getfacl -R /tmp/dir1  &#x1F448;&#x9012;&#x5F52;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5305;&#x542B;dir1&#x53CA;&#x5176;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;facl
+</code></pre><p>cp -p &#x6216;-a&#x5C31;&#x80FD;&#x5907;&#x4EFD;facl&#xFF0C;&#x8FD8;&#x6709;&#x6240;&#x6709;&#x8005;&#x6743;&#x9650;&#x7B49;</p>
+<p>mv &#x4E5F;&#x652F;&#x6301;facl&#x8FD9;&#x4E9B;&#x7684;&#x4FDD;&#x7559;</p>
+<p>tar&#x4E0D;&#x884C;&#xFF0C;tar&#x5907;&#x4EFD;&#x7684;&#x65F6;&#x5019;facl&#x5C31;&#x4E22;&#x4E86;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-17 21:20:53
+2022-01-29 12:18:38
 </span></footer>
                                 
                                 </section>
@@ -3525,7 +3865,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"next":{"title":"第七章 文本三剑客1_grep和正则表达式","level":"1.9","depth":1,"path":"7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.md","ref":"./7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.md","articles":[{"title":"第1节 常见文本处理工具","level":"1.9.1","depth":2,"path":"7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.md","ref":"./7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.md","articles":[]},{"title":"第2节 文本三剑客1_grep和正则","level":"1.9.2","depth":2,"path":"7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.md","ref":"./7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.md","articles":[]},{"title":"第3节 几百年和扩展正则","level":"1.9.3","depth":2,"path":"7-文本三剑客1_grep和正则表达式/3-几百年和扩展正则.md","ref":"./7-文本三剑客1_grep和正则表达式/3-几百年和扩展正则.md","articles":[]}]},"previous":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"path":"6-用户、用户组和权限/4-umask权限.md","ref":"./6-用户、用户组和权限/4-umask权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","mtime":"2022-01-17T13:20:53.107Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-25T12:30:13.315Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"next":{"title":"第七章 文本三剑客1_grep和正则表达式","level":"1.9","depth":1,"path":"7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.md","ref":"./7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.md","articles":[{"title":"第1节 常见文本处理工具","level":"1.9.1","depth":2,"path":"7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.md","ref":"./7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.md","articles":[]},{"title":"第2节 文本三剑客1_grep和正则","level":"1.9.2","depth":2,"path":"7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.md","ref":"./7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.md","articles":[]},{"title":"第3节 几百年和扩展正则","level":"1.9.3","depth":2,"path":"7-文本三剑客1_grep和正则表达式/3-几百年和扩展正则.md","ref":"./7-文本三剑客1_grep和正则表达式/3-几百年和扩展正则.md","articles":[]}]},"previous":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"path":"6-用户、用户组和权限/4-umask权限.md","ref":"./6-用户、用户组和权限/4-umask权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","mtime":"2022-01-29T04:18:38.756Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-29T04:18:52.387Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

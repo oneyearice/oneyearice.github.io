@@ -3530,8 +3530,121 @@
 <p>&#x5220;a1&#x7684;&#x64CD;&#x4F5C;&#x7B49;&#x4EF7;&#x4E0A;&#x56FE;&#x7684;&#x793A;&#x4F8B; </p>
 <p><img src="4-&#x6587;&#x4EF6;&#x8282;&#x70B9;&#x8868;.assets/image-20220110174709900.png" alt="image-20220110174709900"> </p>
 <p><img src="4-&#x6587;&#x4EF6;&#x8282;&#x70B9;&#x8868;.assets/image-20220110174724737.png" alt="image-20220110174724737"> </p>
-<footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-17 21:20:52
+<p>&#x5907;&#x6CE8;&#xFF1A;</p>
+<pre><code>&#x1F449;&#x4EE5;&#x4E0B;&#x662F;vim&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;echo &#x7136;&#x540E;vim vim &#x53D1;&#x73B0;indoe&#x5728;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#x8DF3;&#x6765;&#x8DF3;&#x53BB;&#x7684;(&#x4F30;&#x8BA1;&#x548C;vim&#x6253;&#x5F00;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;.xxx.swp&#x6709;&#x5173;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;swp&#x6587;&#x4EF6;&#x7684;inode&#x4E0D;&#x5728;&#x90A3;&#x4E24;&#x4E2A;&#x53CD;&#x590D;&#x66FF;&#x6362;&#x7684;inode&#x91CC;&#x9762;&#xFF0C;&#x53CD;&#x6B63;vim&#x8BE5;&#x6587;&#x4EF6;inode&#x662F;&#x53D8;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x662F;2&#x4E2A;inode&#x6570;&#x5B57;&#x6765;&#x56DE;&#x53D8;)&#x3002;&#x7136;&#x540E;echo&#x4E0D;&#x4F1A;&#x3002;
+[10:54:28 root@localhost data]#echo inode_echo &gt;&gt; test
+[10:54:43 root@localhost data]#stat test
+  File: test
+  Size: 19              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577448    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:54:20.066021237 +0800
+Modify: 2022-01-29 10:54:43.345023132 +0800
+Change: 2022-01-29 10:54:43.345023132 +0800
+ Birth: 2022-01-29 10:54:20.066021237 +0800
+[10:54:44 root@localhost data]#ll -i
+total 8
+51325766 drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+  373349 drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+33577410 -rw-rw-r--+ 1 root  root  7 Jan 29 10:53 f1
+33577446 -rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+33577448 -rw-r--r--. 1 root  root 19 Jan 29 10:54 test
+[10:54:47 root@localhost data]#
+[10:54:50 root@localhost data]#vim test
+[10:55:00 root@localhost data]#
+[10:55:00 root@localhost data]#vim test
+[10:55:03 root@localhost data]#ll -i
+total 8
+51325766 drwxr-xr-x. 2 root  root  6 Jan 19 19:57 dir
+  373349 drwxr-xr-x. 2 user1 g12   6 Jan 19 19:58 dir2
+33577410 -rw-rw-r--+ 1 root  root  7 Jan 29 10:53 f1
+33577446 -rw-r--r--. 1 user1 g12   0 Jan 19 19:58 f2
+33577450 -rw-r--r--. 1 root  root 28 Jan 29 10:54 test
+[10:55:04 root@localhost data]#stat test
+  File: test
+  Size: 28              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577450    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:55:01.373024600 +0800
+Modify: 2022-01-29 10:54:59.985024487 +0800
+Change: 2022-01-29 10:54:59.987024487 +0800
+ Birth: 2022-01-29 10:54:59.985024487 +0800
+[10:55:09 root@localhost data]#vim test
+[10:55:25 root@localhost data]#
+[10:55:25 root@localhost data]#
+[10:55:25 root@localhost data]#stat test
+  File: test
+  Size: 39              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577448    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:55:25.695026580 +0800
+Modify: 2022-01-29 10:55:25.695026580 +0800
+Change: 2022-01-29 10:55:25.697026580 +0800
+ Birth: 2022-01-29 10:55:25.695026580 +0800
+[10:55:27 root@localhost data]#
+[10:55:35 root@localhost data]#
+[10:55:35 root@localhost data]#vim test
+[10:55:44 root@localhost data]#
+[10:55:44 root@localhost data]#stat test
+  File: test
+  Size: 50              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577450    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:55:44.687028126 +0800
+Modify: 2022-01-29 10:55:44.687028126 +0800
+Change: 2022-01-29 10:55:44.688028126 +0800
+ Birth: 2022-01-29 10:55:44.687028126 +0800
+[10:55:45 root@localhost data]#
+[10:57:23 root@localhost data]#stat test
+  File: test
+  Size: 55              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577448    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:57:23.128036141 +0800
+Modify: 2022-01-29 10:57:23.128036141 +0800
+Change: 2022-01-29 10:57:23.129036141 +0800
+ Birth: 2022-01-29 10:57:23.128036141 +0800
+[10:57:23 root@localhost data]#echo 12 &gt;&gt; test
+[10:57:29 root@localhost data]#stat test
+  File: test
+  Size: 58              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577448    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:57:23.128036141 +0800
+Modify: 2022-01-29 10:57:29.437036654 +0800
+Change: 2022-01-29 10:57:29.437036654 +0800
+ Birth: 2022-01-29 10:57:23.128036141 +0800
+[10:57:30 root@localhost data]#echo 333 &gt;&gt; test
+[10:57:35 root@localhost data]#stat test
+  File: test
+  Size: 62              Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 33577448    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2022-01-29 10:57:23.128036141 +0800
+Modify: 2022-01-29 10:57:35.603037157 +0800
+Change: 2022-01-29 10:57:35.603037157 +0800
+ Birth: 2022-01-29 10:57:23.128036141 +0800
+[10:57:36 root@localhost data]#
+
+
+total 20
+33577460 drwxrwxrwx.  4 root  root    78 Jan 29 10:58 .
+     128 dr-xr-xr-x. 18 root  root   236 Jan 10 18:13 ..
+51325766 drwxr-xr-x.  2 root  root     6 Jan 19 19:57 dir
+  373349 drwxr-xr-x.  2 user1 g12      6 Jan 19 19:58 dir2
+33577410 -rw-rw-r--+  1 root  root     7 Jan 29 10:53 f1
+33577446 -rw-r--r--.  1 user1 g12      0 Jan 19 19:58 f2
+33577448 -rw-r--r--.  1 root  root    62 Jan 29 10:57 test
+33577447 -rw-r--r--.  1 root  root 12288 Jan 29 10:58 .test.swp
+</code></pre><footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2022-01-29 11:00:21
 </span></footer>
                                 
                                 </section>
@@ -3575,7 +3688,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节 文件节点表","level":"1.5.4","depth":2,"next":{"title":"第5节 文件链接","level":"1.5.5","depth":2,"path":"3-文件管理/5-文件链接.md","ref":"./3-文件管理/5-文件链接.md","articles":[]},"previous":{"title":"第3节 cp和mv","level":"1.5.3","depth":2,"path":"3-文件管理/3-cp和mv.md","ref":"./3-文件管理/3-cp和mv.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"3-文件管理/4-文件节点表.md","mtime":"2022-01-17T13:20:52.833Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-25T12:30:13.315Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节 文件节点表","level":"1.5.4","depth":2,"next":{"title":"第5节 文件链接","level":"1.5.5","depth":2,"path":"3-文件管理/5-文件链接.md","ref":"./3-文件管理/5-文件链接.md","articles":[]},"previous":{"title":"第3节 cp和mv","level":"1.5.3","depth":2,"path":"3-文件管理/3-cp和mv.md","ref":"./3-文件管理/3-cp和mv.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"3-文件管理/4-文件节点表.md","mtime":"2022-01-29T03:00:21.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-29T04:18:52.387Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
