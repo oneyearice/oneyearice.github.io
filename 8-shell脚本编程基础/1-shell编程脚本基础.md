@@ -146,24 +146,30 @@ chage -d 0 test等价于passwd -e tezt都是修改date of last password chage这
 
 ![image-20220202145056787](1-shell编程脚本基础.assets/image-20220202145056787.png) 
 
-
-
- 
-
-![img](1-shell编程脚本基础.assets/clip_image046.jpg)
+![image-20220202145456337](1-shell编程脚本基础.assets/image-20220202145456337.png) 
 
  
 
-![img](1-shell编程脚本基础.assets/clip_image048.jpg)
+## 语法错误检查方法
 
-![img](1-shell编程脚本基础.assets/clip_image050.jpg)
+![image-20220202145818690](1-shell编程脚本基础.assets/image-20220202145818690.png)
 
-![img](1-shell编程脚本基础.assets/clip_image052.jpg)
+![image-20220202145941589](1-shell编程脚本基础.assets/image-20220202145941589.png) 
 
-![img](1-shell编程脚本基础.assets/clip_image054.jpg)
+### 两种语法检查方法
 
-![img](1-shell编程脚本基础.assets/clip_image056.jpg)
+![image-20220202150027129](1-shell编程脚本基础.assets/image-20220202150027129.png) 
 
-![img](1-shell编程脚本基础.assets/clip_image058.jpg)
+
+
+![image-20220202150125551](1-shell编程脚本基础.assets/image-20220202150125551.png)
+
+![image-20220202150442302](1-shell编程脚本基础.assets/image-20220202150442302.png)
+
+删除if那行后 再次执行就OK了
+
+![image-20220202150600969](1-shell编程脚本基础.assets/image-20220202150600969.png) 
+
+
 
  
