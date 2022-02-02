@@ -140,7 +140,13 @@ evn.sh，只要是sh后缀就行了。
 
 ![img](1-shell编程脚本基础.assets/clip_image042.jpg)
 
-![img](1-shell编程脚本基础.assets/clip_image044.jpg)
+![image-20220202144956523](1-shell编程脚本基础.assets/image-20220202144956523.png)
+
+chage -d 0 test等价于passwd -e tezt都是修改date of last password chage这个值为0，意思就是登入后强制修改密码
+
+![image-20220202145056787](1-shell编程脚本基础.assets/image-20220202145056787.png) 
+
+
 
  
 
