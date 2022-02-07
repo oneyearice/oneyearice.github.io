@@ -3480,8 +3480,381 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7B2C;1&#x8282;-&#x6587;&#x4EF6;&#x67E5;&#x627E;">&#x7B2C;1&#x8282;. &#x6587;&#x4EF6;&#x67E5;&#x627E;</h1>
+<h2 id="&#x7AE0;&#x8282;&#x76EE;&#x5F55;">&#x7AE0;&#x8282;&#x76EE;&#x5F55;</h2>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image002.jpg" alt="img"></p>
+<p>grep&#x662F;&#x8FC7;&#x6EE4;&#x6587;&#x672C;&#x7684;&#x884C;</p>
+<p>cut&#x662F;&#x8FC7;&#x6EE4;&#x6587;&#x672C;&#x7684;&#x5217;</p>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x78C1;&#x76D8;&#x4E0A;&#x641C;&#x7D22;&#x6587;&#x4EF6;</p>
+<h2 id="locate&#x627E;&#x6587;&#x4EF6;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x4F9D;&#x8D56;&#x4E8E;mlocatedb">locate&#x627E;&#x6587;&#x4EF6;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x4F9D;&#x8D56;&#x4E8E;mlocate.db</h2>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image004.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image006.jpg" alt="img"></p>
+<p>&#x7528;updatedb&#x521B;&#x5EFA;/var/lib/mlocate/mlocate.db&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;&#x5DE5;&#x4F5C;&#x4E2D;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x5F88;&#x591A;&#xFF0C;&#x5C31;&#x4F1A;&#x5360;&#x7528;&#x78C1;&#x76D8;IO&#xFF0C;&#x77AC;&#x95F4;&#x98D9;&#x9AD8;&#xFF0C;<font color="red">&#x5BFC;&#x81F4;&#x4E1A;&#x52A1;&#x88AB;&#x6CE2;&#x53CA;</font>&#x3002;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x7A97;&#x53E3;&#x3002;</p>
+<p> &#x9ED8;&#x8BA4;&#x6A21;&#x7CCA;&#x641C;&#x7D22;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image008.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image010.jpg" alt="img"></p>
+<p>&#x1F447;&#x8981;updatedb(&#x4E0D;&#x80FD;&#x968F;&#x4FBF;&#x7528;&#xFF0C;&#x751F;&#x4EA7;&#x5C0F;&#x5FC3;)&#x66F4;&#x65B0;&#x4E00;&#x4E0B;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5C31;&#x80FD;&#x5229;&#x7528;locate&#x67E5;&#x627E;&#x4E86;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image012.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image014.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image015.png" alt="img"></p>
+<h3 id="locate&#x652F;&#x6301;&#x57FA;&#x672C;&#x6B63;&#x5219;">locate&#x652F;&#x6301;&#x57FA;&#x672C;&#x6B63;&#x5219;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image017.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image019.jpg" alt="img"></p>
+<p>&#x1F446;&#x57FA;&#x672C;&#x6B63;&#x5219;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#xFF0C;&#x4E0A;&#x56FE;&#x3002;</p>
+<pre><code>[15:27:53 root@localhost ~]#find / -name passwd |grep -Ei &quot;^/[a-z]+/passwd$&quot;
+/etc/passwd
+/Etc/passwd
+/a/passwd
+/A/passwd
+/Z/passwd
+/z/passwd
+[15:28:17 root@localhost ~]#find / -name passwd |grep -Ei &quot;^/[A-Z]+/passwd$&quot;
+/etc/passwd
+/Etc/passwd
+/a/passwd
+/A/passwd
+/Z/passwd
+/z/passwd
+[15:28:51 root@localhost ~]#find / -name passwd |grep -E &quot;^/[A-Z]+/passwd$&quot;
+/A/passwd
+/Z/passwd
+[15:28:57 root@localhost ~]#find / -name passwd |grep -E &quot;^/[a-z]+/passwd$&quot;
+/etc/passwd
+/a/passwd
+/z/passwd
+[15:29:03 root@localhost ~]#find / -name passwd |grep -E &quot;^/[a-Z]+/passwd$&quot;
+/etc/passwd
+/Etc/passwd
+/a/passwd
+/A/passwd
+/Z/passwd
+/z/passwd
+[15:29:09 root@localhost ~]#find / -name passwd |grep -E &quot;^/[A-z]+/passwd$&quot;
+grep: Invalid range end
+[15:29:17 root@localhost ~]#find / -name passwd |grep -E &quot;^/[A-z]+/passwd$&quot;
+grep: Invalid range end
+[15:29:22 root@localhost ~]#
+&#x1F446;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x5B9E;&#x9A8C;&#x53D1;&#x73B0;find&#x540E;&#x9762;&#x7684;[A-Z][a-z][a-Z]&#x8FD9;&#x6837;&#x5199;&#x90FD;&#x6709;&#x5176;&#x7279;&#x5B9A;&#x7684;&#x610F;&#x4E49;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;[A-z]&#x7684;&#x5199;&#x6CD5;&#x3002;&#x8FD9;&#x70B9;&#x548C;&#x901A;&#x914D;&#x7B26;&#x4E0D;&#x540C;
+
+
+[15:37:01 root@localhost ~]#locate -r &quot;^/[a-z]+/passwd$&quot;
+[15:37:06 root@localhost ~]#locate -r &quot;^/[A-Z]+/passwd$&quot;
+[15:37:10 root@localhost ~]#find / -name passwd |grep -E &quot;^/[a-z]+/passwd$&quot;
+/etc/passwd
+/a/passwd
+/z/passwd
+&#x1F446;&#x53EF;&#x89C1;locate -r&#x53EA;&#x652F;&#x6301;&#x6B63;&#x5219;&#xFF0C;&#x6240;&#x4EE5;+&#x8FD9;&#x79CD;&#x6269;&#x5C55;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; &#x662F;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x3002;
+
+[15:38:24 root@localhost ~]#locate -r &quot;^/[A-Z]*/passwd$&quot;
+/A/passwd
+/Z/passwd
+[15:39:57 root@localhost ~]#locate -r &quot;^/[a-Z]*/passwd$&quot;
+/A/passwd
+/Etc/passwd
+/Z/passwd
+/a/passwd
+/etc/passwd
+/z/passwd
+[15:40:01 root@localhost ~]#locate -r &quot;^/[[:alnum:]]*/passwd$&quot;
+/A/passwd
+/Etc/passwd
+/Z/passwd
+/a/passwd
+/etc/passwd
+/z/passwd
+[15:40:45 root@localhost ~]#find / -name passwd |grep -E &quot;^/[[:alnum:]]+/passwd$&quot;
+/etc/passwd
+/Etc/passwd
+/a/passwd
+/A/passwd
+/Z/passwd
+/z/passwd
+</code></pre><h2 id="find-&#x5B9E;&#x65F6;&#x67E5;&#x627E;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;xargs&#x53D8;&#x5F97;&#x5FEB;&#x4E9B;&#xFF0C;&#x540C;&#x6837;&#x5360;cpu&#xFF0C;locate&#x5C31;&#x662F;&#x5728;&#x673A;&#x5668;&#x4E0A;app&#x670D;&#x52A1;&#x7EF4;&#x62A4;&#x9636;&#x6BB5;&#x6267;&#x884C;updatedb&#x4F1A;&#x5360;cpu">find &#x5B9E;&#x65F6;&#x67E5;&#x627E;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;xargs&#x53D8;&#x5F97;&#x5FEB;&#x4E9B;&#xFF0C;&#x540C;&#x6837;&#x5360;CPU&#xFF0C;locate&#x5C31;&#x662F;&#x5728;&#x673A;&#x5668;&#x4E0A;APP&#x670D;&#x52A1;&#x7EF4;&#x62A4;&#x9636;&#x6BB5;&#x6267;&#x884C;updatedb&#x4F1A;&#x5360;CPU</h2>
+<pre><code>[15:36:15 root@pyConsole /]#time `ls --hide=proc | xargs -i -P 0 find /{} -name &quot;*i*&quot;`
+-bash: /bin: Is a directory
+
+real    0m1.101s
+user    0m1.206s
+sys     0m0.336s
+[15:36:17 root@pyConsole /]#time `ls --hide=proc | xargs -i -P 0 find /{} -name &quot;*i*&quot;`
+-bash: /bin: Is a directory
+
+real    0m1.391s
+user    0m1.496s
+sys     0m0.356s
+[15:36:22 root@pyConsole /]#time `ls --hide=proc | xargs -i -P 0 find /{} -name &quot;*i*&quot;`
+-bash: /bin: Is a directory
+
+real    0m1.123s
+user    0m1.186s
+sys     0m0.363s
+[15:36:24 root@pyConsole /]#time `find / -name &quot;*i*&quot;`
+find: &#x2018;/proc/4065730&#x2019;: No such file or directory
+find: &#x2018;/proc/4065733&#x2019;: No such file or directory
+-bash: /boot/efi: Is a directory
+
+real    0m1.677s
+user    0m1.380s
+sys     0m0.396s
+[15:36:28 root@pyConsole /]#time `find / -name &quot;*i*&quot;`
+-bash: /boot/efi: Is a directory
+
+real    0m1.721s
+user    0m1.400s
+sys     0m0.399s
+[15:36:31 root@pyConsole /]#time `find / -name &quot;*i*&quot;`
+-bash: /boot/efi: Is a directory
+
+real    0m1.739s
+user    0m1.407s
+sys     0m0.404s
+[15:36:34 root@pyConsole /]#
+</code></pre><h3 id="locate&#x548C;find&#x4E00;&#x6837;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x666E;&#x901A;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;&#x5939;&#x6743;&#x9650;&#xFF0C;&#x4E5F;&#x4F1A;&#x641C;&#x4E0D;&#x5230;&#x3002;">locate&#x548C;find&#x4E00;&#x6837;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x666E;&#x901A;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;&#x5939;&#x6743;&#x9650;&#xFF0C;&#x4E5F;&#x4F1A;&#x641C;&#x4E0D;&#x5230;&#x3002;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image021.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image023.jpg" alt="img"></p>
+<p>find&#x9ED8;&#x8BA4;&#x5C31;&#x662F;&#x9012;&#x5F52;&#x67E5;&#x627E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F1A;&#x8FDB;&#x5230;&#x5B50;&#x76EE;&#x5F55;&#x91CC;&#x7EE7;&#x7EED;&#x67E5;&#x627E;&#x3002;</p>
+<p>[&#x5904;&#x7406;&#x52A8;&#x4F5C;]&#x6BD4;&#x8F83;&#x5B9E;&#x7528;&#xFF0C;&#x641C;&#x51FA;&#x6765;&#x5220;&#x9664;&#x4E4B;&#x7C7B;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image025.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image027.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image029.jpg" alt="img"></p>
+<h3 id="find-&#x6307;&#x5B9A;&#x641C;&#x7D22;&#x6DF1;&#x5EA6;">find &#x6307;&#x5B9A;&#x641C;&#x7D22;&#x6DF1;&#x5EA6;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image031.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image033.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image034.png" alt="img"></p>
+<pre><code>[16:08:08 root@pyConsole /]#find / -name &quot;*i*&quot; -maxdepth 1
+find: warning: you have specified the -maxdepth option after a non-option argument -name, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
+
+/bin
+/sbin
+/lib
+/lib64
+/media
+/.bash_history
+/switch
+</code></pre><pre><code>&#x66F4;&#x7CBE;&#x51C6;&#x4E00;&#x4E9B;&#x7684;&#x641C;&#x7D22;&#x65B9;&#x6CD5;
+[16:10:06 root@pyConsole /]#find / -name &quot;passwd&quot;
+/etc/pam.d/passwd
+/etc/passwd
+/var/lib/sss/mc/passwd
+/usr/bin/passwd
+/usr/share/licenses/passwd
+/usr/share/doc/passwd
+/usr/share/bash-completion/completions/passwd
+[16:10:11 root@pyConsole /]#
+[16:10:13 root@pyConsole /]#
+[16:10:13 root@pyConsole /]#find / -name &quot;passwd&quot; -maxdepth 2
+find: warning: you have specified the -maxdepth option after a non-option argument -name, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
+
+/etc/passwd
+[16:10:18 root@pyConsole /]#find -maxdepth 2 / -name passwd
+find: paths must precede expression: /
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
+[16:10:59 root@pyConsole /]#find / -maxdepth 2 -name passwd
+/etc/passwd
+[16:11:11 root@pyConsole /]#find / -maxdepth 2 -mindepth 2 -name passwd
+/etc/passwd
+[16:11:22 root@pyConsole /]#find /  -name passwd
+/etc/pam.d/passwd
+/etc/passwd
+/var/lib/sss/mc/passwd
+/usr/bin/passwd
+/usr/share/licenses/passwd
+/usr/share/doc/passwd
+/usr/share/bash-completion/completions/passwd
+[16:11:29 root@pyConsole /]#
+[16:11:32 root@pyConsole /]#find / -maxdepth 3 -mindepth 3 -name passwd
+/etc/pam.d/passwd
+/usr/bin/passwd
+[16:11:36 root@pyConsole /]#
+</code></pre><h3 id="find--depth&#x9009;&#x9879;&#x8FD9;&#x4E2A;&#x6709;&#x4EC0;&#x4E48;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF1F;&#x60F3;&#x4E0D;&#x51FA;&#x6765;">find -depth&#x9009;&#x9879;,&#x8FD9;&#x4E2A;&#x6709;&#x4EC0;&#x4E48;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF1F;&#x60F3;&#x4E0D;&#x51FA;&#x6765;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image036.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image038.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image040.jpg" alt="img"></p>
+<p>&#x9ED8;&#x8BA4;&#x662F;&#x5148;&#x641C;&#x7D22;&#x76EE;&#x5F55;&#x672C;&#x8EAB;&#xFF0C;&#x518D;&#x8FDB;&#x5230;&#x6BCF;&#x4E2A;&#x76EE;&#x5F55;&#x518D;&#x53BB;&#x641C;&#x7D22;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image041.png" alt="img"></p>
+<p>&#x73B0;&#x5728;&#x5C31;&#x662F;&#x5148;&#x5904;&#x7406;&#x6587;&#x4EF6;&#xFF0C;&#x518D;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5462;&#xFF1F;</p>
+<h3 id="find&#x81EA;&#x5E26;&#x7684;&#x662F;&#x901A;&#x914D;&#x7B26;&#x4E0D;&#x662F;&#x6B63;&#x5219;">find&#x81EA;&#x5E26;&#x7684;&#x662F;&#x901A;&#x914D;&#x7B26;&#x4E0D;&#x662F;&#x6B63;&#x5219;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image043.jpg" alt="img" style="zoom:50%;"> </p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image045.jpg" alt="img"></p>
+<h3 id="find--iname-&#x4E0D;&#x5206;&#x5927;&#x5C0F;&#x5199;">find -iname &#x4E0D;&#x5206;&#x5927;&#x5C0F;&#x5199;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image047.jpg" alt="img" style="zoom:50%;"> </p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image049.jpg" alt="img"></p>
+<pre><code>[16:32:18 root@localhost ~]#find / -name etc
+/run/initramfs/state/etc
+/etc
+/usr/share/factory/etc
+/usr/local/etc
+[16:32:25 root@localhost ~]#find / -iname etc   &#x1F448;&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E2A;&#x603B;&#x7ED3;&#x70B9;&#xFF0C;&#x4EE5;&#x540E;&#x7528;&#x25B2;&#x6765;&#x8868;&#x793A;&#x603B;&#x7ED3;&#x7EBF;&#x7D22;&#x5427;&#xFF0C;&#x25B2;&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;2
+/run/initramfs/state/etc
+/etc
+/root/ETc
+/usr/share/zoneinfo/Etc
+/usr/share/zoneinfo/posix/Etc
+/usr/share/zoneinfo/right/Etc
+/usr/share/factory/etc
+/usr/local/etc
+/Etc
+[16:32:32 root@localhost ~]#
+</code></pre><h3 id="find--inum-&#x6839;&#x636E;inode&#x7F16;&#x53F7;&#x6765;&#x641C;">find -inum &#x6839;&#x636E;inode&#x7F16;&#x53F7;&#x6765;&#x641C;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/image-20220207165221450.png" alt="image-20220207165221450" style="zoom:67%;"> </p>
+<pre><code>[16:54:36 root@localhost ~]#find / -inum 70
+/sys/kernel/tracing/events/raw_syscalls/sys_exit/filter
+/sys/kernel/debug/tracing/events/raw_syscalls/sys_exit/filter
+/sys/fs/cgroup/devices/system.slice/sys-kernel-tracing.mount/tasks
+/sys/fs/cgroup/memory/system.slice/system-systemd\x2dhibernate\x2dresume.slice/tasks
+/sys/fs/cgroup/pids/system.slice/systemd-journald-dev-log.socket/pids.current
+/sys/bus/memory/drivers_autoprobe
+[16:54:39 root@localhost ~]#
+[16:54:41 root@localhost ~]#
+[16:54:41 root@localhost ~]#find / -inum 70 -exec  ls -il {} +   &#x1F448;&#x63D0;&#x524D;&#x7528;&#x4E00;&#x4E0B;exec&#x770B;&#x4E0B;&#x6548;&#x679C;&#x5475;&#x5475;
+70 -rw-r--r--. 1 root root 4096 Feb  7 16:54  /sys/bus/memory/drivers_autoprobe
+70 -rw-r--r--. 1 root root    0 Feb  7 16:54  /sys/fs/cgroup/devices/system.slice/sys-kernel-tracing.mount/tasks
+70 -rw-r--r--. 1 root root    0 Feb  7 16:54 &apos;/sys/fs/cgroup/memory/system.slice/system-systemd\x2dhibernate\x2dresume.slice/tasks&apos;
+70 -r--r--r--. 1 root root    0 Feb  7 16:54  /sys/fs/cgroup/pids/system.slice/systemd-journald-dev-log.socket/pids.current
+70 -rw-r--r--. 1 root root    0 Jan 29 09:57  /sys/kernel/debug/tracing/events/raw_syscalls/sys_exit/filter
+70 -rw-r--r--. 1 root root    0 Jan 29 09:57  /sys/kernel/tracing/events/raw_syscalls/sys_exit/filter
+[16:54:43 root@localhost ~]#
+&#x1F446;&#x8282;&#x70B9;&#x7F16;&#x53F7;&#x76F8;&#x540C;&#x4E5F;&#x4E0D;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x54C8;&#x54C8;&#x3002;
+</code></pre><h3 id="&#x641C;&#x7D22;inode&#x8282;&#x70B9;&#x7F16;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;&#x641C;&#x7D22;inode&#x76F8;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x786C;&#x7684;">&#x641C;&#x7D22;inode&#x8282;&#x70B9;&#x7F16;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;&#x641C;&#x7D22;inode&#x76F8;&#x540C;&#x7684;&#x6587;&#x4EF6;(&#x786C;&#x7684;)</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image051.jpg" alt="img" style="zoom:67%;">  </p>
+<h3 id="find-&#x7684;regex&#x8981;&#x5339;&#x914D;&#x7684;&#x662F;&#x5168;&#x8DEF;&#x5F84;&#xFF0C;locate&#x4E0D;&#x9700;&#x8981;">find &#x7684;regex&#x8981;&#x5339;&#x914D;&#x7684;&#x662F;&#x5168;&#x8DEF;&#x5F84;&#xFF0C;locate&#x4E0D;&#x9700;&#x8981;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image053.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image055.jpg" alt="img"></p>
+<pre><code>&#x5BF9;&#x6BD4;&#x5B9E;&#x9A8C;
+17:07:14 root@localhost ~]#ll /usr/share/pixmaps/
+total 92
+-rw-r--r--. 1 root root  5459 Sep  9 13:25 cockpit.png
+-rw-r--r--. 1 root root 13071 Jun 28  2021 fedora-gdm-logo.png
+-rw-r--r--. 1 root root 21820 Jun 28  2021 fedora-logo.png
+-rw-r--r--. 1 root root 12760 Jun 28  2021 fedora-logo-small.png
+-rw-r--r--. 1 root root  6620 Jun 28  2021 fedora-logo-sprite.png
+-rw-r--r--. 1 root root  1442 Jun 28  2021 fedora-logo-sprite.svg
+-rw-r--r--. 1 root root 14493 Jun 28  2021 system-logo-white.png
+
+&#x1F447;&#x8FD9;&#x662F;&#x901A;&#x914D;&#x7B26;
+[17:07:37 root@localhost ~]#find /usr/share/pixmaps -name *png
+/usr/share/pixmaps/fedora-gdm-logo.png
+/usr/share/pixmaps/fedora-logo-small.png
+/usr/share/pixmaps/fedora-logo-sprite.png
+/usr/share/pixmaps/fedora-logo.png
+/usr/share/pixmaps/system-logo-white.png
+/usr/share/pixmaps/cockpit.png
+
+
+&#x1F447;&#x8FD9;&#x662F;find&#x91CC;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;&#x6B63;&#x5219;&#x5339;&#x914D;&#x7684;&#x662F;&#x5168;&#x8DEF;&#x5F84;
+[17:08:21 root@localhost ~]#find /usr/share/pixmaps -regex &quot;.*\.png$&quot;
+/usr/share/pixmaps/fedora-gdm-logo.png
+/usr/share/pixmaps/fedora-logo-small.png
+/usr/share/pixmaps/fedora-logo-sprite.png
+/usr/share/pixmaps/fedora-logo.png
+/usr/share/pixmaps/system-logo-white.png
+/usr/share/pixmaps/cockpit.png
+[17:08:30 root@localhost ~]#find /usr/share/pixmaps -regex &quot;\.png$&quot;
+[17:08:33 root@localhost ~]#
+[17:08:34 root@localhost ~]#
+
+&#x1F447;&#x8FD9;&#x662F;locate&#x91CC;&#x7684;&#x6B63;&#x5219;
+[17:09:12 root@localhost ~]#locate -r &quot;/usr/share/pixmaps/.*\.png$&quot;
+/usr/share/pixmaps/cockpit.png
+/usr/share/pixmaps/fedora-gdm-logo.png
+/usr/share/pixmaps/fedora-logo-small.png
+/usr/share/pixmaps/fedora-logo-sprite.png
+/usr/share/pixmaps/fedora-logo.png
+/usr/share/pixmaps/system-logo-white.png
+&#x1F447;&#x5F53;&#x7136;locate&#x65E0;&#x9700;&#x5168;&#x8DEF;&#x5F84;
+</code></pre><p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/image-20220207171246996.png" alt="image-20220207171246996"> </p>
+<h3 id="find-&#x9009;&#x9879;&#x7684;ppt&#x603B;&#x7ED3;&#x56FE;">find &#x9009;&#x9879;&#x7684;PPT&#x603B;&#x7ED3;&#x56FE;</h3>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image057.jpg" alt="img"></p>
+<h3 id="&#x867D;&#x7136;&#x8FD9;&#x91CC;&#x624D;&#x4E9B;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;-name-&#x540E;&#x9762;&#x8981;&#x5E26;&#x4E0A;&#x53CC;&#x5F15;&#x53F7;&#x7684;">&#x867D;&#x7136;&#x8FD9;&#x91CC;&#x624D;&#x4E9B;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;-name &#x540E;&#x9762;&#x8981;&#x5E26;&#x4E0A;&#x53CC;&#x5F15;&#x53F7;&#x7684;</h3>
+<pre><code>[18:32:04 root@localhost ~]#find -name &quot;f*&quot;
+./f2
+./data/f2
+./data/f1
+./f1~
+./fz~
+./f3
+./f1
+./f1.link
+[18:32:05 root@localhost ~]#find -name f*
+find: paths must precede expression: f1~
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
+[18:32:11 root@localhost ~]#
+[18:32:12 root@localhost ~]#
+[18:32:12 root@localhost ~]#
+</code></pre><p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image059.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image061.jpg" alt="img"></p>
+<p>&#x9ED8;&#x8BA4;&#x662F;print&#xFF0C;&#x8FD9;&#x91CC;&#x6362;&#x4E86;&#x4E2A;&#x52A8;&#x4F5C;-ls</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image062.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image063.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image065.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image067.jpg" alt="img"></p>
+<p>&#x8FD9;&#x6837;-nouser&#x5C31;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#x4E86;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image069.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image071.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image073.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image075.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image077.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image079.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image080.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image082.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image084.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image086.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image087.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image088.png" alt="img"></p>
+<p>-a&#x4E0E;&#x7684;&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;&#x8981;&#x6BD4;-o&#x6216;&#x8FD0;&#x7B97;&#x9AD8;&#xFF0C;&#x6240;&#x4EE5;-type f -a -ls&#x5148;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x4E86;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image089.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image090.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image092.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image094.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image096.jpg" alt="img"></p>
+<p>&#x5982;&#x679C;find &#x540E;&#x63A5; regex&#x5C31;&#x9700;&#x8981;&#x662F;&#x5168;&#x8DEF;&#x5F84;&#x5339;&#x914D;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image098.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image100.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image102.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image103.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image104.png" alt="img"></p>
+<p>&#x7528;&#x88C1;&#x526A;prune</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image106.jpg" alt="img"></p>
+<p>&#x9898;&#x5916;&#x8BDD;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image107.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image109.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image111.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image113.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image115.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image117.jpg" alt="img"></p>
+<p>&#x5199;10K&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;(9k-10k]</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image119.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image121.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image122.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image124.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image126.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image128.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image130.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image132.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image134.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image136.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image138.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image140.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image142.jpg" alt="img"></p>
+<p>&#x4E0A;&#x56FE;&#x9519;&#x4E86;&#xFF0C;/622&#xFF0C;&#x4E0D;&#x662F;&#x5FC5;&#x987B;6&#xFF0C;&#x800C;&#x662F;110&#x91CC;&#x9762;&#x6709;&#x4E00;&#x4E2A;&#x5C31;&#x884C;&#x4E86;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image144.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image146.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image148.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image150.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image152.jpg" alt="img"></p>
+<p>&#x4F46;&#x662F;&#x662F;&#x4EA4;&#x4E92;&#x5F0F;&#x7684;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image154.jpg" alt="img"></p>
+<p>&#x6848;&#x4F8B;&#xFF0C;&#x65E5;&#x5FD7;&#x5904;&#x7406;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image156.jpg" alt="img"></p>
+<p>&#x627E;&#x5230;&#x5927;&#x4E8E;10M&#x7684;&#xFF0C;&#x79FB;&#x52A8;&#x5230;tmp/&#x4E0B;&#x3002;</p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image157.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image158.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image160.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image161.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image162.png" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image164.jpg" alt="img"></p>
+<p><img src="1-&#x6587;&#x4EF6;&#x67E5;&#x627E;.assets/clip_image166.jpg" alt="img"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-01-30 11:28:30
+2022-02-07 18:35:19
 </span></footer>
                                 
                                 </section>
@@ -3525,7 +3898,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节 文件查找","level":"1.11.1","depth":2,"next":{"title":"第2节 文件压缩和解压缩","level":"1.11.2","depth":2,"path":"9-文本查找和压缩/2-文件压缩和解压缩.md","ref":"./9-文本查找和压缩/2-文件压缩和解压缩.md","articles":[]},"previous":{"title":"第九章 文本查找和压缩","level":"1.11","depth":1,"path":"9-文本查找和压缩/9-文本查找和压缩.md","ref":"./9-文本查找和压缩/9-文本查找和压缩.md","articles":[{"title":"第1节 文件查找","level":"1.11.1","depth":2,"path":"9-文本查找和压缩/1-文件查找.md","ref":"./9-文本查找和压缩/1-文件查找.md","articles":[]},{"title":"第2节 文件压缩和解压缩","level":"1.11.2","depth":2,"path":"9-文本查找和压缩/2-文件压缩和解压缩.md","ref":"./9-文本查找和压缩/2-文件压缩和解压缩.md","articles":[]},{"title":"第3节 文件打包和解包","level":"1.11.3","depth":2,"path":"9-文本查找和压缩/3-文件打包和解包.md","ref":"./9-文本查找和压缩/3-文件打包和解包.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"9-文本查找和压缩/1-文件查找.md","mtime":"2022-01-30T03:28:30.499Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T06:13:39.293Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节 文件查找","level":"1.11.1","depth":2,"next":{"title":"第2节 文件压缩和解压缩","level":"1.11.2","depth":2,"path":"9-文本查找和压缩/2-文件压缩和解压缩.md","ref":"./9-文本查找和压缩/2-文件压缩和解压缩.md","articles":[]},"previous":{"title":"第九章 文本查找和压缩","level":"1.11","depth":1,"path":"9-文本查找和压缩/9-文本查找和压缩.md","ref":"./9-文本查找和压缩/9-文本查找和压缩.md","articles":[{"title":"第1节 文件查找","level":"1.11.1","depth":2,"path":"9-文本查找和压缩/1-文件查找.md","ref":"./9-文本查找和压缩/1-文件查找.md","articles":[]},{"title":"第2节 文件压缩和解压缩","level":"1.11.2","depth":2,"path":"9-文本查找和压缩/2-文件压缩和解压缩.md","ref":"./9-文本查找和压缩/2-文件压缩和解压缩.md","articles":[]},{"title":"第3节 文件打包和解包","level":"1.11.3","depth":2,"path":"9-文本查找和压缩/3-文件打包和解包.md","ref":"./9-文本查找和压缩/3-文件打包和解包.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"9-文本查找和压缩/1-文件查找.md","mtime":"2022-02-07T10:35:19.197Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T10:37:04.708Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
