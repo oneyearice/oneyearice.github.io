@@ -295,3 +295,15 @@ grep -w单词等价于grep的定界符grep "\\<xxx\\>"
 ![img](2-文本三剑客1_grep和正则.assets/clip_image118.jpg)
 
  
+
+
+
+好，下面是工作中遇到的补充👇
+
+       -l, --files-with-matches
+              Suppress normal output; instead print the name of each input file from which output would normally  have
+              been printed.  The scanning will stop on the first match.
+
+![image-20220209153247156](2-文本三剑客1_grep和正则.assets/image-20220209153247156.png) 
+
+就是去重的效果咯，我只要知道在哪个文件里，不需要知道一个文件里出现了几次，所以加上-l。
