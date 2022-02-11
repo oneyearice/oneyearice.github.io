@@ -330,3 +330,11 @@ python和shell都不需要事先申明变量
 
 ![image-20220202185054359](1-shell编程脚本基础.assets/image-20220202185054359.png) 
 
+
+
+环境变量的查看
+
+![image-20220211103605248](1-shell编程脚本基础.assets/image-20220211103605248.png) 
+
+env和printenv是等价的
+
