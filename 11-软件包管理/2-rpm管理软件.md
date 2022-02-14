@@ -396,9 +396,9 @@ tree刚才被echo了一个换行，所以找到最后一行
 
  
 
-\---------------------------------
+## rpm数据库
 
-![img](2-rpm管理软件.assets/clip_image188.jpg)
+<img src="2-rpm管理软件.assets/clip_image188.jpg" alt="img" style="zoom: 67%;" />
 
 上图初始化没有啥意义，因为你删掉/var/lib/rpm后系统也会自动给你初始化，但是安装的信息都没了。
 
@@ -418,27 +418,17 @@ tree刚才被echo了一个换行，所以找到最后一行
 
  
 
- 
-
- 
-
- 
-
- 
-
- 
-
 ![img](2-rpm管理软件.assets/clip_image204.jpg)
 
  
 
 ![img](2-rpm管理软件.assets/clip_image206.jpg)
 
- 
+ yum就是python写的，依赖于rpm的，你把rpm的数据库删了，yum也就挂了。
 
-rpm是单机命令，yum是c/s架构
 
- 
+
+rpm是单机命令，yum是c/s架构。
 
 yum在client和server都要配置好。c和s通过网络互通，单机就是c、s在一台机器上。
 
@@ -456,7 +446,7 @@ EPEL也是一个仓库
 
 仓库的元数据metadata：rpm文件列表和依赖关系就是放到元数据里。还会分组-分门别类。repodata文件夹就是专门放元数据的。
 
-仓库可能会叫做package文件夹，也可以是别的名称
+仓库可能会叫做packages文件夹，也可以是别的名称
 
 ![img](2-rpm管理软件.assets/clip_image212.jpg)
 
