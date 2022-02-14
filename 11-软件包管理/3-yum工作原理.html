@@ -3480,8 +3480,293 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7B2C;3&#x8282;-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x7B2C;3&#x8282;. yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h1>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image002.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image004.jpg" alt="img"></p>
+<p>&#x5728;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86;autofs&#x540E;&#xFF0C;rpm -ql autofs&#xFF0C;&#x770B;&#x4E0B;&#x8BE5;&#x5305;&#x91CC;&#x7684;&#x5173;&#x952E;&#x6587;&#x4EF6;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image006.jpg" alt="img"></p>
+<p>&#x4EE5;&#x540E;&#x770B;&#x5230;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image007.png" alt="img"></p>
+<p>&#x8868;&#x793A;/usr/lib/systemd/system&#x4E0B;&#x9762;&#x7684;&#x90FD;&#x662F;&#x670D;&#x52A1;&#x3002;</p>
+<h2 id="&#x57FA;&#x4E8E;&#x5149;&#x76D8;&#x7684;yum&#x6E90;">&#x57FA;&#x4E8E;&#x5149;&#x76D8;&#x7684;yum&#x6E90;</h2>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image008.png" alt="img" style="zoom:67%;"></p>
+<p>autofs&#x5F00;&#x542F;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6302;&#x8F7D;&#x5149;&#x76D8;&#x8DEF;&#x5F84;&#x4E86;&#xFF0C;&#x53F7;&#x79F0;&#x795E;&#x5947;&#x76EE;&#x5F55;&#xFF1A;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;/misc&#x4E0B;&#x9762;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x5C31;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x6302;&#x8F7D;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image010.jpg" alt="img" style="zoom: 80%;"></p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x4E00;&#x5B9A;&#x8981;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5462;&#xFF0C;&#x56E0;&#x4E3A;&#x8981;&#x5F53;yum&#x6E90;&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;repodata&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image012.jpg" alt="img"></p>
+<h3 id="&#x5F53;yum&#x6E90;&#x7684;&#x524D;&#x63D0;&#xFF1A;&#x8DEF;&#x5F84;&#x4E0B;&#x6709;repodata">&#x5F53;yum&#x6E90;&#x7684;&#x524D;&#x63D0;&#xFF1A;&#x8DEF;&#x5F84;&#x4E0B;&#x6709;repodata</h3>
+<p>&#x53EA;&#x8981;&#x770B;&#x5230;repodata&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x5C31;&#x662F;yum&#x6E90;&#x7684;&#x76EE;&#x5F55;&#x3002;&#x4E0D;&#x8981;&#x770B;packages&#x90A3;&#x4E9B;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214113445205.png" alt="image-20220214113445205" style="zoom: 50%;"></p>
+<h3 id="yum-repolist&#x7684;&#x672C;&#x8D28;">yum repolist&#x7684;&#x672C;&#x8D28;</h3>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image013.png" alt="img"></p>
+<p> &#x4E0B;&#x8F7D;&#x5230;&#x54EA;&#x91CC;&#x5462;&#xFF1F;&#x901A;&#x8FC7;yum.conf&#x53EF;&#x89C1;&#x8BE5;&#x76EE;&#x5F55;</p>
+<pre><code>[root@centos7 ~]# cat /etc/yum.conf
+[main]
+cachedir=/var/cache/yum/$basearch/$releasever
+keepcache=0
+... &#x7701;&#x7565;...
+[root@centos7 ~]# cd /var/cache/yum/
+[root@centos7 yum]# ll
+total 0
+[root@centos7 yum]# l.
+.  ..
+[root@centos7 yum]# yum repolist   &#x1F448;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x628A;&#x5143;&#x6570;&#x636E;&#x7684;down&#x5230;&#x672C;&#x5730;
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: mirrors.cn99.com
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+base                                                                                   | 3.6 kB  00:00:00
+extras                                                                                 | 2.9 kB  00:00:00
+updates                                                                                | 2.9 kB  00:00:00
+(1/4): base/7/x86_64/group_gz                                                          | 153 kB  00:00:00
+(2/4): extras/7/x86_64/primary_db                                                      | 243 kB  00:00:00
+(3/4): updates/7/x86_64/primary_db                                                     |  13 MB  00:00:00
+(4/4): base/7/x86_64/primary_db                                                        | 6.1 MB  00:00:00
+repo id                                            repo name                                            status
+base/7/x86_64                                      CentOS-7 - Base                                      10,072
+extras/7/x86_64                                    CentOS-7 - Extras                                       500
+updates/7/x86_64                                   CentOS-7 - Updates                                    3,411
+repolist: 13,983
+[root@centos7 yum]# ll
+total 0
+drwxr-xr-x. 3 root root 15 Feb 14 12:06 x86_64
+[root@centos7 yum]#
+
+[root@centos7 yum]# ll -R x86_64/
+x86_64/:
+total 0
+drwxr-xr-x. 5 root root 87 Feb 14 12:06 7
+
+x86_64/7:
+total 8
+drwxr-xr-x. 4 root root 278 Feb 14 12:06 base
+drwxr-xr-x. 4 root root 183 Feb 14 12:06 extras
+-rw-r--r--. 1 root root  84 Feb 14 12:06 timedhosts
+-rw-r--r--. 1 root root 473 Feb 14 12:06 timedhosts.txt
+drwxr-xr-x. 4 root root 183 Feb 14 12:06 updates
+
+x86_64/7/base:
+total 6376
+-rw-r--r--. 1 root root 6351994 Oct 30  2020 6d0c3a488c282fe537794b5946b01e28c7f44db79097bb06826e1c0c88bad5ef-primary.sqlite.bz2
+-rw-r--r--. 1 root root  156763 Oct 30  2020 a4e2b46586aa556c3b6f814dad5b16db5a669984d66b68e873586cd7c7253301-c7-x86_64-comps.xml.gz
+-rw-r--r--. 1 root root       0 Feb 14 12:06 cachecookie
+drwxr-xr-x. 2 root root      31 Feb 14 12:06 gen
+-rw-r--r--. 1 root root     546 Feb 14 12:06 mirrorlist.txt
+drwxr-xr-x. 2 root root       6 Feb 14 12:06 packages
+-rw-r--r--. 1 root root    3736 Oct 30  2020 repomd.xml
+
+x86_64/7/base/gen:
+total 30876
+-rw-r--r--. 1 root root 31614976 Oct 30  2020 primary_db.sqlite
+
+x86_64/7/base/packages:
+total 0
+
+x86_64/7/extras:
+total 256
+-rw-r--r--. 1 root root      0 Feb 14 12:06 cachecookie
+-rw-r--r--. 1 root root 248733 Sep  3 23:22 db1c88508275ffebdc6cd8686da08745d2552e5b219b2e6f4cbde7b8afd3b1a3-primary.sqlite.bz2
+drwxr-xr-x. 2 root root     31 Feb 14 12:06 gen
+-rw-r--r--. 1 root root    589 Feb 14 12:06 mirrorlist.txt
+drwxr-xr-x. 2 root root      6 Feb 14 12:06 packages
+-rw-r--r--. 1 root root   2998 Sep  3 23:22 repomd.xml
+
+x86_64/7/extras/gen:
+total 1296
+-rw-r--r--. 1 root root 1326080 Sep  3 23:22 primary_db.sqlite
+
+x86_64/7/extras/packages:
+total 0
+
+x86_64/7/updates:
+total 13736
+-rw-r--r--. 1 root root 14049533 Feb  9 04:02 c96f20635c7f289398519818a077b294f1855722181378b5105f5ef49f0cf57a-primary.sqlite.bz2
+-rw-r--r--. 1 root root        0 Feb 14 12:06 cachecookie
+drwxr-xr-x. 2 root root       31 Feb 14 12:06 gen
+-rw-r--r--. 1 root root      589 Feb 14 12:06 mirrorlist.txt
+drwxr-xr-x. 2 root root        6 Feb 14 12:06 packages
+-rw-r--r--. 1 root root     3011 Feb  9 04:02 repomd.xml
+
+x86_64/7/updates/gen:
+total 75048
+-rw-r--r--. 1 root root 76846080 Feb  9 04:02 primary_db.sqlite
+
+x86_64/7/updates/packages:
+total 0
+
+
+[root@centos7 yum]# yum clean all    &#x1F448;&#x8FD9;&#x4E0B;&#x7406;&#x89E3;&#x5230;&#x4F4D;&#x4E86;&#xFF0C;&#x6E05;&#x7684;&#x54EA;&#x91CC;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x91CC;
+Loaded plugins: fastestmirror
+Cleaning repos: base extras updates
+Cleaning up list of fastest mirrors
+
+[root@centos7 yum]# ls -R x86_64/
+x86_64/:
+7
+
+x86_64/7:
+base  extras  timedhosts  updates
+
+x86_64/7/base:
+gen  packages
+
+x86_64/7/base/gen:
+
+x86_64/7/base/packages:
+
+x86_64/7/extras:
+gen  packages
+
+x86_64/7/extras/gen:
+
+x86_64/7/extras/packages:
+
+x86_64/7/updates:
+gen  packages
+
+x86_64/7/updates/gen:
+
+x86_64/7/updates/packages:
+
+&#x4E5F;&#x53EF;&#x4EE5;&#x7528;du -sh /var/cache/yum&#x9A8C;&#x8BC1;&#x53EF;&#x89C1;&#x5927;&#x5C0F;&#x4E3A;0
+</code></pre><p>yum clean all&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4FEE;&#x6539;yun&#x6E90;&#x540E;&#x4E0D;&#x6E05;&#x7406;&#xFF0C;&#x5C31;&#x662F;&#x7167;&#x7740;&#x5C31;&#x5F97;yum&#x6E90;&#x90A3;&#x4F1A;&#x7684;yum repolist&#x4E0B;&#x8F7D;&#x4E0B;&#x6765;&#x7684;&#x5143;&#x6570;&#x636E;&#x7F13;&#x5B58;&#x53BB;&#x627E;rpm&#x5305;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x8981;&#x6E05;&#x4E00;&#x4E0B;&#x7684;&#x3002;</p>
+<h3 id="yum&#x7684;&#x95EE;&#x9898;&#x4E3B;&#x8981;&#x5C31;2&#x4E2A;&#xFF0C;&#x2460;&#x8DEF;&#x5F84;&#x5199;&#x9519;&#x4E86;&#x2461;&#x7F13;&#x5B58;&#x6CA1;&#x6E05;&#x3002;&#x4F60;&#x522B;&#x8DDF;&#x6211;&#x8BB2;rpm&#x6570;&#x636E;&#x5E93;&#x5220;&#x4E86;&#x3002;&#x2462;etcyumreposd&#x4E0B;&#x9762;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;repo&#x6587;&#x4EF6;&#x4E0D;&#x80FD;&#x7528;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x6240;&#x6709;&#x7684;repo&#x6E90;&#x3002;">yum&#x7684;&#x95EE;&#x9898;&#x4E3B;&#x8981;&#x5C31;2&#x4E2A;&#xFF0C;&#x2460;&#x8DEF;&#x5F84;&#x5199;&#x9519;&#x4E86;&#x2461;&#x7F13;&#x5B58;&#x6CA1;&#x6E05;&#x3002;&#x4F60;&#x522B;&#x8DDF;&#x6211;&#x8BB2;rpm&#x6570;&#x636E;&#x5E93;&#x5220;&#x4E86;&#x3002;&#x2462;/etc/yum.repos.d/&#x4E0B;&#x9762;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;repo&#x6587;&#x4EF6;&#x4E0D;&#x80FD;&#x7528;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x6240;&#x6709;&#x7684;repo&#x6E90;&#x3002;</h3>
+<p>&#x4E0B;&#x9762;&#x662F;&#x5C06;base&#x6E90;&#x548C;epel&#x6E90;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x8BB2;&#x7684;&#xFF1A; </p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image014.png" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image015.png" alt="img"></p>
+<p> &#x4E0A;&#x56FE;&#x1F446;&#x662F;epel&#x7684;alias &#x5FEB;&#x901F;&#x542F;&#x7528;&#x548C;&#x7981;&#x7528;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x8003;&#x8651;&#x5B89;&#x88C5;rpm&#x5305;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x8BA9;&#x4ED6;&#x518D;&#x53BB;&#x627E;epel&#xFF0C;&#x56E0;&#x4E3A;base&#x662F;&#x518D;&#x672C;&#x5730;&#x7684;&#xFF0C;&#x800C;epel&#x5728;&#x7F51;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x4F60;&#x5B89;&#x88C5;base&#x4E5F;&#x4F1A;&#x53BB;epel&#x627E;&#x4E00;&#x904D;&#xFF0C;&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x7684;&#x3002;&#x4E0D;&#x8FC7;yum &#x672C;&#x5730;&#x4ED3;&#x5E93;&#x5176;&#x5B9E;&#x662F;&#x5C06;base&#x548C;epel&#x90FD;&#x62C9;&#x4E0B;&#x6765;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#x4E2D;base&#x548C;epel&#x90FD;&#x662F;&#x5185;&#x7F51;&#x672C;&#x5730;&#x7684;&#x4ED3;&#x5E93;&#x3002;&#x4E5F;&#x65E0;&#x9700;&#x7981;&#x7528;epel&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image017.jpg" alt="img"></p>
+<p>&#x1F446;&#x4E0A;&#x56FE;&#x662F;&#x5C06;base&#x6E90;&#x548C;epel&#x5408;&#x5728;&#x4E00;&#x4E2A;.repo&#x6587;&#x4EF6;&#x91CC;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5206;&#x5F00;&#x6765;&#xFF0C;&#x5C06;epel&#x5355;&#x72EC;&#x505A;&#x4E00;&#x4E2A;epel.repo&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x5E94;&#x8BE5;&#x662F;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#xFF0C;&#x80FD;&#x8D70;&#x54EA;&#x91CC;&#x8D70;&#x54EA;&#x4E2A;&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x662F;key&#x7684;&#x5199;&#x6CD5;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image019.jpg" alt="img"></p>
+<p> key&#x542F;&#x7528;&#x540E;&#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x5B89;&#x88C5;rpm&#x5305;&#xFF0C;&#x4F1A;&#x95EE;&#x4F60;&#x662F;&#x5426;&#x5BFC;&#x5165;key&#xFF0C;&#x1F447;&#x4E0B;&#x56FE;&#xFF0C;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image020.png" alt="img"></p>
+<p>&#x7136;&#x540E;&#x540E;&#x9762;&#x518D;&#x5B89;&#x88C5;&#x5176;&#x4ED6;rpm&#x5305;&#x5C31;&#x4E0D;&#x4F1A;&#x95EE;&#x4F60;&#x4E86;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image022.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image024.jpg" alt="img"></p>
+<p>YUM&#x51FA;&#x95EE;&#x9898;&#x5C31;&#x4E24;&#x4E2A;&#xFF1A;&#x2460;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4EE5;&#x53CA;&#x8DEF;&#x5F84;&#x95EE;&#x9898;&#xFF0C;&#x2461;&#x7F13;&#x5B58;&#x6E05;&#x4E00;&#x4E0B;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image026.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image028.jpg" alt="img"></p>
+<p>&#x6BD4;&#x5982;&#x8981;&#x5B89;&#x88C5;sl&#x8FD9;&#x4E2A;&#x5C0F;&#x706B;&#x8F66;&#xFF0C;&#x5C31;&#x8981;&#x5220;&#x9664;yum&#x4ED3;&#x5E93;&#xFF0C;&#x6E05;&#x9664;&#x7F13;&#x5B58;&#xFF0C;&#x5B89;&#x88C5;yum&#x6E90;&#xFF0C;epel&#x6E90;&#xFF0C;&#x6BD4;&#x5982;centos8</p>
+<p><a href="https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.23961b11BCsMUT" target="_blank">https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.23961b11BCsMUT</a></p>
+<p>yum cleall all</p>
+<p>yum makcache</p>
+<p>yum updata</p>
+<p><a href="https://developer.aliyun.com/mirror/epel" target="_blank">https://developer.aliyun.com/mirror/epel</a></p>
+<h3 id="&#x5B89;&#x88C5;&#x4F1A;&#x81EA;&#x52A8;&#x7ED9;&#x4F60;&#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#xFF0C;&#x90A3;&#x4E48;&#x5378;&#x8F7D;&#x662F;&#x5426;&#x4F1A;&#x81EA;&#x52A8;&#x5378;&#x8F7D;&#x4F9D;&#x8D56;&#x5305;&#x5462;">&#x5B89;&#x88C5;&#x4F1A;&#x81EA;&#x52A8;&#x7ED9;&#x4F60;&#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#xFF0C;&#x90A3;&#x4E48;&#x5378;&#x8F7D;&#x662F;&#x5426;&#x4F1A;&#x81EA;&#x52A8;&#x5378;&#x8F7D;&#x4F9D;&#x8D56;&#x5305;&#x5462;</h3>
+<p>&#x9ED8;&#x8BA4;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x5378;&#x8F7D;&#x4F9D;&#x8D56;&#x5305;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x80FD;&#x522B;&#x7684;&#x5305;&#x4E5F;&#x4F1A;&#x4F9D;&#x8D56;&#x8FD9;&#x4E9B;&#x4F9D;&#x8D56;&#x5305;&#x3002;</p>
+<p>yum list&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B89;&#x88C5;&#x5386;&#x53F2;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image029.png" alt="img"></p>
+<p>&#x5B9E;&#x9645;&#x4E0A;yum&#x5B89;&#x88C5;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x6709;&#x81EA;&#x5DF1;&#x7684;log&#xFF0C;&#x1F447;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image031.jpg" alt="img"></p>
+<p>Centos8&#x5C31;&#x662F;dnf.log</p>
+<h3 id="yum-history">yum history</h3>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image033.jpg" alt="img"></p>
+<p><strong>info 11&#x53EF;&#x89C1;&#x5F53;&#x9519;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6BD4;&#x5982;command line install mariadb-server&#x3002;</strong></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image034.png" alt="img"></p>
+<p>&#x628A;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x64A4;&#x9500;</p>
+<p>undo&#x5C31;&#x662F;&#x5378;&#x8F7D;&#x6389;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image035.png" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image037.jpg" alt="img"></p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x5378;&#x6389;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x770B;&#x4E0B;yum&#x4E8B;&#x4EF6;&#xFF0C;&#x5378;&#x6389;&#x4E86;10&#x4E2A;&#x5305;Altered</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image039.jpg" alt="img"></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x53C8;&#x4E0D;&#x60F3;&#x5378;&#x4E86;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;yum&#x4E8B;&#x4EF6;&#x56DE;&#x53BB;</p>
+<p>redo&#x5C31;&#x662F;&#x91CD;&#x88C5;&#x4E00;&#x904D;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image041.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image043.jpg" alt="img"></p>
+<p> baseurl&#x8FD8;&#x6709;&#x4E00;&#x4E2A;mirroslist(&#x8FD9;&#x4E2A;&#x540E;&#x9762;&#x8BB2;)</p>
+<p>baseurl&#x53EF;&#x4EE5;&#x5199;&#x591A;&#x4E2A;&#xFF0C;&#x5982;&#x4E0B;&#x1F447;&#x56FE;&#xFF1A;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214140423396.png" alt="image-20220214140423396"> </p>
+<p>&#x5199;&#x591A;&#x4E2A;baseurl&#xFF0C;&#x90FD;&#x751F;&#x6548;&#xFF0C;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214140638214.png" alt="image-20220214140638214"></p>
+<p>&#x4E0A;&#x56FE;&#x662F;&#x5149;&#x76D8;&#x7981;&#x7528;&#x540E;&#xFF0C;&#x8D70;&#x7684;&#x7F51;&#x7EDC;yum&#x5B89;&#x88C5;&#x7684;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x591A;&#x4E2A;baseurl&#xFF0C;&#x4F18;&#x5148;&#x7528;&#x8C01;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x8FD8;&#x662F;&#x5728;&#x4E0A;&#x9762;&#x7684;PPT&#x91CC;&#xFF1A;failovermethod={roundrobin|priority},cost&#x7684;&#x503C;&#x8D8A;&#x5927;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x4F4E;&#x3002;</p>
+<h3 id="&#x7136;&#x540E;&#x662F;yum&#x7684;baseurl&#x7684;4&#x79CD;&#x8DEF;&#x5F84;&#xFF1A;">&#x7136;&#x540E;&#x662F;yum&#x7684;baseurl&#x7684;4&#x79CD;&#x8DEF;&#x5F84;&#xFF1A;</h3>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image045.jpg" alt="img"></p>
+<h3 id="yum&#x4ED3;&#x5E93;&#x7684;&#x5185;&#x7F6E;&#x53D8;&#x91CF;">yum&#x4ED3;&#x5E93;&#x7684;&#x5185;&#x7F6E;&#x53D8;&#x91CF;</h3>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image047.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image049.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image051.jpg" alt="img"></p>
+<p>&#x81EA;&#x5DF1;&#x5199;&#x811A;&#x672C;&#xFF0C;&#x91CC;&#x9762;&#x7684;yum&#x6E90;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x884C;&#x91CD;&#x5B9A;&#x5411;&#x6765;&#x5199;&#xFF0C;&#x1F447;&#x25B2;&#x811A;&#x672C;&#x60EF;&#x7528;&#x624B;&#x6CD5;-cat&#x591A;&#x884C;&#x91CD;&#x5B9A;&#x5411;&#x5199;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image053.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image055.jpg" alt="img"></p>
+<p>&#x522B;&#x5FD8;&#x4E86;&#x522B;&#x540D;&#x3001;vim&#x3001;history&#x683C;&#x5F0F;&#x3001;PS1&#x3001;yum&#x6E90;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image057.jpg" alt="img"></p>
+<p> <img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214142412372.png" alt="image-20220214142412372"></p>
+<p>yum list&#x5C31;&#x5217;&#x51FA;&#x4E86;&#x8FD9;1w&#x591A;&#x4E2A;&#x5305;&#xFF0C;&#x4E00;&#x5171;&#x5C31;&#x662F;1w&#x591A;&#x884C;&#xFF1A;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image059.jpg" alt="img"></p>
+<p>yum &#x770B;&#x5230;&#x5DF2;&#x5B89;&#x88C5;&#x7684;&#x5305;&#x662F;@&#x6253;&#x5934;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image061.jpg" alt="img"></p>
+<p>anaconda&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;&#x5411;&#x5BFC;&#x7684;&#x65F6;&#x5019;&#x5B89;&#x88C5;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x6240;&#x4EE5;yum list&#x4E0D;&#x4EC5;&#x770B;&#x5230;&#x54EA;&#x4E9B;&#x5DF2;&#x5B89;&#x88C5;&#xFF0C;&#x8FD8;&#x77E5;&#x9053;&#x4ECE;&#x54EA;&#x88C5;&#x7684;&#xFF0C;&#x2460;&#x6BD4;&#x5982;anaconda&#x2461;&#x8FD8;&#x6709;base&#x4ED3;&#x5E93;&#x2462;epel&#x7B49;&#x5176;&#x4ED6;&#x4ED3;&#x5E93;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image063.jpg" alt="img"></p>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x5305;&#x662F;base&#x4ED3;&#x5E93;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x5229;&#x7528;yum&#x5B89;&#x88C5;&#x4E0A;&#x53BB;&#x7684;&#x3002;</p>
+<p> &#x6BD4;&#x5982;&#xFF0C;&#x4E0B;&#x56FE;&#x1F447;&#x5176;&#x5B9E;&#x67E5;&#x770B;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x7684;&#x53EF;&#x4EE5;yum list installed&#x66F4;&#x5FEB;&#xFF0C;&#x5FC5;&#x8FDB;grep&#x8981;CPU&#x8BA1;&#x7B97;&#x7684;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214143356426.png" alt="image-20220214143356426"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214143439794.png" alt="image-20220214143439794"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214143509801.png" alt="image-20220214143509801"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image065.jpg" alt="img"></p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x7528;yum search http</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214143931195.png" alt="image-20220214143931195"></p>
+<p>&#x4E0A;&#x56FE;&#xFF0C;&#x8BF4;&#x7684;&#x662F;&#x641C;&#x7D22;&#x7684;&#x5305;&#x540D;&#xFF0C;&#x524D;&#x63D0;&#x4F60;&#x7684;&#x77E5;&#x9053;&#x5305;&#x540D;&#xFF0C;</p>
+<p>&#x5305;&#x540D;&#x4E0D;&#x77E5;&#x9053;&#x548B;&#x529E;&#xFF1F;&#x4EE5;httpd&#x4E3A;&#x4F8B;&#xFF0C;&#x5148;&#x5378;&#x8F7D;&#x6389;&#x1F447; </p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image067.jpg" alt="img"></p>
+<p>&#x6574;&#x4F53;&#x5378;&#x6389;&#x5305;&#x542B;&#x4E4B;&#x524D;yum install&#x7684;&#x6240;&#x6709;&#x4E1C;&#x897F;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x67E5;&#x6848;yum history info NUMBER&#xFF0C;&#x89C1;&#x5230;httpd&#x5C31;&#x884C;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image069.jpg" alt="img"></p>
+<p>&#x7136;&#x540E;undo&#x5C31;&#x884C;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image070.png" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image072.jpg" alt="img"></p>
+<p>&#x4E0A;&#x56FE;&#x63D0;&#x793A;&#x7684;&#x662F;&#x4F9D;&#x8D56;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5305;&#x540D;</p>
+<p>&#x627E;&#x5230;&#x4F9D;&#x8D56;&#x7684;&#x6587;&#x4EF6;&#x6765;&#x81EA;&#x54EA;&#x4E2A;&#x5305;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image074.jpg" alt="img"></p>
+<p>-pf&#x5FC5;&#x987B;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF1B;-pqf&#x540E;&#x9762;&#x5FC5;&#x987B;&#x8DDF;&#x5305;&#x540D;&#xFF0C;package&#xFF1B;&#x4E0D;&#x5BF9;&#xFF0C;&#x6362;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image076.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image077.png" alt="img"></p>
+<p>&#x67E5;&#x627E;&#x6587;&#x4EF6;&#x7531;&#x54EA;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E00;&#x822C;&#x4E5F;&#x5C31;&#x662F;&#x7528;&#x5728;&#x6CA1;&#x6709;yum&#x6E90;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x81EA;&#x5DF1;&#x628A;&#x4F9D;&#x8D56;&#x51C6;&#x5907;&#x597D;&#xFF0C;&#x653E;&#x4E00;&#x8D77;&#xFF0C;&#x8D70;&#x54EA;&#x90FD;yum -y install *rpm&#x5C31;&#x884C;&#x4E86;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image078.png" alt="img"></p>
+<p>list&#x67E5;&#x6240;&#x6709;&#x7684;&#x3001;&#x5DF2;&#x7ECF;&#x88C5;&#x597D;&#x7684;&#xFF0C;&#x53EF;&#x7528;&#x7684;available-&#x5C31;&#x662F;&#x672A;&#x5B89;&#x88C5;&#x7684;&#x3002;</p>
+<p>yum list &#x9ED8;&#x8BA4;&#x5C31;&#x662F;yum list all</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214150614946.png" alt="image-20220214150614946" style="zoom:67%;"> </p>
+<p> yum repolist&#x662F;&#x5C06;&#x4ED3;&#x5E93;&#x7684;&#x5143;&#x6570;&#x636E;down&#x4E0B;&#x6765;&#xFF0C;&#x540C;&#x65F6;&#x7ED9;&#x4F60;list&#x5217;&#x51FA;&#x6765;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x9488;&#x5BF9;&#x542F;&#x7528;&#x7684;&#x4ED3;&#x5E93;&#xFF0C;&#x52A0;&#x4E0A;all&#x5C31;&#x662F;&#x5173;&#x6389;&#x7684;&#x4E5F;&#x4F1A;&#x5217;&#x51FA;&#x6765;&#xFF1A;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image079.png" alt="img"></p>
+<p>yum provides &#x540E;&#x9762;&#x53EF;&#x4EE5;&#x662F;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4F9D;&#x8D56;&#x5305;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x65E2;&#x6709;&#x4E86;-qf&#x7684;&#x8DDF;&#x6587;&#x4EF6;&#x80FD;&#x529B;&#xFF0C;&#x4E5F;&#x6709;&#x4E86;-qpi&#x7684;&#x8DDF;&#x5305;&#x80FD;&#x529B;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image081.jpg" alt="img"></p>
+<p>&#x1F446;&#x4E0A;&#x56FE;&#x5C31;&#x662F;&#x5C55;&#x793A;&#x4E86;&#x600E;&#x4E48;rpm&#x67E5;&#x8BE2;/bin/tree&#x6765;&#x81EA;&#x4E8E;&#x54EA;&#x4E2A;&#x5305;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image083.jpg" alt="img"></p>
+<p>yum&#x7684;reinstall&#x548C;rpm --replaces&#x548C;--force&#x4E00;&#x6837;&#x54AF;&#x3002;&#x663E;&#x7136;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;yum&#x7684;reinstall&#x8FD8;&#x5E26;&#x4F9D;&#x8D56;&#x7684;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image085.jpg" alt="img"></p>
+<p>&#x7EA2;&#x8272;&#x6846;&#x6846;&#x91CC;&#x7684;&#x5E38;&#x7528;&#xFF0C;&#x5176;&#x4ED6;&#x4E0D;&#x600E;&#x4E48;&#x7528;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;yum</p>
+<h3 id="yum-info-&#x7C7B;&#x4F3C;&#x4E8E;rpm--qi">yum info &#x7C7B;&#x4F3C;&#x4E8E;rpm -qi</h3>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image087.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image090.jpg" alt="img"></p>
+<p>rpm&#x5305;&#x4E5F;&#x662F;yum&#x5B89;&#x88C5;&#x7684;&#x3002;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x7ED9;&#x4F60;&#x5B89;&#x88C5;&#x7684;&#x3002;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image088.png" alt="img"></p>
+<p>&#x5C3D;&#x91CF;&#x8FD8;&#x662F;&#x4E0D;&#x8981;&#x5347;&#x7EA7;&#x5305;&#x3002;</p>
+<p>&#x8FD8;&#x6709;centos6&#x4E0D;&#x4F1A;&#x5347;&#x7EA7;&#x5230;7&#xFF0C;&#x800C;&#x662F;&#x91CD;&#x88C5;&#x6210;7</p>
+<p> &#x6CE8;&#x610F;update&#x548C;upgrade&#x7684;&#x533A;&#x522B;&#x5C31;&#x662F;&#x6CA1;&#x533A;&#x522B;</p>
+<p>  <a href="https://cloud.tencent.com/developer/article/1375013?from=article.detail.1604418" target="_blank">https://cloud.tencent.com/developer/article/1375013?from=article.detail.1604418</a></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214152747146.png" alt="image-20220214152747146" style="zoom:67%;"> </p>
+<pre><code> update If run without any packages, update will update every currently installed
+              package.   If  one  or  more packages or package globs are specified, Yum
+              will only update the listed packages.  While updating packages, yum  will
+              ensure that all dependencies are satisfied. (See Specifying package names
+              for more information) If the packages or globs specified match  to  pack&#x2010;
+              ages which are not currently installed then update will not install them.
+              update operates on groups, files, provides and filelists  just  like  the
+              &quot;install&quot; command.
+</code></pre><p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image092.jpg" alt="img"></p>
+<p>makecahe&#x4E00;&#x822C;&#x4E0D;&#x9700;&#x8981;&#x7528;</p>
+<p>&#x56E0;&#x4E3A;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x8FC7;yum&#xFF0C;&#x5C31;&#x81EA;&#x52A8;&#x56DE;&#x6709;makecahe&#x4E86;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image094.jpg" alt="img"></p>
+<p>&#x8FD9;&#x6837;&#x4E00;&#x4E0B;yum&#x7684;&#x7F13;&#x5B58;&#x4E5F;&#x5C31;&#x6709;&#x4E86;&#x3002;</p>
+<p>&#x603B;&#x7ED3;&#xFF1A;</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image096.jpg" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image098.jpg" alt="img"></p>
+<p>&#x8FD9;&#x662F;&#x67E5;&#x8FD9;&#x4E2A;&#x5305;&#x4F9D;&#x8D56;&#x54EA;&#x4E9B;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x53C8;&#x4F9D;&#x8D56;&#x54EA;&#x4E9B;&#x5305;--&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x518D;&#x6B21;yum deplist xxx&#x4E86;&#xFF0C;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;bash</p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/image-20220214155748455.png" alt="image-20220214155748455" style="zoom:67%;"> </p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image099.png" alt="img"></p>
+<p><img src="3-yum&#x5DE5;&#x4F5C;&#x539F;&#x7406;.assets/clip_image101.jpg" alt="img"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-02-11 18:48:19
+2022-02-14 15:59:46
 </span></footer>
                                 
                                 </section>
@@ -3525,7 +3810,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节 yum工作原理","level":"1.13.3","depth":2,"next":{"title":"第4节 实现yum源仓库和使用yum管理软件以及dnf","level":"1.13.4","depth":2,"path":"11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","ref":"./11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","articles":[]},"previous":{"title":"第2节 rpm管理软件","level":"1.13.2","depth":2,"path":"11-软件包管理/2-rpm管理软件.md","ref":"./11-软件包管理/2-rpm管理软件.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"11-软件包管理/3-yum工作原理.md","mtime":"2022-02-11T10:48:19.225Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-14T03:18:41.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节 yum工作原理","level":"1.13.3","depth":2,"next":{"title":"第4节 实现yum源仓库和使用yum管理软件以及dnf","level":"1.13.4","depth":2,"path":"11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","ref":"./11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","articles":[]},"previous":{"title":"第2节 rpm管理软件","level":"1.13.2","depth":2,"path":"11-软件包管理/2-rpm管理软件.md","ref":"./11-软件包管理/2-rpm管理软件.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"11-软件包管理/3-yum工作原理.md","mtime":"2022-02-14T07:59:46.224Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-14T08:00:49.284Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
