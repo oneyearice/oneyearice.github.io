@@ -40,7 +40,7 @@ C一般是make这个项目管理器，把软件作为项目统筹管理。利用
 
  然后configure脚本也是通过autocnf生成的，Makefile.in这个模板也是通过automake生成的。这里不用管，源码下载下来configure脚本和makefile.in模板都是自带的，开发人员做好的。
 
-
+./configure要进到当前目录运行的，不然可能人家的代码里写的都是相对路径，会存在问题的。
 
 还有一点./configure的时候会检查依赖，所以会报各种错误，然后工程师就更加错误补上对应的包，然后再回过来继续./configure。
 
