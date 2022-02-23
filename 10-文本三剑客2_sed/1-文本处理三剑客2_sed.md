@@ -576,4 +576,41 @@ hold住保持一会，待会取回来用。
 
  
 
- 
+ 补充
+
+
+
+linux每行结尾只有换行“\n”，
+
+Windows每行结尾是换行+回车“\r\n”
+
+Mac OS 为 “\r”。
+
+用dos2unix file 活unix2dos file命令直接转换，有时候是最小化安装，所以vim里的方法也是要会的。
+
+利用Linux下的vim，去除^M，去之前file看一下
+
+![image-20220221113730252](1-文本处理三剑客2_sed.assets/image-20220221113730252.png)
+
+vi xxx
+
+然后
+:set ff
+
+用于查看当前文件是dos格式还是unix格式，显示如下：
+
+![image-20220221113539901](1-文本处理三剑客2_sed.assets/image-20220221113539901.png)
+
+切换为unix格式，然后保存即可：
+
+:set ff=unix      #👈转换为unix格式
+:wq
+
+![image-20220221113637003](1-文本处理三剑客2_sed.assets/image-20220221113637003.png)
+
+![image-20220221113651671](1-文本处理三剑客2_sed.assets/image-20220221113651671.png)
+
+如果上图的格式不对，直接./xxx.py是找不到文件的，只能用python xxx变通运行，这里改成unix换行符后，就可以直接./xxx.py运行了。
+
+![image-20220221114104635](1-文本处理三剑客2_sed.assets/image-20220221114104635.png)
+

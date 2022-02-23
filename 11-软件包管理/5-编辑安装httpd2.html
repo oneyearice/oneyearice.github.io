@@ -3754,8 +3754,69 @@
 <p>&#x590D;&#x4E60;</p>
 <p><img src="5-&#x7F16;&#x8F91;&#x5B89;&#x88C5;httpd2.assets/image-20220215201228881.png" alt="image-20220215201228881"></p>
 <p><img src="5-&#x7F16;&#x8F91;&#x5B89;&#x88C5;httpd2.assets/image-20220215201338134.png" alt="image-20220215201338134" style="zoom:150%;"></p>
+<p>&#x8865;&#x5145;&#xFF1A;</p>
+<p>tree &#x7F16;&#x8BD1;&#x5B89;&#x88C5;&#x7684;&#x5176;&#x4ED6;&#x95EE;&#x9898;&#x5904;&#x7406;&#x8BB0;&#x5F55;</p>
+<pre><code>root@vpn tree-2.0.2]#make
+gcc -O3 -pedantic -Wall -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -c -o tree.o tree.c
+In file included from tree.c:20:0:
+tree.h:63:1: warning: C++ style comments are not allowed in ISO C90 [enabled by default]
+ // Start using PATH_MAX instead of the magic number 4096 everywhere.
+ ^
+tree.h:63:1: warning: (this will be reported only once per input file) [enabled by default]
+tree.c:47:1: warning: C++ style comments are not allowed in ISO C90 [enabled by default]
+ //off_t (*listdir)(char *, int *, int *, u_long, dev_t) = unix_listdir;
+ ^
+tree.c:47:1: warning: (this will be reported only once per input file) [enabled by default]
+tree.c: In function &#x2018;main&#x2019;:
+tree.c:100:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   bool needfulltree;
+   ^
+tree.c:124:29: warning: ISO C90 forbids compound literals [-Wpedantic]
+   lc = (struct listingcalls){
+                             ^
+tree.c:138:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   char *stddata_fd = getenv(ENV_STDDATA_FD);
+   ^
+tree.c:145:33: warning: ISO C90 forbids compound literals [-Wpedantic]
+       lc = (struct listingcalls){
+                                 ^
+tree.c:263:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c:271:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c:279:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c: In function &#x2018;usage&#x2019;:
+tree.c:659:2: warning: string length &#x2018;3348&#x2019; is greater than the length &#x2018;509&#x2019; ISO C90 compilers are required to support [-Woverlength-strings]
+  &quot;  --            Options processing terminator.\n&quot;);
+  ^
+tree.c: In function &#x2018;patignore&#x2019;:
+tree.c:668:3: error: &#x2018;for&#x2019; loop initial declarations are only allowed in C99 mode
+   for(int i=0; i &lt; ipattern; i++)
+   ^
+tree.c:668:3: note: use option -std=c99 or -std=gnu99 to compile your code
+tree.c: In function &#x2018;patinclude&#x2019;:
+tree.c:679:3: error: &#x2018;for&#x2019; loop initial declarations are only allowed in C99 mode
+   for(int i=0; i &lt; pattern; i++)
+   ^
+tree.c: In function &#x2018;getinfo&#x2019;:
+tree.c:712:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   int isdir = (st.st_mode &amp; S_IFMT) == S_IFDIR;
+</code></pre><p>&#x4E0A;&#x9762;error&#x8BF4;&#x8FD9;&#x4E2A;&#x53EA;&#x80FD;&#x7528;c99&#x7F16;&#x8BD1;&#xFF0C;&#x7ED3;&#x679C;&#x4F60;&#x7684;MakeFile</p>
+<p><img src="5-&#x7F16;&#x8F91;&#x5B89;&#x88C5;httpd2.assets/image-20220221182652521.png" alt="image-20220221182652521"></p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x6211;&#x7684;&#x4E00;&#x53F0;centos8&#x91CC;&#x662F;CC=gcc&#xFF0C;&#x6CA1;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x53E6;&#x4E00;&#x53F0;centos7&#x91CC;&#xFF0C;&#x62A5;&#x9519;c99&#xFF0C;</p>
+<p>&#x7F51;&#x4E0A;&#x641C;&#x4E86;&#x4E0B;&#xFF0C;&#x8BF4;gcc&#x9ED8;&#x8BA4;&#x662F;&#x4F7F;&#x7528;c89&#xFF0C;&#x7136;&#x540E;&#x6211;rpm -ql&#x770B;&#x4E86;&#x4E00;&#x4E0B;</p>
+<p><img src="5-&#x7F16;&#x8F91;&#x5B89;&#x88C5;httpd2.assets/image-20220221182929846.png" alt="image-20220221182929846"></p>
+<p>&#x679C;&#x65AD;&#x4FEE;&#x6539;Makefile&#x91CC;&#x7684;<strong>CC=c99</strong>&#x5C31;&#x597D;&#x4E86;&#xFF0C;&#x4E0D;&#x660E;&#x89C9;&#x5389;~</p>
+<p>&#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#xFF0C;&#x4EBA;&#x5BB6;&#x8981;c99&#x5C31;&#x7ED9;&#x4ED6;c99&#x597D;&#x4E86;</p>
+<p>&#x6539;&#x6210;</p>
+<p><img src="5-&#x7F16;&#x8F91;&#x5B89;&#x88C5;httpd2.assets/image-20220221182830860.png" alt="image-20220221182830860"></p>
+<p>&#x518D;&#x6B21;make&#x5C31;&#x597D;&#x4E86;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-02-17 16:19:38
+2022-02-21 18:30:04
 </span></footer>
                                 
                                 </section>
@@ -3799,7 +3860,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节 编辑安装httpd2","level":"1.13.5","depth":2,"next":{"title":"第十二章 磁盘存储和文件系统","level":"1.14","depth":1,"path":"12-磁盘存储和文件系统/12-磁盘存储和文件系统.md","ref":"./12-磁盘存储和文件系统/12-磁盘存储和文件系统.md","articles":[{"title":"第1节 磁盘工作原理详解","level":"1.14.1","depth":2,"path":"12-磁盘存储和文件系统/1-磁盘工作原理详解.md","ref":"./12-磁盘存储和文件系统/1-磁盘工作原理详解.md","articles":[]},{"title":"第2节 MBR和GPT分区管理","level":"1.14.2","depth":2,"path":"12-磁盘存储和文件系统/2-MBR和GPT分区管理.md","ref":"./12-磁盘存储和文件系统/2-MBR和GPT分区管理.md","articles":[]},{"title":"第3节 MBR和GPT分区管理工具详解","level":"1.14.3","depth":2,"path":"12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.md","ref":"./12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.md","articles":[]},{"title":"第4节 文件系统管理实战","level":"1.14.4","depth":2,"path":"12-磁盘存储和文件系统/4-文件系统管理实战.md","ref":"./12-磁盘存储和文件系统/4-文件系统管理实战.md","articles":[]},{"title":"第5节 文件系统挂载","level":"1.14.5","depth":2,"path":"12-磁盘存储和文件系统/5-文件系统挂载.md","ref":"./12-磁盘存储和文件系统/5-文件系统挂载.md","articles":[]},{"title":"第6节 持久挂载实战故障排错和swap空间管理","level":"1.14.6","depth":2,"path":"12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","ref":"./12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","articles":[]},{"title":"第7节 外围设备使用","level":"1.14.7","depth":2,"path":"12-磁盘存储和文件系统/7-外围设备使用.md","ref":"./12-磁盘存储和文件系统/7-外围设备使用.md","articles":[]},{"title":"第8节 raid工作原理","level":"1.14.8","depth":2,"path":"12-磁盘存储和文件系统/8-raid工作原理.md","ref":"./12-磁盘存储和文件系统/8-raid工作原理.md","articles":[]},{"title":"第9节 LVM管理详解","level":"1.14.9","depth":2,"path":"12-磁盘存储和文件系统/9-LVM管理详解.md","ref":"./12-磁盘存储和文件系统/9-LVM管理详解.md","articles":[]}]},"previous":{"title":"第4节 实现yum源仓库和使用yum管理软件以及dnf","level":"1.13.4","depth":2,"path":"11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","ref":"./11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"11-软件包管理/5-编辑安装httpd2.md","mtime":"2022-02-17T08:19:38.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-18T10:29:28.719Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节 编辑安装httpd2","level":"1.13.5","depth":2,"next":{"title":"第十二章 磁盘存储和文件系统","level":"1.14","depth":1,"path":"12-磁盘存储和文件系统/12-磁盘存储和文件系统.md","ref":"./12-磁盘存储和文件系统/12-磁盘存储和文件系统.md","articles":[{"title":"第1节 磁盘工作原理详解","level":"1.14.1","depth":2,"path":"12-磁盘存储和文件系统/1-磁盘工作原理详解.md","ref":"./12-磁盘存储和文件系统/1-磁盘工作原理详解.md","articles":[]},{"title":"第2节 MBR和GPT分区管理","level":"1.14.2","depth":2,"path":"12-磁盘存储和文件系统/2-MBR和GPT分区管理.md","ref":"./12-磁盘存储和文件系统/2-MBR和GPT分区管理.md","articles":[]},{"title":"第3节 MBR和GPT分区管理工具详解","level":"1.14.3","depth":2,"path":"12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.md","ref":"./12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.md","articles":[]},{"title":"第4节 文件系统管理实战","level":"1.14.4","depth":2,"path":"12-磁盘存储和文件系统/4-文件系统管理实战.md","ref":"./12-磁盘存储和文件系统/4-文件系统管理实战.md","articles":[]},{"title":"第5节 文件系统挂载","level":"1.14.5","depth":2,"path":"12-磁盘存储和文件系统/5-文件系统挂载.md","ref":"./12-磁盘存储和文件系统/5-文件系统挂载.md","articles":[]},{"title":"第6节 持久挂载实战故障排错和swap空间管理","level":"1.14.6","depth":2,"path":"12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","ref":"./12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","articles":[]},{"title":"第7节 外围设备使用","level":"1.14.7","depth":2,"path":"12-磁盘存储和文件系统/7-外围设备使用.md","ref":"./12-磁盘存储和文件系统/7-外围设备使用.md","articles":[]},{"title":"第8节 raid工作原理","level":"1.14.8","depth":2,"path":"12-磁盘存储和文件系统/8-raid工作原理.md","ref":"./12-磁盘存储和文件系统/8-raid工作原理.md","articles":[]},{"title":"第9节 LVM管理详解","level":"1.14.9","depth":2,"path":"12-磁盘存储和文件系统/9-LVM管理详解.md","ref":"./12-磁盘存储和文件系统/9-LVM管理详解.md","articles":[]}]},"previous":{"title":"第4节 实现yum源仓库和使用yum管理软件以及dnf","level":"1.13.4","depth":2,"path":"11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","ref":"./11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"11-软件包管理/5-编辑安装httpd2.md","mtime":"2022-02-21T10:30:04.881Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-23T10:29:21.199Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

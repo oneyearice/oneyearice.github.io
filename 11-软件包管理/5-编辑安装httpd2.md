@@ -682,3 +682,88 @@ yum list installed也能看，但是不知道是哪个
 
 <img src="5-编辑安装httpd2.assets/image-20220215201338134.png" alt="image-20220215201338134" style="zoom:150%;" />
 
+
+
+
+
+补充：
+
+tree 编译安装的其他问题处理记录
+
+```
+root@vpn tree-2.0.2]#make
+gcc -O3 -pedantic -Wall -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -c -o tree.o tree.c
+In file included from tree.c:20:0:
+tree.h:63:1: warning: C++ style comments are not allowed in ISO C90 [enabled by default]
+ // Start using PATH_MAX instead of the magic number 4096 everywhere.
+ ^
+tree.h:63:1: warning: (this will be reported only once per input file) [enabled by default]
+tree.c:47:1: warning: C++ style comments are not allowed in ISO C90 [enabled by default]
+ //off_t (*listdir)(char *, int *, int *, u_long, dev_t) = unix_listdir;
+ ^
+tree.c:47:1: warning: (this will be reported only once per input file) [enabled by default]
+tree.c: In function ‘main’:
+tree.c:100:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   bool needfulltree;
+   ^
+tree.c:124:29: warning: ISO C90 forbids compound literals [-Wpedantic]
+   lc = (struct listingcalls){
+                             ^
+tree.c:138:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   char *stddata_fd = getenv(ENV_STDDATA_FD);
+   ^
+tree.c:145:33: warning: ISO C90 forbids compound literals [-Wpedantic]
+       lc = (struct listingcalls){
+                                 ^
+tree.c:263:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c:271:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c:279:30: warning: ISO C90 forbids compound literals [-Wpedantic]
+    lc = (struct listingcalls){
+                              ^
+tree.c: In function ‘usage’:
+tree.c:659:2: warning: string length ‘3348’ is greater than the length ‘509’ ISO C90 compilers are required to support [-Woverlength-strings]
+  "  --            Options processing terminator.\n");
+  ^
+tree.c: In function ‘patignore’:
+tree.c:668:3: error: ‘for’ loop initial declarations are only allowed in C99 mode
+   for(int i=0; i < ipattern; i++)
+   ^
+tree.c:668:3: note: use option -std=c99 or -std=gnu99 to compile your code
+tree.c: In function ‘patinclude’:
+tree.c:679:3: error: ‘for’ loop initial declarations are only allowed in C99 mode
+   for(int i=0; i < pattern; i++)
+   ^
+tree.c: In function ‘getinfo’:
+tree.c:712:3: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+   int isdir = (st.st_mode & S_IFMT) == S_IFDIR;
+
+```
+
+上面error说这个只能用c99编译，结果你的MakeFile
+
+![image-20220221182652521](5-编辑安装httpd2.assets/image-20220221182652521.png)
+
+
+
+注意，在我的一台centos8里是CC=gcc，没问题的，但是在另一台centos7里，报错c99，
+
+网上搜了下，说gcc默认是使用c89，然后我rpm -ql看了一下
+
+![image-20220221182929846](5-编辑安装httpd2.assets/image-20220221182929846.png)
+
+果断修改Makefile里的**CC=c99**就好了，不明觉厉~
+
+所以不管怎么说，人家要c99就给他c99好了
+
+改成
+
+![image-20220221182830860](5-编辑安装httpd2.assets/image-20220221182830860.png)
+
+再次make就好了
+
+
+

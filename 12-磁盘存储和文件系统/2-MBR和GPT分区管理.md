@@ -213,7 +213,7 @@ EBR不固定，是因为扩展分区不固定，第一个EBR不固定，自然�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image084.jpg)
 
-ps：不管你skip510还是seek510，skipxxxx得到的是/data/dpt里的55aa，显然dpt只有66B，skip写错了，下面改过来了。
+ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa，显然dpt只有66B，skip写错了，下面改过来了。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image086.jpg)
 
@@ -305,9 +305,11 @@ ps：不管你skip510还是seek510，skipxxxx得到的是/data/dpt里的55aa，�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image131.jpg)
 
-同时你要知道，此时是光盘加载的，数据拷贝过来都是放在内存里的，重启就没了。
+同时你要知道，此时是光盘加载的，数据拷贝过来都是放在**内存里**的，**重启就没了**。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image133.jpg)
+
+上图👆注意 ：XXX不管，是刚才加的。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image135.jpg)
 
@@ -327,7 +329,7 @@ ps：不管你skip510还是seek510，skipxxxx得到的是/data/dpt里的55aa，�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image145.jpg)
 
-写硬盘的话：工作原理，是把内存的数据先放到缓冲区里，过一会再放到硬盘里。
+写硬盘的话：工作原理，是把内存的数据先放到缓冲区里，**过一会**再放到硬盘里。
 
 dd 命令你看到提示ok了，但其实还在缓冲区里呢。你立马重启缓冲区内容就清了，此时就造成了数据写失败。所以不能捉急。
 
@@ -341,7 +343,7 @@ dd 命令你看到提示ok了，但其实还在缓冲区里呢。你立马重启
 
 ![img](2-MBR和GPT分区管理.assets/clip_image151.jpg)
 
-此时硬盘已经还原，系统已经能识别了。
+此时硬盘已经还原，系统已经能识别了--系统就是装在硬盘里的，能识别自然就说明硬盘分区恢复了。
 
  
 
@@ -355,17 +357,19 @@ dd 命令你看到提示ok了，但其实还在缓冲区里呢。你立马重启
 
 ![img](2-MBR和GPT分区管理.assets/clip_image155.jpg)
 
+dpt  disk partition table
+
 ========================================================
 
  
 
 ![img](2-MBR和GPT分区管理.assets/clip_image156.png)
 
-实际上整个硬盘都不能超过2T，不是说分区不能超过2T。超过MBR就没办法了。为啥，不是分区表里的的bit位算出来的针对单个分区的，为啥说是整个硬盘呢。不是，你再看下原来的图
+实际上整个硬盘都不能超过2T，不是说分区不能超过2T。超过MBR就没办法了。为啥，分区表里的的bit位算出来的不是针对单个分区的，为啥说是整个硬盘呢。你再看下原来的图
 
 ![img](2-MBR和GPT分区管理.assets/clip_image157.jpg)
 
-他那个4字节里填写的是起始和结束位，结束位本身就是2^32*512B=2T的上限，2^32个bit位用来多次表达分区起始位置，所以怎么算整体的表达能力就是2T空间。这个好理解，我们那两个bit位来表示空间，00-01,01-10,10-11,11-00，没了，是不是一共也就会2^4个分段。
+他那个4字节“分区起始LBA”里填写的是起始和结束位，结束位本身就是2^32*512B=2T的上限，2^32个bit位用来多次表达分区起始位置，所以怎么算整体的表达能力就是2T空间。这个好理解，我们拿两个bit位类比来表示空间，00-01,01-10,10-11,11-00，没了，是不是一共也就会2^4个分段。它是续接的，不是每次都重新编号的。
 
  
 
@@ -387,7 +391,7 @@ dd 命令你看到提示ok了，但其实还在缓冲区里呢。你立马重启
 
 ![img](2-MBR和GPT分区管理.assets/clip_image165.png)
 
-
+▲面试题有了：问：windows硬盘分区底色是绿色是啥情况？哈哈哈，气死人不偿命~
 
 变色，就是自动将第4个分到一个扩展分区里面了，然后自动创建了一个逻辑分区。
 
@@ -409,9 +413,13 @@ dd 命令你看到提示ok了，但其实还在缓冲区里呢。你立马重启
 
 再说会GPT分区
 
+<img src="2-MBR和GPT分区管理.assets/image-20220222150448013.png" alt="image-20220222150448013" style="zoom:50%;" />
+
+![image-20220222150544787](2-MBR和GPT分区管理.assets/image-20220222150544787.png)
+
 ![img](2-MBR和GPT分区管理.assets/clip_image174.jpg)
 
-UUID是国际标准，微软发布了GUID属于UUID的具体实现。
+UUID是国际标准，微软发布的GUID属于UUID的具体实现。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image176.jpg)
 
@@ -419,9 +427,17 @@ UUID后面写的是16进制。128bit，就是32个16进制。
 
 IPv6也是128位，这个UUID也是128位。
 
- 
+```
+题外话：
+[14:54:45 root@pyConsole ~]#cat /etc/fstab  | grep UUID |cut -d "=" -f 2 | cut -d " " -f1 |cut -d "$" -f1 |cat -A
+07507cea-e91c-42ff-9cc9-ca3eb61212f0$
+[14:54:48 root@pyConsole ~]#cat /etc/fstab  | grep UUID |cut -d "=" -f 2 | cut -d " " -f1 |wc -c
+37
 
-UUID生成
+wc这个算字符是把最后的$也算上去了哦，我输过了是36个~对输过了，要赢回来的
+```
+
+UUID生成工具uuidgen,▲各种生成工具可以整一波~
 
 ![img](2-MBR和GPT分区管理.assets/clip_image178.jpg)
 
@@ -437,7 +453,9 @@ Protective MBR完全是保护后续的GPT分区信息的。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image183.jpg)
 
- 
+ 👆一组4个分区的定界信息。
+
+
 
 ![img](2-MBR和GPT分区管理.assets/clip_image185.jpg)     ![img](2-MBR和GPT分区管理.assets/clip_image187.jpg)
 
@@ -459,15 +477,27 @@ Partitioin Header头部和分区表 都 有备份
 
 UEFI启动就得配合GPT分区。
 
+
+
+## BIOS+MBR与UEFI+GPT
+
+这样的，BIOS启动，UEFI启动，这两个启动，启动的时候要引导操作系统的，①而引导如果安装在GPT，就只能用UEFI启动；②BIOS启动的只能MBR分区方式里的引导。③BIOS可以使用GPT分区，只是用来存放数据而不是OS，这个其实是搞笑的说法，因为BIOS通过MBR分区里的引导操作系统启动后，然后就是通过windows/linux操作系统来识别GPT，从而达到在GPT分区中存放数据的效果。
+
+启动的时候只能靠BIOS和UEFI本身去引导操作系统的。
+
+
+
 ![img](2-MBR和GPT分区管理.assets/clip_image191.jpg)
 
-虽然UEFI也支持GPT，但是没有意义了
+虽然UEFI也支持MBR，但是没有意义了，UEFI虽然支持MBR启动，但必须要有UEFI引导文件存放在FAT分区下；UEFI是无法使用传统MBR引导来启动系统的。
 
 你要把操作系统装在GPT上，就有要硬件的UEFI支持（就是新的硬件已经不用BIOS咯）才能启动。
 
- 
+ 常用的BIOS+MBR分区里安装系统+另一块硬盘GPT来支持超过2T的空间。这个可以有，不过直接UEFI+GPT不更香么。这是家庭电脑才需一块磁盘超过2T吧，工作中一般来讲服务器-装软件用不了多大空间，而大数据的话用mysql-mysql本身达到T级别早就分库了--拆成好几份，每个机器上放点。也不需要单硬盘超过2T的场景吧。
 
  
+
+## 开始搞命令：lsbk这些cli
 
 ![img](2-MBR和GPT分区管理.assets/clip_image193.jpg)
 
@@ -479,31 +509,39 @@ list block lsblk在centos 6 和 7上都可以用。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image197.jpg)
 
- 
+ 👆就是5的util-linux这个工具集咯应该，里面不带lsblk软件，6\7 带的。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image199.jpg)
 
- 
+###  man fdisk👇
 
 ![img](2-MBR和GPT分区管理.assets/clip_image200.png)
 
- 
+ 👆man 可见fdisk就是不支持gpt分区的，所以生产中肯定不行的。
+
+### man下gdisk👇
 
 ![img](2-MBR和GPT分区管理.assets/clip_image201.png)
 
- 
+###  man parted👇
 
 ![img](2-MBR和GPT分区管理.assets/clip_image203.jpg)
 
 ![img](2-MBR和GPT分区管理.assets/clip_image204.png)
 
-partprobe也称为同步的问题
+parted工具 分区时即时生效的 操作时要小心，很容易因误操作把你的分区表破坏了就。
+
+partprobe同步的问题，后面再说。
 
  
+
+## parted使用要小心
 
 ![img](2-MBR和GPT分区管理.assets/clip_image205.png)
 
 ![img](2-MBR和GPT分区管理.assets/clip_image207.jpg)
+
+### fdisk查看分区，了解什么字眼代表什么分区
 
 ![img](2-MBR和GPT分区管理.assets/clip_image209.jpg)
 
@@ -529,7 +567,7 @@ partprobe也称为同步的问题
 
 ![img](2-MBR和GPT分区管理.assets/clip_image221.png)
 
-这是个加的MBR，呵呵
+这是个假的MBR，呵呵
 
  
 
@@ -577,7 +615,7 @@ partprobe也称为同步的问题
 
 ![img](2-MBR和GPT分区管理.assets/clip_image240.png)
 
-所以可见分区必须是连续空间。
+### 所以可见分区必须是连续空间。
 
  
 
