@@ -3527,7 +3527,7 @@ https://www.linuxidc.com/Linux/2019-04/158216.htm
 <p>&#x91CD;&#x65B0;&#x6302;&#x8F7D;&#x6210;rw&#x8BFB;&#x5199;&#xFF0C;&#x6CA1;&#x5FC5;&#x8981;unmount &#x5728;mount&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x547D;&#x4EE4;mount -o remount,rw &#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x53D6;&#x6D88;&#x6302;&#x8F7D;&#x3002;&#x6548;&#x679C;&#x4E0A;&#x662F;&#x91CD;&#x65B0;&#x6302;&#x8F7D;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x53D6;&#x6D88;&#x6302;&#x8F7D;&#x7684;&#x3002;</p>
 <p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220301173008500-16461270089372.png" alt="image-20220301173008500"></p>
 <p>&#x6765;&#x4E86;&#xFF0C;&#x4E00;&#x822C;&#x5206;&#x533A;&#x53EF;&#x4EE5;&#x53D6;&#x6D88;&#x6302;&#x8F7D;unmount&#x518D;mount&#x6302;&#x8F7D;&#xFF0C;&#x800C;/&#x6839;&#x4E0D;&#x80FD;unmount&#x3002;</p>
-<h3 id="&#x6839;-&#x4E0D;&#x652F;&#x6301;unmount&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;remount&#x3002;">&#x6839; &#x4E0D;&#x652F;&#x6301;unmount&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;remount&#x3002;</h3>
+<h3 id="&#x6839;-&#x4E0D;&#x652F;&#x6301;unmount&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;remount&#x3002;">&#x6839;/ &#x4E0D;&#x652F;&#x6301;unmount&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;remount&#x3002;</h3>
 <p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220301173306405.png" alt="image-20220301173306405"></p>
 <p>&#x56E0;&#x4E3A;/&#x6839;&#x8981;&#x662F;&#x53D6;&#x6D88;&#x4E86;&#xFF0C;/proc&#x8FD9;&#x4E9B;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4E1C;&#x897F;&#x4E0D;&#x4E5F;&#x90FD;&#x662F;&#x5728;/&#x6839;&#x4E0B;&#x9762;&#x561B;&#xFF0C;&#x5982;&#x679C;&#x6839;&#x53D6;&#x6D88;&#xFF0C;&#x90A3;&#x4E48;&#x5185;&#x5B58;&#x7684;&#x4E1C;&#x897F;&#x4E5F;&#x5C31;&#x6CA1;&#x6709;FS&#x652F;&#x6301;&#xFF0C;&#x4E5F;&#x5C31;&#x770B;&#x4E0D;&#x5230;&#x4E86;&#xFF0C;&#x4E5F;&#x8BB8;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x754C;&#x9762;&#x90FD;&#x6CA1;&#x4E86;&#x3002;</p>
 <p>&#x6B64;&#x65F6;&#x91CD;&#x70B9;&#x6765;&#x4E86;&#xFF0C;&#x5982;&#x679C;/&#x6839;&#x8981;&#x4FEE;&#x6539;&#x6302;&#x8F7D;&#x5C5E;&#x6027;&#xFF0C;&#x5C31;&#x5F97;&#x7528;remount&#x547D;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;remount&#x53EF;&#x4E0D;&#x662F;&#x771F;&#x6B63;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x5148;unmount&#x5728;mount&#x3002;</p>
@@ -3591,8 +3591,115 @@ https://www.linuxidc.com/Linux/2019-04/158216.htm
 <p>&#x6709;&#x4E2A;&#x5730;&#x65B9;&#x5168;&#x90FD;&#x770B;&#x5F97;&#x5230;&#xFF0C;&#x5C31;&#x662F;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x4F46;&#x662F;centos7&#x4E0B;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;-n&#x529F;&#x80FD;&#xFF0C;&#x56E0;&#x4E3A;7&#x91CC;&#x9762;&#x7684;/etc/mnt&#x5C31;&#x662F;/proc/mounts&#x5185;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;-n&#x5728;centos7&#x4E0B;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x3002;&#x54C8;&#x54C8;</p>
 <p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220301184207112.png" alt="image-20220301184207112"></p>
 <p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220301174157926.png" alt="image-20220301174157926"></p>
+<p><strong>-a &#x548C;fstab&#x6709;&#x5173;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x8BF4;</strong></p>
+<h3 id="&#x4E00;&#x822C;&#x662F;&#x8BBE;&#x5907;&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#x8F7D;&#xFF0C;&#x8FD8;&#x652F;&#x6301;-&#x6587;&#x4EF6;&#x5939;-&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#xFF0C;">&#x4E00;&#x822C;&#x662F;&#x8BBE;&#x5907;&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#x8F7D;&#xFF0C;&#x8FD8;&#x652F;&#x6301; &#x6587;&#x4EF6;&#x5939; &#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#xFF0C;</h3>
+<p>mount -B /boot /mnt/boot</p>
+<p>&#x8981;&#x6C42;&#x6587;&#x4EF6;&#x5939;&#x5F97;&#x662F;&#x4E2A;&#x5757;&#x8BBE;&#x5907;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302091409311.png" alt="image-20220302091409311"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302091312074-16461835926131.png" alt="image-20220302091312074"></p>
+<p>&#x89E3;&#x51B3;&#x4E86;&#x786C;&#x8FDE;&#x63A5;&#x4E0D;&#x652F;&#x6301;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x95EE;&#x9898;&#x3002;&#x83AB;&#x540D;&#x5176;&#x5999;&#x7684;&#xFF0C;&#x7528;&#x8F6F;&#x8FDE;&#x63A5;&#x4E0D;&#x884C;&#x5417;&#x3002;</p>
+<h3 id="&#x4E5F;&#x652F;&#x6301;-&#x6587;&#x4EF6;-&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;">&#x4E5F;&#x652F;&#x6301; &#x6587;&#x4EF6; &#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;</h3>
+<p>&#x8981;&#x6C42;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x7B26;&#x5408;&#x4E00;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8981;&#x6C42;</p>
+<p>&#x524D;&#x9762;&#x90FD;&#x662F;&#x9488;&#x5BF9;&#x5206;&#x533A;&#x505A;&#x683C;&#x5F0F;&#x5316; &#x4E5F;&#x5C31;&#x662F;&#x505A;&#x6210;ext4\xfs&#x4E4B;&#x7C7B;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x627E;&#x4E00;&#x4E2A;&#x5927;&#x6587;&#x4EF6;&#x6765;&#x5F04;</p>
+<p>1&#x3001;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;/data/disk</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302093700621.png" alt="image-20220302093700621"></p>
+<p>2&#x3001;&#x9488;&#x5BF9;&#x8BE5;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302094003737.png" alt="image-20220302094003737"></p>
+<p>&#x76F4;&#x63A5;&#x67E5;&#x770B;&#x786E;&#x5B9E;&#x6709;&#x7684;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302094036764.png" alt="image-20220302094036764"></p>
+<p>&#x8FD9;&#x4E2A;disk&#x6587;&#x4EF6;&#x4E0A;&#x9762;&#x5C31;&#x6709;&#x4E86;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x65E2;&#x7136;&#x6709;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x548C;&#x5206;&#x533A;&#x4E00;&#x6837;&#x6302;&#x8F7D;&#x5230;&#x6587;&#x4EF6;&#x5939;&#x91CC;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302094317243.png" alt="image-20220302094317243"></p>
+<p>&#x6302;&#x4E0A;&#x540E;&#x7684;&#x663E;&#x793A;&#x6548;&#x679C;&#x4E0D;&#x592A;&#x7B26;&#x5408;&#x9884;&#x671F;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302094639062.png" alt="image-20220302094639062"></p>
+<p>PS&#xFF1A;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x672C;&#x8EAB;&#x6302;&#x8F7D;&#x65F6;&#x4E0D;&#x5141;&#x8BB8; &#x4E00;&#x4E2A;&#x975E;&#x8BBE;&#x5907;(&#x5206;&#x533A;&#x81EA;&#x7136;&#x7B97;&#x8BBE;&#x5907;&#x7684;)&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#x7684;&#x3002;&#x73B0;&#x5728;&#x65F6;&#x6587;&#x4EF6;&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#xFF0C;&#x5C31;&#x5206;&#x914D;&#x4E86;&#x4E00;&#x4E2A;loop0&#x73AF;&#x56DE;&#x8BBE;&#x5907;&#xFF0C;&#x7528;loop0&#x8BBE;&#x5907;&#x548C;&#x6587;&#x4EF6;&#x5173;&#x8054;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7528;loop0&#x8BBE;&#x5907;&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#x8F7D;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x95F4;&#x63A5;&#x5B9E;&#x73B0;&#x4E86;&#x6587;&#x4EF6;&#x5F80;&#x6587;&#x4EF6;&#x5939;&#x4E0A;&#x6302;&#x8F7D;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#x5728;centos6&#x4E0A;&#x9700;&#x8981;&#x624B;&#x52A8;&#x52A0;&#x9009;&#x9879;&#x6765;&#x5B9E;&#x73B0;loop&#x8BBE;&#x5907;&#x7684;&#x5206;&#x914D;</p>
+<p>&#x7136;&#x540E;&#x518D;&#x770B;&#x4E0B;centos6&#x4E0A;&#x9762;&#x7684;&#x60C5;&#x51B5;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302094544385.png" alt="image-20220302094544385"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095019075.png" alt="image-20220302095019075"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095057779.png" alt="image-20220302095057779"></p>
+<p>centos6&#x76F4;&#x63A5;&#x663E;&#x793A;&#x7684;&#x5C31;&#x662F;/data/disk2&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;loop&#x8BBE;&#x5907;&#x3002;7&#x662F;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#xFF0C;&#x663E;&#x793A;&#x7684;&#x662F;loop&#x8BBE;&#x5907;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;losetup -a&#x67E5;&#x770B;&#x5206;&#x914D;&#x7684;&#x5230;&#x5E95;&#x662F;loop&#x51E0;&#xFF1F;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095220487.png" alt="image-20220302095220487"></p>
+<p>loop&#x7684;&#x4E2A;&#x6570;&#xFF0C;centos6&#x6700;&#x591A;&#x652F;&#x6301;8&#x4E2A;&#x6587;&#x4EF6;&#x6302;&#x8F7D;&#xFF0C;7&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x9650;&#x5236;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095302496.png" alt="image-20220302095302496"></p>
+<p>centos7&#x662F;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x3002;/dev/loop0&#x5C31;&#x662F;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095337823.png" alt="image-20220302095337823" style="zoom:80%;"></p>
+<p>&#x5982;&#x679C;centos6&#x7684;loop&#x8BBE;&#x5907;&#x6D88;&#x8017;&#x5149;&#x4E86;&#xFF0C;&#x4E5F;&#x6709;&#x529E;&#x6CD5;&#xFF0C;mknod&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x5C31;&#x884C;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095546916.png" alt="image-20220302095546916"></p>
+<p>7 100&#x662F;&#x8BBE;&#x5907;&#x7F16;&#x53F7;&#x7C7B;&#x578B;</p>
+<p>b&#x662F;&#x5757;&#x8BBE;&#x5907;</p>
+<p>&#x4E0A;&#x9762;&#x662F;&#x547D;&#x4EE4;&#x624B;&#x52A8;&#x6DFB;&#x52A0;&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5185;&#x6838;&#x5B9E;&#x73B0;&#x5F00;&#x673A;&#x5373;&#x5F97;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095841246.png" alt="image-20220302095841246" style="zoom:80%;"> </p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302095815572.png" alt="image-20220302095815572"></p>
+<p>&#x91CD;&#x542F;&#x5C31;&#x4F1A;&#x5F97;&#x5230;100loop&#x8BBE;&#x5907;&#xFF0C;centos7&#x7528;&#x4E0D;&#x7740;&#x8FD9;&#x6837;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302100024608.png" alt="image-20220302100024608" style="zoom:80%;"></p>
+<p>&#x8FDB;&#x4E00;&#x6B65; &#x5B9E;&#x73B0;&#x4EBA;&#x5DE5;&#x6307;&#x5B9A;loop&#x51E0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x81EA;&#x52A8;&#x5206;&#x914D;&#xFF0C;  &#x9898;&#x5916;&#x8BDD;&#xFF0C;&#x6211;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x5565;&#x8001;&#x5E08;&#x8981;&#x5C06;&#x8FD9;&#x4E48;&#x4E45;loop&#xFF0C;&#x6709;&#x6BDB;&#x7528;&#x554A;&#xFF1F;</p>
+<p>&#x4E0A;&#x9762;&#x91CD;&#x542F;&#x8FC7;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x4E4B;&#x524D;mount&#x7684;&#x5E94;&#x8BE5;&#x4E22;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;unmount&#x4E86;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302100428466.png" alt="image-20220302100428466"></p>
+<p>&#x4E0A;&#x56FE;&#x62A5;&#x9519;&#xFF0C;&#x6392;&#x67E5;&#x4E0B;,loop&#x5199;&#x9519;&#x4E86;&#x662F;66&#x4E0D;&#x662F;6</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302100752991.png" alt="image-20220302100752991"></p>
+<p>&#x62F7;&#x70B9;&#x6587;&#x4EF6;&#x8FC7;&#x6765;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302105203381.png" alt="image-20220302105203381"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302105704939.png" alt="image-20220302105704939"></p>
+<p>&#x7136;&#x540E;unmount&#x540E;&#x590D;&#x5236;&#x5230;&#x5176;&#x4ED6;&#x673A;&#x5668;&#xFF0C;&#x53BB;&#x6302;&#x8F7D;&#x67E5;&#x770B;&#x6587;&#x4EF6;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302104935126.png" alt="image-20220302104935126"></p>
+<p>&#x7136;&#x540E;&#x5230;192.168.37.7&#x4E0A;&#x53BB;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302105803972.png" alt="image-20220302105803972"></p>
+<p>&#x544A;&#x8BC9;&#x4F60;&#x4E86;&#xFF0C;&#x4E0A;&#x9762;&#x6709;ext4&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302110135768.png" alt="image-20220302110135768"></p>
+<p>&#x76F8;&#x5F53;&#x4E8E;U&#x76D8;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x8981;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;&#x4E48;&#xFF0C;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x4E0D;&#x9999;&#x5417;&#xFF1F;&#x54E6;&#xFF0C;&#x5177;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x9690;&#x85CF;&#x6548;&#x679C;&#xFF0C;&#x522B;&#x4EBA;&#x6253;&#x4E0D;&#x5F00;&#x8FD9;&#x4E2A;/data/disk2&#xFF0C;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x770B;&#xFF0C;&#x4F60;&#x4E00;&#x6302;&#x8F7D;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x4E86;&#x3002;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302110656073.png" alt="image-20220302110656073"></p>
+<p>mount &#x9009;&#x9879;&#x590D;&#x4E60;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302111732939.png" alt="image-20220302111732939" style="zoom:80%;"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302111946827.png" alt="image-20220302111946827"></p>
+<p>&#x901A;&#x8FC7;tun2efs -l /dev/sdb1&#x770B;&#x4E0B;&#x5F53;&#x524D;&#x5206;&#x533A;&#x6709;&#x6CA1;&#x6709;&#x652F;&#x6301;&#x9ED8;&#x8BA4;acl&#x7684;&#x6302;&#x8F7D;&#x529F;&#x80FD;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302112118928.png" alt="image-20220302112118928"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302112134202.png" alt="image-20220302112134202"></p>
+<p>&#x6302;&#x8F7D;&#x540E;&#xFF0C;&#x590D;&#x5236;&#x6587;&#x4EF6;&#x8FC7;&#x53BB;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302112203995.png" alt="image-20220302112203995"></p>
+<p>&#x53EF;&#x89C1;centos6&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x652F;&#x6301;facl&#x7684;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302112444977.png" alt="image-20220302112444977"></p>
+<p>&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x4E0A;&#x4E00;&#x8282;&#x4E5F;&#x8BB2;&#x8FC7;&#xFF0C;&#x2460;&#x5C31;&#x662F;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x6302;&#x8F7D;&#x5C5E;&#x6027;&#xFF0C;&#x2461;&#x5C31;&#x662F;&#x8FD9;&#x91CC;&#x7684;mount -o&#x5E26;&#x4E0A;acl</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302112907245.png" alt="image-20220302112907245"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302113302587.png" alt="image-20220302113302587"></p>
+<p>&#x53D6;&#x6D88;acl&#x7684;&#x4E5F;&#x662F;&#x7528;mount -o remount,noacl /mnt/sdb1</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302113503104.png" alt="image-20220302113503104"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302113605305.png" alt="image-20220302113605305"></p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302113957563.png" alt="image-20220302113957563"></p>
+<p>&#x8FD9;&#x4E2A;&#x548C;fstab&#x6709;&#x5173;&#xFF0C;&#x7A0D;&#x540E;&#x518D;&#x8BF4;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302114238372.png" alt="image-20220302114238372" style="zoom: 67%;"> </p>
+<p>&#x8FD9;&#x662F;&#xFF0C;&#x8BBE;&#x5907;(&#x5206;&#x533A;)&#x91CC;&#x9762;&#x7684;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x80FD;&#x5426;&#x6267;&#x884C;&#x3002;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302114702332.png" alt="image-20220302114702332"> </p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302114712123.png" alt="image-20220302114712123" style="zoom:67%;"> </p>
+<p>&#x8FD9;&#x4E2A;&#x5389;&#x5BB3;&#x7684;&#xFF0C;&#x6302;U&#x76D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x25B2;&#x5982;&#x679C;U&#x76D8;&#x91CC;&#x653E;&#x4E00;&#x4E2A;&#x5E26;&#x6709;suid&#x7684;vim&#x4E8C;&#x8FDB;&#x5236;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x62F7;&#x8FDB;&#x53BB;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5F88;&#x5371;&#x9669;&#x4E86;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x7EE7;&#x627F;&#x4E86;&#x7BA1;&#x7406;&#x5458;&#x6743;&#x9650;&#x4E86;&#x3002; &#x6B64;&#x65F6;&#x8003;&#x8651;&#x5B89;&#x5168;&#xFF0C;&#x6240;&#x4EE5;&#x6302;&#x8F7D;U&#x76D8;&#x90FD;&#x662F;&#x5C31;&#x8981;mount -o nosuid</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302114930927.png" alt="image-20220302114930927" style="zoom:67%;"> </p>
+<p>&#x5176;&#x4ED6;&#xFF1A;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302115330193.png" alt="image-20220302115330193" style="zoom:67%;"> </p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302115419971.png" alt="image-20220302115419971"></p>
+<p>&#x540C;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x7ACB;&#x5373;&#x5199;&#x78C1;&#x76D8;&#xFF0C;&#x5185;&#x5B58;&#x6539;&#x4E86;&#x78C1;&#x76D8;&#x4E5F;&#x6539;&#x4E86;&#x3002;&#x5F02;&#x6B65;&#x5C31;&#x662F;&#x653E;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#x7B49;&#x4F1A;&#x518D;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x91CC;&#x3002;</p>
+<p>&#x5F02;&#x6B65; &#x901F;&#x5EA6;&#x5FEB;&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x7A0B;&#x5E8F;&#x6765;&#x8BB2; &#x653E;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#x5C31;&#x7B97;&#x5B58;&#x50A8;&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5982;&#x679C;&#x6389;&#x7535;&#x5C31;GG&#x4E86;</p>
+<p>&#x540C;&#x6B65; &#x66F4;&#x53EF;&#x9760;&#x4E9B;&#xFF0C;&#x901F;&#x5EA6;&#x6162;&#x70B9;&#x3002;</p>
+<p>mount &#x540E;&#x9762;&#x7684;&#x9009;&#x9879;&#x5565;&#x4E5F;&#x4E0D;&#x8DDF;&#x5C31;&#x7B49;&#x4E8E;&#xFF1A;</p>
+<p><img src="5-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;.assets/image-20220302115745787.png" alt="image-20220302115745787"></p>
+<p>&#x4EE5;&#x4E0A;&#x90FD;&#x662F;&#x4E34;&#x65F6;&#x6027;&#x6302;&#x8F7D;&#xFF0C;&#x7A0D;&#x540E;&#x4ECB;&#x7ECD;&#x6301;&#x4E45;&#x6027;&#x6302;&#x8F7D;&#x3002;</p>
+<p>fdisk</p>
+<p>gdisk</p>
+<p>parted</p>
+<p>partx</p>
+<p>partprobe</p>
+<p>e2fsck</p>
+<p>e2label</p>
+<p>blkid</p>
+<p>dumpe2fs</p>
+<p>mkfs.xxx</p>
+<p>mkfs</p>
+<p>mke2fs</p>
+<p>mknod</p>
+<p>tune2fs</p>
+<p>xfs_info</p>
+<p>xfs_repair</p>
+<p>losetup</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-03-01 18:43:38
+2022-03-02 12:01:02
 </span></footer>
                                 
                                 </section>
@@ -3636,7 +3743,7 @@ https://www.linuxidc.com/Linux/2019-04/158216.htm
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节 文件系统挂载","level":"1.14.5","depth":2,"next":{"title":"第6节 持久挂载实战故障排错和swap空间管理","level":"1.14.6","depth":2,"path":"12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","ref":"./12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","articles":[]},"previous":{"title":"第4节 文件系统管理实战","level":"1.14.4","depth":2,"path":"12-磁盘存储和文件系统/4-文件系统管理实战.md","ref":"./12-磁盘存储和文件系统/4-文件系统管理实战.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"12-磁盘存储和文件系统/5-文件系统挂载.md","mtime":"2022-03-01T10:43:38.820Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-01T10:43:58.788Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节 文件系统挂载","level":"1.14.5","depth":2,"next":{"title":"第6节 持久挂载实战故障排错和swap空间管理","level":"1.14.6","depth":2,"path":"12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","ref":"./12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.md","articles":[]},"previous":{"title":"第4节 文件系统管理实战","level":"1.14.4","depth":2,"path":"12-磁盘存储和文件系统/4-文件系统管理实战.md","ref":"./12-磁盘存储和文件系统/4-文件系统管理实战.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"12-磁盘存储和文件系统/5-文件系统挂载.md","mtime":"2022-03-02T04:01:02.978Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-03T01:00:44.307Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
