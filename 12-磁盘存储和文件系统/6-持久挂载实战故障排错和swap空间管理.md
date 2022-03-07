@@ -566,5 +566,12 @@ swap除了建议放到机械盘的外圈，更加推荐使用固态盘。
 
 
 
+删除swap其实上面已经有了，这里再写一下方面看
 
+1、fstab里删掉
 
+2、swapoff /dev/sdb1 如果是文件swapoff /swapfile 名字无所谓，就是意思一下；swapon -s看下确认下
+
+3、删分区，fdisk--->p ----> d  ----> 1  意思意思不要照抄；删文件rm -rf /swapfile
+
+4、partprobe同步下
