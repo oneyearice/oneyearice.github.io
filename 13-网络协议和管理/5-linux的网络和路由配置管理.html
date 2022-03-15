@@ -3480,8 +3480,210 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7B2C;5&#x8282;-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;">&#x7B2C;5&#x8282;. linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;</h1>
+<h2 id="&#x4FEE;&#x6539;&#x7F51;&#x5361;&#x540D;-&#x65B9;&#x6CD5;1-&#x7F51;&#x5361;&#x9A71;&#x52A8;&#x6A21;&#x5757;">&#x4FEE;&#x6539;&#x7F51;&#x5361;&#x540D;-&#x65B9;&#x6CD5;1-&#x7F51;&#x5361;&#x9A71;&#x52A8;&#x6A21;&#x5757;</h2>
+<p>&#x7814;&#x7A76;&#x4E0B;&#x4E3A;&#x4EC0;&#x4E48;&#x662F;eth1&#xFF0C;&#x600E;&#x4E48;&#x6539;&#xFF0C;&#x8FD9;&#x662F;centos6&#x7684;&#xFF1A;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315091523380.png" alt="image-20220315091523380"></p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315092958594.png" alt="image-20220315092958594"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093035859.png" alt="image-20220315093035859"></p>
+<p>&#x53EF;&#x89C1;eth0&#x5DF2;&#x7ECF;&#x88AB;&#x67D0;&#x4E2A;mac&#x5360;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x73B0;&#x5728;&#x770B;&#x5230;&#x7684;&#x5C31;&#x662F;eth1&#x4E86;&#x3002;</p>
+<p>&#x5220;&#x9664;&#x5E76;&#x4FEE;&#x6539;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093143457.png" alt="image-20220315093143457"></p>
+<p>&#x4FEE;&#x6539;&#x540E;&#xFF0C;&#x91CD;&#x542F;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x662F;&#x4E0D;&#x884C;&#x7684;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093236310.png" alt="image-20220315093236310"></p>
+<p>&#x8981;&#x4FEE;&#x6539;eth1&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#xFF0C;&#x9700;&#x8981;&#x5378;&#x8F7D;&#x7F51;&#x5361;&#x9A71;&#x52A8;&#xFF0C;&#x5E76;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x9A71;&#x52A8;&#x3002;</p>
+<p>mii-tool &#x67E5;&#x770B;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093339559.png" alt="image-20220315093339559"> </p>
+<p>&#x67E5;&#x770B;&#x7F51;&#x5361;&#x9A71;&#x52A8;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093551952.png" alt="image-20220315093551952"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093644515.png" alt="image-20220315093644515"> </p>
+<p>&#x1F447;&#x627E;&#x5230;&#x4E86;&#x9A71;&#x52A8;&#x6A21;&#x5757;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093717338.png" alt="image-20220315093717338"> </p>
+<p>lsmod &#x662F;&#x627E;&#x5230;&#x52A0;&#x8F7D;&#x7684;&#x6240;&#x6709;&#x9A71;&#x52A8;&#x6A21;&#x5757;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315093808609.png" alt="image-20220315093808609"> </p>
+<p>&#x5378;&#x8F7D;&#x6A21;&#x5757;&#x7528;rmmod&#x6216;&#x8005;modprobe -r</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315094152620.png" alt="image-20220315094152620"> </p>
+<p>&#x7F51;&#x5361;&#x6A21;&#x5757;&#x5378;&#x4E86;&#x4E5F;&#x5C31;&#x662F;&#x7F51;&#x5361;&#x9A71;&#x52A8;&#x5378;&#x4E86;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#x7F51;&#x5361;&#x5C31;&#x81EA;&#x7136;&#x770B;&#x4E0D;&#x89C1;&#x4E86;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315094228945.png" alt="image-20220315094228945"> </p>
+<p>&#x7136;&#x540E;&#x518D;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x6A21;&#x5757;(&#x9A71;&#x52A8;)&#xFF1A;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315094330745.png" alt="image-20220315094330745"> </p>
+<p>&#x6B64;&#x65F6;&#x5C31;&#x6539;&#x4E3A;eth0&#x4E86;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315094357316.png" alt="image-20220315094357316"> </p>
+<h2 id="&#x65B9;&#x6CD5;2-ip&#x5B50;&#x547D;&#x4EE4;">&#x65B9;&#x6CD5;2-ip&#x5B50;&#x547D;&#x4EE4;</h2>
+<p>ip &#x5B50;&#x547D;&#x4EE4;&#xFF0C;&#x5728;centos6&#x4E0A;tab&#x4E0D;&#x51FA;&#x6765;&#xFF0C;centos7&#x53EF;&#x4EE5;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315095018759.png" alt="image-20220315095018759"> </p>
+<p>centos6&#x8981;&#x989D;&#x5916;&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x5305;&#x624D;&#x80FD;&#x652F;&#x6301;tab&#x952E;&#x8865;&#x5168;</p>
+<h2 id="&#x7F51;&#x5361;&#x914D;&#x7F6E;">&#x7F51;&#x5361;&#x914D;&#x7F6E;</h2>
+<p>1&#x3001;setup &#x8FDB;&#x53BB;&#x9009;-&#x9009;-&#x9009; &#x7B49;&#x4EF7;&#x4E8E;system-config-network-tui  # &#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x7B97;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x5728;centos7&#x91CC;setup&#x91CC;&#x4E5F;&#x6CA1;&#x6709;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;&#x9009;&#x9879;&#x4E86;&#x3002;</p>
+<p>2&#x3001;&#x91CD;&#x70B9;&#x770B;&#x547D;&#x4EE4;&#x548C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315095711283.png" alt="image-20220315095711283"> </p>
+<p>ifconfig&#x8FC7;&#x65F6;&#x4E86;&#xFF0C;&#x64E6;</p>
+<p>&#x4E3B;&#x8981;&#x662F;&#x56E0;&#x4E3A;net-tools&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x5305;&#x8FC7;&#x65F6;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5305;&#x91CC;&#x7684;&#x5F88;&#x591A;&#x6BD4;&#x5982;ifconfig&#x3001;netstat&#x90FD;&#x8FC7;&#x65F6;&#x4E86;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315095807943.png" alt="image-20220315095807943"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315095918949.png" alt="image-20220315095918949"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100004582.png" alt="image-20220315100004582"> </p>
+<p>&#x63A8;&#x8350;&#x4F60;&#x7528;iproute&#x8FD9;&#x4E2A;&#x5305;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100230039.png" alt="image-20220315100230039"></p>
+<p>ifconfig&#x76F4;&#x63A5;&#x56DE;&#x8F66;&#x770B;&#x7684;&#x662F;&#x6FC0;&#x6D3B;&#x72B6;&#x6001;&#x7684;&#x7F51;&#x5361;</p>
+<p>&#x7981;&#x7528;&#x548C;&#x6FC0;&#x6D3B;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100631020.png" alt="image-20220315100631020"> </p>
+<p>ifconfig eth1 down &#x7981;&#x7528;eth1&#x7F51;&#x5361;</p>
+<p>ifconfig &#x5C31;&#x770B;&#x4E0D;&#x5230;eht1&#xFF0C;ifconfig -a &#x53EF;&#x4EE5;&#x770B;&#x5230;eth1&#x4F46;&#x662F;IP&#x6CA1;&#x4E86;&#xFF0C;ip a&#x5C31;&#x770B;&#x7684;&#x66F4;&#x6E05;&#x9664;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100750969.png" alt="image-20220315100750969"></p>
+<p>ifconfig eth1 up&#x542F;&#x7528;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100818973.png" alt="image-20220315100818973"></p>
+<p>&#x7981;&#x7528;&#x7F51;&#x5361;&#x8FD8;&#x53EF;&#x4EE5;ifdown eth1</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100908111.png" alt="image-20220315100908111"> </p>
+<p>&#x4E0D;&#x8FC7;&#x8FD9;&#x79CD;down&#x548C;&#x521A;&#x624D;&#x7684;ifconfig eth1 down&#x53C8;&#x4E0D;&#x540C;&#x4E86;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315100943876.png" alt="image-20220315100943876"></p>
+<p>&#x8FD9;&#x4E2A;ifdown &#x540E;&#xFF0C;ifconfig&#x786E;&#x5B9E;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;ifdown&#x5C5E;&#x4E8E;&#x7F51;&#x7EDC;&#x5C42;&#x7684;down&#xFF0C;IP&#x6CA1;&#x4E86;&#x4F46;&#x662F;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x662F;&#x901A;&#x7740;&#x7684;&#x3002;</p>
+<p>&#x5BF9;&#x6BD4;ifconfig&#x5C5E;&#x4E8E;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x7684;down&#x3002;</p>
+<p>&#x6240;&#x4EE5;ip a&#x770B;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x662F;UP&#x7684;&#xFF0C;&#x6240;&#x4EE5;ip a&#x770B;&#x7684;&#x5C31;&#x662F;L2&#x94FE;&#x8DEF;&#x5C42;&#x54AF;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315101114368.png" alt="image-20220315101114368"></p>
+<pre><code class="lang-shell">1&#x3001;ifdown\ifup&#x662F;L3&#x5C42;&#x7684;up\down&#xFF0C; &#x8FD9;&#x4E2A;ifdown&#x540E;ip a&#x770B;&#x8FD8;&#x662F;UP&#x7684;
+
+2&#x3001;ifconfig down\ifconfig up&#x662F;L2&#x5C42;&#x7684;up\down&#xFF0C;&#x8FD9;&#x4E2A;ifconfig down&#x540E;ip a&#x770B;&#x5C31;&#x662F;DOWN&#x7684;
+
+3&#x3001;ip a&#x770B;&#x7684;&#x662F;L2&#x7684;up\down
+
+4&#x3001;&#x8FD8;&#x4E00;&#x79CD;&#x662F;&#x7269;&#x7406;&#x5C42;&#x7684;down&#xFF0C;&#x5C31;&#x662F;&#x62D4;&#x7F51;&#x7EBF;&#x4E86;
+</code></pre>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104251818.png" alt="image-20220315104251818"></p>
+<p>ifup &#x8981;&#x8D77;&#x6765;&#x8FD8;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x4E00;&#x4E9B;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;ip a&#x8FD8;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x5730;&#x5740;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104343790.png" alt="image-20220315104343790"></p>
+<p>&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x5728;centos6&#x4E0A;&#x7528;service NetworkManager restart&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104435149.png" alt="image-20220315104435149"></p>
+<p>&#x628A;&#x7F51;&#x7EBF;&#x7684;&#x6F14;&#x793A;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104548951.png" alt="image-20220315104548951"> </p>
+<p>&#x8FD9;&#x5C31;&#x7C7B;&#x4F3C;&#x62D4;&#x7F51;&#x7EBF;&#x4E86;</p>
+<p>1&#x3001;ifconfig&#x770B;&#x5C31;&#x6CA1;&#x6709;&#x5730;&#x5740;&#x4E86;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104719668.png" alt="image-20220315104719668"> </p>
+<p>2&#x3001;ip a&#x770B;&#x5C31;&#x662F;down</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315104752991.png" alt="image-20220315104752991"> </p>
+<p>&#x6B64;&#x65F6;&#x4E0A;&#x56FE;&#x1F446;&#x5C31;&#x80FD;&#x5224;&#x65AD;&#x662F;&#x7F51;&#x7EBF;&#x62D4;&#x4E86;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5176;&#x4ED6;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x5173;&#x952E;&#x8BCD;NO-CARRIER&#x3002;</p>
+<p>&#x5BF9;&#x4E0D;ifconfig eth1 down&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315105913650.png" alt="image-20220315105913650" style="zoom:50%;"> </p>
+<h2 id="&#x914D;&#x5730;&#x5740;-&#x4E34;&#x65F6;">&#x914D;&#x5730;&#x5740;-&#x4E34;&#x65F6;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315110417795.png" alt="image-20220315110417795"> </p>
+<h2 id="&#x6E05;&#x5730;&#x5740;-&#x4E34;&#x65F6;">&#x6E05;&#x5730;&#x5740;-&#x4E34;&#x65F6;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315110512788.png" alt="image-20220315110512788"></p>
+<h2 id="&#x589E;&#x52A0;&#x5730;&#x5740;-&#x4E34;&#x65F6;">&#x589E;&#x52A0;&#x5730;&#x5740;-&#x4E34;&#x65F6;</h2>
+<p>&#x5C31;&#x662F;huawei&#x91CC;&#x7684;sub&#x5730;&#x5740;&#x54AF;&#xFF0C;&#x4E0D;&#x662F;sub&#x662F;&#x601D;&#x79D1;&#x7684;second ip&#xFF0C;&#x8FD8;&#x4E00;&#x79CD;&#x662F;&#x5B50;&#x63A5;&#x53E3;&#xFF0C;&#x5B50;&#x63A5;&#x53E3;&#x5728;linux&#x91CC;&#x662F;&#x4E00;&#x79CD;&#x522B;&#x540D;</p>
+<pre><code>ifconfig eth1:123 1.1.1.1/24
+ifconfig eth1:321 2.2.2.2/24
+</code></pre><p>ifconfig&#x53EF;&#x89C1;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315110838635.png" alt="image-20220315110838635"> </p>
+<p>&#x8FD9;&#x91CC;&#x4E0D;&#x6D89;&#x53CA;&#x5B50;&#x63A5;&#x53E3;&#x7684;vlan id&#x5C01;&#x88C5;&#x89E3;&#x5C01;&#x88C5;&#xFF0C;&#x76F4;&#x63A5;&#x5C31;&#x80FD;&#x548C;&#x5916;&#x754C;&#x540C;&#x6837;&#x7684;IP&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x611F;&#x89C9;&#x66F4;&#x50CF;&#x662F;second ip&#x800C;&#x4E0D;&#x662F;&#x5B50;&#x63A5;&#x53E3;&#x3002;</p>
+<h3 id="&#x5220;&#x9664;linux&#x7684;&#x5B50;&#x63A5;&#x53E3;">&#x5220;&#x9664;linux&#x7684;&#x5B50;&#x63A5;&#x53E3;</h3>
+<p>ifconfig eth1:123 down</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315111409880.png" alt="image-20220315111409880"></p>
+<p>&#x8FD9;&#x4E2A;down&#x6389;&#x5C31;&#x662F;&#x5220;&#x9664;&#x5B50;&#x63A5;&#x53E3;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x79F0;&#x4E4B;&#x4E3A;linux&#x7684;&#x5B50;&#x63A5;&#x53E3;&#x54AF;&#xFF0C;&#x867D;&#x7136;&#x5B83;&#x6CA1;&#x6709;vlan&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315111524070.png" alt="image-20220315111524070"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315111627465.png" alt="image-20220315111627465"></p>
+<h2 id="&#x6DF7;&#x6742;&#x6A21;&#x5F0F;">&#x6DF7;&#x6742;&#x6A21;&#x5F0F;</h2>
+<p>&#x6293;&#x5305;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x7528;&#x7684;&#x6DF7;&#x6742;&#x6A21;&#x5F0F;</p>
+<p>&#x6DF7;&#x6742;--&#x4E0D;&#x7BA1;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x662F;&#x5426;&#x7ED9;&#x6211;&#x7684;&#xFF0C;&#x6211;&#x90FD;&#x6536;&#x3002;</p>
+<p><a href="https://cloud.tencent.com/developer/article/1439013" target="_blank">https://cloud.tencent.com/developer/article/1439013</a></p>
+<h2 id="mii-tool-&#x5DE5;&#x5177;">mii-tool &#x5DE5;&#x5177;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315121037577.png" alt="image-20220315121037577"></p>
+<p>&#x4E0A;&#x56FE;&#x8BF4;&#x660E;</p>
+<p>capabilities &#x662F;&#x652F;&#x6301;&#x7684;&#x80FD;&#x529B;&#x6BD4;&#x5982;FD&#x5C31;&#x662F;full duplex&#xFF1B;HD&#x5C31;&#x662F;hafl duplex</p>
+<p>&#x7B2C;&#x4E00;&#x884C;&#x5C31;&#x662F;&#x534F;&#x5546;&#x540E;&#x7684;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#x662F;&#x5343;&#x5146;&#x5168;&#x53CC;&#x5DE5;</p>
+<h2 id="ethtool-&#x5DE5;&#x5177;">ethtool &#x5DE5;&#x5177;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315121215498.png" alt="image-20220315121215498"></p>
+<p>&#x7F51;&#x7EBF;8&#x6839;&#x7EBF;&#xFF0C;&#x5982;&#x679C;&#x65AD;&#x4E86;&#x4E00;&#x6839;&#x8FD0;&#x6C14;&#x597D;&#xFF0C;&#x8FD8;&#x80FD;&#x7528;&#x5C31;&#x662F;100M&#xFF0C;&#x1F446;&#x8FD9;&#x91CC;&#x5C31;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x5230;&#x3002;</p>
+<p>ehtool&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7F51;&#x5361;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x6539;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315121747573.png" alt="image-20220315121747573"></p>
+<p>CMD&#x7684;grep</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315122205793.png" alt="image-20220315122205793"> </p>
+<p>&#x4F8B;&#x5B50;&#xFF0C;&#x67E5;&#x770B;&#x591A;&#x5C11;&#x4EBA;&#x8FDE;&#x5230;&#x6211;&#x7684;VNC&#x4E0A;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315122317321.png" alt="image-20220315122317321"></p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315122337240.png" alt="image-20220315122337240"></p>
+<p>&#x7B2C;&#x4E09;&#x5217;&#x5C31;&#x662F;client IP&#x5730;&#x5740;</p>
+<h3 id="&#x5E38;&#x89C1;&#x670D;&#x52A1;&#x7AEF;&#x53E3;">&#x5E38;&#x89C1;&#x670D;&#x52A1;&#x7AEF;&#x53E3;</h3>
+<p>cat /etc/services</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315122952986.png" alt="image-20220315122952986"></p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315135033610.png" alt="image-20220315135033610"></p>
+<p>&#x4E00;&#x822C;&#x5BA2;&#x6237;&#x7AEF;&#x7535;&#x8111;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;1W6+&#x4E2A;&#x7AEF;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x8FD9;&#x53F0;linux&#x6216;&#x5565;&#x7CFB;&#x7EDF;&#x7684;&#x7535;&#x8111;&#x662F;&#x4F5C;&#x4E3A;&#x4EE3;&#x7406;&#x4E0A;&#x7F51;&#xFF0C;&#x6BD4;&#x5982;SNAT&#xFF0C;&#x90A3;&#x4E48;1W6+&#x4E5F;&#x4E0D;&#x662F;&#x6CA1;&#x6709;&#x53EF;&#x80FD;&#xFF0C;&#x56E0;&#x4E3A;1&#x53F0;&#x5185;&#x7F51;&#x7684;PC&#x5927;&#x6982;10&#x8FDE;&#x63A5;&#xFF0C;1000&#x53F0;PC&#x5BF9;&#x5427;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x624B;&#x673A;&#xFF0C;&#x8FD8;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x8BA9;&#x4F60;&#x7684;&#x8FD9;&#x53F0;NAT&#x670D;&#x52A1;&#x5668;&#x7684;&#x7AEF;&#x53E3;&#x8D85;&#x51FA;1w6+&#x8FD9;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315135820194.png" alt="image-20220315135820194"></p>
+<p>&#x5982;&#x679C;&#x8981;&#x5F53;&#x4EE3;&#x7406;&#xFF0C;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#x5C31;&#x8981;&#x8C03;&#x5927;&#x1F446;</p>
+<h2 id="&#x6DF7;&#x6742;&#x7AEF;&#x53E3;&#x7684;&#x8BF4;&#x660E;">&#x6DF7;&#x6742;&#x7AEF;&#x53E3;&#x7684;&#x8BF4;&#x660E;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315140731029.png" alt="image-20220315140731029"></p>
+<p>&#x6570;&#x636E;&#x5305;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;&#x5E76;&#x975E;0&#xFF0C;0&#x662F;&#x76F8;&#x5BF9;&#x7F16;&#x53F7;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x521D;&#x59CB;ISN&#xFF0C;&#x597D;&#x4E45;&#x4E0D;&#x78B0;&#x4E86;&#x6709;&#x70B9;&#x5FD8;&#x4E86;&#x90FD;&#xFF0C;&#x800C;&#x662F;&#x4E0B;&#x9762;&#x7684;97fa6e02</p>
+<h2 id="tcpdump&#x7684;&#x4E3E;&#x4F8B;-&#x6574;&#x7406;&#x7A0D;&#x540E;">tcpdump&#x7684;&#x4E3E;&#x4F8B;-&#x6574;&#x7406;&#x7A0D;&#x540E;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315153047080.png" alt="image-20220315153047080" style="zoom:80%;">  </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315152819339.png" alt="image-20220315152819339"></p>
+<p>&#x4E0A;&#x56FE;&#x1F446;&#x662F;drop&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x6293;&#x5305;&#x7ED3;&#x679C;&#xFF0C;[S]&#x662F;&#x4E0D;&#x65AD;&#x7684;SYN&#x5305;&#xFF0C;&#x662F;&#x91CD;&#x4F20;&#x673A;&#x5236;&#x5BFC;&#x81F4;&#x7684;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x66F4;&#x591A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4E00;&#x822C;&#x5C31;&#x662F;&#x6293;&#x4E2A;&#x7AEF;&#x53E3;&#x7136;&#x540E;|grep &#x54C8;&#x54C8;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x6CA1;&#x60F3;&#x5230;&#xFF0C;&#x54C8;&#x54C8;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315153635512.png" alt="image-20220315153635512"></p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315154709605.png" alt="image-20220315154709605"> </p>
+<p>|&#x524D;&#x5BFC;&#x7801;+&#x5F00;&#x59CB;&#x7B26;|DA|SA|TYPLE/LENGTH|DATA|FCS|   &#x4E00;&#x5171;72B&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;</p>
+<p>ping &#x9ED8;&#x8BA4;&#x5C31;&#x662F;64&#x4E5F;&#x5373;&#x662F;&#x6CA1;&#x6709;&#x7B97;&#x5F00;&#x5934;&#x7684;8B&#x3002;</p>
+<p>&#x9644;&#x4E0A;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E2A;&#x5206;&#x7247;&#x89E3;&#x6790;&#x56FE;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/PING&#x5305;&#x5206;&#x7247;&#x7684;&#x8BA1;&#x7B97;.png" alt="PING&#x5305;&#x5206;&#x7247;&#x7684;&#x8BA1;&#x7B97;"></p>
+<h2 id="tcp&#x8D85;&#x65F6;&#x91CD;&#x4F20;">TCP&#x8D85;&#x65F6;&#x91CD;&#x4F20;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315152643847.png" alt="image-20220315152643847"></p>
+<h2 id="tcp&#x7684;&#x62E5;&#x585E;&#x63A7;&#x5236;">TCP&#x7684;&#x62E5;&#x585E;&#x63A7;&#x5236;</h2>
+<p>&#x56DB;&#x4E2A;&#x673A;&#x5236;</p>
+<p>&#x6162;&#x542F;&#x52A8;&#x3001;&#x62E5;&#x585E;&#x907F;&#x514D;&#x3001;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#x3001;&#x5FEB;&#x901F;&#x6062;&#x590D;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315153411212.png" alt="image-20220315153411212"> </p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315153354410.png" alt="image-20220315153354410"></p>
+<h2 id="&#x5E76;&#x53D1;ping-&#x9996;&#x63A8;&#x65B9;&#x6CD5;">&#x5E76;&#x53D1;ping-&#x9996;&#x63A8;&#x65B9;&#x6CD5;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315155919075.png" alt="image-20220315155919075"></p>
+<pre><code>seq 1 255 |xargs -i -P 0 bash -c &apos;ping -w 2 192.168.25.{} &amp;&gt; /dev/null &amp;&amp; echo 192.168.25.{} icmp allowed&apos;
+</code></pre><p>&#x8FD8;&#x6709;awk&#x7684;&#x5E76;&#x53D1;ping&#xFF0C;&#x60F3;&#x4E0D;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x6CA1;&#x5F71;&#x54CD;&#x4E86;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315162214235.png" alt="image-20220315162214235"></p>
+<p>&#x8FD9;&#x4E2A;&#x4E5F;&#x5FEB;</p>
+<pre><code>ls --hide=proc | xargs -i -P 0 find /{} -name &quot;sshd&quot;
+</code></pre><h2 id="awk&#x7684;&#x4E3E;&#x4F8B;">awk&#x7684;&#x4E3E;&#x4F8B;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315160320544.png" alt="image-20220315160320544"></p>
+<pre><code>tcpdump -i eth0 -tnn dst port 443 -c 100 |awk -F &quot;.&quot; &apos;{print $1&quot;.&quot;$2&quot;.&quot;$3&quot;.&quot;$4}&apos;|sort|uniq -c|sort -rn|head -n20
+</code></pre><p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315160345007.png" alt="image-20220315160345007"></p>
+<p>&#x6211;&#x4E4B;&#x524D;&#x8BF4;&#x8FC7;awk&#x548C;xargs&#x4E00;&#x6837;&#x5FEB;&#xFF0C;ping&#x7684;&#x5904;&#x7406;&#x4E0A;&#x6211;&#x600E;&#x4E48;&#x4E0D;&#x8BB0;&#x5F97;&#x6709;&#x505A;&#x8FC7;&#x5462;&#xFF0C;&#x80AF;&#x5B9A;&#x662F;&#x6709;&#x8FC7;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x6765;&#x662F;&#x5199;&#x4E2A;for&#x5FAA;&#x73AF;awk&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#xFF0C;&#x4F46;&#x6709;&#x8FD9;&#x4E48;&#x590D;&#x6742;&#x5417;&#xFF0C;&#x5F53;&#x7136;&#x5176;&#x5B9E;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x6211;&#x662F;&#x8BF4;&#x4E4B;&#x524D;&#x7684;awk&#x5B9E;&#x73B0;&#x6279;&#x91CF;ping &#x662F;&#x600E;&#x4E48;&#x5F04;&#x7684;&#xFF1F;</p>
+<p>&#x8FD8;&#x6709;&#x597D;&#x591A;&#x5DE5;&#x5177;&#x7C7B;&#x7684;&#x4F7F;&#x7528;iperf &#x3001;curl&#x3001;F12&#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BA1;&#x7B97;&#x4E86;&#xFF0C;&#x4E0D;&#x653E;&#x5230;&#x8FD9;&#x91CC;&#x4E86;&#x3002;</p>
+<h2 id="&#x5E7F;&#x64AD;&#x7684;&#x60C5;&#x51B5;">&#x5E7F;&#x64AD;&#x7684;&#x60C5;&#x51B5;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171023241.png" alt="image-20220315171023241"></p>
+<p>&#x1F446;ping 255&#x5E7F;&#x64AD;&#x53EA;&#x6709;&#x4E00;&#x4E2A;37.2&#x54CD;&#x5E94;&#xFF0C;&#x56E0;&#x4E3A;linux&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x54CD;&#x5E94;&#x5E7F;&#x64AD;ping&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5F00;&#x542F;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171142718.png" alt="image-20220315171142718"> </p>
+<p>1&#x5C31;&#x662F;&#x5FFD;&#x7565;&#xFF0C;&#x5C31;&#x662F;&#x4E0D;&#x56DE;&#x5E94;&#xFF0C;&#x6539;&#x4E3A;0</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171210639.png" alt="image-20220315171210639"></p>
+<p>centos7&#x4E0A;&#x4E00;&#x6837;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171234057.png" alt="image-20220315171234057"></p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171258071.png" alt="image-20220315171258071"></p>
+<p>&#x4ECE;&#x9ED8;&#x8BA4;&#x7684;TTL&#x4E0A;&#x53EF;&#x4EE5;&#x5224;&#x65AD;37.2&#x7684;ttl&#x662F;128&#xFF0C;&#x662F;&#x53F0;windows&#x673A;&#x5668;&#xFF1B;37.7&#x548C;37.6&#x662F;linux&#x673A;&#x5668;&#x3002;</p>
+<h2 id="loopback">loopback</h2>
+<p>&#x7565;&#xFF0C;&#x6CE8;&#x610F;&#x4E0B;&#x56FE;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315171942724.png" alt="image-20220315171942724"></p>
+<p>&#x8BA4;&#x4E3A;&#x6539;&#x6210;6.6.6.6/24 &#xFF0C;&#x8FD9;&#x6837;&#x8FD9;&#x4E2A;&#x6BB5;&#x90FD;&#x5904;&#x4E8E;loop&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x8BF4;&#x5FC5;&#x987B;&#x662F;127&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315172633721.png" alt="image-20220315172633721"></p>
+<p>&#x8FD9;&#x91CC;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;IP&#x5730;&#x5740;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x5199;lo</p>
+<h2 id="&#x7F51;&#x5361;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x7F51;&#x5361;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315174506017.png" alt="image-20220315174506017"> </p>
+<p>name&#x5C06;&#x6765;&#x5C31;&#x8868;&#x73B0;&#x4E3A;GUI&#x56FE;&#x5F62;&#x754C;&#x9762;&#x91CC;&#x7684;eth0</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315174438843.png" alt="image-20220315174438843"> </p>
+<p>&#x6539;&#x7684;&#x73A9;&#x4E0B;&#xFF0C;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315174646633.png" alt="image-20220315174646633"> </p>
+<p>BOOTPROTO=none&#x4E5F;&#x884C;&#x90FD;&#x662F;&#x9759;&#x6001;&#x624B;&#x52A8;&#x914D;&#x7F6E;&#xFF0C;BOOTPROTO=dhcp&#x5C31;&#x662F;&#x52A8;&#x6001;</p>
+<p>1&#x3001;&#x6CE8;&#x610F;&#x4E00;&#x65E6;&#x5199;&#x4E86;dhcp&#xFF0C;&#x540E;&#x4E70;&#x624B;&#x52A8;&#x914D;&#x7F6E;&#x7684;IP&#x5730;&#x5740;&#xFF0C;DNS&#x5C31;&#x4F1A;&#x88AB;&#x8986;&#x76D6;&#x4E86;&#xFF1B;</p>
+<p>2&#x3001;&#x6587;&#x4EF6;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x811A;&#x672C;&#x7528;&#x7684;&#xFF0C;&#x524D;&#x9762;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x662F;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#xFF0C;&#x7136;&#x540E;=&#x5DE6;&#x53F3;&#x4E0D;&#x80FD;&#x5E26;&#x7A7A;&#x683C;&#xFF1B;</p>
+<p>&#x8FD9;&#x5757;&#x4E66;&#x4E0A;&#x8BB2;&#x7684;&#x66F4;&#x5168;&#xFF0C;&#x6240;&#x8C13;&#x5168;&#x5176;&#x5B9E;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x53D1;&#x660E;&#x7EC6;&#x548C;&#x4E0B;&#x53D1;&#x9ED8;&#x8BA4;&#x7684;&#x4E00;&#x4E9B;&#x4F18;&#x5148;&#x7EA7;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x8FD8;&#x80FD;&#x7CBE;&#x7B80;&#x6210;&#x5982;&#x4E0B;3&#x884C;&#xFF0C;&#x518D;&#x8865;&#x4E00;&#x4E2A;GW&#x548C;DNS1</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315175527530.png" alt="image-20220315175527530"> </p>
+<p>&#x6539;&#x5B8C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x751F;&#x6548;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x7ACB;&#x5373;&#x751F;&#x6548;&#xFF0C;&#x90A3;&#x662F;&#x56E0;&#x4E3A;NetworkManager&#x670D;&#x52A1;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x4E0D;&#x662F;&#x65F6;&#x523B;&#x90FD;&#x80FD;&#x7ACB;&#x5373;&#x53D1;&#x73B0;&#x4F60;&#x4FEE;&#x6539;&#x4E86;&#x6587;&#x4EF6;&#x7136;&#x540E;&#x4F7F;&#x4E4B;&#x751F;&#x6548;&#x7684;&#x3002;&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x4E00;&#x822C;&#x4E5F;&#x4E0D;&#x7528;&#x90FD;&#x662F;&#x5173;&#x6389;&#x7684;&#x3002;&#x6700;&#x5C0F;&#x5316;&#x5B89;&#x88C5;&#x597D;&#x50CF;&#x4E5F;&#x662F;&#x6CA1;&#x6709;&#x7684;&#x3002;&#x8BF4;&#x53CD;&#x4E86;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x6211;&#x4EEC;&#x53EA;&#x7528;network&#xFF0C;&#x4F46;&#x662F;rocky-linux&#x548C;centos7&#x6700;&#x5C0F;&#x5316;&#x5B89;&#x88C5;&#x540E;&#x597D;&#x50CF;rocky-linux&#x662F;&#x6CA1;&#x6709;network&#x670D;&#x52A1;&#x53EA;&#x6709;NetworkManager&#xFF0C;&#x7136;&#x540E;centos7&#x662F;networkfail&#x7684;NetworkManager&#x662F;active&#x7684;&#x3002;&#x597D;&#x5947;&#x602A;~&#x6CA1;&#x4E8B;&#x505C;&#x7528;&#x7981;&#x7528;NetworkManager&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x542F;&#x7528;network&#x670D;&#x52A1;&#x4E86;&#x3002;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315181200508.png" alt="image-20220315181200508"></p>
+<p>&#x770B;&#x6765;rocky-linux&#x4E0D;&#x559C;&#x6B22;&#x8FD9;&#x4E2A;&#x3002;centos8&#x4E00;&#x6837;&#xFF0C;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315174557612.png" alt="image-20220315174557612"></p>
+<h2 id="linux&#x5F00;&#x542F;&#x8DEF;&#x7531;&#x529F;&#x80FD;">linux&#x5F00;&#x542F;&#x8DEF;&#x7531;&#x529F;&#x80FD;</h2>
+<p>&#x6CE8;&#x610F;&#x4E34;&#x65F6;&#x4FEE;&#x6539;&#x662F;&#x7528;&#x7684;echo&#xFF0C;vim&#x662F;&#x4E0D;&#x80FD;&#x7F16;&#x8F91;&#x5185;&#x5B58;&#x91CC;&#x7684;&#x6587;&#x4EF6;&#x7684;</p>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315181957775.png" alt="image-20220315181957775"> </p>
+<p>vim&#x662F;&#x6539;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x6539;&#x5185;&#x5B58;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<h2 id="mtr&#x7684;&#x4F7F;&#x7528;">mtr&#x7684;&#x4F7F;&#x7528;</h2>
+<h2 id="frr&#x53EF;&#x4EE5;&#x5F04;&#x4E00;&#x4E0B;">frr&#x53EF;&#x4EE5;&#x5F04;&#x4E00;&#x4E0B;</h2>
+<p><img src="5-linux&#x7684;&#x7F51;&#x7EDC;&#x548C;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7BA1;&#x7406;.assets/image-20220315182934167.png" alt="image-20220315182934167" style="zoom:80%;"> </p>
+<p>frr&#x66FF;&#x4EE3;quagga&#x4E86;&#x597D;&#x50CF;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-02-11 18:48:19
+2022-03-15 18:30:12
 </span></footer>
                                 
                                 </section>
@@ -3525,7 +3727,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节 linux的网络和路由配置管理","level":"1.15.5","depth":2,"next":{"title":"第6节 网络配置和故障拍错","level":"1.15.6","depth":2,"path":"13-网络协议和管理/6-网络配置和故障拍错.md","ref":"./13-网络协议和管理/6-网络配置和故障拍错.md","articles":[]},"previous":{"title":"第4节 IP地址规划","level":"1.15.4","depth":2,"path":"13-网络协议和管理/4-IP地址规划.md","ref":"./13-网络协议和管理/4-IP地址规划.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"13-网络协议和管理/5-linux的网络和路由配置管理.md","mtime":"2022-02-11T10:48:19.255Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-14T07:24:50.094Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节 linux的网络和路由配置管理","level":"1.15.5","depth":2,"next":{"title":"第6节 网络配置和故障拍错","level":"1.15.6","depth":2,"path":"13-网络协议和管理/6-网络配置和故障拍错.md","ref":"./13-网络协议和管理/6-网络配置和故障拍错.md","articles":[]},"previous":{"title":"第4节 IP地址规划","level":"1.15.4","depth":2,"path":"13-网络协议和管理/4-IP地址规划.md","ref":"./13-网络协议和管理/4-IP地址规划.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"13-网络协议和管理/5-linux的网络和路由配置管理.md","mtime":"2022-03-15T10:30:12.158Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-15T10:30:39.636Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
