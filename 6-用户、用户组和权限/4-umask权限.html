@@ -41,6 +41,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
@@ -3479,8 +3483,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;">&#x7B2C;4&#x8282;. umask&#x6743;&#x9650;</h1>
-<h2 id="chattr">chattr</h2>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;"><b></b>&#x7B2C;4&#x8282;. umask&#x6743;&#x9650;</a></li><ul><li><span class="title-icon "></span><a href="#chattr"><b></b>chattr</a></li><li><span class="title-icon "></span><a href="#umask"><b></b>umask</a></li><li><span class="title-icon "></span><a href="#umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;"><b></b>umask+default_value=777&#x76EE;&#x5F55;|666&#x6587;&#x4EF6;</a></li><li><span class="title-icon "></span><a href="#facl"><b></b>FACL</a></li></ul></ul></div><h1 id="&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;"><a name="&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;4&#x8282;-umask&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;4&#x8282;. umask&#x6743;&#x9650;</h1>
+<h2 id="chattr"><a name="chattr" class="anchor-navigation-ex-anchor" href="#chattr"><i class="fa fa-link" aria-hidden="true"></i></a>chattr</h2>
 <p><strong>i</strong> :&#x6587;&#x4EF6;&#x4E0D;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x3001;&#x5305;&#x542B;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x4E5F;&#x4E0D;&#x80FD;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
 <pre><code>[19:40:28 root@localhost data]#chattr +i f1
 [19:40:37 root@localhost data]#ll
@@ -3522,7 +3526,7 @@ logout
 rm: cannot remove &apos;/data/f1&apos;: Operation not permitted
 ---&#x4F46;&#x662F;&#x1F447;vi&#x8FDB;&#x53BB;&#x540E;&#x5728;&#x6700;&#x540E;&#x4E00;&#x884C;&#x6DFB;&#x52A0;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#xFF0C;&#x7CFB;&#x7EDF;&#x5224;&#x5B9A;&#x4E0D;&#x51FA;&#x6765;&#x4F60;&#x662F;&#x4E0D;&#x662F;&#x8FFD;&#x52A0;&#x6240;&#x4EE5;&#x8FD9;&#x79CD;&#x8FFD;&#x52A0;&#x65F6;&#x4E0D;&#x884C;&#x7684;&#x3002;
 </code></pre><p><img src="4-umask&#x6743;&#x9650;.assets/image-20220119195019714.png" alt="image-20220119195019714" style="zoom:67%;"> </p>
-<h2 id="umask">umask</h2>
+<h2 id="umask"><a name="umask" class="anchor-navigation-ex-anchor" href="#umask"><i class="fa fa-link" aria-hidden="true"></i></a>umask</h2>
 <p>1&#x3001;root&#x7528;&#x6237;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x53EF;&#x53D1;&#x73B0;&#x9ED8;&#x8BA4;&#x7684;&#x6743;&#x9650;&#x5206;&#x522B;&#x65F6;644&#x548C;755</p>
 <pre><code>[19:57:42 root@localhost data]#ll
 total 0
@@ -3543,7 +3547,7 @@ exit
 [root@centos7 data]# umask
 0022
 [root@centos7 data]#
-</code></pre><h2 id="umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;">umask+default_value=777&#x76EE;&#x5F55;|666&#x6587;&#x4EF6;</h2>
+</code></pre><h2 id="umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;"><a name="umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#umaskdefaultvalue777&#x76EE;&#x5F55;666&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>umask+default_value=777&#x76EE;&#x5F55;|666&#x6587;&#x4EF6;</h2>
 <p>000+default=777&#xFF0C;&#x5047;&#x8BBE;&#x6587;&#x4EF6;&#x4E5F;&#x7528;777&#x603B;&#x548C;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x5C31;&#x5E26;&#x4E0A;&#x4E86;x&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x5E26;&#x6765;&#x4E00;&#x5B9A;&#x7684;&#x98CE;&#x9669;&#x3002;</p>
 <p>022+default=777|666&#xFF0C;&#x6587;&#x4EF6;&#x5939;default=755&#xFF0C;&#x6587;&#x4EF6;default=644</p>
 <p>&#x1F446;&#x4E0A;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x4E0D;&#x6B63;&#x786E;</p>
@@ -3609,14 +3613,14 @@ umask 0022
 [root@centos7 ~]# tail -1 .bashrc
 umask 0022
 [root@centos7 ~]#
-</code></pre><h2 id="facl">FACL</h2>
+</code></pre><h2 id="facl"><a name="facl" class="anchor-navigation-ex-anchor" href="#facl"><i class="fa fa-link" aria-hidden="true"></i></a>FACL</h2>
 <p>&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#xFF0C;&#x666E;&#x901A;&#x6743;&#x9650;&#x89E3;&#x51B3;&#x4E0D;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;</p>
 <p>user1&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;f1&#xFF0C;user2&#x80FD;&#x5BF9;f1&#x5B8C;&#x5168;&#x63A7;&#x5236;&#xFF0C;user3&#x53EA;&#x80FD;&#x8BFB;f1&#xFF0C;user4&#x53EA;&#x80FD;&#x5199;f1</p>
 <p>&#x6B64;&#x65F6;ugo&#x4E09;&#x4E2A;&#x89D2;&#x8272;&#xFF0C;user&#x3001;group&#x3001;other&#xFF0C;&#x7528;&#x6237;&#x6743;&#x9650;&#x8D85;&#x8FC7;3&#x4E2A;&#xFF0C;&#x5C31;&#x9700;&#x8981;ACL&#x4E86;&#x3002; </p>
 <pre><code>setfacl -m u:user1:0 f1
 setfacl -m u:user1:- f1
 </code></pre><footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2022-02-11 18:48:20
+2022-03-17 09:27:17
 </span></footer>
                                 
                                 </section>
@@ -3660,7 +3664,7 @@ setfacl -m u:user1:- f1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"next":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","ref":"./6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","articles":[]},"previous":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","-anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"showGoTop":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/4-umask权限.md","mtime":"2022-02-11T10:48:20.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-23T11:26:01.870Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节 umask权限","level":"1.8.4","depth":2,"next":{"title":"第5节 FACL实现权限的灵活控制","level":"1.8.5","depth":2,"path":"6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","ref":"./6-用户、用户组和权限/5-FACL实现权限的灵活控制.md","articles":[]},"previous":{"title":"第3节 文件和特殊权限","level":"1.8.3","depth":2,"path":"6-用户、用户组和权限/3-文件和特殊权限.md","ref":"./6-用户、用户组和权限/3-文件和特殊权限.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"开放平台":"http://www.bing.com/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"6-用户、用户组和权限/4-umask权限.md","mtime":"2022-03-17T01:27:17.252Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-24T12:58:09.137Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
