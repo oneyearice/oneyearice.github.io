@@ -2,7 +2,7 @@
 
 * [课程介绍和<font color=red>·</font><font color=green>小</font><font color=red>·</font>目标](./introduction/课程介绍和小目标.md)
 
- 		linxu~PY，---go~>>
+ 		linxu~PY，-go~>>
 
 
 
