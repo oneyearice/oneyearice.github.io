@@ -424,7 +424,7 @@ other::r--
 
 ```
 getfacl -R /tmp/dir1 > acl.txt		👈备份到acl.txt
-setfacl -R -b /tmp/dir1		👈清空下
+setfacl -R -b /tmp/dir1		👈清空下，Centos8 -b一旦用了，组权限清空为---，8的BUG,centos7亲测没问题，放心用，读我这篇的你自己测你的版本啊。
 setfacl -R --set-file=acl.txt /tmp/dir1		👈恢复方法1
 setfacl --restore acl.txt  👈恢复方法2
 getfacl -R /tmp/dir1  👈递归，也就是包含dir1及其下所有文件的facl
