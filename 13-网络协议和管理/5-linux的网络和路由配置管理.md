@@ -122,7 +122,7 @@ ifconfig直接回车看的是激活状态的网卡
 
 ifconfig eth1 down 禁用eth1网卡
 
-ifconfig 就看不到eht1，ifconfig -a 可以看到eth1但是IP没了，ip a就看的更清除
+ifconfig 就看不到eht1，ifconfig -a 可以看到eth1但是IP没了，ip a就看的更清除了
 
 ![image-20220315100750969](5-linux的网络和路由配置管理.assets/image-20220315100750969.png)
 
@@ -158,9 +158,19 @@ ifconfig eth1 up启用
 3、ip a看的是L2的up\down
 
 4、还一种是物理层的down，就是拔网线了
+
+5、ip link set eth0 down 也是可以的，一样是控制L2的up和down，见下图👇
+
+6、几个关键词：LOWER-UP和UP的区别、NO-CARRIER DOWN和DOWN的区别
 ```
 
+![image-20220726204429294](5-linux的网络和路由配置管理.assets/image-20220726204429294.png)
 
+![image-20220726204449148](5-linux的网络和路由配置管理.assets/image-20220726204449148.png)
+
+https://stackoverflow.com/questions/36715664/using-ip-what-does-lower-up-mean
+
+![image-20220726204817631](5-linux的网络和路由配置管理.assets/image-20220726204817631.png)
 
 
 
@@ -263,6 +273,8 @@ https://cloud.tencent.com/developer/article/1439013
 
 VMwareWorkstation的话有时候需要手动修改centos的接口为混杂，原视频中我没有找到当时老师的操作，不过理解后也能自己设计一个场景，所以这里就仅仅提示下。
 
+https://blog.51cto.com/nizhuan/724081貌似桥接模式就是混杂模式了。
+
 ![image-20220315140731029](5-linux的网络和路由配置管理.assets/image-20220315140731029.png)
 
 
@@ -285,7 +297,7 @@ capabilities 是支持的能力比如FD就是full duplex；HD就是hafl duplex
 
 ![image-20220315121215498](5-linux的网络和路由配置管理.assets/image-20220315121215498.png)
 
-网线8根线，如果断了一根运气好，还能用就是100M，👆这里就可以检查到。
+网线8根线，如果断了一根运气好，还能用就是100M，👆这里就可以检查到。但是要注意如果是vmxnet3的网卡，ethtool看到的就是10G速率，虽然实际上是1G的。所以这里的速率显示显然不是实际值。
 
 
 
@@ -319,11 +331,13 @@ cat /etc/services
 
 ![image-20220315135033610](5-linux的网络和路由配置管理.assets/image-20220315135033610.png)
 
-一般客户端电脑不会使用1W6+个端口，但是如果你这台linux或啥系统的电脑是作为代理上网，比如SNAT，那么1W6+也不是没有可能，因为1台内网的PC大概10连接，1000台PC对吧，再加上手机，还是有可能让你的这台NAT服务器的端口超出1w6+这个默认值的。
+一般客户端电脑不会使用1W6+(65535-49152)个端口，但是如果你这台linux或啥系统的电脑是作为代理上网，比如SNAT，那么1W6+也不是没有可能，因为1台内网的PC大概10连接，1000台PC对吧，再加上手机，还是有可能让你的这台NAT服务器的端口超出1w6+这个默认值的。
 
 ![image-20220315135820194](5-linux的网络和路由配置管理.assets/image-20220315135820194.png)
 
 如果要当代理，这个端口就要调大👆
+
+实际情况是60999-32768=28231个随机端口。
 
 
 
@@ -359,7 +373,7 @@ https://ppabc.cn/1363.html
 
 ![image-20220315152819339](5-linux的网络和路由配置管理.assets/image-20220315152819339.png)
 
-上图👆是drop后的一个抓包结果，[S]是不断的SYN包，是重传机制导致的。
+上图👆是drop后的一个抓包结果，可以看到很多的[S]，这就是SYN包，是重传机制导致的。
 
 其实更多的时候，我一般就是抓个端口然后|grep 哈哈，是不是没想到，哈哈
 
@@ -398,6 +412,8 @@ ping 默认就是64也即是没有算开头的8B。
 ![image-20220315153411212](5-linux的网络和路由配置管理.assets/image-20220315153411212.png) 
 
 ![image-20220315153354410](5-linux的网络和路由配置管理.assets/image-20220315153354410.png)
+
+https://allen-kevin.github.io/2017/12/21/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%B9%8BCUBIC/
 
 
 
@@ -441,7 +457,7 @@ tcpdump -i eth0 -tnn dst port 443 -c 100 |awk -F "." '{print $1"."$2"."$3"."$4}'
 
 
 
-还有好多工具类的使用iperf 、curl、F12等等，这些计算了，不放到这里了。
+还有好多工具类的使用iperf 、curl、F12等等，这些就算了，不放到这里了。
 
 
 
@@ -459,7 +475,7 @@ tcpdump -i eth0 -tnn dst port 443 -c 100 |awk -F "." '{print $1"."$2"."$3"."$4}'
 
 ![image-20220315171210639](5-linux的网络和路由配置管理.assets/image-20220315171210639.png)
 
-centos7上一样
+centos7上一样，centos8也一样
 
 ![image-20220315171234057](5-linux的网络和路由配置管理.assets/image-20220315171234057.png)
 
@@ -467,7 +483,7 @@ centos7上一样
 
 从默认的TTL上可以判断37.2的ttl是128，是台windows机器；37.7和37.6是linux机器。
 
-
+注意上面这个实验，要在同一个网段做哦，原因很简单，就是跨网段，的192.168.1.100去 ping -b 192.168.10.255，这个广播是不会有任何回应的，因为3层转发广播不转发的，这就是CCNA里的基本概念--广播域--二层广播帧所能到达的范围就是广播域，显然二层广播帧的广播地址全FFFF-FFFF-FFFF显然要比192.168.10.255这种L3广播地址映射到二层的广播MAC地址还要厉害，连这种真广播都跨不了三层，你凭什么能ping通呢，至于为什么垮不了，因为数据要从二层拆包，到三层，再重新封包，这个过程就算3层路由器设备处理广播----其实真可以处理的，CISCO SECURITY 里有个攻击就是用广播做的好像，需要路由器转发广播的。
 
 ## loopback
 
@@ -475,7 +491,7 @@ centos7上一样
 
 ![image-20220315171942724](5-linux的网络和路由配置管理.assets/image-20220315171942724.png)
 
-认为改成6.6.6.6/24 ，这样这个段都处于loop，并不是说必须是127。
+人为将linux的lo环回口改成6.6.6.6/24 ，这样这个段都处于loop，并不是说必须是127。
 
 
 
@@ -515,7 +531,7 @@ BOOTPROTO=none也行都是静态手动配置，BOOTPROTO=dhcp就是动态
 
 ![image-20220315175527530](5-linux的网络和路由配置管理.assets/image-20220315175527530.png) 
 
-改完配置文件后，一般不会立即生效，有时候会立即生效，那是因为NetworkManager服务，不过这个服务不是时刻都能立即发现你修改了文件然后使之生效的。而且这个服务一般也不用都是关掉的。最小化安装好像也是没有的。说反了，一般是我们只用network，但是rocky-linux和centos7最小化安装后好像rocky-linux是没有network服务只有NetworkManager，然后centos7是networkfail的NetworkManager是active的。好奇怪~没事停用禁用NetworkManager后就可以启用network服务了。
+改完配置文件后，一般不会立即生效，有时候会立即生效，那是因为NetworkManager服务，不过这个服务不是时刻都能立即发现你修改了文件然后使之生效的。而且这个服务一般也不用都是关掉的。最小化安装好像也是没有的。说反了，一般是我们只用network，但是rocky-linux和centos7最小化安装后好像rocky-linux是没有network服务只有NetworkManager，然后centos7的network是fail的NetworkManager是active的。好奇怪~没事停用禁用NetworkManager后就可以启用network服务了。
 
 ![image-20220315181200508](5-linux的网络和路由配置管理.assets/image-20220315181200508.png)
 
