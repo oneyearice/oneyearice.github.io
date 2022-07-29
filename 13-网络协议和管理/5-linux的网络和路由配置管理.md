@@ -531,7 +531,7 @@ BOOTPROTO=none也行都是静态手动配置，BOOTPROTO=dhcp就是动态
 
 ![image-20220315175527530](5-linux的网络和路由配置管理.assets/image-20220315175527530.png) 
 
-改完配置文件后，一般不会立即生效，有时候会立即生效，那是因为NetworkManager服务，不过这个服务不是时刻都能立即发现你修改了文件然后使之生效的。而且这个服务一般也不用都是关掉的。最小化安装好像也是没有的。说反了，一般是我们只用network，但是rocky-linux和centos7最小化安装后好像rocky-linux是没有network服务只有NetworkManager，然后centos7的network是fail的NetworkManager是active的。好奇怪~没事停用禁用NetworkManager后就可以启用network服务了。
+改完配置文件后，一般不会立即生效，有时候会立即生效，那是因为NetworkManager服务，不过这个服务不是时刻都能立即发现你修改了文件然后使之生效的。而且这个服务一般也不用都是关掉的。最小化安装好像也是没有的。说反了，一般是我们只用network，但是rocky-linux和centos7最小化安装后好像rocky-linux是没有network服务只有NetworkManager，然后centos7的network是fail的NetworkManager是active的。好奇怪~没事，停用禁用NetworkManager后就可以启用network服务了。
 
 ![image-20220315181200508](5-linux的网络和路由配置管理.assets/image-20220315181200508.png)
 
@@ -595,7 +595,7 @@ openwrt里的strongswan在旁路模式下，也不知道是我的TP-LINK物理�
 
 
 
-softher vpn这个不多说，emm，真心不错，一键搞定IPSEC、openvpn、pptp、l2tp。其实远程办公，还是要考虑授权、限速的问题，如此衍生出的IP静态分配，等就不是简单使用softehter来实现，从这个角度还不如自己使用开源来弄，顶多写一个脚本来做统一的多协议账号开通。其中openvpn就是要使用radius和mysql或者ldap之类去做。
+softher vpn这个不多说，emm，真心不错，一键搞定IPSEC、openvpn、pptp、l2tp。其实远程办公，还是要考虑授权、限速的问题，如此衍生出的IP静态分配，等就不是简单使用softehter来实现，从这个角度还不如自己使用开源来弄，顶多写一个脚本来做统一的多协议账号开通。其中openvpn就是要使用radius和mysql或者ldap之类去做，这个不用这么麻烦，直接配置文件里指向一个脚本验证 一个存放用户名密码的文件就行，具体见我的印象笔记的相关模块。
 
 
 
