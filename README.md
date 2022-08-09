@@ -56,8 +56,12 @@
 ```
 
 ```
-1、进入D盘git clone，如果有Oneyearice.github.io文件夹，进去后git pull
+1、进入D盘
+git clone https://github.com/oneyearice/oneyearice.github.io.git
+如果有Oneyearice.github.io文件夹，进去后git pull
+
 2、将oneyearice.github.io文件夹复制，并改名为gitbook
+
 3、进入gitbook，删除node_module文件夹，cmd在gitbook文件夹下运行gitbook install
 ---开始编写md文章---完了就👇---
 4、我的笔记本电脑需要注释掉book.json里的"-anchor-navigation-ex"👈这样注释，运行脚本自动push--如果push失败，看报错，一般就是需要先git pull一下然后再运行脚本，因为可能最近的一次push是别的终端push的。这是合理的机制。
