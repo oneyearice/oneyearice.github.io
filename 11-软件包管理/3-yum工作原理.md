@@ -268,7 +268,7 @@ Centos8就是dnf.log
 
 ![img](3-yum工作原理.assets/clip_image033.jpg)
 
-**info 11可见当错做的事情，比如command line install mariadb-server。**
+**info 11可见当时做的事情，比如command line install mariadb-server。**
 
 ![img](3-yum工作原理.assets/clip_image034.png)
 
@@ -398,7 +398,7 @@ anaconda是操作系统安装向导的时候安装的程序，所以yum list不�
 
 ![img](3-yum工作原理.assets/clip_image074.jpg)
 
--pf必须已经安装了的文件名；-pqf后面必须跟包名，package；不对，换方法：
+-qf必须已经安装了的文件名；-pqf后面必须跟包名，package；不对，换方法：
 
 ![img](3-yum工作原理.assets/clip_image076.jpg)
 
@@ -484,7 +484,7 @@ rpm包也是yum安装的。需要依赖也会自动给你安装的。
 
 makecahe一般不需要用
 
-因为，第一次使用过yum，就自动回有makecahe了
+因为，第一次使用过yum，就自动makecahe了
 
 ![img](3-yum工作原理.assets/clip_image094.jpg)
 

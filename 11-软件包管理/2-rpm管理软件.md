@@ -192,27 +192,25 @@ yum可以查到这些依赖的能力来自于哪些包-不安装也能查询，r
 
 <img src="2-rpm管理软件.assets/clip_image085.jpg" alt="img" style="zoom:67%;" />
 
- 
+###  ql就是全列出来
 
 ![img](2-rpm管理软件.assets/clip_image087.jpg)
 
-### ql就是全列出来
+### qc是列出配置文件
 
 ![img](2-rpm管理软件.assets/clip_image089.jpg)
 
-### qc是列出配置文件
-
- 
+###  qd是看文档
 
 ![img](2-rpm管理软件.assets/clip_image091.jpg)
 
-### qd是看文档
 
- 
+
+ bash提供了哪些能力，也就是哪些文件。
 
 ![img](2-rpm管理软件.assets/clip_image093.jpg)
 
-bash提供了哪些能力，也就是哪些文件。
+
 
  
 

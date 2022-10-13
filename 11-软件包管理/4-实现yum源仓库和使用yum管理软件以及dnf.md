@@ -8,7 +8,7 @@
 
 ## 配置内网的YUM源
 
-### yum -y isntall httpd
+### yum -y install httpd
 
 ![img](4-实现yum源仓库和使用yum管理软件以及dnf.assets/clip_image002.jpg)
 
@@ -198,6 +198,8 @@ centos6的也有了
 
  
 
+![image-20221012175849158](4-实现yum源仓库和使用yum管理软件以及dnf.assets/image-20221012175849158.png)
+
  
 
  
@@ -206,7 +208,7 @@ centos6的也有了
 
 ![img](4-实现yum源仓库和使用yum管理软件以及dnf.assets/clip_image080.jpg)
 
-group分为环境组和普通组，环境组就是安装系统的时候让你选择的包--老王使用的事GNOME Destop，刘遄使用的是Server with GUI，我使用的是Minimal Install。
+group分为环境组和普通组，环境组就是安装系统的时候让你选择的包--老王使用的事GNOME Destop，老刘使用的是Server with GUI，俺使用的是Minimal Install。
 
 你选择某一种比如Serer with GUI就会对应地安装很多包。
 
