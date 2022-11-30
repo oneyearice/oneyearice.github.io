@@ -188,7 +188,7 @@ group:g1:rw-
 mask::rw-
 other::r--
 
-👇判断facl的group 优先于本来的group
+👇判断facl的group 优先于本来的group，这里错啦，group没命令中，自然不起作用啦
 [11:16:01 root@localhost data]#su user1 -c 'catf1'
 bash: catf1: command not found
 [11:16:10 root@localhost data]#su user1 -c 'echo aa > f1'
@@ -214,6 +214,12 @@ other::r--
 
 
 ```
+
+![image-20221130183948955](C:\Users\oneye\AppData\Roaming\Typora\typora-user-images\image-20221130183948955.png)
+
+
+
+
 
 ## 删除facl两种方法
 
