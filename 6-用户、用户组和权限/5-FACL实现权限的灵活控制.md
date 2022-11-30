@@ -215,7 +215,9 @@ other::r--
 
 ```
 
-![image-20221130183948955](C:\Users\oneye\AppData\Roaming\Typora\typora-user-images\image-20221130183948955.png)
+<img src="5-FACL实现权限的灵活控制.assets/image-20221130183948955.png" alt="image-20221130183948955.png" style="zoom:67%;"/>
+
+
 
 
 
