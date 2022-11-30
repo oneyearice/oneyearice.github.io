@@ -137,17 +137,21 @@ cat: f1: Permission denied
 
 1、先看所有者
 
-2、再看FACL：
-
-​		2.1看针对user的FACL
-
-​		2.2看针对group的FACL
+2、看针对user的FACL
 
 3、看所属组
 
-4、看other
+4、看针对group的FACL
 
-<img src="5-FACL实现权限的灵活控制.assets/image-20220129112114516.png" alt="image-20220129112114516" style="zoom:67%;" /> 
+5、看other
+
+<img src="5-FACL实现权限的灵活控制.assets/image-20220129112114516.png" alt="image-20220129112114516" style="zoom:67%;"/> 
+
+交换机的acl 、linux 路由表 ip roue show (metric小的自动放到上面) ，都是从上到下匹配的，
+
+ssg 的policy 也是从上到下匹配，linux的shell脚本、python的主程序都是从上到下，所以此乃天地法则🤮
+
+ 
 
 ```
 👇判断所有者优于facl的user
