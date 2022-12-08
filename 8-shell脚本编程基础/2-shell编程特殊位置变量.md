@@ -207,7 +207,7 @@ ming
 
 ![img](2-shell编程特殊位置变量.assets/clip_image074-164395840302536.jpg)
 
-不会，引号去掉还是一个整体
+引号引起来才是一个整体，不能去掉。
 
 ![img](2-shell编程特殊位置变量.assets/clip_image076-164395840302637.jpg)
 
