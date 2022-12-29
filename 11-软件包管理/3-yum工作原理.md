@@ -504,7 +504,7 @@ makecahe一般不需要用
 
 ![img](3-yum工作原理.assets/clip_image098.jpg)
 
-这是查这个包依赖哪些文件，然后这些文件又依赖哪些包--这就需要再次yum deplist xxx了，比如上面的bash
+这是查这个包依赖哪些文件，然后这些文件又是由哪些包提供的--这就需要再次yum deplist xxx了，比如上面的bash
 
 <img src="3-yum工作原理.assets/image-20220214155748455.png" alt="image-20220214155748455" style="zoom:67%;" /> 
 
