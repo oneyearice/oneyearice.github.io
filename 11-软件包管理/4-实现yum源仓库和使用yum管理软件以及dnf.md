@@ -246,7 +246,9 @@ groupinstall可以连起来写
 
  
 
- --disablerepo和--enablerepo没有试验成功，不知道咋弄的，不过我倒是可以用sed 来开关。恩，也不常用。
+ --disablerepo和--enablerepo没有试验成功，不知道咋弄的，不过我倒是可以用sed 来开关。恩，也不常用。这么用的，临时的，所以是要配和install xx一起用的
+
+![image-20221230152927591](4-实现yum源仓库和使用yum管理软件以及dnf.assets/image-20221230152927591.png) 
 
 ![img](4-实现yum源仓库和使用yum管理软件以及dnf.assets/clip_image092.jpg)
 
