@@ -354,7 +354,7 @@ MD，上图我还以为是打了个叉叉，几个月前写的了，现在梳理
 
 ![img](5-编辑安装httpd2.assets/clip_image125.png)
 
-![image-20220215174354057](5-编辑安装httpd2.assets/image-20220215174354057.png) 主目录/apps/httpd24，配置文件/detc/httpd
+![image-20220215174354057](5-编辑安装httpd2.assets/image-20220215174354057.png) 主目录/apps/httpd24，配置文件/etc/httpd
 
 ![img](5-编辑安装httpd2.assets/clip_image127.jpg)
 
@@ -402,11 +402,11 @@ MD，上图我还以为是打了个叉叉，几个月前写的了，现在梳理
 
 ![img](5-编辑安装httpd2.assets/clip_image154.jpg)
 
-![img](5-编辑安装httpd2.assets/clip_image156.jpg)
+![img](5-编辑安装httpd2.assets/clip_image156.jpg) 
 
 reboot后测试一下：
 
-![img](5-编辑安装httpd2.assets/clip_image158.jpg)
+![img](5-编辑安装httpd2.assets/clip_image158.jpg) 
 
  
 
