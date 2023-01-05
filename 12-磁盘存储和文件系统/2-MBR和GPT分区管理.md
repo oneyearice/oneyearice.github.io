@@ -285,9 +285,7 @@ ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image106.jpg)
 
- 
-
-![img](2-MBR和GPT分区管理.assets/clip_image108.jpg)
+<img src="2-MBR和GPT分区管理.assets/clip_image108.jpg" alt="img" style="zoom: 25%;" /> 
 
  
 
@@ -335,7 +333,7 @@ ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image133.jpg)
 
-上图👆注意 ：XXX不管，是刚才加的。
+上图👆注意 ：sdb、sdc、sdd都不管，是刚才加的。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image135.jpg)
 
