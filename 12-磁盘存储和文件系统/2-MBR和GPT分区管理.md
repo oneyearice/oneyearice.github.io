@@ -251,13 +251,13 @@ ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image092.jpg)
 
-![img](2-MBR和GPT分区管理.assets/clip_image093.png)
+![img](2-MBR和GPT分区管理.assets/clip_image093.png)  
 
 这样就恢复了55aa标记位
 
 ## 举例-破坏分区表-保留了标志位
 
-![img](2-MBR和GPT分区管理.assets/clip_image095.jpg)
+![img](2-MBR和GPT分区管理.assets/clip_image095.jpg) 
 
 ![img](2-MBR和GPT分区管理.assets/clip_image097.jpg)
 
@@ -265,7 +265,7 @@ ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa�
 
 ![img](2-MBR和GPT分区管理.assets/clip_image099.jpg)
 
-![img](2-MBR和GPT分区管理.assets/clip_image100.png)
+![img](2-MBR和GPT分区管理.assets/clip_image100.png) 
 
 因为标志位55aa还在，所以还有个分区标题
 
@@ -283,7 +283,7 @@ ps：不管你skip510还是seek510，skipxxxx要得到的是/data/dpt里的55aa�
 
 重启模拟故障处理，重启之前先把分区表备份到远端机器上。
 
-![img](2-MBR和GPT分区管理.assets/clip_image106.jpg)
+![img](2-MBR和GPT分区管理.assets/clip_image106.jpg) 
 
 <img src="2-MBR和GPT分区管理.assets/clip_image108.jpg" alt="img" style="zoom: 25%;" /> 
 
@@ -529,7 +529,7 @@ UEFI启动就得配合GPT分区。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image195.jpg)
 
-list block lsblk在centos 6 和 7上都可以用。
+lsblk（list block） 在centos 6 和 7上都可以用。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image197.jpg)
 
