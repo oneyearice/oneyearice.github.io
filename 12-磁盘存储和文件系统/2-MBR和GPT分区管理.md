@@ -541,7 +541,7 @@ lsblk（list block） 在centos 6 和 7上都可以用。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image200.png)
 
- 👆man 可见fdisk就是不支持gpt分区的，所以生产中肯定不行的。
+ 👆man 可见fdisk就是不支持gpt分区的，所以生产中肯定不能用fdisk来分GPT的。
 
 ### man下gdisk👇
 
@@ -583,7 +583,7 @@ partprobe同步的问题，后面再说。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image218.jpg)
 
-当前硬盘里啥都没有，所以也不存在什么446B的bootloder
+当前硬盘里啥都没有，所以也不存在什么446B的bootloder，这不废话嘛，它都不是活动分区，哪来的引导。
 
 ![img](2-MBR和GPT分区管理.assets/clip_image220.jpg)
 
