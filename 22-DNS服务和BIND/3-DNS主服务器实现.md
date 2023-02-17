@@ -473,3 +473,85 @@ https://powerdns.org/hello-dns/basic.md.html这里点击
 
 ![image-20230216205726225](3-DNS主服务器实现.assets/image-20230216205726225.png)
 
+开启海外网络，本地dig就成功了，毛仔细看下图 ask的是192.168.10.2.
+
+![image-20230216210037532](3-DNS主服务器实现.assets/image-20230216210037532.png)
+
+
+
+电脑还是不行，dns server的firewalld和selinux都关掉还是不行，明天再看吧
+
+![image-20230216210511308](3-DNS主服务器实现.assets/image-20230216210511308.png)
+
+奇怪了
+
+不过firewalld确实也造成了故障
+
+
+
+![image-20230216210559725](3-DNS主服务器实现.assets/image-20230216210559725.png)
+
+
+
+
+
+![image-20230216210727237](3-DNS主服务器实现.assets/image-20230216210727237.png)
+
+
+
+
+
+![image-20230216211007346](3-DNS主服务器实现.assets/image-20230216211007346.png)
+
+
+
+就是不递归了，下班下班，回去睡觉
+
+
+
+好了，好像还是selinux没有disabled之前是permissive，反正今天过来一开始还是老样子，防火墙，selinux，重启linux，就没有啥其他动作了。无非时各种dig，顺带把windows的dig和tcping工具给完善和一下
+
+
+
+---
+
+奇怪的一点时，我怎么查dig都看不到AUTHORITY权威DNS服务器了
+
+<img src="3-DNS主服务器实现.assets/image-20230217182907243.png" alt="image-20230217182907243" style="zoom:50%;" /> 
+
+<img src="3-DNS主服务器实现.assets/image-20230217182953291.png" alt="image-20230217182953291" style="zoom:50%;" /> 
+
+以上就完成了主dns的简单搭建
+
+
+
+
+
+<img src="3-DNS主服务器实现.assets/image-20230217183322152.png" alt="image-20230217183322152" style="zoom:50%;" /> 
+
+![image-20230217183358946](3-DNS主服务器实现.assets/image-20230217183358946.png) 
+
+
+
+![image-20230217183513525](3-DNS主服务器实现.assets/image-20230217183513525.png) 
+
+
+
+dig的用法
+
+![image-20230217183918396](3-DNS主服务器实现.assets/image-20230217183918396.png)
+
+
+
+
+
+此外还有
+
+从服务器、反向解析、智能DNS、CDN、DNS委托
+
+
+
+下一节继续
+
+
+
