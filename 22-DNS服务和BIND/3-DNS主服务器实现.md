@@ -188,6 +188,8 @@ SOA就是对该域的初始定义，比如当前域由哪个主dns服务器对�
 
 ​		这3H和上面的TTL是两码事，minimum和TTL都是针对client的请求的记录缓存，minimun是针对本地不存的记录需要去上游问的，不管问到还是没问到的缓存；而TTL是针对本地有记录的用户请求的缓存。
 
+​		都不对，两个缓存的理解如下：
+
  		所以dnsmasq估计也有这两种缓存，也就是说 修改hosts，说不定不用重启dnasmq，只要等他缓存到期了就行了。
 
 **更正** https://www.zytrax.com/books/dns/apd/rfc2308.txt上讲了
@@ -371,7 +373,7 @@ https://powerdns.org/hello-dns/basic.md.html这里点击
 
 ![image-20230216171217920](3-DNS主服务器实现.assets/image-20230216171217920.png)
 
-
+上图的3H更正为：代理查询 没查到 这么一个没查到的结果 缓存的时间。
 
 
 
@@ -395,7 +397,7 @@ https://powerdns.org/hello-dns/basic.md.html这里点击
 
 至此，该有的配置就配置完了，
 
-1、语法检查：named-checkconf
+1、语法检查：named-checkconf   named-checkzone
 
 检查配置文件的命令，也只能检测配置文件，它不能检查数据库文件也就是rr记录文件
 
@@ -479,7 +481,7 @@ https://powerdns.org/hello-dns/basic.md.html这里点击
 
 
 
-电脑还是不行，dns server的firewalld和selinux都关掉还是不行，明天再看吧
+还是不行，dns server的firewalld和selinux都关掉还是不行，明天再看吧
 
 ![image-20230216210511308](3-DNS主服务器实现.assets/image-20230216210511308.png)
 
