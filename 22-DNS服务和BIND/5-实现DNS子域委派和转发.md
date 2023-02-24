@@ -1076,7 +1076,7 @@ dig 去看就好了
 
 
 
-这样两台针对www.bing.com的只缓存dns就都没有缓存了，也无法访问互联网了
+这样两台针对[www.bing.com](www.bing.com)的只缓存dns就都没有缓存了，也无法访问互联网了
 
 此时
 
@@ -1258,11 +1258,57 @@ dig 去看就好了
 
 
 
+直接上需求，将奇数IP的dns请求转发到10.3，偶数的转发给10.2
+
+开搞，搞不了，BIND view里的acl不支持正则，思路换到智能DNS里吧。看看那篇有什么新的东西，至少常见的基于ISP的归属地的，各种智能DNS不都在商用吗，我不信一个奇偶数还不能做出来了，
+
+当然这里的VIEW也能做，就是把acl add_ips和acl eve_ips里写满所有的私网网段的奇数，和偶数。当然eve_ips可以! add_ips 直接取反。
+
+```
+acl odd_ips {
+    # 匹配奇数IP地址
+    !acl even_ips;
+};
+```
+
+1、配置主备好
+
+```shell
+vim /etc/named.conf
+------------------------------
+
+acl odd_ips {
+    stdlib.regex("/(\d{1,3}\.){3}\d{0,2}[13579]/");   # 可惜这种chatGPT的一厢情愿，然而BIND并不支持
+};
+acl even_ips {
+    stdlib.regex("/(\d{1,3}\.){3}\d{0,2}[02468]/");
+};
+
+view "odd_ips" {
+    match-clients { odd_ips; };
+    match-destinations { any; };
+    recursion yes;
+    forwarders { 192.168.126.129; }
+
+};
+
+view "even_ips" {
+    match-clients { even_ips; };
+    forwarders { 192.168.126.130; }
+};
+
+
+```
+
+毛啊~更不不支持regex，唯一找到的信息是bind的一条漏洞
+
+https://www.tenable.com/plugins/nessus/65736
 
 
 
+![image-20230224123657915](5-实现DNS子域委派和转发.assets/image-20230224123657915.png)
 
-
+这里支持这种，这是zone数据库里支持的写法
 
 
 
