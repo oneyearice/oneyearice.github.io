@@ -1312,7 +1312,9 @@ https://www.tenable.com/plugins/nessus/65736
 
 
 
+就是不支持regex
 
+https://serverfault.com/questions/133707/is-it-possible-to-have-regular-expression-cname-record-in-dns
 
 
 
