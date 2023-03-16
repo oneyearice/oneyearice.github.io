@@ -1,0 +1,3942 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第2节 进程管理工具 · Ming</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="xxx">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3-进程管理和性能相关工具.html" />
+    
+    
+    <link rel="prev" href="1-进程管理和内存分配.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.dmit.io/aff.php?aff=5321" target="_blank" class="custom-link">原生IP平台</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../序.html">
+            
+                <a href="../序.html">
+            
+                    
+                    序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../1-基础知识介绍/1-基础知识介绍.html">
+            
+                <a href="../1-基础知识介绍/1-基础知识介绍.html">
+            
+                    
+                    第一章 基础知识介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../1-基础知识介绍/1-计算机基础.html">
+            
+                <a href="../1-基础知识介绍/1-计算机基础.html">
+            
+                    
+                    第1节 计算机基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../1-基础知识介绍/2-操作系统基础.html">
+            
+                <a href="../1-基础知识介绍/2-操作系统基础.html">
+            
+                    
+                    第2节 操作系统基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../1-基础知识介绍/3-linux介绍.html">
+            
+                <a href="../1-基础知识介绍/3-linux介绍.html">
+            
+                    
+                    第3节 linux介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../2-linux基础和帮助/2-linux基础和帮助.html">
+            
+                <a href="../2-linux基础和帮助/2-linux基础和帮助.html">
+            
+                    
+                    第二章 linux基础和帮助
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../2-linux基础和帮助/1-linux安装前准备.html">
+            
+                <a href="../2-linux基础和帮助/1-linux安装前准备.html">
+            
+                    
+                    第1节 linux安装前准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../2-linux基础和帮助/2-centos7和rocky_linux安装详解.html">
+            
+                <a href="../2-linux基础和帮助/2-centos7和rocky_linux安装详解.html">
+            
+                    
+                    第2节 centos7和rocky_linux安装详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../2-linux基础和帮助/3-linux入门操作和基础命令.html">
+            
+                <a href="../2-linux基础和帮助/3-linux入门操作和基础命令.html">
+            
+                    
+                    第3节 linux入门操作和基础命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../2-linux基础和帮助/4-linux帮助用法.html">
+            
+                <a href="../2-linux基础和帮助/4-linux帮助用法.html">
+            
+                    
+                    第4节 linux帮助用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../2-linux基础和帮助/5-linux入门命令.html">
+            
+                <a href="../2-linux基础和帮助/5-linux入门命令.html">
+            
+                    
+                    第5节 linux入门命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../3-文件管理/3-文件管理.html">
+            
+                <a href="../3-文件管理/3-文件管理.html">
+            
+                    
+                    第三章 文件管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../3-文件管理/1-文件系统.html">
+            
+                <a href="../3-文件管理/1-文件系统.html">
+            
+                    
+                    第1节 文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../3-文件管理/2-文件管理.html">
+            
+                <a href="../3-文件管理/2-文件管理.html">
+            
+                    
+                    第2节 文件管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../3-文件管理/3-cp和mv.html">
+            
+                <a href="../3-文件管理/3-cp和mv.html">
+            
+                    
+                    第3节 cp和mv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../3-文件管理/4-文件节点表.html">
+            
+                <a href="../3-文件管理/4-文件节点表.html">
+            
+                    
+                    第4节 文件节点表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../3-文件管理/5-文件链接.html">
+            
+                <a href="../3-文件管理/5-文件链接.html">
+            
+                    
+                    第5节 文件链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../4-文本编辑工具vim/4-文本编辑工具vim.html">
+            
+                <a href="../4-文本编辑工具vim/4-文本编辑工具vim.html">
+            
+                    
+                    第四章 文本编辑工具vim
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../4-文本编辑工具vim/1-vim.html">
+            
+                <a href="../4-文本编辑工具vim/1-vim.html">
+            
+                    
+                    第1节 vim
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../5-标准I&O和管道/5-标准I&O和管道.html">
+            
+                <a href="../5-标准I&O和管道/5-标准I&O和管道.html">
+            
+                    
+                    第五章 标准I&O和管道
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../5-标准I&O和管道/1-标准输入输出和重定向.html">
+            
+                <a href="../5-标准I&O和管道/1-标准输入输出和重定向.html">
+            
+                    
+                    第1节 标准输入输出和重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../5-标准I&O和管道/2-管道实现重定向.html">
+            
+                <a href="../5-标准I&O和管道/2-管道实现重定向.html">
+            
+                    
+                    第2节 管道实现重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../6-用户、用户组和权限/6-用户、用户组和权限.html">
+            
+                <a href="../6-用户、用户组和权限/6-用户、用户组和权限.html">
+            
+                    
+                    第六章 用户、用户组和权限
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../6-用户、用户组和权限/1-用户和组的增删改查.html">
+            
+                <a href="../6-用户、用户组和权限/1-用户和组的增删改查.html">
+            
+                    
+                    第1节 用户和组的增删改查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../6-用户、用户组和权限/2-用户和组的权限管理.html">
+            
+                <a href="../6-用户、用户组和权限/2-用户和组的权限管理.html">
+            
+                    
+                    第2节 用户和组的权限管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../6-用户、用户组和权限/3-文件和特殊权限.html">
+            
+                <a href="../6-用户、用户组和权限/3-文件和特殊权限.html">
+            
+                    
+                    第3节 文件和特殊权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../6-用户、用户组和权限/4-umask权限.html">
+            
+                <a href="../6-用户、用户组和权限/4-umask权限.html">
+            
+                    
+                    第4节 umask权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../6-用户、用户组和权限/5-FACL实现权限的灵活控制.html">
+            
+                <a href="../6-用户、用户组和权限/5-FACL实现权限的灵活控制.html">
+            
+                    
+                    第5节 FACL实现权限的灵活控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.html">
+            
+                <a href="../7-文本三剑客1_grep和正则表达式/7-文本三剑客1_grep和正则表达式.html">
+            
+                    
+                    第七章 文本三剑客1_grep和正则表达式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.html">
+            
+                <a href="../7-文本三剑客1_grep和正则表达式/1-常见文本处理工具.html">
+            
+                    
+                    第1节 常见文本处理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.html">
+            
+                <a href="../7-文本三剑客1_grep和正则表达式/2-文本三剑客1_grep和正则.html">
+            
+                    
+                    第2节 文本三剑客1_grep和正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../7-文本三剑客1_grep和正则表达式/3-基本和扩展正则.html">
+            
+                <a href="../7-文本三剑客1_grep和正则表达式/3-基本和扩展正则.html">
+            
+                    
+                    第3节 基本和扩展正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../8-shell脚本编程基础/8-shell脚本编程基础.html">
+            
+                <a href="../8-shell脚本编程基础/8-shell脚本编程基础.html">
+            
+                    
+                    第八章 shell脚本编程基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../8-shell脚本编程基础/1-shell编程脚本基础.html">
+            
+                <a href="../8-shell脚本编程基础/1-shell编程脚本基础.html">
+            
+                    
+                    第1节 shell编程脚本基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../8-shell脚本编程基础/2-shell编程特殊位置变量.html">
+            
+                <a href="../8-shell脚本编程基础/2-shell编程特殊位置变量.html">
+            
+                    
+                    第2节 shell编程特殊位置变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../8-shell脚本编程基础/3-算术逻辑运算和条件测试.html">
+            
+                <a href="../8-shell脚本编程基础/3-算术逻辑运算和条件测试.html">
+            
+                    
+                    第3节 算术逻辑运算和条件测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../8-shell脚本编程基础/4-条件判断.html">
+            
+                <a href="../8-shell脚本编程基础/4-条件判断.html">
+            
+                    
+                    第4节 条件判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../8-shell脚本编程基础/5-算术运算和read.html">
+            
+                <a href="../8-shell脚本编程基础/5-算术运算和read.html">
+            
+                    
+                    第5节 算术运算和read
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../8-shell脚本编程基础/6-脚本条件分支和安全.html">
+            
+                <a href="../8-shell脚本编程基础/6-脚本条件分支和安全.html">
+            
+                    
+                    第6节 脚本条件分支和安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../9-文本查找和压缩/9-文本查找和压缩.html">
+            
+                <a href="../9-文本查找和压缩/9-文本查找和压缩.html">
+            
+                    
+                    第九章 文本查找和压缩
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../9-文本查找和压缩/1-文件查找.html">
+            
+                <a href="../9-文本查找和压缩/1-文件查找.html">
+            
+                    
+                    第1节 文件查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../9-文本查找和压缩/2-文件压缩和解压缩.html">
+            
+                <a href="../9-文本查找和压缩/2-文件压缩和解压缩.html">
+            
+                    
+                    第2节 文件压缩和解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../9-文本查找和压缩/3-文件打包和解包.html">
+            
+                <a href="../9-文本查找和压缩/3-文件打包和解包.html">
+            
+                    
+                    第3节 文件打包和解包
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../10-文本三剑客2_sed/10-文本三剑客2_sed.html">
+            
+                <a href="../10-文本三剑客2_sed/10-文本三剑客2_sed.html">
+            
+                    
+                    第十章 文本三剑客2_sed
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../10-文本三剑客2_sed/1-文本处理三剑客2_sed.html">
+            
+                <a href="../10-文本三剑客2_sed/1-文本处理三剑客2_sed.html">
+            
+                    
+                    第1节 文本处理三剑客2_sed
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../11-软件包管理/11-软件包管理.html">
+            
+                <a href="../11-软件包管理/11-软件包管理.html">
+            
+                    
+                    第十一章 软件包管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../11-软件包管理/1-软件管理基础.html">
+            
+                <a href="../11-软件包管理/1-软件管理基础.html">
+            
+                    
+                    第1节 软件管理基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../11-软件包管理/2-rpm管理软件.html">
+            
+                <a href="../11-软件包管理/2-rpm管理软件.html">
+            
+                    
+                    第2节 rpm管理软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../11-软件包管理/3-yum工作原理.html">
+            
+                <a href="../11-软件包管理/3-yum工作原理.html">
+            
+                    
+                    第3节 yum工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.html">
+            
+                <a href="../11-软件包管理/4-实现yum源仓库和使用yum管理软件以及dnf.html">
+            
+                    
+                    第4节 实现yum源仓库和使用yum管理软件以及dnf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../11-软件包管理/5-编辑安装httpd2.html">
+            
+                <a href="../11-软件包管理/5-编辑安装httpd2.html">
+            
+                    
+                    第5节 编辑安装httpd2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../12-磁盘存储和文件系统/12-磁盘存储和文件系统.html">
+            
+                <a href="../12-磁盘存储和文件系统/12-磁盘存储和文件系统.html">
+            
+                    
+                    第十二章 磁盘存储和文件系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../12-磁盘存储和文件系统/1-磁盘工作原理详解.html">
+            
+                <a href="../12-磁盘存储和文件系统/1-磁盘工作原理详解.html">
+            
+                    
+                    第1节 磁盘工作原理详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../12-磁盘存储和文件系统/2-MBR和GPT分区管理.html">
+            
+                <a href="../12-磁盘存储和文件系统/2-MBR和GPT分区管理.html">
+            
+                    
+                    第2节 MBR和GPT分区管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.html">
+            
+                <a href="../12-磁盘存储和文件系统/3-MBR和GPT分区管理工具详解.html">
+            
+                    
+                    第3节 MBR和GPT分区管理工具详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../12-磁盘存储和文件系统/4-文件系统管理实战.html">
+            
+                <a href="../12-磁盘存储和文件系统/4-文件系统管理实战.html">
+            
+                    
+                    第4节 文件系统管理实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../12-磁盘存储和文件系统/5-文件系统挂载.html">
+            
+                <a href="../12-磁盘存储和文件系统/5-文件系统挂载.html">
+            
+                    
+                    第5节 文件系统挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="../12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.html">
+            
+                <a href="../12-磁盘存储和文件系统/6-持久挂载实战故障排错和swap空间管理.html">
+            
+                    
+                    第6节 持久挂载实战故障排错和swap空间管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="../12-磁盘存储和文件系统/7-外围设备使用.html">
+            
+                <a href="../12-磁盘存储和文件系统/7-外围设备使用.html">
+            
+                    
+                    第7节 外围设备使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../12-磁盘存储和文件系统/8-raid工作原理.html">
+            
+                <a href="../12-磁盘存储和文件系统/8-raid工作原理.html">
+            
+                    
+                    第8节 raid工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.9" data-path="../12-磁盘存储和文件系统/9-LVM管理详解.html">
+            
+                <a href="../12-磁盘存储和文件系统/9-LVM管理详解.html">
+            
+                    
+                    第9节 LVM管理详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../13-网络协议和管理/13-网络协议和管理.html">
+            
+                <a href="../13-网络协议和管理/13-网络协议和管理.html">
+            
+                    
+                    第十三章 网络协议和管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../13-网络协议和管理/1-网络基础.html">
+            
+                <a href="../13-网络协议和管理/1-网络基础.html">
+            
+                    
+                    第1节 网络基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../13-网络协议和管理/2-网络架构.html">
+            
+                <a href="../13-网络协议和管理/2-网络架构.html">
+            
+                    
+                    第2节 网络架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../13-网络协议和管理/3-TCP&IP.html">
+            
+                <a href="../13-网络协议和管理/3-TCP&IP.html">
+            
+                    
+                    第3节 TCP&IP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.4" data-path="../13-网络协议和管理/4-IP地址规划.html">
+            
+                <a href="../13-网络协议和管理/4-IP地址规划.html">
+            
+                    
+                    第4节 IP地址规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.5" data-path="../13-网络协议和管理/5-linux的网络和路由配置管理.html">
+            
+                <a href="../13-网络协议和管理/5-linux的网络和路由配置管理.html">
+            
+                    
+                    第5节 linux的网络和路由配置管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.6" data-path="../13-网络协议和管理/6-网络配置和故障拍错.html">
+            
+                <a href="../13-网络协议和管理/6-网络配置和故障拍错.html">
+            
+                    
+                    第6节 网络配置和故障拍错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.7" data-path="../13-网络协议和管理/7-多网卡集成的企业级应用.html">
+            
+                <a href="../13-网络协议和管理/7-多网卡集成的企业级应用.html">
+            
+                    
+                    第7节 多网卡集成的企业级应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.8" data-path="../13-网络协议和管理/8-网桥实现和ubuntu网络配置.html">
+            
+                <a href="../13-网络协议和管理/8-网桥实现和ubuntu网络配置.html">
+            
+                    
+                    第8节 网桥实现和ubuntu网络配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="14-进程、系统性能和计划任务.html">
+            
+                <a href="14-进程、系统性能和计划任务.html">
+            
+                    
+                    第十四章 进程、系统性能和计划任务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="1-进程管理和内存分配.html">
+            
+                <a href="1-进程管理和内存分配.html">
+            
+                    
+                    第1节 进程管理和内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.16.2" data-path="2-进程管理工具.html">
+            
+                <a href="2-进程管理工具.html">
+            
+                    
+                    第2节 进程管理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="3-进程管理和性能相关工具.html">
+            
+                <a href="3-进程管理和性能相关工具.html">
+            
+                    
+                    第3节 进程管理和性能相关工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.4" data-path="4-进程信号和前后台管理.html">
+            
+                <a href="4-进程信号和前后台管理.html">
+            
+                    
+                    第4节 进程信号和前后台管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.5" data-path="5-计划任务实现.html">
+            
+                <a href="5-计划任务实现.html">
+            
+                    
+                    第5节 计划任务实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../15-shell脚本编程进阶/15-shell脚本编程进阶.html">
+            
+                <a href="../15-shell脚本编程进阶/15-shell脚本编程进阶.html">
+            
+                    
+                    第十五章 shell脚本编程进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../15-shell脚本编程进阶/1-循环01.html">
+            
+                <a href="../15-shell脚本编程进阶/1-循环01.html">
+            
+                    
+                    第1节 循环01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../15-shell脚本编程进阶/2-循环02.html">
+            
+                <a href="../15-shell脚本编程进阶/2-循环02.html">
+            
+                    
+                    第2节 循环02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../15-shell脚本编程进阶/3-函数详解01.html">
+            
+                <a href="../15-shell脚本编程进阶/3-函数详解01.html">
+            
+                    
+                    第3节 函数详解01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../15-shell脚本编程进阶/4-函数详解02.html">
+            
+                <a href="../15-shell脚本编程进阶/4-函数详解02.html">
+            
+                    
+                    第4节 函数详解02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="../15-shell脚本编程进阶/5-信号处理和函数组详解.html">
+            
+                <a href="../15-shell脚本编程进阶/5-信号处理和函数组详解.html">
+            
+                    
+                    第5节 信号处理和函数组详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.6" data-path="../15-shell脚本编程进阶/6-高级变量和expect.html">
+            
+                <a href="../15-shell脚本编程进阶/6-高级变量和expect.html">
+            
+                    
+                    第6节 高级变量和expect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../16-系统启动和内核管理/16-系统启动和内核管理.html">
+            
+                <a href="../16-系统启动和内核管理/16-系统启动和内核管理.html">
+            
+                    
+                    第十六章 系统启动和内核管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../16-系统启动和内核管理/1-系统启动流程和故障排错.html">
+            
+                <a href="../16-系统启动和内核管理/1-系统启动流程和故障排错.html">
+            
+                    
+                    第1节 系统启动流程和故障排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../16-系统启动和内核管理/2-启动流程和服务管理.html">
+            
+                <a href="../16-系统启动和内核管理/2-启动流程和服务管理.html">
+            
+                    
+                    第2节 启动流程和服务管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../16-系统启动和内核管理/3-启动流程详解.html">
+            
+                <a href="../16-系统启动和内核管理/3-启动流程详解.html">
+            
+                    
+                    第3节 启动流程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.4" data-path="../16-系统启动和内核管理/4-linux启动流程grub管理和故障排错.html">
+            
+                <a href="../16-系统启动和内核管理/4-linux启动流程grub管理和故障排错.html">
+            
+                    
+                    第4节 linux启动流程grub管理和故障排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="../16-系统启动和内核管理/5-自制linux和源码编译内核.html">
+            
+                <a href="../16-系统启动和内核管理/5-自制linux和源码编译内核.html">
+            
+                    
+                    第5节 自制linux和源码编译内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.6" data-path="../16-系统启动和内核管理/6-systemd特性.html">
+            
+                <a href="../16-系统启动和内核管理/6-systemd特性.html">
+            
+                    
+                    第6节 systemd特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.7" data-path="../16-系统启动和内核管理/7-systemd和grub2管理.html">
+            
+                <a href="../16-系统启动和内核管理/7-systemd和grub2管理.html">
+            
+                    
+                    第7节 systemd和grub2管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../17-Security-Enhanced/17-Security-Enhanced.html">
+            
+                <a href="../17-Security-Enhanced/17-Security-Enhanced.html">
+            
+                    
+                    第十七章 Security-Enhanced
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../17-Security-Enhanced/1-SELinux实现安全加固.html">
+            
+                <a href="../17-Security-Enhanced/1-SELinux实现安全加固.html">
+            
+                    
+                    第1节 SELinux实现安全加固
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../18-文本处理三剑客3_awk/18-文本处理三剑客3_awk.html">
+            
+                <a href="../18-文本处理三剑客3_awk/18-文本处理三剑客3_awk.html">
+            
+                    
+                    第十八章 文本处理三剑客3_awk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="../18-文本处理三剑客3_awk/1-文本三剑客3_awk详解01.html">
+            
+                <a href="../18-文本处理三剑客3_awk/1-文本三剑客3_awk详解01.html">
+            
+                    
+                    第1节 文本三剑客3_awk详解01
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../19-加密和安全/19-加密和安全.html">
+            
+                <a href="../19-加密和安全/19-加密和安全.html">
+            
+                    
+                    第十九章 加密和安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="../19-加密和安全/1-安全和各种攻击方法.html">
+            
+                <a href="../19-加密和安全/1-安全和各种攻击方法.html">
+            
+                    
+                    第1节 安全和各种攻击方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="../19-加密和安全/2-安全加密算法体系详解.html">
+            
+                <a href="../19-加密和安全/2-安全加密算法体系详解.html">
+            
+                    
+                    第2节 安全加密算法体系详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="../19-加密和安全/3-PKI和证书安全体系详解.html">
+            
+                <a href="../19-加密和安全/3-PKI和证书安全体系详解.html">
+            
+                    
+                    第3节 PKI和证书安全体系详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.4" data-path="../19-加密和安全/4-互联网安全通讯协议HTTPS详解.html">
+            
+                <a href="../19-加密和安全/4-互联网安全通讯协议HTTPS详解.html">
+            
+                    
+                    第4节 互联网安全通讯协议HTTPS详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5" data-path="../19-加密和安全/5-建立私有CA和颁发证书.html">
+            
+                <a href="../19-加密和安全/5-建立私有CA和颁发证书.html">
+            
+                    
+                    第5节 建立私有CA和颁发证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.6" data-path="../19-加密和安全/6-证书管理和SSH服务工作原理详解.html">
+            
+                <a href="../19-加密和安全/6-证书管理和SSH服务工作原理详解.html">
+            
+                    
+                    第6节 证书管理和SSH服务工作原理详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.7" data-path="../19-加密和安全/7-SSH服务配置和基于KEY验证.html">
+            
+                <a href="../19-加密和安全/7-SSH服务配置和基于KEY验证.html">
+            
+                    
+                    第7节 SSH服务配置和基于KEY验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.8" data-path="../19-加密和安全/8-SSH基于key的expect自动化脚本.html">
+            
+                <a href="../19-加密和安全/8-SSH基于key的expect自动化脚本.html">
+            
+                    
+                    第8节 SSH基于key的expect自动化脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.9" data-path="../19-加密和安全/9-SSH端口转发功能详解.html">
+            
+                <a href="../19-加密和安全/9-SSH端口转发功能详解.html">
+            
+                    
+                    第9节 SSH端口转发功能详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.10" data-path="../19-加密和安全/10-SSH安全实践配置.html">
+            
+                <a href="../19-加密和安全/10-SSH安全实践配置.html">
+            
+                    
+                    第10节 SSH安全实践配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.11" data-path="../19-加密和安全/11-dropbear编译安装和文件完整性检查.html">
+            
+                <a href="../19-加密和安全/11-dropbear编译安装和文件完整性检查.html">
+            
+                    
+                    第11节 dropbear编译安装和文件完整性检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.12" data-path="../19-加密和安全/12-sudo实现管理授权详解.html">
+            
+                <a href="../19-加密和安全/12-sudo实现管理授权详解.html">
+            
+                    
+                    第12节 sudo实现管理授权详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.13" data-path="../19-加密和安全/13-TCPWRAPPER和PAM安全模块.html">
+            
+                <a href="../19-加密和安全/13-TCPWRAPPER和PAM安全模块.html">
+            
+                    
+                    第13节 TCPWRAPPER和PAM安全模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.14" data-path="../19-加密和安全/14-PAM模块使用.html">
+            
+                <a href="../19-加密和安全/14-PAM模块使用.html">
+            
+                    
+                    第14节 PAM模块使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../20-网络时间服务和Chrony/20-网络时间服务和Chrony.html">
+            
+                <a href="../20-网络时间服务和Chrony/20-网络时间服务和Chrony.html">
+            
+                    
+                    第二十章 加密和安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="../20-加密和安全/1-时间计时和同步.md">
+            
+                <span>
+            
+                    
+                    第1节 时间计时和同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.2" data-path="../20-加密和安全/2-时间同步服务.md">
+            
+                <span>
+            
+                    
+                    第2节 时间同步服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../21-运维自动化系统部署/21-运维自动化系统部署.html">
+            
+                <a href="../21-运维自动化系统部署/21-运维自动化系统部署.html">
+            
+                    
+                    第二十一章 运维自动化系统部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="../21-运维自动化系统部署/1-系统自动化安装.html">
+            
+                <a href="../21-运维自动化系统部署/1-系统自动化安装.html">
+            
+                    
+                    第1节 系统自动化安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2" data-path="../21-运维自动化系统部署/2-DHCPD服务实现.html">
+            
+                <a href="../21-运维自动化系统部署/2-DHCPD服务实现.html">
+            
+                    
+                    第2节 DHCPD服务实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.3" data-path="../21-运维自动化系统部署/3-实现基于PXE安装centos7系统.html">
+            
+                <a href="../21-运维自动化系统部署/3-实现基于PXE安装centos7系统.html">
+            
+                    
+                    第3节 实现基于PXE安装centos7系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.4" data-path="../21-运维自动化系统部署/4-实现基于cobbler的自动安装.html">
+            
+                <a href="../21-运维自动化系统部署/4-实现基于cobbler的自动安装.html">
+            
+                    
+                    第4节 实现基于cobbler的自动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.5" data-path="../21-运维自动化系统部署/5-实现基于cobblerweb的管理.html">
+            
+                <a href="../21-运维自动化系统部署/5-实现基于cobblerweb的管理.html">
+            
+                    
+                    第5节 实现基于cobblerweb的管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="../22-DNS服务和BIND/22-DNS服务和BIND.html">
+            
+                <a href="../22-DNS服务和BIND/22-DNS服务和BIND.html">
+            
+                    
+                    第二十二章 DNS服务和BIND
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.1" data-path="../22-DNS服务和BIND/1-DNS服务简介.html">
+            
+                <a href="../22-DNS服务和BIND/1-DNS服务简介.html">
+            
+                    
+                    第1节 DNS服务简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../22-DNS服务和BIND/2-DNS只缓存服务器实现.html">
+            
+                <a href="../22-DNS服务和BIND/2-DNS只缓存服务器实现.html">
+            
+                    
+                    第2节 DNS只缓存服务器实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.3" data-path="../22-DNS服务和BIND/3-DNS主服务器实现.html">
+            
+                <a href="../22-DNS服务和BIND/3-DNS主服务器实现.html">
+            
+                    
+                    第3节 DNS主服务器实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4" data-path="../22-DNS服务和BIND/4-实现反向区域和主从复制服务.html">
+            
+                <a href="../22-DNS服务和BIND/4-实现反向区域和主从复制服务.html">
+            
+                    
+                    第4节 实现反向区域和主从复制服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5" data-path="../22-DNS服务和BIND/5-实现DNS子域委派和转发.html">
+            
+                <a href="../22-DNS服务和BIND/5-实现DNS子域委派和转发.html">
+            
+                    
+                    第5节 实现DNS子域委派和转发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.6" data-path="../22-DNS服务和BIND/6-CDN和GSLB工作原理及智能DNS实现.html">
+            
+                <a href="../22-DNS服务和BIND/6-CDN和GSLB工作原理及智能DNS实现.html">
+            
+                    
+                    第6节 CDN和GSLB工作原理及智能DNS实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.7" data-path="../22-DNS服务和BIND/7-实现internet架构和DNS服务.html">
+            
+                <a href="../22-DNS服务和BIND/7-实现internet架构和DNS服务.html">
+            
+                    
+                    第7节 实现internet架构和DNS服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="../23-MYSQL数据01/23-MYSQL数据01.html">
+            
+                <a href="../23-MYSQL数据01/23-MYSQL数据01.html">
+            
+                    
+                    第二十三章 MYSQL数据01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../23-MYSQL数据01/1-数据库基础原理1.html">
+            
+                <a href="../23-MYSQL数据01/1-数据库基础原理1.html">
+            
+                    
+                    第1节 数据库基础原理1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="../23-MYSQL数据01/2-数据库基础原理2.html">
+            
+                <a href="../23-MYSQL数据01/2-数据库基础原理2.html">
+            
+                    
+                    第2节 数据库基础原理2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../23-MYSQL数据01/3-mysql安装和基本使用.html">
+            
+                <a href="../23-MYSQL数据01/3-mysql安装和基本使用.html">
+            
+                    
+                    第3节 mysql安装和基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.4" data-path="../23-MYSQL数据01/4-mysql基本使用.html">
+            
+                <a href="../23-MYSQL数据01/4-mysql基本使用.html">
+            
+                    
+                    第4节 mysql基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.5" data-path="../23-MYSQL数据01/5-mysql二进制和源码编译安装及多实例.html">
+            
+                <a href="../23-MYSQL数据01/5-mysql二进制和源码编译安装及多实例.html">
+            
+                    
+                    第5节 mysql二进制和源码编译安装及多实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.6" data-path="../23-MYSQL数据01/6-sql各种语句1.html">
+            
+                <a href="../23-MYSQL数据01/6-sql各种语句1.html">
+            
+                    
+                    第6节 sql各种语句1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.7" data-path="../23-MYSQL数据01/7-sql各种语句2.html">
+            
+                <a href="../23-MYSQL数据01/7-sql各种语句2.html">
+            
+                    
+                    第7节 sql各种语句2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="../24-MYSQL数据02/24-MYSQL数据02.html">
+            
+                <a href="../24-MYSQL数据02/24-MYSQL数据02.html">
+            
+                    
+                    第二十四章 MYSQL数据02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../24-MYSQL数据02/1-sql语句DQL单表查询.html">
+            
+                <a href="../24-MYSQL数据02/1-sql语句DQL单表查询.html">
+            
+                    
+                    第1节 sql语句DQL单表查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../24-MYSQL数据02/2-sql语句DQL多表查询和视图.html">
+            
+                <a href="../24-MYSQL数据02/2-sql语句DQL多表查询和视图.html">
+            
+                    
+                    第2节 sql语句DQL多表查询和视图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.3" data-path="../24-MYSQL数据02/3-函数存储过程和触发器和用户管理.html">
+            
+                <a href="../24-MYSQL数据02/3-函数存储过程和触发器和用户管理.html">
+            
+                    
+                    第3节 函数存储过程和触发器和用户管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.4" data-path="../24-MYSQL数据02/4-mysql架构和存储引擎详解.html">
+            
+                <a href="../24-MYSQL数据02/4-mysql架构和存储引擎详解.html">
+            
+                    
+                    第4节 mysql架构和存储引擎详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.5" data-path="../24-MYSQL数据02/5-mysql服务器选项变量和性能优化.html">
+            
+                <a href="../24-MYSQL数据02/5-mysql服务器选项变量和性能优化.html">
+            
+                    
+                    第5节 mysql服务器选项变量和性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="../25-MYSQL数据03/25-MYSQL数据03.html">
+            
+                <a href="../25-MYSQL数据03/25-MYSQL数据03.html">
+            
+                    
+                    第二十五章 MYSQL数据03
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../25-MYSQL数据03/1-索引类型和结构原理.html">
+            
+                <a href="../25-MYSQL数据03/1-索引类型和结构原理.html">
+            
+                    
+                    第1节 索引类型和结构原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.2" data-path="../25-MYSQL数据03/2-索引管理和并发访问的锁机制.html">
+            
+                <a href="../25-MYSQL数据03/2-索引管理和并发访问的锁机制.html">
+            
+                    
+                    第2节 索引管理和并发访问的锁机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3" data-path="../25-MYSQL数据03/3-事务特性和四种隔离级别.html">
+            
+                <a href="../25-MYSQL数据03/3-事务特性和四种隔离级别.html">
+            
+                    
+                    第3节 事务特性和四种隔离级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.4" data-path="../25-MYSQL数据03/4-各种日志管理.html">
+            
+                <a href="../25-MYSQL数据03/4-各种日志管理.html">
+            
+                    
+                    第4节 各种日志管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.5" data-path="../25-MYSQL数据03/5-二进制日志管理.html">
+            
+                <a href="../25-MYSQL数据03/5-二进制日志管理.html">
+            
+                    
+                    第5节 二进制日志管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="../26-MYSQL数据04/26-MYSQL数据04.html">
+            
+                <a href="../26-MYSQL数据04/26-MYSQL数据04.html">
+            
+                    
+                    第二十六章 MYSQL数据04
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.28.1" data-path="../26-MYSQL数据04/1-数据库备份和还原原理详解.html">
+            
+                <a href="../26-MYSQL数据04/1-数据库备份和还原原理详解.html">
+            
+                    
+                    第1节 数据库备份和还原原理详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28.2" data-path="../26-MYSQL数据04/2-mysql备份还原mysqldump使用.html">
+            
+                <a href="../26-MYSQL数据04/2-mysql备份还原mysqldump使用.html">
+            
+                    
+                    第2节 mysql备份还原mysqldump使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28.3" data-path="../26-MYSQL数据04/3-mysqldump实战和xtrabackup介绍.html">
+            
+                <a href="../26-MYSQL数据04/3-mysqldump实战和xtrabackup介绍.html">
+            
+                    
+                    第3节 mysqldump实战和xtrabackup介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28.4" data-path="../26-MYSQL数据04/4-mysql主从复制原理和实现.html">
+            
+                <a href="../26-MYSQL数据04/4-mysql主从复制原理和实现.html">
+            
+                    
+                    第4节 mysql主从复制原理和实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="../27-MYSQL数据05/27-MYSQL数据05.html">
+            
+                <a href="../27-MYSQL数据05/27-MYSQL数据05.html">
+            
+                    
+                    第二十七章 MYSQL数据05
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.29.1" data-path="../27-MYSQL数据05/1-主从服务故障恢复和级联复制.html">
+            
+                <a href="../27-MYSQL数据05/1-主从服务故障恢复和级联复制.html">
+            
+                    
+                    第1节 主从服务故障恢复和级联复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.2" data-path="../27-MYSQL数据05/2-mysql主主和半同步复制.html">
+            
+                <a href="../27-MYSQL数据05/2-mysql主主和半同步复制.html">
+            
+                    
+                    第2节 mysql主主和半同步复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.3" data-path="../27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.html">
+            
+                <a href="../27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.html">
+            
+                    
+                    第3节 mysql复制过滤器和基于SSL的复制加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.4" data-path="../27-MYSQL数据05/4-基于mysql5.html">
+            
+                <a href="../27-MYSQL数据05/4-基于mysql5.html">
+            
+                    
+                    第4节 基于mysql5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.5" data-path="../27-MYSQL数据05/5-基于proxy实现mysql的读写分离.html">
+            
+                <a href="../27-MYSQL数据05/5-基于proxy实现mysql的读写分离.html">
+            
+                    
+                    第5节 基于proxy实现mysql的读写分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.6" data-path="../27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.html">
+            
+                <a href="../27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.html">
+            
+                    
+                    第6节 mysql的主从复制高可用性解决方案MHA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.7" data-path="../27-MYSQL数据05/7-实现galaracluster和性能测试.html">
+            
+                <a href="../27-MYSQL数据05/7-实现galaracluster和性能测试.html">
+            
+                    
+                    第7节 实现galaracluster和性能测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="../28-运维自动化之ansible/28-运维自动化之ansible.html">
+            
+                <a href="../28-运维自动化之ansible/28-运维自动化之ansible.html">
+            
+                    
+                    第二十八章 运维自动化之ansible
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.30.1" data-path="../28-运维自动化之ansible/1-自动化运维介绍.html">
+            
+                <a href="../28-运维自动化之ansible/1-自动化运维介绍.html">
+            
+                    
+                    第1节 自动化运维介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.2" data-path="../28-运维自动化之ansible/2-ansible安装和架构介绍.html">
+            
+                <a href="../28-运维自动化之ansible/2-ansible安装和架构介绍.html">
+            
+                    
+                    第2节 ansible安装和架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.3" data-path="../28-运维自动化之ansible/3-ansible常见模块.html">
+            
+                <a href="../28-运维自动化之ansible/3-ansible常见模块.html">
+            
+                    
+                    第3节 ansible常见模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.4" data-path="../28-运维自动化之ansible/4-ansible相关常见工具.html">
+            
+                <a href="../28-运维自动化之ansible/4-ansible相关常见工具.html">
+            
+                    
+                    第4节 ansible相关常见工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.5" data-path="../28-运维自动化之ansible/5-playbook的实现软件配置和部署.html">
+            
+                <a href="../28-运维自动化之ansible/5-playbook的实现软件配置和部署.html">
+            
+                    
+                    第5节 playbook的实现软件配置和部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.6" data-path="../28-运维自动化之ansible/6-playbook的高级用法模板template.html">
+            
+                <a href="../28-运维自动化之ansible/6-playbook的高级用法模板template.html">
+            
+                    
+                    第6节 playbook的高级用法模板template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.7" data-path="../28-运维自动化之ansible/7-ansible的高级用法role1.html">
+            
+                <a href="../28-运维自动化之ansible/7-ansible的高级用法role1.html">
+            
+                    
+                    第7节 ansible的高级用法role1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30.8" data-path="../28-运维自动化之ansible/8-ansible的高级用法role2.html">
+            
+                <a href="../28-运维自动化之ansible/8-ansible的高级用法role2.html">
+            
+                    
+                    第8节 ansible的高级用法role2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="../29-HTTP协议和APACHE/29-HTTP协议和APACHE.html">
+            
+                <a href="../29-HTTP协议和APACHE/29-HTTP协议和APACHE.html">
+            
+                    
+                    第二十九章 HTTP协议和APACHE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.31.1" data-path="../29-HTTP协议和APACHE/1-httpd基础知识.html">
+            
+                <a href="../29-HTTP协议和APACHE/1-httpd基础知识.html">
+            
+                    
+                    第1节 httpd基础知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.2" data-path="../29-HTTP协议和APACHE/2-http协议各种版本详解.html">
+            
+                <a href="../29-HTTP协议和APACHE/2-http协议各种版本详解.html">
+            
+                    
+                    第2节 http协议各种版本详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.3" data-path="../29-HTTP协议和APACHE/3-httpd软件工作模型.html">
+            
+                <a href="../29-HTTP协议和APACHE/3-httpd软件工作模型.html">
+            
+                    
+                    第3节 httpd软件工作模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.4" data-path="../29-HTTP协议和APACHE/4-httpd2.html">
+            
+                <a href="../29-HTTP协议和APACHE/4-httpd2.html">
+            
+                    
+                    第4节 httpd2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.5" data-path="../29-HTTP协议和APACHE/5-httpd2.html">
+            
+                <a href="../29-HTTP协议和APACHE/5-httpd2.html">
+            
+                    
+                    第5节 httpd2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.6" data-path="../29-HTTP协议和APACHE/6-多虚拟主机实现.html">
+            
+                <a href="../29-HTTP协议和APACHE/6-多虚拟主机实现.html">
+            
+                    
+                    第6节 多虚拟主机实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.7" data-path="../29-HTTP协议和APACHE/7-基于主机头的多虚拟主机和实现HTTPS加密.html">
+            
+                <a href="../29-HTTP协议和APACHE/7-基于主机头的多虚拟主机和实现HTTPS加密.html">
+            
+                    
+                    第7节 基于主机头的多虚拟主机和实现HTTPS加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.8" data-path="../29-HTTP协议和APACHE/8-http的安全加固和重定向.html">
+            
+                <a href="../29-HTTP协议和APACHE/8-http的安全加固和重定向.html">
+            
+                    
+                    第8节 http的安全加固和重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.9" data-path="../29-HTTP协议和APACHE/9-http协议详解和相关工具.html">
+            
+                <a href="../29-HTTP协议和APACHE/9-http协议详解和相关工具.html">
+            
+                    
+                    第9节 http协议详解和相关工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.10" data-path="../29-HTTP协议和APACHE/10-httpd源码编译安装.html">
+            
+                <a href="../29-HTTP协议和APACHE/10-httpd源码编译安装.html">
+            
+                    
+                    第10节 httpd源码编译安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="../30-实现LAMP架构/30-实现LAMP架构.html">
+            
+                <a href="../30-实现LAMP架构/30-实现LAMP架构.html">
+            
+                    
+                    第三十章 实现LAMP架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.32.1" data-path="../30-实现LAMP架构/1-实现LAMP应用phpmyadmin.html">
+            
+                <a href="../30-实现LAMP架构/1-实现LAMP应用phpmyadmin.html">
+            
+                    
+                    第1节 实现LAMP应用phpmyadmin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.2" data-path="../30-实现LAMP架构/2-LAMP应用部署.html">
+            
+                <a href="../30-实现LAMP架构/2-LAMP应用部署.html">
+            
+                    
+                    第2节 LAMP应用部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.3" data-path="../30-实现LAMP架构/3-实现FCGI的LAMP架构.html">
+            
+                <a href="../30-实现LAMP架构/3-实现FCGI的LAMP架构.html">
+            
+                    
+                    第3节 实现FCGI的LAMP架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.4" data-path="../30-实现LAMP架构/4-编译安装LAMP环境部署应用01.html">
+            
+                <a href="../30-实现LAMP架构/4-编译安装LAMP环境部署应用01.html">
+            
+                    
+                    第4节 编译安装LAMP环境部署应用01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.5" data-path="../30-实现LAMP架构/5-编译安装LAMP环境部署应用02.html">
+            
+                <a href="../30-实现LAMP架构/5-编译安装LAMP环境部署应用02.html">
+            
+                    
+                    第5节 编译安装LAMP环境部署应用02
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="../31-日志管理rsyslog/31-日志管理rsyslog.html">
+            
+                <a href="../31-日志管理rsyslog/31-日志管理rsyslog.html">
+            
+                    
+                    第三十一章 日志管理rsyslog
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.33.1" data-path="../31-日志管理rsyslog/1-日志管理实现远程日志.html">
+            
+                <a href="../31-日志管理rsyslog/1-日志管理实现远程日志.html">
+            
+                    
+                    第1节 日志管理实现远程日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.2" data-path="../31-日志管理rsyslog/2-通过loganalyzer展示数据库中的日志.html">
+            
+                <a href="../31-日志管理rsyslog/2-通过loganalyzer展示数据库中的日志.html">
+            
+                    
+                    第2节 通过loganalyzer展示数据库中的日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="../32-网络文件共享服务/32-网络文件共享服务.html">
+            
+                <a href="../32-网络文件共享服务/32-网络文件共享服务.html">
+            
+                    
+                    第三十二章 网络文件共享服务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.34.1" data-path="../32-网络文件共享服务/1-文件共享服务FTP01.html">
+            
+                <a href="../32-网络文件共享服务/1-文件共享服务FTP01.html">
+            
+                    
+                    第1节 文件共享服务FTP01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.2" data-path="../32-网络文件共享服务/2-文件共享服务FTP02.html">
+            
+                <a href="../32-网络文件共享服务/2-文件共享服务FTP02.html">
+            
+                    
+                    第2节 文件共享服务FTP02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.3" data-path="../32-网络文件共享服务/3-FTP常见配置和基于DB文件的虚拟用户.html">
+            
+                <a href="../32-网络文件共享服务/3-FTP常见配置和基于DB文件的虚拟用户.html">
+            
+                    
+                    第3节 FTP常见配置和基于DB文件的虚拟用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.4" data-path="../32-网络文件共享服务/4-基于mysql的FTP的虚拟用户和NFS服务介绍.html">
+            
+                <a href="../32-网络文件共享服务/4-基于mysql的FTP的虚拟用户和NFS服务介绍.html">
+            
+                    
+                    第4节 基于mysql的FTP的虚拟用户和NFS服务介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.5" data-path="../32-网络文件共享服务/5-基于NFS共享服务器.html">
+            
+                <a href="../32-网络文件共享服务/5-基于NFS共享服务器.html">
+            
+                    
+                    第5节 基于NFS共享服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.6" data-path="../32-网络文件共享服务/6-NFS网络共享和自动挂载.html">
+            
+                <a href="../32-网络文件共享服务/6-NFS网络共享和自动挂载.html">
+            
+                    
+                    第6节 NFS网络共享和自动挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.7" data-path="../32-网络文件共享服务/7-SAMBA共享服务实现01.html">
+            
+                <a href="../32-网络文件共享服务/7-SAMBA共享服务实现01.html">
+            
+                    
+                    第7节 SAMBA共享服务实现01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.8" data-path="../32-网络文件共享服务/8-SAMBA共享服务实现02.html">
+            
+                <a href="../32-网络文件共享服务/8-SAMBA共享服务实现02.html">
+            
+                    
+                    第8节 SAMBA共享服务实现02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34.9" data-path="../32-网络文件共享服务/9-利用infotify和rsync服务实现实时同步.html">
+            
+                <a href="../32-网络文件共享服务/9-利用infotify和rsync服务实现实时同步.html">
+            
+                    
+                    第9节 利用infotify和rsync服务实现实时同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="../33-linux防火墙/33-linux防火墙.html">
+            
+                <a href="../33-linux防火墙/33-linux防火墙.html">
+            
+                    
+                    第三十三章 linux防火墙
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.35.1" data-path="../33-linux防火墙/1-linux防火墙基础.html">
+            
+                <a href="../33-linux防火墙/1-linux防火墙基础.html">
+            
+                    
+                    第1节 linux防火墙基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.2" data-path="../33-linux防火墙/2-iptables防火墙实战.html">
+            
+                <a href="../33-linux防火墙/2-iptables防火墙实战.html">
+            
+                    
+                    第2节 iptables防火墙实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.3" data-path="../33-linux防火墙/3-iptables防火墙扩展模块实战.html">
+            
+                <a href="../33-linux防火墙/3-iptables防火墙扩展模块实战.html">
+            
+                    
+                    第3节 iptables防火墙扩展模块实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.4" data-path="../33-linux防火墙/4-iptables防火墙扩展模块实战和策略优化.html">
+            
+                <a href="../33-linux防火墙/4-iptables防火墙扩展模块实战和策略优化.html">
+            
+                    
+                    第4节 iptables防火墙扩展模块实战和策略优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.5" data-path="../33-linux防火墙/5-网络防火墙和SNAT原理.html">
+            
+                <a href="../33-linux防火墙/5-网络防火墙和SNAT原理.html">
+            
+                    
+                    第5节 网络防火墙和SNAT原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.6" data-path="../33-linux防火墙/6-网络防火墙DNAT实战和端口重定向.html">
+            
+                <a href="../33-linux防火墙/6-网络防火墙DNAT实战和端口重定向.html">
+            
+                    
+                    第6节 网络防火墙DNAT实战和端口重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.7" data-path="../33-linux防火墙/7-firewalld新式防火墙实现.html">
+            
+                <a href="../33-linux防火墙/7-firewalld新式防火墙实现.html">
+            
+                    
+                    第7节 firewalld新式防火墙实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35.8" data-path="../33-linux防火墙/8-firewalld实现防火墙功能.html">
+            
+                <a href="../33-linux防火墙/8-firewalld实现防火墙功能.html">
+            
+                    
+                    第8节 firewalld实现防火墙功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="../34-LinuxVirtualServer/34-LinuxVirtualServer.html">
+            
+                <a href="../34-LinuxVirtualServer/34-LinuxVirtualServer.html">
+            
+                    
+                    第三十四章 LinuxVirtualServer
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.36.1" data-path="../34-LinuxVirtualServer/1-LVS工作原理和NAT模型.html">
+            
+                <a href="../34-LinuxVirtualServer/1-LVS工作原理和NAT模型.html">
+            
+                    
+                    第1节 LVS工作原理和NAT模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.2" data-path="../34-LinuxVirtualServer/2-LVS工作原理DR等三种模型.html">
+            
+                <a href="../34-LinuxVirtualServer/2-LVS工作原理DR等三种模型.html">
+            
+                    
+                    第2节 LVS工作原理DR等三种模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.3" data-path="../34-LinuxVirtualServer/3-LVS和NAT模型实现.html">
+            
+                <a href="../34-LinuxVirtualServer/3-LVS和NAT模型实现.html">
+            
+                    
+                    第3节 LVS和NAT模型实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.4" data-path="../34-LinuxVirtualServer/4-LVS的DR模型实现.html">
+            
+                <a href="../34-LinuxVirtualServer/4-LVS的DR模型实现.html">
+            
+                    
+                    第4节 LVS的DR模型实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.5" data-path="../34-LinuxVirtualServer/5-LVS跨网段DR模型和FWM多服务绑定.html">
+            
+                <a href="../34-LinuxVirtualServer/5-LVS跨网段DR模型和FWM多服务绑定.html">
+            
+                    
+                    第5节 LVS跨网段DR模型和FWM多服务绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.6" data-path="../34-LinuxVirtualServer/6-LVS实现健康性检查功能.html">
+            
+                <a href="../34-LinuxVirtualServer/6-LVS实现健康性检查功能.html">
+            
+                    
+                    第6节 LVS实现健康性检查功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.7" data-path="../34-LinuxVirtualServer/7-keepalived实现高可用性原理介绍.html">
+            
+                <a href="../34-LinuxVirtualServer/7-keepalived实现高可用性原理介绍.html">
+            
+                    
+                    第7节 keepalived实现高可用性原理介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="../35-高可用集群keepalived/35-高可用集群keepalived.html">
+            
+                <a href="../35-高可用集群keepalived/35-高可用集群keepalived.html">
+            
+                    
+                    第三十五章 高可用集群keepalived
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.37.1" data-path="../35-高可用集群keepalived/1-keepalived实现浮动的VIP.html">
+            
+                <a href="../35-高可用集群keepalived/1-keepalived实现浮动的VIP.html">
+            
+                    
+                    第1节 keepalived实现浮动的VIP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37.2" data-path="../35-高可用集群keepalived/2-keepalive实现LVS的高可用性.html">
+            
+                <a href="../35-高可用集群keepalived/2-keepalive实现LVS的高可用性.html">
+            
+                    
+                    第2节 keepalive实现LVS的高可用性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="../36-高性能WEB服务nginx01/36-高性能WEB服务nginx01.html">
+            
+                <a href="../36-高性能WEB服务nginx01/36-高性能WEB服务nginx01.html">
+            
+                    
+                    第三十六章 高性能WEB服务nginx01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.38.1" data-path="../36-高性能WEB服务nginx01/1-IO五种模型和select与epoll工作原理.html">
+            
+                <a href="../36-高性能WEB服务nginx01/1-IO五种模型和select与epoll工作原理.html">
+            
+                    
+                    第1节 IO五种模型和select与epoll工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38.2" data-path="../36-高性能WEB服务nginx01/2-nginx编译安装和功能介绍.html">
+            
+                <a href="../36-高性能WEB服务nginx01/2-nginx编译安装和功能介绍.html">
+            
+                    
+                    第2节 nginx编译安装和功能介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38.3" data-path="../36-高性能WEB服务nginx01/3-nginx全局配置和性能优化.html">
+            
+                <a href="../36-高性能WEB服务nginx01/3-nginx全局配置和性能优化.html">
+            
+                    
+                    第3节 nginx全局配置和性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38.4" data-path="../36-高性能WEB服务nginx01/4-nginx实现web服务器01.html">
+            
+                <a href="../36-高性能WEB服务nginx01/4-nginx实现web服务器01.html">
+            
+                    
+                    第4节 nginx实现web服务器01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38.5" data-path="../36-高性能WEB服务nginx01/5-nginx实现web服务器02.html">
+            
+                <a href="../36-高性能WEB服务nginx01/5-nginx实现web服务器02.html">
+            
+                    
+                    第5节 nginx实现web服务器02
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.39" data-path="../37-高性能WEB服务nginx02/37-高性能WEB服务nginx02.html">
+            
+                <a href="../37-高性能WEB服务nginx02/37-高性能WEB服务nginx02.html">
+            
+                    
+                    第三十七章 高性能WEB服务nginx02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.39.1" data-path="../37-高性能WEB服务nginx02/1-nginx常见配置.html">
+            
+                <a href="../37-高性能WEB服务nginx02/1-nginx常见配置.html">
+            
+                    
+                    第1节 nginx常见配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.39.2" data-path="../37-高性能WEB服务nginx02/2-nginx第三方模块echo和自定义json.html">
+            
+                <a href="../37-高性能WEB服务nginx02/2-nginx第三方模块echo和自定义json.html">
+            
+                    
+                    第2节 nginx第三方模块echo和自定义json
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.39.3" data-path="../37-高性能WEB服务nginx02/3-nginx的压缩和https加密实现.html">
+            
+                <a href="../37-高性能WEB服务nginx02/3-nginx的压缩和https加密实现.html">
+            
+                    
+                    第3节 nginx的压缩和https加密实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.39.4" data-path="../37-高性能WEB服务nginx02/4-nginx的rewrite模块实现.html">
+            
+                <a href="../37-高性能WEB服务nginx02/4-nginx的rewrite模块实现.html">
+            
+                    
+                    第4节 nginx的rewrite模块实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.39.5" data-path="../37-高性能WEB服务nginx02/5-nginx反向代理实现.html">
+            
+                <a href="../37-高性能WEB服务nginx02/5-nginx反向代理实现.html">
+            
+                    
+                    第5节 nginx反向代理实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.40" data-path="../38-高性能WEB服务nginx03/38-高性能WEB服务nginx03.html">
+            
+                <a href="../38-高性能WEB服务nginx03/38-高性能WEB服务nginx03.html">
+            
+                    
+                    第三十八章 高性能WEB服务nginx03
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.40.1" data-path="../38-高性能WEB服务nginx03/1-nginx反向代理缓存和IP透传等功能.html">
+            
+                <a href="../38-高性能WEB服务nginx03/1-nginx反向代理缓存和IP透传等功能.html">
+            
+                    
+                    第1节 nginx反向代理缓存和IP透传等功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.40.2" data-path="../38-高性能WEB服务nginx03/2-nginx实现fastcgi反向代理.html">
+            
+                <a href="../38-高性能WEB服务nginx03/2-nginx实现fastcgi反向代理.html">
+            
+                    
+                    第2节 nginx实现fastcgi反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.40.3" data-path="../38-高性能WEB服务nginx03/3-nginx反向代理实现负载均衡及调度方法.html">
+            
+                <a href="../38-高性能WEB服务nginx03/3-nginx反向代理实现负载均衡及调度方法.html">
+            
+                    
+                    第3节 nginx反向代理实现负载均衡及调度方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.40.4" data-path="../38-高性能WEB服务nginx03/4-nginx四层代理功能和tengine编译安装.html">
+            
+                <a href="../38-高性能WEB服务nginx03/4-nginx四层代理功能和tengine编译安装.html">
+            
+                    
+                    第4节 nginx四层代理功能和tengine编译安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.40.5" data-path="../38-高性能WEB服务nginx03/5-keepalived实现反向代理的高可用.html">
+            
+                <a href="../38-高性能WEB服务nginx03/5-keepalived实现反向代理的高可用.html">
+            
+                    
+                    第5节 keepalived实现反向代理的高可用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第2节 进程管理工具</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;2&#x8282;-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"><b></b>&#x7B2C;2&#x8282;. &#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</a></li></ul></div><h1 id="&#x7B2C;2&#x8282;-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"><a name="&#x7B2C;2&#x8282;-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;2&#x8282;-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;2&#x8282;. &#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</h1>
+<p>&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x4F1A;&#x81EA;&#x52A8;&#x653E;&#x5230;/proc&#x91CC;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329090120701.png" alt="image-20220329090120701"></p>
+<p>&#x4E0A;&#x56FE;&#x7684;1&#xFF0C;&#x5C31;&#x662F;systemd&#x8FD9;&#x4E2A;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x540E;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;&#x8FDB;&#x53BB;&#x540E;&#x4E00;&#x5806;&#x4FE1;&#x606F;(&#x6BD4;&#x5982;&#x5185;&#x5B58;&#x3001;&#x6302;&#x8F7D;&#x7B49;&#x4FE1;&#x606F;)&#x901A;&#x5E38;&#x4E0D;&#x76F4;&#x63A5;&#x67E5;&#x770B;&#x5206;&#x6790;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x53BB;&#x770B;&#x3002;</p>
+<p>ps &#x9ED8;&#x8BA4;&#x53EA;&#x663E;&#x793A;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;tty&#x7EBF;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091227490.png" alt="image-20220329091227490" style="zoom:67%;"> </p>
+<p>&#x518D;&#x5F00;&#x7B2C;&#x4E8C;&#x4E2A;&#x7EC8;&#x7AEF;&#x8DD1;&#x4E00;&#x4E2A;sleep</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091318646.png" alt="image-20220329091318646" style="zoom:67%;"> </p>
+<p>&#x518D;&#x5F00;&#x7B2C;&#x4E09;&#x4E2A;&#x7EC8;&#x7AEF;&#x8DD1;&#x4E00;&#x4E2A;ping</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091344334.png" alt="image-20220329091344334"></p>
+<p>&#x4F46;&#x662F;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;tty&#x91CC;&#xFF0C;ps&#x53EA;&#x80FD;&#x770B;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x8FDB;&#x7A0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091441762.png" alt="image-20220329091441762"></p>
+<p>ps &#x7279;&#x6B8A;&#x5728;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x8001;&#x724C;Unix&#x547D;&#x4EE4;&#xFF0C;&#x652F;&#x6301;3&#x79CD;&#x98CE;&#x683C;&#x7684;option&#x9009;&#x9879;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091634057.png" alt="image-20220329091634057" style="zoom:50%;"> </p>
+<p>man &#x5E2E;&#x52A9;&#x79CD;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x5199;&#x9053;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329091719792.png" alt="image-20220329091719792"> </p>
+<pre><code>- h           unix&#x98CE;&#x683C;
+-- help      GUN&#x98CE;&#x683C;
+h              BSD&#x98CE;&#x683C;
+</code></pre><p>tar xvf  &#x548C; tar -xvf &#x90FD;&#x884C;</p>
+<p>ps a&#x67E5;&#x770B;&#x5404;&#x4E2A;&#x7EC8;&#x7AEF;&#x7A97;&#x53E3;&#x4E0B;&#x7684;&#x8FDB;&#x7A0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329092539120.png" alt="image-20220329092539120"></p>
+<p>a&#x770B;&#x4E0D;&#x5230;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF0C;&#x548C;&#x7EC8;&#x7AEF;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#x7684;&#x8FDB;&#x7A0B;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x3002;</p>
+<p>ps x &#x67E5;&#x770B;&#x5E76;&#x975E;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#xFF0C;&#x5305;&#x542B;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x8FD9;&#x79CD;&#x548C;&#x7EC8;&#x7AEF;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x4E5F;&#x5305;&#x542B;&#x7EC8;&#x7AEF;&#x4E0B;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329092824387.png" alt="image-20220329092824387"></p>
+<p>&#xFF1F;&#x5C31;&#x662F;&#x548C;&#x7EC8;&#x7AEF;&#x65E0;&#x5173;&#x7684;&#xFF1B;&#x7EC8;&#x7AEF;&#x4E0B;&#x7684;&#x4E5F;&#x4F1A;&#x7ED9;&#x4F60;&#x663E;&#x793A;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329093004953.png" alt="image-20220329093004953"></p>
+<p>ps ax&#x4F1A;&#x591A;&#x4E00;&#x4E9B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329093015842.png" alt="image-20220329093015842"></p>
+<p>ps u&#x663E;&#x793A;&#x8FDB;&#x7A0B;&#x6240;&#x6709;&#x8005;&#x7684;&#x4FE1;&#x606F;</p>
+<p>&#x987A;&#x4FBF;&#x770B;&#x4E0B;&#x5217;&#x6807;&#x9898;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329093407167.png" alt="image-20220329093407167"></p>
+<p>ping &#x4E00;&#x76F4;&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x6D88;&#x8017;CPU&#xFF0C;time&#x8FD9;&#x4E00;&#x5217;0:00&#x5C31;&#x662F;&#x8BF4;&#x5360;&#x7528;CPU&#x7684;&#x65F6;&#x95F4;&#x7247;&#x5C11;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220329093513324.png" alt="image-20220329093513324"></p>
+<p>ps aux &#x770B;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x542B;&#x5B88;&#x62A4;&#x3001;&#x7EC8;&#x7AEF;&#x8FDB;&#x7A0B;&#x3001;&#x5E26;&#x8FDB;&#x7A0B;&#x6240;&#x6709;&#x8005;</p>
+<p><strong>&#x25B2;&#x63D2;&#x64AD;-1 iptables&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x4EE3;&#x7406;</strong></p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6709;&#x65F6;&#x5019;&#x4E0D;&#x751F;&#x6548;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x6765;&#x6211;&#x8FD8;&#x662F;&#x7528;&#x7684;softether&#x53BB;&#x642D;&#x5EFA;&#x7684;</p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E0D;&#x7528;&#x52A8;&#x8DEF;&#x7531;&#x8868;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x597D;&#x6BD4;windows&#x7684;&#x4EE3;&#x7406;&#xFF0C;&#x5C31;&#x597D;&#x6BD4;clash&#x7684;&#x201C;&#x975E;tun&#x865A;&#x62DF;&#x7F51;&#x5361;&#x6A21;&#x5F0F;&#x201D;&#xFF0C;&#x73B0;&#x5728;&#x770B;&#x4E0B;&#x6765;&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x66F4;&#x4E3A;&#x7075;&#x6D3B;&#xFF1A;</p>
+<pre><code>iptables -t nat -I SHADOWSOCKS 1  # &#x6DFB;&#x52A0;&#x7528;
+iptables -t nat -D SHADOWSOCKS 1  # &#x5220;&#x9664;&#x7528;
+iptables -t nat -D SS -p udp -d 0.0.0.0/0 -j REDIRECT --to-ports 1080  # &#x5220;&#x9664;&#x5177;&#x4F53;
+
+
+iptables -t nat -A SHADOWSOCKS -d 167.xxx.xx.xxx -j RETURN  # vpn&#x7684;&#x5EFA;&#x7ACB;&#x96A7;&#x9053;&#x5730;&#x8D28;&#x5F97;&#x8D70;&#x672C;&#x5730;&#x7F51;&#x7EDC;&#x51FA;&#x53BB;
+
+iptables -t nat -A SHADOWSOCKS -d 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -j RETURN  # &#x79C1;&#x7F51;
+
+iptables -t nat -A SHADOWSOCKS -d 127.0.0.0/8,169.254.0.0/16 -j RETURN  # &#x672C;&#x5730;&#x56DE;&#x73AF;&#x548C;linklocal
+
+iptables -t nat -A SHADOWSOCKS -d a.b.c.d/n -j RETURN  # &#x516C;&#x53F8;&#x51FA;&#x53E3;IP
+iptables -t nat -A SHADOWSOCKS -d a.b.c.d/n -j RETURN  # IDC&#x516C;&#x7F51;IP
+iptables -t nat -A SHADOWSOCKS -d a.b.c.d/n -j RETURN  # &#x4E91;&#x4E0A;&#x516C;&#x7F51;IP
+iptables -t nat -A SHADOWSOCKS -d a.b.c.d/n -j RETURN  # &#x672C;&#x5730;APP&#x8BBF;&#x95EE;&#x6216;&#x8005;&#x8C03;&#x7528;&#x7684;&#x5916;&#x90E8;IP&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x662F;&#x8D70;&#x672C;&#x5730;&#x7F51;&#x7EDC;&#xFF0C;&#x4E0D;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x3002;
+
+iptables -t nat -A SHADOWSOCKS -d a.b.c.d/n -j RETURN  # &#x4F60;&#x8981;&#x662F;&#x95F2;&#x7684;&#x86CB;&#x75BC;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x52A0;&#x4E0A;&#x6240;&#x6709;&#x56FD;&#x5185;IP&#x5730;&#x5740;&#x6BB5;&#xFF0C;&#x4F60;&#x4E0D;&#x6015;CPU&#x4E0D;&#x5FD9;&#x5BF9;&#x5427;&#x3002;
+
+iptables -t nat -A SHADOWSOCKS -p tcp -d 0.0.0.0/0 -j REDIRECT --to-ports 1080  # &#x5269;&#x4E0B;&#x7EDF;&#x7EDF;&#x8D70;&#x4EE3;&#x7406;&#xFF0C;&#x6CE8;&#x610F;UDP&#x5176;&#x5B9E;&#x4E5F;&#x9700;&#x8981;&#x4EE3;&#x7406;&#xFF0C;&#x4E0D;&#x8FC7;&#x8981;&#x6392;&#x9664;UDP 53&#xFF0C;&#x540C;&#x6837;TCP53&#x4E5F;&#x8981;&#x6392;&#x9664;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x4E9B;&#x65B0;&#x7684;QUIC&#x534F;&#x8BAE;&#x5C31;&#x80FD;&#x5E94;&#x7528;&#x4E86;&#x3002;
+</code></pre><p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330114656973.png" alt="image-20220330114656973"></p>
+<p>&#x8FD8;&#x5DEE;&#x4E00;&#x4E2A;&#x6392;&#x9664;&#x6CE8;&#x610F;&#x70B9;&#xFF0C;&#x5355;&#x4E2A;APP&#x7684;&#x5979;&#x53EF;&#x80FD;&#x4E5F;&#x4F1A;&#x672C;&#x5730;&#x8C03;&#x7528;&#x5916;&#x754C;&#x7684;&#x516C;&#x7F51;IP(&#x8FD9;&#x4E2A;&#x662F;&#x4E0D;&#x8D70;&#x4EE3;&#x7406;&#x7684;)&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x9700;&#x8981;&#x6392;&#x9664;&#x3002;</p>
+<p>&#x25B2;<strong>&#x63D2;&#x64AD;-2&#xFF1A;&#x4E1A;&#x5185;&#x8D8B;&#x52BF;QUIC&#x4F53;&#x9A8C;</strong></p>
+<p>H3&#x4ECB;&#x7ECD;&#xFF1A;<a href="https://blog.51cto.com/u_14888059/3790697" target="_blank">https://blog.51cto.com/u_14888059/3790697</a></p>
+<p><a href="https://network.51cto.com/article/625999.html" target="_blank">https://network.51cto.com/article/625999.html</a></p>
+<p><a href="https://new.qq.com/omn/20210504/20210504A01Z1T00.html" target="_blank">https://new.qq.com/omn/20210504/20210504A01Z1T00.html</a></p>
+<p>&#x8C37;&#x6B4C;&#x5F00;&#x542F;H3&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/108198664" target="_blank">https://zhuanlan.zhihu.com/p/108198664</a></p>
+<p>&#x63D2;&#x4EF6;&#x4E0B;&#x8F7D;&#xFF1A;<a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin" target="_blank">https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin</a></p>
+<p>&#x63D2;&#x4EF6;&#x663E;&#x793A;&#x5BF9;&#x6BD4;&#xFF1A;&#x7EFF;&#x8272;&#x662F;H3&#xFF0C;&#x84DD;&#x8272;&#x662F;&#x90E8;&#x5206;H3&#x6CA1;&#x6709;H1&#xFF0C;&#x7070;&#x8272;&#x662F;&#x6709;H1&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330145416732.png" alt="image-20220330145416732"></p>
+<p>&#x4F01;&#x4E1A;&#x5FAE;&#x4FE1;&#x6709;&#x7528;QUIC&#x4E5F;&#x5C31;&#x662F;H3&#xFF0C;CDN&#x91CC;&#x4E5F;&#x652F;&#x6301;&#xFF0C;&#x8C37;&#x6B4C;youtube&#x90FD;&#x652F;&#x6301;--&#x901F;&#x5EA6;&#x5FEB;&#x5F88;&#x591A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330145912072.png" alt="image-20220330145912072"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330150101252.png" alt="image-20220330150101252"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330150207337.png" alt="image-20220330150207337"></p>
+<p>&#x63D2;&#x64AD;&#x7ED3;&#x675F;&#xFF0C;&#x7EE7;&#x7EED;linux&#x7684;ps&#x547D;&#x4EE4;</p>
+<p>ps aux&#x770B;&#x7684;&#x8F83;&#x5168;&#xFF0C;&#x6CE8;&#x610F;&#x7528;&#x6237;&#x901A;&#x5E38;&#x662F;root&#xFF0C;&#x4E5F;&#x6709;&#x975E;root&#xFF0C;&#x5C31;&#x662F;&#x4EE5;&#x7CFB;&#x7EDF;&#x8D26;&#x53F7;&#x8FD0;&#x884C;&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330150937528.png" alt="image-20220330150937528"> </p>
+<p>&#x5207;&#x6362;&#x7528;&#x6237;&#x770B;&#x4E0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152034870.png" alt="image-20220330152034870" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152136455.png" alt="image-20220330152136455"></p>
+<p>&#x518D;&#x6765;&#x770B;&#x4E0B;&#x666E;&#x901A;&#x7528;&#x6237;&#x8FD0;&#x884C;passwd&#x7684;&#x60C5;&#x51B5;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152309580.png" alt="image-20220330152309580" style="zoom:67%;"> </p>
+<p>&#x53D1;&#x73B0;&#x7ADF;&#x7136;&#x662F;root&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x8FD9;&#x5C31;&#x662F;SUID&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x524D;&#x6587;&#x5DF2;&#x8BB2;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152253211.png" alt="image-20220330152253211"></p>
+<p>&#x6240;&#x4EE5;ps aux&#x770B;&#x5230;&#x7684;&#x7528;&#x6237;&#x4E25;&#x683C;&#x6765;&#x8BB2;&#x662F;&#x6709;&#x6548;&#x7528;&#x6237;&#xFF0C;&#x662F;wang&#x8FD0;&#x884C;passwd&#x540E;&#x5B9E;&#x9645;&#x751F;&#x6548;&#x7684;&#x8FD0;&#x884C;&#x7684;&#x8BE5;&#x547D;&#x4EE4;&#x7684;&#x90A3;&#x4E2A;&#x7528;&#x6237;&#x3002;</p>
+<p>&#x518D;&#x770B;&#x4E0B;ps aux&#x7684;CPU&#x5360;&#x7528;&#x767E;&#x5206;&#x6BD4;&#xFF0C;&#x57FA;&#x672C;&#x90FD;&#x662F;0&#xFF0C;&#x641E;&#x4E00;&#x4E2A;&#x4E0D;&#x662F;0&#x7684;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152732415.png" alt="image-20220330152732415" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330152802214.png" alt="image-20220330152802214"> </p>
+<p>&#x5355;&#x6838;&#x662F;100%&#xFF0C;&#x4E24;&#x6838;&#x5C31;&#x662F;200%</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330154750059.png" alt="image-20220330154750059"></p>
+<p>&#x5185;&#x5B58;&#x60C5;&#x51B5;&#xFF1A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330155855617.png" alt="image-20220330155855617"></p>
+<p>RSS&#x662F;&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#xFF0C;&#x8FDB;&#x7A0B;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BF4;&#x662F;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x9A6C;&#x4E0A;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;RSS&#x5C31;&#x662F;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x800C;VSZ&#x5C31;&#x662F;&#x7533;&#x8BF7;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x627F;&#x8BFA;&#x7ED9;&#x5230;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>VSZ&#x548C;RSS&#x7684;&#x5355;&#x4F4D;&#x90FD;&#x662F;&#x4EE5;KB&#x4E3A;&#x5355;&#x4F4D;&#x7684;</p>
+<p>tty &#xFF1F;&#x5C31;&#x662F;&#x548C;tty&#x65E0;&#x5173;&#xFF0C;&#x4E0D;&#x662F;&#x7EC8;&#x7AEF;&#x4E0A;&#x6765;&#x7684;</p>
+<p>STAT &#x72B6;&#x6001;&#x5C31;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8FD0;&#x884C;&#x6001;&#x3001;&#x5C31;&#x7EEA;&#x6001;&#x7B49;&#xFF0C;&#x5176;&#x4E2D;</p>
+<p>&#x8FD0;&#x884C;&#x6001;&#x8868;&#x73B0;&#x4E3A;R&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x770B;&#x4E0D;&#x5230;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330165053010.png" alt="image-20220330165053010"> </p>
+<p>&#x56E0;&#x4E3A;&#x4F60;&#x6572;&#x8FD9;&#x4E2A;ps aux&#x7684;&#x65F6;&#x5019;&#x80AF;&#x5B9A;&#x662F;&#x8FD0;&#x884C;&#x6001;&#x7684;&#x561B;&#xFF0C;&#x540C;&#x7406;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330165247950.png" alt="image-20220330165247950"></p>
+<p>&#x6572;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;grep &#x7684;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x554A;&#xFF0C;ps aux&#x91CC;&#x662F;&#x6CA1;&#x6709;sssss&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4F60;&#x65E2;&#x7136;grep sssss&#x4E86;&#x5C31;&#x662F;&#x8981;&#x8FD0;&#x884C;grep&#x7A0B;&#x5E8F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x4E0B;&#x5C31;&#x6709;grep&#x7684;&#x8FDB;&#x7A0B;&#x4E86;&#x3002;</p>
+<p>sleep 100 &#x8DD1;&#x8D77;&#x6765;&#x540E;&#x4E5F;&#x4E0D;&#x662F;R&#x8FD0;&#x884C;&#x6001;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330165608454.png" alt="image-20220330165608454"></p>
+<p>pts/0&#x5C31;&#x4E0D;&#x662F;&#x5F53;&#x524D;&#x7684;pst/0&#x7A97;&#x53E3;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330165700904.png" alt="image-20220330165700904"></p>
+<p>&#x5F53;&#x524D;&#x662F;pts/1&#x7EC8;&#x7AEF;&#xFF0C;</p>
+<p>&#x597D;&#x5947;&#x8FD9;&#x4E2A;&#x201C;TTY&#x662F;?&#x53F7;&#x975E;&#x5F53;&#x524D;&#x7EC8;&#x7AEF;&#x201D;&#x7684;sleep 60&#x54EA;&#x6765;&#x7684;&#x554A;&#xFF1F;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330170200762.png" alt="image-20220330170200762"></p>
+<p>&#x8FD9;&#x4E2A;sleep&#x4E0D;&#x662F;bash&#x547D;&#x4EE4;&#xFF0C;&#x4F30;&#x8BA1;&#x662F;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#xFF0C;&#x4E4B;&#x524D;&#x6CA1;&#x5173;&#x6CE8;&#x8FC7;&#xFF0C;&#x6211;&#x8FD9;&#x4E2A;&#x662F;centos8&#x7684;&#xFF0C;&#x6211;&#x53BB;&#x5176;&#x4ED6;centos7&#x4E0A;&#x53BB;&#x77A7;&#x77A7;&#x8FD8;&#x771F;&#x6709;&#xFF0C;rocklinux&#x6CA1;&#x6709;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330170506504.png" alt="image-20220330170506504"></p>
+<p>&#x6700;&#x5C0F;&#x5316;&#x5B89;&#x88C5;&#x7684;centos7&#x6CA1;&#x6709;sleep&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330170835290.png" alt="image-20220330170835290"></p>
+<p>&#x7136;&#x540E;&#x56DE;&#x5230;&#x8FD9;&#x4E2A;STAT &#x7684;R&#x8FD9;&#x4E9B;&#x72B6;&#x6001;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330181215092.png" alt="image-20220330181215092" style="zoom:50%;"> </p>
+<p>&#x5927;&#x90E8;&#x5206;&#x5904;&#x4E8E;S&#x4F11;&#x7720;&#x72B6;&#x6001;&#x4E14;&#x662F;&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#xFF0C;</p>
+<p>&#x8FD8;&#x6709;&#x4E0D;&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#x4F11;&#x7720;</p>
+<p>T&#xFF1A;stopped&#x662F;&#x505C;&#x6B62;&#x6001;</p>
+<p>Z&#xFF1A;&#x662F;&#x50F5;&#x6B7B;&#x6001;</p>
+<p>+&#xFF1A;&#x8868;&#x793A;&#x524D;&#x53F0;&#x6267;&#x884C;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330181937713.png" alt="image-20220330181937713"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330181955456.png" alt="image-20220330181955456"> </p>
+<pre><code>l:&#x591A;&#x7EBF;&#x7A0B;
+</code></pre><p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330182024861.png" alt="image-20220330182024861"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330182153949.png" alt="image-20220330182153949" style="zoom:67%;"> </p>
+<p>&#x4F1A;&#x8BDD;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x6709;qq&#x7684;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x90FD;&#x662F;&#x6D89;&#x53CA;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A; </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330182517690.png" alt="image-20220330182517690" style="zoom:67%;">  </p>
+<p><a href="https://blog.51cto.com/u_15015138/2555390" target="_blank">https://blog.51cto.com/u_15015138/2555390</a></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330182828933.png" alt="image-20220330182828933"></p>
+<p>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x5F88;&#x68D2;&#xFF0C;&#x4E0D;&#x8FC7;&#x8981;&#x533A;&#x5206;&#x4E00;&#x4E9B;ps f &#x548C; ps -f</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330183035976.png" alt="image-20220330183035976"></p>
+<p>ps auxf &#x53EF;&#x89C1;&#x770B;&#x89C1;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x7684;&#xFF0C;&#x540C;&#x7EA7;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x7B49;&#x4FE1;&#x606F;&#x1F447;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220330184017894.png" alt="image-20220330184017894"></p>
+<p>&#x25B2;<strong>&#x63D2;&#x64AD;-3</strong></p>
+<p>hostname&#x4F60;&#x771F;&#x7684;&#x4E0D;&#x4F1A;&#x6539;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><a href="https://blog.csdn.net/zhaogang1993/article/details/82769439" target="_blank">https://blog.csdn.net/zhaogang1993/article/details/82769439</a></p>
+<p>ps&#x7EE7;&#x7EED;&#xFF0C;START&#x662F;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#x7684;&#xFF0C;TIME&#x5C31;&#x662F;&#x603B;&#x7684;CPU&#x65F6;&#x95F4;(&#x662F;&#x6309;&#x65F6;&#x95F4;&#x7247;&#x5206;&#x914D;&#x7684;)</p>
+<p>&#x6392;&#x5E8F;&#x529F;&#x80FD;&#x4EE5;&#x53CA;&#x90E8;&#x5206;&#x663E;&#x793A;&#x529F;&#x80FD;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331091533403.png" alt="image-20220331091533403"></p>
+<p>ps o&#x8FC7;&#x6EE4;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331091616218.png" alt="image-20220331091616218" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331091629914.png" alt="image-20220331091629914" style="zoom:67%;"> </p>
+<p>&#x52A0;&#x4E0A;ax&#x9009;&#x9879;&#x8FDB;&#x4E00;&#x6B65;&#x663E;&#x793A;&#x6240;&#x6709;&#x7EC8;&#x7AEF;&#x7684;&#x4FE1;&#x606F;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331092037792.png" alt="image-20220331092037792" style="zoom:55%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331091754335.png" alt="image-20220331091754335" style="zoom:67%;"> </p>
+<p>&#x6309;CPU&#x6392;&#x5E8F;&#xFF0C;&#x5148;&#x641E;&#x4E00;&#x4E2A;&#x6D88;&#x8017;CPU&#x7684;&#x8FDB;&#x7A0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331092356784.png" alt="image-20220331092356784" style="zoom:67%;"> </p>
+<p>ps aux k %cpu &#x53EF;&#x89C1;&#x6392;&#x5E8F;&#x662F;&#x5347;&#x5E8F;&#x7684;--&#x6839;&#x636E;CPU&#x7684;&#x5360;&#x6BD4;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331092615665.png" alt="image-20220331092615665"> </p>
+<p>&#x964D;&#x5E8F;&#x600E;&#x4E48;&#x6392;&#xFF0C;tac&#x54AF;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331092818386.png" alt="image-20220331092818386"></p>
+<p>cat&#x548C;tac&#x4EE5;&#x53CA;rev&#x5BF9;&#x4E0D;&#x5BF9;~</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093033896.png" alt="image-20220331093033896"></p>
+<p>&#x4E0A;&#x56FE;&#x662F;&#x5173;&#x95ED;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x7684;&#x7A0B;&#x5E8F;gnome&#xFF0C;&#x964D;&#x4F4E;&#x4E00;&#x4E9B;&#x5185;&#x5B58;&#x7684;&#x6D88;&#x8017;&#x3002;</p>
+<p>&#x964D;&#x5E8F;&#x8FD8;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093151097.png" alt="image-20220331093151097"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093219131.png" alt="image-20220331093219131"></p>
+<p>&#x4E0A;&#x56FE;&#x7684;--sort&#x53EF;&#x4EE5;&#x6362;&#x6210;k&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093345996.png" alt="image-20220331093345996"></p>
+<p>&#x518D;&#x5230;centos6&#x4E0A;&#x770B;&#x4E0B;&#x5177;&#x4F53;&#x7684;&#x547D;&#x4EE4;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093435781.png" alt="image-20220331093435781"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331093910116.png" alt="image-20220331093910116" style="zoom:55%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331094345013.png" alt="image-20220331094345013"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331094727765.png" alt="image-20220331094727765" style="zoom:67%;"> </p>
+<p>-e&#x7B49;&#x4EF7;&#x4E8E;ax&#xFF0C;&#x5728;&#x884C;&#x6570;&#x4E0A;&#xFF0C;&#x4F46;&#x662F;&#x5217;&#x4E0A;&#x1F447;&#x5C11;&#x4E00;1&#x5217;&#xFF1A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331094801938.png" alt="image-20220331094801938"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331094824204.png" alt="image-20220331094824204"></p>
+<p>&#x914D;&#x5408;-F&#x663E;&#x793A;&#x591A;&#x4E00;&#x4E9B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331095129793.png" alt="image-20220331095129793"></p>
+<p>PID&#x662F;&#x8FDB;&#x7A0B;id&#xFF0C;PPID&#x662F;&#x7236;&#x8FDB;&#x7A0B;ID&#x3002;</p>
+<p>C&#x5217;&#xFF0C;&#x8868;&#x793A;CPU&#x7684;&#x767E;&#x5206;&#x6BD4;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x53D6;&#x6574;&#x7684;&#x3002;</p>
+<p>STIME&#x662F;&#x5F00;&#x59CB;&#x65F6;&#x95F4;</p>
+<p>TIME&#x662F;CPU&#x7684;&#x5206;&#x914D;&#x5230;&#x65F6;&#x95F4;&#x7247;&#x6362;&#x7B97;&#x7684;&#x7D2F;&#x8BA1;&#x4F7F;&#x7528;CPU&#x7684;&#x65F6;&#x95F4;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331095209287.png" alt="image-20220331095209287"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331095822438.png" alt="image-20220331095822438"></p>
+<p>&#x8FD9;&#x4E2A;&#x5360;&#x7528;CPU&#x7684;&#x65F6;&#x95F4;&#x5C31;&#x6BD4;&#x8F83;&#x591A;&#x4E86;&#x3002;</p>
+<pre><code>&#x8001;&#x5B9E;&#x8BB2;&#x6709;&#x6548;&#x548C;&#x771F;&#x6B63;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x533A;&#x5206;&#x4E24;&#x4E2A;&#x9009;&#x9879;&#x7684;&#x610F;&#x601D;
+
+-u&#x5C31;&#x662F;&#x7A0B;&#x5E8F;&#x6700;&#x7EC8;&#x8C01;&#x6765;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x6700;&#x7EC8; &#x6267;&#x884C; &#x7684; &#x7528;&#x6237;
+
+-U&#x5C31;&#x662F;&#x7A0B;&#x5E8F;&#x5F00;&#x59CB;&#x65F6;&#x8C01;&#x6765;&#x53D1;&#x8D77;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5F00;&#x59CB; &#x53D1;&#x8D77; &#x7684; &#x7528;&#x6237;
+</code></pre><p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331102039207.png" alt="image-20220331102039207" style="zoom:50%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331102116330.png" alt="image-20220331102116330" style="zoom:50%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331102133992.png" alt="image-20220331102133992"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331102322489.png" alt="image-20220331102322489"></p>
+<p>ps aux&#x5C31;&#x770B;&#x6240;&#x6709;&#x54AF;&#xFF0C;&#x7136;&#x540E;&#x5355;&#x770B;wang&#x7528;&#x6237;&#x7684;&#x5C31;&#x7528;ps -u wang u&#xFF0C;</p>
+<p>-u wang&#x662F;&#x6700;&#x7EC8;&#x4EE5;wang&#x7528;&#x6237;&#x6765;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;</p>
+<p>-U wang&#x5C31;&#x662F;wang&#x6572;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x901A;&#x5E38;&#x662F;SUID&#x8FD9;&#x79CD;passwd&#x5E26;SUID&#x6240;&#x4EE5;wang&#x6572;&#x547D;&#x4EE4;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331103228118.png" alt="image-20220331103228118" style="zoom:50%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331103242704.png" alt="image-20220331103242704"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331103305733.png" alt="image-20220331103305733" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331103328432.png" alt="image-20220331103328432" style="zoom: 67%;"> </p>
+<p>&#x6240;&#x4EE5;&#x5E38;&#x89C1;&#x7EC4;&#x5408;&#x6709;</p>
+<p>ps aux</p>
+<p>ps -ef</p>
+<p>&#x5176;&#x4ED6;&#x5C31;&#x770B;&#x4E0A;&#x9762;&#x7684;&#x5177;&#x4F53;&#x9700;&#x6C42;&#x7528;&#x54EA;&#x4E2A;&#x4E86;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331104032563.png" alt="image-20220331104032563" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331104149817.png" alt="image-20220331104149817" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331104331092.png" alt="image-20220331104331092"> </p>
+<p>&#x8FD9;&#x662F;&#x67E5;&#x547D;&#x4EE4;&#x7684;&#xFF0C;&#x6572;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5982;&#x679C;&#x65F6;&#x811A;&#x672C;&#x5462;&#xFF1F;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331105333513.png" alt="image-20220331105333513"></p>
+<p>&#x76F4;&#x63A5;ps -C f1.sh&#x5C31;&#x884C;&#xFF0C;&#x8FD8;&#x633A;&#x4E0D;&#x9519;&#x7684; </p>
+<p> <img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331105353457.png" alt="image-20220331105353457" style="zoom:70%;"> </p>
+<p> &#x6211;&#x7684;&#x6D4B;&#x8BD5;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331105829861.png" alt="image-20220331105829861"></p>
+<p>&#x518D;&#x5F00;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#xFF0C;&#x53D1;&#x73B0;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331105848791.png" alt="image-20220331105848791"></p>
+<p>&#x5E76;&#x6CA1;&#x6709;&#xFF0C;&#x8D4B;&#x4E88;x&#x6267;&#x884C;&#x6743;&#x9650;&#x518D;&#x770B;&#xFF0C;&#x5176;&#x5B9E;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F60;&#x662F;bash f1.sh&#x8DD1;&#x7684;&#xFF0C;&#x81EA;&#x7136;&#x8981;&#x770B;bash&#x8FDB;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;f1.sh&#xFF0C;&#x4F60;&#x7ED9;&#x4E86;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x76F4;&#x63A5;f1.sh&#x8DD1;&#x7684;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x4E86;&#x1F447;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110032635.png" alt="image-20220331110032635"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110042048.png" alt="image-20220331110042048"></p>
+<p>&#x6CE8;&#x610F;. f1.sh&#x8FD9;&#x6837;&#x4E5F;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110338588.png" alt="image-20220331110338588"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110347846.png" alt="image-20220331110347846"></p>
+<p>&#x5FC5;&#x987B;&#x662F;f1.sh&#x4F5C;&#x4E3A;&#x547D;&#x4EE4;&#x4E00;&#x6837;&#x6572;&#x5165;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;source bash &#x6216;&#x8005;.&#x6765;&#x8FD0;&#x884C;&#x3002;&#x5177;&#x4F53;&#x518D;&#x770B;&#x770B;&#x4E0B;&#x9762;</p>
+<p>bash xxx&#x662F;&#x901A;&#x8FC7;bash&#x6267;&#x884C;&#x7684;f1.sh&#xFF0C;&#x7136;&#x540E;f1.sh&#x91CC;&#x9762;&#x53C8;&#x6267;&#x884C;&#x4E86;ping</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110538487.png" alt="image-20220331110538487"></p>
+<p>./f1.sh&#x662F;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x672C;&#x8EAB;&#x4EC0;&#x4E48;&#x7684;shell&#x7533;&#x660E;&#x7684;&#x7C7B;&#x578B;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x7684;&#xFF0C;ps -C f1.sh&#x6240;&#x4EE5;&#x67E5;&#x5F97;&#x5230;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110639380.png" alt="image-20220331110639380"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331110749789.png" alt="image-20220331110749789"></p>
+<p>&#x5C06;bash&#x6539;&#x6210;sh&#x6D4B;&#x8BD5;&#x628A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331111456736.png" alt="image-20220331111456736"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331111614027.png" alt="image-20220331111614027"></p>
+<p>&#x770B;&#x5230;&#x6CA1;&#xFF0C;./f1.sh&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x6267;&#x884C;f1.sh&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x662F;&#x4F9D;&#x636E;&#x6587;&#x4EF6;&#x91CC;&#x5B9A;&#x4E49;&#x597D;&#x7684;shell&#x7C7B;&#x578B;&#x53BB;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;ps -C f1.sh&#x5C31;&#x8BA4;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331111710662.png" alt="image-20220331111710662"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331112022010.png" alt="image-20220331112022010"></p>
+<p>&#x800C;&#x6362;&#x6210;source&#x548C;.  &#x7684;&#x8BDD;&#x53C8;&#x4E0D;&#x4E00;&#x6837;&#x4E86;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331112136900.png" alt="image-20220331112136900"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331112236242.png" alt="image-20220331112236242"></p>
+<p>&#x4E5F;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5BB6;&#x4F19;&#x662F;&#x76F4;&#x63A5;&#x5728;&#x5F53;&#x524D;bash&#x4E0B;&#x4EE5;&#x5F53;&#x524D;bash&#x6267;&#x884C;f1.sh&#x7684;&#xFF0C;&#x4E0D;&#x4F1A;&#x518D;&#x5F00;&#x542F;&#x5B50;shell&#x8FDB;&#x7A0B;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x4E24;&#x4E2A;&#x5BB6;&#x4F19;source&#x548C;.&#x4F60;&#x7528;ps -C bash&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x4ED6;&#x76F4;&#x63A5;&#x5728;&#x5F53;&#x524D;bash&#x8DD1;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5C42;&#x7EA7;&#x6BD4;&#x4E0A;&#x9762;&#x5C11;&#x4E00;&#x5C42;&#xFF0C;ps -C bash&#x4E0D;&#x4F1A;&#x589E;&#x52A0;&#x3002;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x4E2A;&#x9053;&#x7406;&#xFF0C;&#x8001;&#x54E5;&#x6211;&#x7814;&#x7A76;&#x5F97;&#x5230;&#x4F4D;&#x4E86;&#x628A;&#x3002;&#x53EF;&#x60DC;&#x54B1;&#x73AF;&#x5883;&#x4E0D;care&#x8FD9;&#x4E9B;&#x4E1C;&#x897F;&#xFF0C;&#x5475;&#x5475;&#x3002;&#x4E5F;&#x4E0D;&#x5BF9;&#xFF0C;&#x57FA;&#x672C;&#x529F;&#x4E5F;&#x786E;&#x5B9E;&#x8981;&#x6709;&#x7684;&#x3002;</p>
+<p>&#x518D;&#x6765;&#xFF0C;&#x5982;&#x679C;f1.sh&#x91CC;&#x9762;&#x5C31;&#x662F;&#x5149;&#x79C3;&#x79C3;&#x7684;&#x4E00;&#x884C;ping 127.0.0.1</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331120248927.png" alt="image-20220331120248927" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331120232874.png" alt="image-20220331120232874"></p>
+<p>&#x5BF9;&#x6BD4;&#x5B9A;&#x4E49;&#x6587;&#x4EF6;&#x7684;shell&#x540E;&#xFF0C;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#xFF0C;&#x1F446;&#x4E0A;&#x56FE;&#x662F;&#x6587;&#x4EF6;&#x91CC;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;shell&#x4E8E;&#x662F;&#x81EA;&#x52A8;&#x7ED9;&#x4F60;&#x7528;&#x5F53;&#x524D;&#x7684;bash&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x6587;&#x4EF6;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;shell&#x7684;&#x1F447;&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x5B9E;&#x662F;&#x8DDF;&#x7740;&#x6587;&#x4EF6;&#x7684;shell&#x8D70;&#x7684;&#xFF0C;</p>
+<p>ps -C bash&#x548C;ps -C f1.sh&#x5206;&#x522B;&#x67E5;&#x770B;&#x4E0A;&#x4E0B;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x4E0A;&#x56FE;&#x4F1A;&#x591A;&#x4E00;&#x4E2A;bash&#xFF0C;&#x4E0B;&#x56FE;&#x662F;bash&#x4E0D;&#x591A;&#xFF0C;&#x591A;&#x4E00;&#x4E2A;f1.sh&#xFF0C;&#x56E0;&#x4E3A;&#x4E0B;&#x56FE;&#x7684;shell&#x662F;&#x96C6;&#x6210;&#x5728;f1.sh&#x91CC;&#x7684;&#xFF0C;&#x662F;&#x901A;&#x8FC7;f1.sh&#x5F00;&#x542F;&#x7684;shell&#x3002;</p>
+<p>&#x7136;&#x540E;ps -C f1.sh&#x4E0A;&#x56FE;&#x1F446;&#x80AF;&#x5B9A;&#x770B;&#x4E0D;&#x5230;&#xFF0C;&#x56E0;&#x4E3A;&#x5F00;&#x4E86;&#x4E00;&#x4E2A;&#x5B50;bash&#xFF1B;&#x4E0B;&#x56FE;&#x1F447;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x662F;&#x56E0;&#x4E3A;&#x662F;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x7684;f1.sh&#x6587;&#x4EF6;&#x81EA;&#x7136;&#x770B;&#x5F97;&#x5230;&#xFF0C;&#x867D;&#x7136;&#x6587;&#x4EF6;&#x91CC;&#x7533;&#x660E;&#x4E86;shell&#x7684;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331120402360.png" alt="image-20220331120402360"></p>
+<p>&#x6240;&#x4EE5;&#x8BF4;&#x4E00;&#x4E07;&#x5230;&#x4E00;&#x5343;&#xFF0C;</p>
+<p>1&#x3001;&#x6587;&#x4EF6;&#x65E0;&#x6267;&#x884C;&#x6743;&#x9650;</p>
+<pre><code>bash&#x5C31;&#x662F;&#x5F00;&#x542F;bash&#x5B50;&#x8FDB;&#x7A0B;
+source&#x6216;.&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x5F53;&#x524D;bash&#x8DD1;&#x7684;
+</code></pre><p>2&#x3001;&#x6587;&#x4EF6;&#x6709;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF1A;&#x2460;&#x7533;&#x660E;&#x4E86;shell&#xFF1B;&#x2461;&#x672A;&#x7533;&#x660E;shell</p>
+<pre><code>./xxx.sh&#x6267;&#x884C;&#x6709;&#x7533;&#x660E;&#xFF0C;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x8DD1;&#x7684;&#x662F;&#x6587;&#x4EF6;&#x5F53;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5229;&#x7528;&#x91CC;&#x9762;&#x7684;shell,&#x8DD1;&#x7684;&#x662F;&#x6587;&#x4EF6;&#x672C;&#x8EAB;&#xFF1B;
+./xxx.sh&#x6267;&#x884C;&#x65E0;&#x7533;&#x660E;&#xFF0C;&#x5C31;&#x662F;&#x5F00;&#x542F;&#x5F53;&#x524D;shell&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#x901A;&#x5E38;&#x5C31;&#x662F;bash&#x6765;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x8DD1;&#x7684;&#x662F;bash&#xFF1B;
+</code></pre><p><strong>&#x67E5;&#x770B;nice&#x4F18;&#x5148;&#x7EA7;</strong></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331141931748.png" alt="image-20220331141931748" style="zoom:67%;"> </p>
+<p>-&#x662F;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x4F18;&#x5148;&#x7EA7;</p>
+<p>-20&#x8FD9;&#x79CD;&#x5C31;&#x662F;nice&#xFF0C;&#x53EA;&#x662F;&#x5BF9;&#x5E94;system priority&#x7684;&#x540E;&#x9762;&#x4E00;&#x90E8;&#x5206;[&#x4E0A;&#x4E00;&#x8282;&#x91CC;&#x6709;&#x8BB2;]</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331141520453.png" alt="image-20220331141520453" style="zoom:50%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331150717514.png" alt="image-20220331150717514" style="zoom:67%;">  </p>
+<p>&#x8FD9;&#x4E2A;&#x4E0D;&#x7BA1;&#x662F;centos8&#x8FD8;&#x662F;centos7&#x90FD;&#x662F;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;&#x7684;&#xFF0C;nice&#x662F;<strong>-20~19</strong>&#x6CA1;&#x6BDB;&#x75C5;</p>
+<p>&#x4F46;&#x662F;pri&#x8FD9;&#x4E2A;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7FFB;&#x8F6C;&#x8FC7;&#x6765;&#x7684;system&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x4E0A;&#x56FE;-20&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;39&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331151412777.png" alt="image-20220331151412777" style="zoom:67%;"> </p>
+<p>&#x770B;&#x5230;&#x8FD9;&#x6211;TM&#x5DF2;&#x7ECF;&#x4E0D;&#x77E5;&#x9053;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;&#x5C0F;&#x8FD8;&#x662F;&#x6BD4;&#x5927;&#x4E86;&#xFF0C;NND&#xFF0C;&#x641E;&#x8FD9;&#x4E48;&#x4E71;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x7EDF;&#x4E00;&#x4E0B;&#x7684;&#x5417;&#xFF01;</p>
+<p>&#x901A;&#x8FC7;renice&#x8C03;&#x6574;ni&#x503C;&#xFF0C;&#x65E2;&#x7136;&#x662F;nice&#x5C31;&#x53EA;&#x80FD;&#x662F;-20&#x662F;&#x5230;19&#x4E4B;&#x95F4;&#x4E86;</p>
+<p>-n&#x662F;&#x6307;&#x5B9A;&#x65B0;&#x7684;&#x4F18;&#x5148;&#x7EA7;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331152334066.png" alt="image-20220331152334066" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331152410369.png" alt="image-20220331152410369" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331154016191.png" alt="image-20220331154016191" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331154028931.png" alt="image-20220331154028931" style="zoom:80%;">  </p>
+<p>&#x6240;&#x4EE5;&#x25B2;&#x603B;&#x7ED3;&#x4E00;&#x6CE2;&#xFF0C;ni&#x662F;-20&#x6700;&#x4F18;--&#x6BD4;&#x5C0F;&#xFF0C;pri&#x662F;139&#x6700;&#x4F18;--&#x6BD4;&#x5927;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x5B98;&#x65B9;&#x81EA;&#x5DF1;&#x90FD;&#x758F;&#x5FFD;&#x4E86;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331154737748.png" alt="image-20220331154737748"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331154936578.png" alt="image-20220331154936578" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331155459568.png" alt="image-20220331155459568"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331155025695.png" alt="image-20220331155025695" style="zoom:67%;"> </p>
+<p>altime&#x5C31;&#x662F;&#x5B9E;&#x65F6;&#x8FDB;&#x7A0B;&#x7684;&#x4F18;&#x5148;&#x7EA7;--&#x5B9E;&#x65F6;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220331155327297.png" alt="image-20220331155327297"></p>
+<p>&#x5927;&#x90E8;&#x5206;&#x8FDB;&#x7A0B;&#x90FD;&#x662F;nice&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5B9E;&#x65F6;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x5C11;&#x3002;</p>
+<p>&#x76F4;&#x63A5;&#x4EE5;&#x67D0;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x6709;&#x4E2A;&#x65E0;&#x804A;&#x7684;&#x70B9;&#xFF0C;&#x4E0B;&#x56FE;ping&#x7684;&#x662F;127.2&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x4E3A;172.0.0.2</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801143805318.png" alt="image-20220801143805318" style="zoom:80%;"> </p>
+<p>ps axo pid,ni,pri,cmd</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144123250.png" alt="image-20220801144123250" style="zoom:80%;"> </p>
+<p>&#x53EF;&#x89C1;ping&#x4EE5;&#x4F18;&#x5148;&#x7EA7;10&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x8D1F;10&#xFF0C;&#x5C31;&#x662F;nice --10 ping 127.0.0.2</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144339100.png" alt="image-20220801144339100" style="zoom:80%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144437947.png" alt="image-20220801144437947" style="zoom:80%;"> </p>
+<p> &#x4E0A;&#x9762;&#x7684;-10&#x548C;--10&#x90FD;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x6B63;&#x89C4;&#x5199;&#x6CD5;&#x662F;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144542258.png" alt="image-20220801144542258" style="zoom:80%;"> </p>
+<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x8DD1;&#x5728;&#x54EA;&#x9897;CPU&#x4E0A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144709236.png" alt="image-20220801144709236" style="zoom:70%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144803851.png" alt="image-20220801144803851" style="zoom:80%;"> </p>
+<p>&#x901A;&#x8FC7;ps axo pid,cmd,psr&#x67E5;&#x770B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801144905011.png" alt="image-20220801144905011" style="zoom:80%;"> </p>
+<p>&#x4E0A;&#x56FE;&#x53EF;&#x89C1;&#x6572;&#x7684;dd&#x547D;&#x4EE4;&#x5F53;&#x524D;&#x662F;&#x7ED1;&#x5B9A;&#x5728;cpu 3&#x4E0A;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7B2C;4&#x9897;CPU&#x3002;</p>
+<p>&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x56FA;&#x5B9A;&#x5728;CPU3&#x4E0A;&#x8DD1;&#x7684;&#x3002;</p>
+<p>&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E2A;ping</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801145051697.png" alt="image-20220801145051697"></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801145132243.png" alt="image-20220801145132243" style="zoom:80%;"> </p>
+<p>&#x591A;&#x7528;ps axo pid,cmd,psr&#x770B;&#x51E0;&#x6B21;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0D;&#x662F;&#x56FA;&#x5B9A;&#x5728;CPU4&#x4E0A;&#x8DD1;&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801145242827.png" alt="image-20220801145242827" style="zoom:80%;"> </p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#xFF0C;ping 172.0.0.1&#xFF0C;&#x8FDB;&#x7A0B;&#x7684;CPU&#x5207;&#x6362;&#x4E86;&#xFF0C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;  <strong>&#x7F13;&#x5B58;&#x5931;&#x6548;</strong></p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801145349884.png" alt="image-20220801145349884" style="zoom:80%;"> </p>
+<p>CPU&#x91CC; &#x4E5F; &#x6709;&#x7F13;&#x5B58;&#xFF0C;&#x6709;L1&#x3001;L2&#x3001;L3</p>
+<p>CPU&#x4EE5;&#x4E24;&#x9897;&#x4E3E;&#x4F8B;&#xFF0C;&#x5404;&#x6709;&#x5404;&#x7684;L1&#x3001;L2&#xFF0C;&#x4F46;&#x662F;L3&#x662F;&#x5171;&#x7528;&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801145604668.png" alt="image-20220801145604668" style="zoom:80%;"> </p>
+<p>&#x7406;&#x8BBA;&#x4E0A;L1&#x7F13;&#x5B58;&#x6700;&#x5FEB;&#xFF0C;L2&#x6B21;&#x4E4B;&#xFF0C;L3&#x6700;&#x6162;</p>
+<p>&#x5B83;&#x53EF;&#x4EE5;&#x628A;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x653E;&#x5165;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x4E0B;&#x6B21;&#x53D6;&#x5C31;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x53D6;&#x4E86;&#xFF0C;&#x901F;&#x5EA6;&#x5C31;&#x5FEB;&#x4E86;&#x5F88;&#x591A;&#x3002;</p>
+<p>&#x95EE;&#x9898;&#x6765;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x8DD1;&#x5728;CPU1&#x4E0A;&#xFF0C;&#x90A3;&#x4E48;L1&#x548C;L2&#x4E5F;&#x80AF;&#x5B9A;&#x7528;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x7A0B;&#x5E8F;&#x8DD1;&#x5230;CPU2&#x4E0A;&#x4E86;&#xFF0C;&#x6B64;&#x65F6;&#x4E4B;&#x524D;&#x7684;L1&#x548C;L2&#x7F13;&#x5B58;&#x5C31;&#x65E0;&#x6CD5;&#x5229;&#x7528;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;CPU&#x4E00;&#x5207;&#x6362;&#xFF0C;&#x5C31;&#x5BFC;&#x81F4;&#x6548;&#x7387;&#x5927;&#x5927;&#x4E0B;&#x964D;&#xFF0C;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x8FDB;&#x7A0B;&#x5C31;&#x7ED1;&#x5728;&#x67D0;&#x4E2A;CPU&#x4E0A;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x5E26;&#x6765;CPU&#x7684;&#x5229;&#x7528;&#x7387;&#x53EF;&#x80FD;&#x4E0D;&#x5747;&#x8861;&#xFF0C;&#x5C31;&#x662F;&#x4F60;&#x7ED1;&#x7684;&#x90A3;&#x4E2A;CPU&#x8D1F;&#x8F7D;&#x5C31;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5C06;nginx&#x7684;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x5206;&#x522B;&#x7ED1;&#x5230;&#x4E0D;&#x540C;&#x7684;CPU&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;&#x673A;&#x5668;&#x5C31;&#x8DD1;nginx&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x6BD4;&#x8F83;&#x597D;&#x4E86;</p>
+<p>nginx&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x628A;nginx&#x7684;&#x8FDB;&#x7A0B;&#x548C;CPU&#x505A;&#x7ED1;&#x5B9A;&#x7684;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801150102178.png" alt="image-20220801150102178" style="zoom:50%;"> </p>
+<p>&#x600E;&#x4E48;&#x7ED1;&#xFF0C;taskset&#x53EF;&#x4EE5;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801150526717.png" alt="image-20220801150526717"></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5916;&#x90E8;&#x547D;&#x4EE4;</p>
+<p>&#x7528;&#x8FD9;&#x53F0;&#x673A;&#x5668;&#xFF0C;&#x5C31;&#x4E24;&#x4E2A;CPU&#xFF0C;&#x6765;&#x505A;&#x5B9E;&#x9A8C;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801150749080.png" alt="image-20220801150749080" style="zoom:80%;"> </p>
+<p>dd&#x4E0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801150818802.png" alt="image-20220801150818802" style="zoom:80%;"> </p>
+<p>&#x901A;&#x8FC7;ps axo cmd,pid,psr&#x53EF;&#x89C1;&#x5F53;&#x524D;&#x662F;&#x8DD1;&#x5728;CPU0&#x4E0A;&#x7684;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801150923567.png" alt="image-20220801150923567" style="zoom:80%;"> </p>
+<p>&#x7531;&#x4E8E;&#x73B0;&#x5728;&#x6CA1;&#x6709;&#x8FDB;&#x7A0B;&#x548C;&#x5B83;&#x7ADE;&#x4E89;&#xFF0C;&#x6240;&#x4EE5;CPU&#x4E0D;&#x4F1A;&#x98D8;&#xFF0C;&#x518D;&#x6765;&#x4E00;&#x4E2A;ping -f &#x53BB;&#x62A2;CPU</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801151030585.png" alt="image-20220801151030585" style="zoom:80%;"> </p>
+<p>&#x7136;&#x540E;&#x53EF;&#x89C1;dd&#x547D;&#x4EE4;&#x7684;cpu&#x98D8;&#x8D70;&#x4E86;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801151058238.png" alt="image-20220801151058238" style="zoom:80%;"> </p>
+<p>&#x7136;&#x540E;&#x89C6;&#x9891;&#x4E2D;&#x8001;&#x5E08;&#x7684;xshell&#x5D29;&#x4E86;&#xFF0C;&#x5C31;&#x7528;&#x7EC8;&#x7AEF;&#x53BB;&#x6F14;&#x793A;&#x4E86;</p>
+<p>&#x73B0;&#x5728;&#x662F;&#x4E24;&#x4E2A;dd&#xFF0C;&#x7136;&#x540E;&#x4E0D;&#x65AD;&#x5730;&#x901A;&#x8FC7;ps axo pid,cmd,psr&#x53BB;&#x770B;CPU&#x5207;&#x6362;&#xFF0C;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801151512850.png" alt="image-20220801151512850" style="zoom:100%;"> </p>
+<p>&#x53D1;&#x73B0;&#x4E24;&#x4E2A;&#x6CA1;&#x5207;&#xFF0C;&#x4E8E;&#x662F;&#x518D;&#x52A0;&#x4E00;&#x4E2A;dd if=/dev/zero of=/dev/null</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801151823726.png" alt="image-20220801151823726"> </p>
+<p>&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x7528;ps axo pid,cmd,psr&#x53BB;&#x89C2;&#x5BDF;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801151920597.png" alt="image-20220801151920597"> </p>
+<p>&#x7ED3;&#x679C;&#x534A;&#x5929;&#x6CA1;&#x770B;&#x5230;CPU&#x5207;&#x6362;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0A;&#x9762;&#x6709;&#x4E24;&#x6B21;&#x5DF2;&#x7ECF;&#x5207;&#x6362;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#x9891;&#x7E41;&#x6362;&#x7684;&#x73B0;&#x8C61;&#x3002;</p>
+<p>&#x901A;&#x8FC7;taskset -p xxx&#x53EF;&#x89C1;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;ID<strong>&#x53EF;&#x4EE5;</strong>&#x8DD1;&#x5728;&#x54EA;&#x4E2A;CPU&#x4E0A;&#xFF0C;&#x6CE8;&#x610F;&#x4E0B;&#x56FE;&#xFF0C;&#x8DD1;&#x5728;CPU0&#x4E0A;&#xFF0C;&#x4F46;&#x662F;&#x770B;&#x5230;&#x7684;&#x4E8B;mask 3 </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801152644468.png" alt="image-20220801152644468"></p>
+<p>mask 3&#x5C31;&#x662F;11&#xFF0C;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x524D;&#x662F;2&#x4E2A;CPU&#xFF0C;11&#x5C31;&#x662F;&#x6253;&#x5F00;&#x5F00;&#x5173;&#xFF0C;&#x4E24;&#x4E2A;CPU&#x4E0A;&#x90FD;&#x53EF;&#x4EE5;&#x8DD1;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x4E0B;&#x56FE;&#xFF0C;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x662F;4&#x4E2A;CPU&#xFF0C;&#x8FD9;&#x4E2A;1332&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x8DD1;&#x5728;4&#x4E2A;CPU&#x4E0A;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153005480.png" alt="image-20220801153005480"> </p>
+<p>&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x7ED1;&#x5B9A; ping 127.0.0.1&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x7ED1;&#x5230;CPU1&#x4E0A;&#x53BB;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153124322.png" alt="image-20220801153124322"> </p>
+<p>&#x7ED1;&#x5B9A;&#x7684;&#x547D;&#x4EE4;&#x4E3A;taskset -cp 1 xxx&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;1&#x5C31;&#x662F;1&#x53F7;cpu&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7ED1;&#x5230;0&#x53F7;cpu&#xFF0C;&#x5C31;&#x5199;0&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7ED1;&#x4E24;&#x4E2A;&#xFF0C;&#x5C31;&#x5199;0,1&#xFF0C;&#x8FD9;&#x5C31;&#x6CA1;&#x610F;&#x4E49;&#x4E86;&#xFF0C;&#x7F13;&#x5B58;&#x53C8;&#x4E0D;&#x80FD;&#x56FA;&#x5B9A;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x7ED1;&#x5C31;&#x662F;&#x7ED1;&#x4E00;&#x4E2A;cpu&#x53F7;&#x7684;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153234748.png" alt="image-20220801153234748"> </p>
+<p>&#x6B64;&#x65F6;&#x8FDB;&#x7A0B;29654&#x5C31;&#x53D8;&#x6210;1&#x4E86;&#xFF0C;&#x5E76;&#x56FA;&#x5B9A;&#x5728;1&#x4E86;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153326940.png" alt="image-20220801153326940"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153425932.png" alt="image-20220801153425932"> </p>
+<p>taskset -cp 0,1 xxx&#x5C31;&#x662F;0&#x53F7;cpu&#x548C;1&#x53F7;cpu&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#xFF0C;&#x6700;&#x7EC8;taskset -p &#x67E5;&#x770B;&#x5C31;&#x8868;&#x73B0;&#x4E3A;11&#x4E5F;&#x5C31;&#x662F;3&#x4E86;&#x3002;</p>
+<p>&#x518D;&#x770B;&#x4E2A;CPU&#x591A;&#x7684;&#x60C5;&#x51B5;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153836668.png" alt="image-20220801153836668"> </p>
+<p>0-7&#x53F7;CPU</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801153957551.png" alt="image-20220801153957551"> </p>
+<p>ff&#x5C31;&#x662F;&#x5BF9;&#x4E8E;7969&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x6765;&#x8BF4;&#xFF0C;8&#x4E2A;cpu&#x5168;&#x90E8;&#x53EF;&#x4EE5;&#x7528;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x5E0C;&#x671B;&#x8BE5;&#x8FDB;&#x7A0B;&#x5C31;&#x8DD1;&#x5728;0&#x53F7;CPU&#x548C;4&#x53F7;CPU&#x4E0A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154144172.png" alt="image-20220801154144172"> </p>
+<p>0,4&#x5BF9;&#x5E94;&#x7684;affinity mask&#x5C31;&#x662F;0001 0001</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154325680.png" alt="image-20220801154325680"> </p>
+<p>&#x4E0A;&#x56FE;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x5F20;&#x56FE;&#x62C6;&#x5F00;&#x6765;&#x8BB2;&#xFF0C;&#x539F;&#x56FE;&#x5982;&#x4E0B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154357483.png" alt="image-20220801154357483"> </p>
+<p>&#x7ED1;&#x5230;0&#x53F7;&#x548C;4&#x53F7;CPU&#x4E86;&#xFF0C;&#x539F;&#x6765;&#x7684;3&#x5C31;&#x8DD1;&#x5230;0&#x6216;&#x8005;4&#x4E86;&#x1F447;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154442737.png" alt="image-20220801154442737"> </p>
+<p>&#x73B0;&#x5728;&#x6709;&#x4E2A;&#x95EE;&#x9898;&#x6765;&#x4E86;&#xFF0C;&#x4E0A;&#x9762;&#x7684;taskset -cp x xxx&#x90FD;&#x662F;&#x7ED1;&#x7684;&#x8FDB;&#x7A0B;ID&#xFF0C;&#x8FDB;&#x7A0B;ID&#x8FD9;&#x4E2A;&#x662F;&#x4F1A;&#x53D8;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x9700;&#x8981;&#x4F18;&#x5316;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154654101.png" alt="image-20220801154654101"> </p>
+<p>&#x7528;pidof&#x53BB;&#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x7684;ID&#xFF0C;&#x524D;&#x63D0;&#x662F;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;dd&#x5C31;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7F16;&#x53F7;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;bash&#xFF0C;&#x5C31;&#x4F1A;&#x770B;&#x5230;&#x597D;&#x51E0;&#x4E2A;&#x8FDB;&#x7A0B;ID&#xFF1A;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801154753634.png" alt="image-20220801154753634"> </p>
+<p>&#x6240;&#x4EE5;&#x8FDB;&#x7A0B;&#x7ED1;CPU&#x7684;&#x547D;&#x4EE4;&#x4E3A;taskset -cp NO.  `pid xxx`</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801155052027.png" alt="image-20220801155052027"> </p>
+<p>&#x8FD9;&#x662F;taskset&#x4F18;&#x5316;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x5F53;&#x7136;&#x6709;&#x4E9B;&#x8F6F;&#x4EF6;&#x6BD4;&#x5982;nginx&#x672C;&#x8EAB;&#x5C31;&#x53EF;&#x4EE5;&#x7ED1;CPU&#xFF0C;&#x65E0;&#x9700;&#x624B;&#x52A8;&#x6267;&#x884C;taskset&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x5C31;&#x8BB2;&#x4E86;ps&#x7684;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7EC4;&#x5408;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801155452329.png" alt="image-20220801155452329"> </p>
+<p>&#x793A;&#x4F8B;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801155516529.png" alt="image-20220801155516529" style="zoom:67%;"> </p>
+<p>pgrep=grep for process</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801155840736.png" alt="image-20220801155840736" style="zoom:67%;"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801155934886.png" alt="image-20220801155934886"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801160341947.png" alt="image-20220801160341947"> </p>
+<p>&#x611F;&#x89C9;pgrep&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4E0A;&#x56FE;&#x7684;&#x90A3;&#x4E2A;ps -C httpd,sshd -o pid=&#x6CA1;&#x5565;&#x7528;&#x3002;</p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801160658364.png" alt="image-20220801160658364"> </p>
+<p><img src="2-&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.assets/image-20220801160720301.png" alt="image-20220801160720301" style="zoom:70%;"></p>
+<footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2022-10-25 10:35:00
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1-进程管理和内存分配.html" class="navigation navigation-prev " aria-label="Previous page: 第1节 进程管理和内存分配">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3-进程管理和性能相关工具.html" class="navigation navigation-next " aria-label="Next page: 第3节 进程管理和性能相关工具">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第2节 进程管理工具","level":"1.16.2","depth":2,"next":{"title":"第3节 进程管理和性能相关工具","level":"1.16.3","depth":2,"path":"14-进程、系统性能和计划任务/3-进程管理和性能相关工具.md","ref":"./14-进程、系统性能和计划任务/3-进程管理和性能相关工具.md","articles":[]},"previous":{"title":"第1节 进程管理和内存分配","level":"1.16.1","depth":2,"path":"14-进程、系统性能和计划任务/1-进程管理和内存分配.md","ref":"./14-进程、系统性能和计划任务/1-进程管理和内存分配.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"原生IP平台":"https://www.dmit.io/aff.php?aff=5321"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"14-进程、系统性能和计划任务/2-进程管理工具.md","mtime":"2022-10-25T02:35:00.262Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-16T07:28:23.927Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
