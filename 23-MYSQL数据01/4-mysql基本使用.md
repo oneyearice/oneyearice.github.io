@@ -80,7 +80,7 @@ https://www.orcy.net.cn/1410.html
 
 > ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD("你的密码");
 
-文中的这个方法，我还没有是，不过我之前是修改了global_priv里的内容
+文中的这个方法，记不清我之前是不是直接修改了global_priv里的内容。
 
 ![image-20230314151429167](4-mysql基本使用.assets/image-20230314151429167.png)
 
