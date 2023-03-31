@@ -370,11 +370,7 @@ chkconfig --add mysqld ;service mysqld start
 
 ![image-20230316140057953](5-mysql二进制和源码编译安装及多实例.assets/image-20230316140057953.png) 
 
-可能是版本较新不适配机器也就是linux的版本。
 
-也可能是视频中老师cmake的时候，增加了CPU格式导致的。
-
-也能是... 编不下去了，总之视频中老师换了10.2.23版本再次编译就OK了。
 
 
 
