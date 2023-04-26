@@ -244,7 +244,7 @@ server cli要求加分号
 
 
 
-然后通过show databases;可见有5个默认库，但是在/var/lib/mysql里只有4个，少了要给information_schema库文件
+然后通过show databases;可见有5个默认库，但是在/var/lib/mysql里只有4个，少了一个information_schema库文件
 
 <img src="3-mysql安装和基本使用.assets/image-20230314115331377.png" alt="image-20230314115331377" style="zoom:50%;" /> 
 

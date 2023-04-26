@@ -20,8 +20,8 @@ MSI格式点击安装就好
 
 ```
 (1) 准备用户
-groupadd -r -g 306 mysql  # 没必要，删掉
-useradd -r –d /data/mysql mysql  # 没必要-d 
+groupadd -r -g 306 mysql  # 没必要，删掉这句，本身useradd -r 就会创建同名组，id都是<1000的系统ID
+useradd -r –d /data/mysql mysql  # 没必要-d /data/mysql ，因为-r本身也不会创建家目录写了也白写
 (2) 准备数据目录，建议使用逻辑卷
 mkdir /data/mysql
 chown mysql:mysql /data/mysql
@@ -370,7 +370,7 @@ chkconfig --add mysqld ;service mysqld start
 
 ![image-20230316140057953](5-mysql二进制和源码编译安装及多实例.assets/image-20230316140057953.png) 
 
-
+![image-20230331101324556](5-mysql二进制和源码编译安装及多实例.assets/image-20230331101324556.png)
 
 
 
