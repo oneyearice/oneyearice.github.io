@@ -134,7 +134,7 @@ conn characterset望文生义就是链接的字符集，不明觉厉
 
 1、实例
 
-2、DB3
+2、DB
 
 3、table
 
