@@ -252,3 +252,159 @@ as真的哪哪都可以加哦，优化下表头便于理解：
 
 ![image-20230517183257675](2-sql语句DQL多表查询和视图.assets/image-20230517183257675.png)
 
+![image-20230525142712060](2-sql语句DQL多表查询和视图.assets/image-20230525142712060.png)
+
+
+
+### 涉及三张表的一个关联操作
+
+表1，得分表
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525151800097.png" alt="image-20230525151800097" style="zoom:50%;" /> 
+
+
+
+表2，学生表
+
+![image-20230525151831280](2-sql语句DQL多表查询和视图.assets/image-20230525151831280.png) 
+
+
+
+表3，课程表
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525151852533.png" alt="image-20230525151852533" style="zoom:50%;" /> 
+
+
+
+
+
+![image-20230525152439551](2-sql语句DQL多表查询和视图.assets/image-20230525152439551.png)
+
+挑选一些字段
+
+![image-20230525152701252](2-sql语句DQL多表查询和视图.assets/image-20230525152701252.png)
+
+
+
+![image-20230525154037109](2-sql语句DQL多表查询和视图.assets/image-20230525154037109.png)
+
+
+
+### select语句流程图
+
+select的处理次序，看图可以知道select columns这个语句是在from xxx 之后的，所以也能解释from tables as t的t可以在select t.name1里进行调用的原因了。
+
+![image-20230525155959973](2-sql语句DQL多表查询和视图.assets/image-20230525155959973.png)
+
+
+
+### VIEW试图
+
+视图，在CCNA-SEC里见过，在BIND里见过，现在又在MYSQL里看到视图这个概念。反正不一样，知道一下就好了。
+
+
+
+mysql里的VIEW长的像表，但其实是虚拟出来的表，不是真实存在的。
+
+
+
+1、作用有点像linux的alias别名，固化查询语句，下次直接调用，省的再次输入长长的SQL CLI。
+
+2、隐藏了真实的表结构。
+
+
+
+create databases
+
+create tables
+
+create view
+
+注意view和tables长的基本一样，所以命名的时候要认为区分注意规范
+
+
+
+![image-20230525162927601](2-sql语句DQL多表查询和视图.assets/image-20230525162927601.png)
+
+这样就创建了一个视图，所以和alias别名不一样，alias是将cli简化，而view是将cli的结果固化，相当于多了一个表，只不过是虚拟的表。
+
+
+
+![image-20230525163205690](2-sql语句DQL多表查询和视图.assets/image-20230525163205690.png)
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525163434726.png" alt="image-20230525163434726" style="zoom:50%;" /> 
+
+
+
+### 如何区分这是一个真实的表table还是一个视图view呢
+
+![image-20230525164011051](2-sql语句DQL多表查询和视图.assets/image-20230525164011051.png)
+
+like是通配符，rike是正则，但是show table status里不支持rlike
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525165849326.png" alt="image-20230525165849326" style="zoom:50%;" /> 
+
+
+
+试图的tables status一眼看过去都是NULL，只有comment表达一些这个是VIEW
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525165955837.png" alt="image-20230525165955837" style="zoom:50%;" /> 
+
+真正的表里是由引擎、不能把、字符集各种设定清空的。而且Comment是空。
+
+<img src="2-sql语句DQL多表查询和视图.assets/image-20230525170031168.png" alt="image-20230525170031168" style="zoom:50%;" /> 
+
+
+
+### 这个view是动态的，修改视图里的源表格看看效果
+
+![image-20230525173317122](2-sql语句DQL多表查询和视图.assets/image-20230525173317122.png)
+
+删除学生，在看看view里的
+
+![image-20230525173348392](2-sql语句DQL多表查询和视图.assets/image-20230525173348392.png)
+
+是动态的，这里为什么还有NULL，因为VIEW生成的原SQL是left join的。
+
+![image-20230525173731199](2-sql语句DQL多表查询和视图.assets/image-20230525173731199.png)
+
+
+
+### view可以插入如何理解
+
+插入50岁的可以，因为创建视图的时候就是age>30
+
+![image-20230525174248033](2-sql语句DQL多表查询和视图.assets/image-20230525174248033.png)
+
+创建20岁的就不行了，因为你这个操作是对view的insert但实际上是修改了原表，而且view本来就是过滤了age>30的，所以就有一个现象：你insert了view，但是view里却看不到👇
+
+##### 所以实际工作中，不推荐用VIEW，因为存在这样的情况。
+
+![image-20230525174455396](2-sql语句DQL多表查询和视图.assets/image-20230525174455396.png)
+
+对视图的操作会影响原表
+
+![image-20230525174547142](2-sql语句DQL多表查询和视图.assets/image-20230525174547142.png)
+
+### 如果是三张表的join呢，，此时对VIEW的操作，又是对哪张表进行的呢？测试下，拿之前的那个view_test来测
+
+![image-20230525174817840](2-sql语句DQL多表查询和视图.assets/image-20230525174817840.png)
+
+哈哈，不让~
+
+我感觉就不应该对VIEW进行操作！
+
+而且也不建议使用VIEW
+
+
+
+drop view xxx;删除视图
+
+![image-20230525175716101](2-sql语句DQL多表查询和视图.assets/image-20230525175716101.png)
+
+
+
+
+
+
+
