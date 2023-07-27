@@ -71,6 +71,28 @@ tail -n1就行，sed 10 | tail -1或seq 10 | sed -n '$p'
 
 
 
+在最后一行添加文本
+
+sed '$ a xxx' /etc/passwd
+
+![image-20230727095638576](1-文本处理三剑客2_sed.assets/image-20230727095638576.png)
+
+![image-20230727095715976](1-文本处理三剑客2_sed.assets/image-20230727095715976.png)
+
+![image-20230727095733644](1-文本处理三剑客2_sed.assets/image-20230727095733644.png)
+
+
+
+下图最后一样是cli，上面的内容是cli的结果
+
+![image-20230727095909851](1-文本处理三剑客2_sed.assets/image-20230727095909851.png)
+
+![image-20230727100209948](1-文本处理三剑客2_sed.assets/image-20230727100209948.png)
+
+
+
+
+
 ### 正则匹配
 
 <img src="1-文本处理三剑客2_sed.assets/clip_image030.jpg" alt="img" style="zoom:33%;" />
