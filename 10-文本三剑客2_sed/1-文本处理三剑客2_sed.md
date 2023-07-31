@@ -75,6 +75,10 @@ tail -n1就行，sed 10 | tail -1或seq 10 | sed -n '$p'
 
 sed '$ a xxx' /etc/passwd
 
+sed '10 a xxx' /etc/passwd 就是在第10行下面插入，$在这个位置就是最后一行的行号
+
+sed '/nginx/s@xxx@zzz@' /etc/passwd 这就是查找nginx关键字的那一行进行替换，不同于上面的 第几行 定位。
+
 ![image-20230727095638576](1-文本处理三剑客2_sed.assets/image-20230727095638576.png)
 
 ![image-20230727095715976](1-文本处理三剑客2_sed.assets/image-20230727095715976.png)
@@ -165,9 +169,9 @@ d 删除模式空间匹配的行，并立即启用下一轮循环
 
 ![image-20220930134559276](1-文本处理三剑客2_sed.assets/image-20220930134559276.png)
 
+问：下面的[\\]是啥东东，答：答NM，是转义，举例
 
-
-<img src="1-文本处理三剑客2_sed.assets/clip_image064.jpg" alt="img" style="zoom: 67%;" />
+![image-20230727163308500](1-文本处理三剑客2_sed.assets/image-20230727163308500.png)<img src="1-文本处理三剑客2_sed.assets/clip_image064.jpg" alt="img" style="zoom: 67%;" />
 
 ![img](1-文本处理三剑客2_sed.assets/clip_image066.jpg)
 
