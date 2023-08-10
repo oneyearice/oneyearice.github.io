@@ -3774,16 +3774,91 @@ mysql &gt; show slave status\G;
 <p>&#x5176;&#x5B9E;&#x6211;&#x8FD8;&#x77E5;&#x9053;&#xFF0C;&#x8FD9;&#x4E2A;TMD&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x8FD8;&#x5F97;&#x4F18;&#x5316;&#x6210;BLACKHONE&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
 <pre><code>master&#x4E0A;
 --------
+yum -y install mariadb-server
+
+
 vim /etc/my.cnf
   server-id=1
   log-bin
 wr
 
 systemctl restart mariadb
+
+mysql &gt; grant replication slave on *.* to repluser@&apos;192.168.126.%&apos; identified by &apos;centos&apos;;
+
+mysqldump -A -single-transaction --master-data=1 &gt; /data/all.sql
+scp /data/all.sql root@192.168.126.130:/data/
 </code></pre><pre><code>&#x4E2D;&#x95F4;proxy&#x4E0A;
 --------
-</code></pre><footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2023-08-09 18:42:58
+scp -r root@192.168.126.129:/etc/yum.repo/ /etc/
+yum -y install mariadb-server
+
+vim /etc/my.cnf
+ server-id=130
+ log-bin
+ read-only
+ log_slave_updates
+wr
+
+systemctl restart mariadb-server
+
+vim /data/all.sql
+ CHANGE MASTER TO
+ MASTER_HOST=&apos;192.168.126.129&apos;,
+ MASTER_USER=&apos;repluser&apos;,
+ MASTER_PASSWORD=&apos;centos&apos;,
+ MASTER_PORT=3306,
+ MASTER_CONNECT_RETRY=10,
+wr
+
+msyql &lt; /data/all.sql
+
+mysql &gt; show slave status\G;
+mysql &gt; start slave;
+
+# &#x4E0D;&#x7528;&#x518D;proxy&#x4E0A;&#x521B;&#x5EFA;&#x590D;&#x5236;&#x8D26;&#x53F7;&#xFF0C;&#x672C;&#x610F;&#x662F;&#x521B;&#x5EFA;&#x8D26;&#x53F7;&#x7ED9; &#x4ECE;&#x8282;&#x70B9;&#x4EEC;&#x7528;&#xFF0C;&#x5176;&#x5B9E;&#x6CA1;&#x5FC5;&#x8981;&#xFF0C;proxy&#x62FF;&#x8FD9;&#x4E2A;&#x8D26;&#x53F7;&#x540C;&#x6B65;master&#xFF0C;&#x672C;&#x8EAB;&#x4E5F;&#x4F1A;&#x540C;&#x6B65;&#x5230;&#x8FD9;&#x4E2A;&#x8D26;&#x53F7;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x8282;&#x70B9;&#x5C31;&#x7528;&#x540C;&#x6837;&#x7684;&#x8D26;&#x53F7;&#x6765;&#x540C;&#x6B65;proxy&#x3002;
+
+
+mysqldump -A -single-transaction --master-data=1 &gt; /data/all_proxy.sql
+scp /data/all.sql root@192.168.126.131:/data/
+scp /data/all.sql root@192.168.126.132:/data/
+</code></pre><pre><code>slave&#x8282;&#x70B9;&#x4E0A;
+---------
+scp -r root@192.168.126.129:/etc/yum.repo /etc/
+yum -y install mariadb-server
+vim /etc/my.cnf
+    server-id=131
+    read-only
+wr
+
+systemctl restart mariadb-server
+
+vim /data/all_proxy.sql
+ CHANGE MASTER TO
+ MASTER_HOST=&apos;192.168.126.130&apos;,
+ MASTER_USER=&apos;repluser&apos;,
+ MASTER_PASSWORD=&apos;centos&apos;,
+ MASTER_PORT=3306,
+ MASTER_CONNECT_RETRY=10,
+wr
+
+
+msyql &lt; /data/all.sql
+
+mysql &gt; show slave status\G;
+mysql &gt; start slave;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x914D;&#x7F6E;OK&#xFF0C;&#x6D4B;&#x8BD5;&#x8FC7;&#x4E86;&#xFF0C;&#x8FC7;&#x7A0B;&#x622A;&#x56FE;&#x7565;&#x4E86;&#xFF0C;&#x90FD;&#x662F;&#x4ECE;yum -y remove mariadb&#x5F00;&#x59CB;&#x7684;</p>
+<p>&#x6700;&#x540E;&#x9A8C;&#x8BC1;&#xFF1A;</p>
+<p><img src="1-&#x4E3B;&#x4ECE;&#x670D;&#x52A1;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x7EA7;&#x8054;&#x590D;&#x5236;.assets/image-20230810115102645.png" alt="image-20230810115102645"></p>
+<p><img src="1-&#x4E3B;&#x4ECE;&#x670D;&#x52A1;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x7EA7;&#x8054;&#x590D;&#x5236;.assets/image-20230810115125632.png" alt="image-20230810115125632"></p>
+<p><img src="1-&#x4E3B;&#x4ECE;&#x670D;&#x52A1;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x7EA7;&#x8054;&#x590D;&#x5236;.assets/image-20230810115137085.png" alt="image-20230810115137085"></p>
+<p><img src="1-&#x4E3B;&#x4ECE;&#x670D;&#x52A1;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x7EA7;&#x8054;&#x590D;&#x5236;.assets/image-20230810115145789.png" alt="image-20230810115145789"></p>
+<p>OK&#xFF0C;</p>
+<p><img src="1-&#x4E3B;&#x4ECE;&#x670D;&#x52A1;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x7EA7;&#x8054;&#x590D;&#x5236;.assets/image-20230810115205327.png" alt="image-20230810115205327" style="zoom:33%;"></p>
+<p>&#x8FD9;&#x79CD;&#x7684;&#x641E;&#x5B9A;</p>
+<p>&#x89C6;&#x9891;&#x91CC;&#x7684;&#x603B;&#x7ED3;&#x5907;&#x5FD8;&#xFF0C;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x4E0A;&#x9762;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2023-08-10 11:59:13
 </span></footer>
                                 
                                 </section>
@@ -3827,7 +3902,7 @@ systemctl restart mariadb
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节 主从服务故障恢复和级联复制","level":"1.29.1","depth":2,"next":{"title":"第2节 mysql主主和半同步复制","level":"1.29.2","depth":2,"path":"27-MYSQL数据05/2-mysql主主和半同步复制.md","ref":"./27-MYSQL数据05/2-mysql主主和半同步复制.md","articles":[]},"previous":{"title":"第二十七章 MYSQL数据05","level":"1.29","depth":1,"path":"27-MYSQL数据05/27-MYSQL数据05.md","ref":"./27-MYSQL数据05/27-MYSQL数据05.md","articles":[{"title":"第1节 主从服务故障恢复和级联复制","level":"1.29.1","depth":2,"path":"27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","ref":"./27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","articles":[]},{"title":"第2节 mysql主主和半同步复制","level":"1.29.2","depth":2,"path":"27-MYSQL数据05/2-mysql主主和半同步复制.md","ref":"./27-MYSQL数据05/2-mysql主主和半同步复制.md","articles":[]},{"title":"第3节 mysql复制过滤器和基于SSL的复制加密","level":"1.29.3","depth":2,"path":"27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.md","ref":"./27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.md","articles":[]},{"title":"第4节 基于MySQL5.7的二进制安装和GTID复制","level":"1.29.4","depth":2,"path":"27-MYSQL数据05/4-基于MySQL5.7的二进制安装和GTID复制.md","ref":"./27-MYSQL数据05/4-基于MySQL5.7的二进制安装和GTID复制.md","articles":[]},{"title":"第5节 基于proxy实现mysql的读写分离","level":"1.29.5","depth":2,"path":"27-MYSQL数据05/5-基于proxy实现mysql的读写分离.md","ref":"./27-MYSQL数据05/5-基于proxy实现mysql的读写分离.md","articles":[]},{"title":"第6节 mysql的主从复制高可用性解决方案MHA","level":"1.29.6","depth":2,"path":"27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.md","ref":"./27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.md","articles":[]},{"title":"第7节 实现galaracluster和性能测试","level":"1.29.7","depth":2,"path":"27-MYSQL数据05/7-实现galaracluster和性能测试.md","ref":"./27-MYSQL数据05/7-实现galaracluster和性能测试.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"原生IP平台":"https://www.dmit.io/aff.php?aff=5321"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","mtime":"2023-08-09T10:42:58.042Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-09T10:43:15.548Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节 主从服务故障恢复和级联复制","level":"1.29.1","depth":2,"next":{"title":"第2节 mysql主主和半同步复制","level":"1.29.2","depth":2,"path":"27-MYSQL数据05/2-mysql主主和半同步复制.md","ref":"./27-MYSQL数据05/2-mysql主主和半同步复制.md","articles":[]},"previous":{"title":"第二十七章 MYSQL数据05","level":"1.29","depth":1,"path":"27-MYSQL数据05/27-MYSQL数据05.md","ref":"./27-MYSQL数据05/27-MYSQL数据05.md","articles":[{"title":"第1节 主从服务故障恢复和级联复制","level":"1.29.1","depth":2,"path":"27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","ref":"./27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","articles":[]},{"title":"第2节 mysql主主和半同步复制","level":"1.29.2","depth":2,"path":"27-MYSQL数据05/2-mysql主主和半同步复制.md","ref":"./27-MYSQL数据05/2-mysql主主和半同步复制.md","articles":[]},{"title":"第3节 mysql复制过滤器和基于SSL的复制加密","level":"1.29.3","depth":2,"path":"27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.md","ref":"./27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.md","articles":[]},{"title":"第4节 基于MySQL5.7的二进制安装和GTID复制","level":"1.29.4","depth":2,"path":"27-MYSQL数据05/4-基于MySQL5.7的二进制安装和GTID复制.md","ref":"./27-MYSQL数据05/4-基于MySQL5.7的二进制安装和GTID复制.md","articles":[]},{"title":"第5节 基于proxy实现mysql的读写分离","level":"1.29.5","depth":2,"path":"27-MYSQL数据05/5-基于proxy实现mysql的读写分离.md","ref":"./27-MYSQL数据05/5-基于proxy实现mysql的读写分离.md","articles":[]},{"title":"第6节 mysql的主从复制高可用性解决方案MHA","level":"1.29.6","depth":2,"path":"27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.md","ref":"./27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.md","articles":[]},{"title":"第7节 实现galaracluster和性能测试","level":"1.29.7","depth":2,"path":"27-MYSQL数据05/7-实现galaracluster和性能测试.md","ref":"./27-MYSQL数据05/7-实现galaracluster和性能测试.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"原生IP平台":"https://www.dmit.io/aff.php?aff=5321"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"27-MYSQL数据05/1-主从服务故障恢复和级联复制.md","mtime":"2023-08-10T03:59:13.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T03:59:26.605Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
