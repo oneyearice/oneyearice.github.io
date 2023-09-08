@@ -53,6 +53,16 @@ rm -rf /data/mysql/.*  # 删除家目录里的隐藏文件，否则会有问题
 
 
 
+然后这里强调下 useradd -s /bin/false 和/sbin/nologin一个意思，不过false的本质还是
+
+<img src="5-mysql二进制和源码编译安装及多实例.assets/image-20230907164449447.png" alt="image-20230907164449447" style="zoom:50%;" /> 
+
+你给了用户/bin/false 的shell后，用户登入使用这个/bin/false后发现返回的是false是错误，于是就不会继续登入了。
+
+
+
+
+
 #### 二、解压二进制和创建软连接以及文件权限
 
 注意/usr/local路径是固定的，当初官方编译的时候指定的
