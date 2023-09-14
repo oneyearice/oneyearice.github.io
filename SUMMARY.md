@@ -158,7 +158,7 @@
     * [第2节 mysql主主和半同步复制](./27-MYSQL数据05/2-mysql主主和半同步复制.md)
     * [第3节 mysql复制过滤器和基于SSL的复制加密](./27-MYSQL数据05/3-mysql复制过滤器和基于SSL的复制加密.md)
     * [第4节 基于MySQL5.7的二进制安装和GTID复制](./27-MYSQL数据05/4-基于MySQL5.7的二进制安装和GTID复制.md)
-    * [第5节 基于proxy实现mysql的读写分离](./27-MYSQL数据05/5-基于proxy实现mysql的读写分离.md)
+    * [第5节 基于proxySQL实现mysql的读写分离](./27-MYSQL数据05/5-基于proxySQL实现mysql的读写分离.md)
     * [第6节 mysql的主从复制高可用性解决方案MHA](./27-MYSQL数据05/6-mysql的主从复制高可用性解决方案MHA.md)
     * [第7节 实现galaracluster和性能测试](./27-MYSQL数据05/7-实现galaracluster和性能测试.md)
 * [第二十八章 运维自动化之ansible](./28-运维自动化之ansible/28-运维自动化之ansible.md)
