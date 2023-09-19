@@ -464,3 +464,118 @@ slave节点安装没问题
 ![image-20230918183706720](6-mysql的主从复制高可用性解决方案MHA.assets/image-20230918183706720.png)
 
 挺好的一个软件mha，怎么不更新了，rocky9，直接无法安装manager了。。。回头再搞搞
+
+接上面主从切换，原来的master挂了，然后slave升为master，然后业务OK了，去修复老的master，然后将其配置为slave即可。然后重新在manager上运行管理命令masterha_manager --conf=/etc/mha/app1.cnf
+
+
+
+**然后这里的mha不能解决proxySQL读写分离的场景，因为主从自动切，但是proxySQL的分组我记得是写死的hostgroup就固定了，比如10组里就是写操作层，10组里加入得就是master了，这个地方就存在自动切得需求，而mha方案里没有提到，所以mha也不是很好得一个方案。**
+
+
+
+
+
+# 重点学习Galera Cluster这个工具
+
+![image-20230919102757658](6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919102757658.png)
+
+mha还是单主多从，总归有数据没有同步丢失的可能；多主可能才是更极致的方案，percana、mariadb、mysql都有各自的多主方案。
+
+
+
+多主存在的冲突如何解决的？下一篇说明
+
+
+
+calera cluster 至少3个master，每个机器都可以读和写
+
+
+
+
+
+![image-20230919103146104](6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919103146104.png)
+
+
+
+
+
+多主架构，对于client来讲，到底访问谁呢？
+
+<img src="6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919103318721.png" alt="image-20230919103318721" style="zoom:33%;" />
+
+
+
+这里是不是就涉及负载均衡啦，不过还可以轻量化的用keepalived的VIP虚拟IP来做--只不过就是单节点读写了-应该。而LB就是针对不同session可以做到负载分担的。
+
+
+
+
+
+
+
+https://galeracluster.com/library/documentation/certification-based-replication.html
+
+![../_images/certificationbasedreplication.png](6-mysql的主从复制高可用性解决方案MHA.assets/certificationbasedreplication.png)
+
+图中关键字：global trx id就是  全局事务ID，关于GTID前文也讲过👇<img src="6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919104859863.png" alt="image-20230919104859863" style="zoom: 33%;" />
+
+<img src="6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919104851682.png" alt="image-20230919104851682" style="zoom:50%;" />
+
+
+
+**上图说明了如何保证多主集群下的数据一致性：**
+
+1、client往多主--Galera Cluster集群里写数据，多主至少是三主了，图中简单画成了2个server示意；
+
+2、client update 数据，不管是LB还是keepalive都是发送到一个master上的；
+
+3、这个master，也就是图中server，就开始处理啦，OK，后就提交，因为涉及事务，还需要提交；
+
+4、提交能否真正提交成功，还不一定的，往下看，此时就会触发replicate writeset应该也叫write set replication (wsrep)写集复制这个功能，
+
+然后所有的server就都收到一个GTID全局事务ID，然后就开始处理
+
+5、接收到update的server就检查，检查不通过就rollback_cb回滚，通过就是commit_cb提交到db里去。
+
+同时；别的server也会检查，不通过就discard--由于数据不是本地提交的是别的server的，所以直接discard，如果通过，就应用数据apply_cb就是update一下，然后commit_cb提交事务。
+
+
+
+有时间可以看看这个
+
+https://mariadb.com/kb/en/getting-started-with-mariadb-galera-cluster/
+
+其中提到了
+
+<img src="6-mysql的主从复制高可用性解决方案MHA.assets/image-20230919110401293.png" alt="image-20230919110401293" style="zoom:44%;" />
+
+所以我的实验环境是默认就有的应该，无需安装，同时也可以安装吧。
+
+
+
+**Galera Cluster官方文档**
+
+[http://galeracluster.com/documentation-webpages/galera-documentation.pdf ](http://galeracluster.com/documentation-webpages/galera-documentation.pdf) [http://galeracluster.com/documentation-webpages/index.html ](http://galeracluster.com/documentation-webpages/index.html) https://mariadb.com/kb/en/mariadb/getting-started-with-mariadb-galera-cluster/
+
+**Galera Cluster包括两个组件**
+
+​	Galera replication library (galera-3)
+
+​	WSREP：MySQL extended with the Write Set Replication
+
+**WSREP复制实现**
+
+​	PXC：Percona XtraDB Cluster，是Percona对Galera的实现
+
+​	MariaDB Galera Cluster
+
+参考仓库国外的慢：https://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-5.5.X/yum/centos7-amd64/
+
+注意：都至少需要三个节点，不能安装mariadb-server
+
+
+
+
+
+
+
