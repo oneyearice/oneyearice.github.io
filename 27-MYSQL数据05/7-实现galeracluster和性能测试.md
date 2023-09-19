@@ -464,5 +464,280 @@ galera_recovery
 
 
 
-### 然后看看大量数据写入的一个速度，是明显比主从慢很多的，因为👆
+## 然后看看大量数据写入的一个速度，是明显比主从慢很多的，因为👆
+
+下班关机
+
+算了明天继续弄吧，由于机器关机了，之前就是临时做实验，所以mysql服务都停了，这里正好重演一次cluster的启动
+
+![image-20230919192042082](7-实现galeracluster和性能测试.assets/image-20230919192042082.png)
+
+可见👆所有服务都没起来
+
+随便选一台初始化集群
+
+查看seqno虚拟号，👇下图注意哦，135的seqno最优秀，所以safe_to_bootstrap:1就是1，其他都是0，这是系统给默认设置好的，然后有个node3的1是我改的！我之前准备用node3初始化新建的，所以看到的是1。
+
+![image-20230919192410975](7-实现galeracluster和性能测试.assets/image-20230919192410975.png)
+
+node2最优秀，尝试不初始化，重启的专用cli试试
+
+![image-20230919192638961](7-实现galeracluster和性能测试.assets/image-20230919192638961.png)
+
+起不来啊~
+
+直接new吧哈哈
+
+![image-20230919192752265](7-实现galeracluster和性能测试.assets/image-20230919192752265.png)
+
+![image-20230919192801825](7-实现galeracluster和性能测试.assets/image-20230919192801825.png)
+
+然后其他node 都systemctl start mariadb就行了
+
+![image-20230919192911714](7-实现galeracluster和性能测试.assets/image-20230919192911714.png)
+
+
+
+同时创建的cli的没问题👇
+
+![image-20230919193127367](7-实现galeracluster和性能测试.assets/image-20230919193127367.png)
+
+
+
+### 测试开始
+
+
+
+![image-20230919193544970](7-实现galeracluster和性能测试.assets/image-20230919193544970.png)
+
+
+
+![image-20230919193647977](7-实现galeracluster和性能测试.assets/image-20230919193647977.png)
+
+
+
+然后就看看数据的增长
+
+![image-20230919194040967](7-实现galeracluster和性能测试.assets/image-20230919194040967.png)
+
+发现这个速度比简单的主从还要慢很多，然后其实可以做成事务，事务就是一起提交，会快一点。
+
+像这种就好比大量用户的写咯，所以具体用的时候还存在问题，需要优化吧应该！好像他们业务实际也不这么玩。
+
+
+
+### 还发现一个现象👇
+
+就是galera cluster默认就给你做了table的插入的自动间隔，以前是<img src="7-实现galeracluster和性能测试.assets/image-20230919195153835.png" alt="image-20230919195153835" style="zoom:33%;" />这么配置的。
+
+![image-20230919195117332](7-实现galeracluster和性能测试.assets/image-20230919195117332.png)
+
+
+
+**👇12分钟终于结束了：**
+
+![image-20230919195714518](7-实现galeracluster和性能测试.assets/image-20230919195714518.png)
+
+
+
+试试 事务的方式，理论上会快一些
+
+![image-20230919195955669](7-实现galeracluster和性能测试.assets/image-20230919195955669.png)
+
+这TM也太夸张了，不对吧
+
+第二十运行事务，一样是6秒种，一共插入了3次，每次99999行，300000-3=299997行，对的👇
+
+![image-20230919200224539](7-实现galeracluster和性能测试.assets/image-20230919200224539.png)
+
+再次不跑事务看看
+
+
+
+结论，galeraCluster集群，大数据并发写入，使用事务就很快！不使用事务就灰常慢！
+
+
+
+
+
+
+
+## 复制的问题和解决方案
+
+其实以下这段文字算不得什么问题和方案，聊胜于无，看看吧👇
+
+
+
+(1)数据损坏或丢失
+
+Master： MHA + semi repl
+
+Slave：重新复制
+
+
+
+(2)混合使用存储引擎
+
+MyISAM：不支持事务 
+
+InnoDB： 支持事务
+
+
+
+(3)不惟一的server id 
+
+ 重新复制
+
+
+
+(2)复制延迟：
+
+需要额外的监控工具的辅助
+
+一从多主：mariadb10版后支持 
+
+多线程复制：对多个数据库复制，好像是高版本的特性。
+
+
+
+## TiDb概述
+
+**主从、多主，对于写操作，本质上都是在一台上操作的，所以mysql这种HA，本质上就是有瓶颈的。**
+
+**而更优的解决方案就是TiDb分布式数据库**。
+
+![image-20230919200851709](7-实现galeracluster和性能测试.assets/image-20230919200851709.png)
+
+
+
+RDBMS关系型数据的 数据一致性ACID特性；NoSQL性能好但是没有保证数据的一致性；TiDb结合了两者的优点，又叫做NewSQL
+
+所以DB分为了：RDBMS、NoSQL、NewSQL
+
+<img src="7-实现galeracluster和性能测试.assets/image-20230919201306845.png" alt="image-20230919201306845" style="zoom:50%;" />
+
+
+
+
+
+据说：mysql的业务迁到TiDb，基本上不用改动，直接搬过去就能用，不用改代码。
+
+
+
+### TiDB的核心特点
+
+1 高度兼容 MySQL	大多数情况下，无需修改代码即可从 MySQL 轻松迁移至 TiDB，分库分
+表后的 MySQL 集群亦可通过 TiDB 工具进行实时迁移
+2 水平弹性扩展	通过简单地增加新节点即可实现 TiDB 的水平扩展，按需扩展吞吐或存储，轻 松应对高并发、海量数据场景。
+3 **分布式事务**	TiDB 100% 支持标准的 ACID 事务
+4 真正金融级高可用	相比于传统主从 (M-S) 复制方案，基于 Raft 的多数派选举协议可以提 **供金融级的 100% 数据强一致性保证**，且在不丢失大多数副本的前提下，可以实现故障的自动 恢复 (auto-failover)，无需人工介入。
+5 一站式 HTAP 解决方案	TiDB 作为典型的 OLTP 行存数据库，同时兼具强大的 OLAP 性能，  配合 TiSpark，可提供一站式 HTAP解决方案，一份存储同时处理OLTP & OLAP(OLAP、OLTP  的介绍和比较 )无需传统繁琐的 ETL 过程。
+6 云原生 SQL 数据库	TiDB 是为云而设计的数据库，同 Kubernetes （十分钟带你理解 Kubernetes核心概念 ）深度耦合，支持公有云、私有云和混合云，使部署、配置和维护变得十 分简单。	TiDB 的设计目标是 100% 的 OLTP 场景和 80% 的 OLAP 场景，更复杂的 OLAP  分析可以通过 TiSpark 项目来完成。 TiDB 对业务没有任何侵入性，能优雅的替换传统的数据 库中间件、数据库分库分表等 Sharding 方案。同时它也让开发运维人员不用关注数据库 Scale  的细节问题，专注于业务开发，极大的提升研发的生产力.
+
+
+
+
+
+**数据库的整理差不多了就**
+下面介绍以下压力测试
+
+
+
+# 性能衡量指标
+
+
+
+**数据库服务衡量指标**
+
+QPS:	query per second   # **查询性能**： 每秒处理的查询次数，简单的单表select和多表join对系统资源的消耗是截然不同！所以压力测试的时候是要事先定义select查询规则--涉及哪些查询方法。
+
+TPS:	transaction per second  # 事务的处理，主要指的就是**数据的修改性能**了，涉及增删改。
+
+
+
+**压力测试工具**
+mysqlslap  # 系统自带，无需安装
+Sysbench：功能强大 https://github.com/akopytov/sysbench
+tpcc-mysql
+MySQL Benchmark Suite
+MySQL super-smack
+MyBench
+
+
+
+### mysqlslap使用
+
+该工具来源于MariaDB-client软件👇
+
+<img src="7-实现galeracluster和性能测试.assets/image-20230919202805799.png" alt="image-20230919202805799" style="zoom:50%;" /> 
+
+
+
+![image-20230919202945144](7-实现galeracluster和性能测试.assets/image-20230919202945144.png)
+
+![image-20230919204046401](7-实现galeracluster和性能测试.assets/image-20230919204046401.png)
+
+![image-20230919204208689](7-实现galeracluster和性能测试.assets/image-20230919204208689.png)
+
+注意：虽然这个工具测试完成后不会在DB中留痕，但是binlog肯定会大量被它修改的，所以测试的时候binlog要么关闭，要么单独存放。
+
+binlog除了在/etc/my.cnd里定义，也可以放到/etc/my.cnf.d/server.conf里一样的，👇涉及集群galera里定义了binglog的格式row，所以也可以log-bin开启也放在这个配置文件里。
+
+<img src="7-实现galeracluster和性能测试.assets/image-20230919203412460.png" alt="image-20230919203412460" style="zoom:44%;" />
+
+
+
+binlog是否启用，最好还是看变量，而不是ll /var/lib/mysql/去看相关文件有没有对吧，你这样还得去先看看cnf人家配置在哪里了。
+
+![image-20230919204001405](7-实现galeracluster和性能测试.assets/image-20230919204001405.png)
+
+
+
+
+
+![image-20230919204226654](7-实现galeracluster和性能测试.assets/image-20230919204226654.png)
+
+![image-20230919204240003](7-实现galeracluster和性能测试.assets/image-20230919204240003.png)
+
+
+
+
+
+![image-20230919204606178](7-实现galeracluster和性能测试.assets/image-20230919204606178.png)
+
+生产了大量的binlog
+
+![image-20230919204636782](7-实现galeracluster和性能测试.assets/image-20230919204636782.png)
+
+
+
+如果要停binlog，set 变量这种挺不掉，因为是基于你当前cli交互进去的session的，而压力测试是多session并发的，完全没有一点效果，因为session完全撞不到一起去，哈哈。而且sql_log_bin是session级别的变量，没有全局的。真的是session的，看看官方
+
+![image-20230919205427595](7-实现galeracluster和性能测试.assets/image-20230919205427595.png)
+
+![image-20230919205437537](7-实现galeracluster和性能测试.assets/image-20230919205437537.png)
+
+再试试
+
+![image-20230919205545717](7-实现galeracluster和性能测试.assets/image-20230919205545717.png)
+
+果然👆，无法实现：关闭全局binlog的效果，只能去cnf文件了。
+
+
+
+等等👇这TM什么回事：
+
+![image-20230919205645119](7-实现galeracluster和性能测试.assets/image-20230919205645119.png)
+
+问👆binlog基于本会话到底是关了还是没关？
+
+
+
+![image-20230919205820257](7-实现galeracluster和性能测试.assets/image-20230919205820257.png)
+
+![image-20230919210011549](7-实现galeracluster和性能测试.assets/image-20230919210011549.png)
+
+确实关了
+
+
 
