@@ -602,7 +602,13 @@ InnoDB： 支持事务
 
 ## TiDb概述
 
-**主从、多主，对于写操作，本质上都是在一台上操作的，所以mysql这种HA，本质上就是有瓶颈的。**
+**主从、多主，对于写操作，本质上都是在一台上操作的，所以mysql这种HA，本质上就是有瓶颈的。**这话欠妥，没有讲到点子上，我们将LB的行为，在很多地方体现：①portchannel②f5这些其实都是针对多个session多个会话或多个用户去负载分担的，mysql的瓶颈本质的一个点就是如果是一个session里的一个事务，而这个事务里面有大量的操作，那么这个事务肯定是往一台机器持续读写的，而针对这个单个事务的负载分担解决方案就是TiDB它可以做到分布式事务。
+
+<img src="7-实现galeracluster和性能测试.assets/image-20230920105615701.png" alt="image-20230920105615701" style="zoom:33%;" />
+
+牛逼👆
+
+
 
 **而更优的解决方案就是TiDb分布式数据库**。
 
@@ -633,6 +639,8 @@ RDBMS关系型数据的 数据一致性ACID特性；NoSQL性能好但是没有�
 4 真正金融级高可用	相比于传统主从 (M-S) 复制方案，基于 Raft 的多数派选举协议可以提 **供金融级的 100% 数据强一致性保证**，且在不丢失大多数副本的前提下，可以实现故障的自动 恢复 (auto-failover)，无需人工介入。
 5 一站式 HTAP 解决方案	TiDB 作为典型的 OLTP 行存数据库，同时兼具强大的 OLAP 性能，  配合 TiSpark，可提供一站式 HTAP解决方案，一份存储同时处理OLTP & OLAP(OLAP、OLTP  的介绍和比较 )无需传统繁琐的 ETL 过程。
 6 云原生 SQL 数据库	TiDB 是为云而设计的数据库，同 Kubernetes （十分钟带你理解 Kubernetes核心概念 ）深度耦合，支持公有云、私有云和混合云，使部署、配置和维护变得十 分简单。	TiDB 的设计目标是 100% 的 OLTP 场景和 80% 的 OLAP 场景，更复杂的 OLAP  分析可以通过 TiSpark 项目来完成。 TiDB 对业务没有任何侵入性，能优雅的替换传统的数据 库中间件、数据库分库分表等 Sharding 方案。同时它也让开发运维人员不用关注数据库 Scale  的细节问题，专注于业务开发，极大的提升研发的生产力.
+
+
 
 
 
@@ -741,3 +749,134 @@ binlog是否启用，最好还是看变量，而不是ll /var/lib/mysql/去看�
 
 
 
+### 测试引擎之间的差异👇
+
+```
+[root@node1 ~]# mysqlslap -a --concurrency=50,100 --number-of-queries 1000 --iterations=5 --engine=myisam,innodb --debug-info -uroot -pmagedu
+```
+
+![image-20230920120555772](7-实现galeracluster和性能测试.assets/image-20230920120555772.png)
+
+--concurrency=50,100    # 50到100个并发数，是个范围区间。
+
+
+
+
+
+# 案例
+
+
+
+也不是绝对的👇，网速随便搜搜都有推荐配置优化方案，也可以参考他们的。
+
+![image-20230920132718656](7-实现galeracluster和性能测试.assets/image-20230920132718656.png)
+
+
+
+![image-20230920162626532](7-实现galeracluster和性能测试.assets/image-20230920162626532.png)
+
+
+
+![image-20230920162715895](7-实现galeracluster和性能测试.assets/image-20230920162715895.png)
+
+
+
+![image-20230920162732838](7-实现galeracluster和性能测试.assets/image-20230920162732838.png)
+
+
+
+
+
+
+
+max_connections的默认值看看
+
+![image-20230920132822266](7-实现galeracluster和性能测试.assets/image-20230920132822266.png)
+
+因为这个默认限制，所以并发测试看下效果👇,并发就是多个sessions同时测试的。
+
+![image-20230920133044358](7-实现galeracluster和性能测试.assets/image-20230920133044358.png)
+
+修改并发数👇
+
+![image-20230920133157593](7-实现galeracluster和性能测试.assets/image-20230920133157593.png)
+
+重启服务后
+
+![image-20230920133337868](7-实现galeracluster和性能测试.assets/image-20230920133337868.png)
+
+
+
+那个遇到低版本的并发改不上去(mariadb5.5.60就是上不去151只能通过my.cnf改成214的上限)的处理方法，这里也做一下记录，因为涉及底层逻辑：151的默认，明明mysql的配置文件里改的是2000，但是实际只能到214，是因为并发底层走的是文件socket，这个socket要调上去的，是系统层面的东西，底层的东西。打开一个socket就会开启一个文件描述符fd。
+
+**1、mysql的配置文件里**
+
+/etc/my.cnf里或者/etc/my.cnf.d/server.cnf的max-connectsions=2000
+
+**2、系统级别的socket，文件socket的限制扩容**
+
+ulimit -n 66666  # 设置
+
+ulimit -a  # 查看 就可以看到open files这项改了，不过这个命令是基于session修改的，也就是当前shell窗口有效。
+
+<img src="7-实现galeracluster和性能测试.assets/image-20230920150215742.png" alt="image-20230920150215742" style="zoom:50%;" /> 
+
+
+
+**3、LimitNOFILE**
+
+![image-20230920150501644](7-实现galeracluster和性能测试.assets/image-20230920150501644.png)
+
+
+
+高版本就是改了的，至于第二点ulimit应该不用改！确保下面👇的数据足够以及mysql配置文件里max_connections改了就行了。
+
+![image-20230920155617161](7-实现galeracluster和性能测试.assets/image-20230920155617161.png)
+
+
+
+一般数据库1000-2000并发就差不多了，不想apache或nginx上万都行。
+
+所数据库的并发数，不是越大越好，设置一个你的服务器资源能够承受的值就好，如果设置过大比如8000，结果真的来了这么多并发，就会导致db处理不过来，结果就是一个用户都访问不了了。
+
+
+
+### **back_log**
+
+并发加入是2000，那么如果超出2000，又来了10个人，那么10个就是进入backlog进行排队。这个排队好像和QoS里的队列不是一回事，是保持的tcp连接数，本来2000个tcp连接上线，超出了也不是说就拒绝掉，而是用back_log机制暂存以下这些tcp连接。
+
+
+
+### max_connect_errors
+
+针对单个用户，如果连接报错的次数达到一定的值，就会禁止该client连接过来。直到mysql服务重启，或者flush hosts命令清空此client主机的相关信息。所以这个参数的计数周期也就是两次服务重启或者flush hosts之间的时间。
+
+比如黑客不断尝试连接，密码出错了10次，此时应该就可以触发此机制。
+
+
+
+### open_files_limit
+
+这个其实就是 **/usr/lib/systemd/system/mariadb.service** 文件里的**LimitNOFILE**参数
+
+两个都是干一件事的，不过使用场景不同
+
+open_files_limit是适用于二进制安装或者编译安装的，这两类的服务启动都是二进制文件启动的，此时调整socket文件的打开数就这么调，这就是一个配置选项直接配置在my.cnf配置文件里。
+
+LimitNOFILEs是用于 systemctl 启动的服务
+
+
+
+本身就是一个配置选项，也是变量，所以直接配置到/etc/my.cnf里就行啦，他👇这里的三个配置方式，最后一个是/etc/security/limits.onf估计也是一个意思。
+
+![image-20230920162100869](7-实现galeracluster和性能测试.assets/image-20230920162100869.png)
+
+
+
+
+
+
+
+![image-20230920163340705](7-实现galeracluster和性能测试.assets/image-20230920163340705.png)
+
+就是知道有这么个东西，具体最合适的还需要自己修订，和找最新的实践分享。
