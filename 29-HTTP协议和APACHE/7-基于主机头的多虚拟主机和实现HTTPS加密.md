@@ -714,7 +714,7 @@ subject，这里指  "颁发给"
 
 
 
-此时，再看证书状态就没问题了👇
+此时，再看证书状态就没问题了👇，这里只是系统层面的判断，浏览器层面只完成了一半。
 
 ![image-20231012194227069](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231012194227069.png)
 
@@ -723,6 +723,10 @@ subject，这里指  "颁发给"
 但是浏览器不管的，还是说 不安全，我怀疑浏览器就是不认私自颁发的证书了。
 
 https://support.huaweicloud.com/ccm_faq/ccm_01_0098.html
+
+
+
+# 如何解决浏览器的不安全提示
 
 
 
@@ -760,7 +764,11 @@ https://blog.51cto.com/u_296714/5754713
 
 搜索 openssl如何生成这个选项，准备重新颁发
 
-https://blog.51cto.com/u_11508007/5674376
+https://blog.51cto.com/u_11508007/5674376      # 他这个只是配置文件写对了。#<font size=2> 一切OK后补说明：但是颁发的时候也要加上v3_req选项，他就没讲。而且只适用于自签名和颁发，csr文件无需这么操作。这些都是后话，回顾写道这里的，可以不看。</font>
+
+
+
+## 修改openssl配置文件
 
 备份 cp -a  /etc/pki/tls/openssl.cnf  /etc/pki/tls/openssl.cnf.bak1
 
@@ -784,7 +792,7 @@ https://blog.51cto.com/u_11508007/5674376
 
 
 
-重新走一遍所有证书的操作
+## 重新走一遍所有证书的操作-第二次NG
 
 
 
@@ -838,6 +846,209 @@ scp /etc/pki/CA/cacert.pem root@httpdServer:/etc/httpd/conf.d/ssl      # 把ca�
 
 
 
+### 查询原因
+
+![image-20231013102723037](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013102723037.png)
+
+![image-20231013102731832](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013102731832.png)
+
+
+
+![image-20231013102801580](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013102801580.png)
+
+终于有了
+
+![image-20231013102747180](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013102747180.png)
+
+
+
+### 知道了自签名和颁发的时候才会使Subject Alternative Name有效
+
+ openssl req -new -x509 -nodes -out cert.pem -keyout key.pem -config /etc/pki/tls/openssl.cnf -days 365 -extensions v3_req
+
+这是自签名，我可能需要的是ca颁发的时候，或者server生成csr的时候做出来 使用者可选名称--也就是subject Alternative Name，实际测试时ca颁发或者自签名的时候才会起作用
+
+<img src="7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105713321.png" alt="image-20231013105713321" style="zoom:50%;" />
+
+
+
+
+
+CSR文件里无需做任何配置，下图👇是错误的，通过CA那边修改配置文件立马生效可知
+
+<img src="7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105808646.png" alt="image-20231013105808646" style="zoom:50%;" />
+
+证明上图时错误的
+
+![image-20231013110147195](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013110147195.png)
+
+![image-20231013110216159](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013110216159.png)
+
+**所以要让server服务器的ssl证书里有subject Alternative name出来，就要在ca颁发server证书的时候①修改openssl的配置文件②颁发的时候带上v3_req版本参数**
+
+
+
+**然后要让浏览器不在说不安全就要①加载ca根证书到"受信任的根证书颁发机构"②网站ssl证书里要有Subject Alternative Name。**
+
+
+
+![image-20231013103748637](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013103748637.png)
+
+
+
+![image-20231013103712028](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013103712028.png)
+
+
+
+## 重做证书-最后一次-ok了
+
+```
+CA上👇
+cd /etc/pki/CA
+mkdir certs
+mkdir crl
+mkdir newcerts
+mkdir private
+mkdir ssl
+
+(umask 077;openssl genrsa -out private/cakey.pem 4096)
+openssl req -new -x509 -key /etc/pki/CA/private/cakey.pem -out /etc/pki/CA/cacert.pem -days 3650
+
+
+
+touch /etc/pki/CA/index.txt    #  存放已经颁发的证书信息
+echo 0F > /etc/pki/CA/serial   #  存放下一个颁发证书的序列号，0F改成01从第一个号开始分
+
+
+server上👇
+mkdir /etc/httpd/conf.d/ssl
+cd /etc/httpd/conf.d/ssl
+(umask 066;openssl genrsa -out httpd.key 2048)  #1024可能有问题msyql那会的经验告诉我要4096保持一致
+
+openssl req -new -key httpd.key -out httpd.csr 
+scp /etc/httpd/conf.d/ssl/httpd.csr CAServer:/etc/pki/CA       # 把csr申请文件传到CA上，在CA上根据csr文件来颁发证书，也就是对其加密。
+
+
+CA上👇
+openssl ca -in /etc/pki/CA/httpd.csr -out /etc/pki/CA/certs/httpd.crt -days 100 -extensions v3_req
+
+scp /etc/pki/CA/certs/httpd.crt root@httpdServer:/etc/httpd/conf.d/ssl    # 把证书复制到server上
+scp /etc/pki/CA/cacert.pem root@httpdServer:/etc/httpd/conf.d/ssl      # 把ca自己的证书也复制倒server上，此举相当于windows预加载了受信任的根证书文件。
+
+
+```
+
+### 一下是所有完整过程：
+
+在CA上👇
+
+![image-20231013103952283](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013103952283.png)
+
+![image-20231013104019219](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104019219.png)
+
+在server上👇
+
+![image-20231013104133403](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104133403.png)
+
+在CA上👇
+
+![image-20231013104319283](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104319283.png)
+
+在server上👇加载ca证书、server证书和server的key
+
+![image-20231013104537468](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104537468.png)
+
+
+
+把ca证书拿到PC，加上.crt后缀，导入 受信任的根证书颁发机构
+
+![image-20231013104755771](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104755771.png)
+
+
+
+无痕模式 一定要关闭所有无痕窗口再重新打开，不然确实有缓存的，然后结果就是搞定啦
+
+![image-20231013104929924](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104929924.png)
+
+![image-20231013104943155](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013104943155.png)
+
+
+
+![image-20231013105001396](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105001396.png)
+
+
+
+![image-20231013105045906](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105045906.png)
+
+这个在浏览器里显示为 "证书主题背景的备用名称" 导出后补上.crt打开可见为"使用者的可选名称"
+
+subject 在证书里 显示为 颁发给、使用者、主题，所以只是翻译的问题，subject是本来的名字
+
+![image-20231013105229364](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105229364.png)
+
+
+
+<img src="7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013105307847.png" alt="image-20231013105307847" style="zoom:50%;" />
+
+上图👆这就是 网站浏览器不再 提示 不安全的原因，一定要①加载根证书②server证书也就是网站证书里要有使用者可选名称--subject Alternative name，这个参数怎么来说的，就是CA颁发的时候加上-extensions v3_req，颁发者(CA颁发或者自签名)的openssl配置文件里也要改的。
+
+搞定搞定~~~
+
+**所以要让server服务器的ssl证书里有subject Alternative name出来，就要在ca颁发server证书的时候①修改openssl的配置文件②颁发的时候带上v3_req版本参数**
+
+
+
+**然后要让浏览器不再说不安全就要①OS层面：加载ca根证书到"受信任的根证书颁发机构"--这一步只是让ssl证书导出后打开显示为 “该证书没有问题”；并不能让浏览器认为安全，浏览器认为安全的判断依据是，判断"网址" 和 "使用者可选名称也即是subject alternative name"里的东西 一致**
+
+<img src="7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013110621360.png" alt="image-20231013110621360" style="zoom:33%;" />
+
+
+
+**②浏览器认为安全的判断依据：网站ssl证书里要有Subject Alternative Name，且该参数里的内容包含网站地址**
+
+![image-20231013110903071](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013110903071.png)
+
+"多个域名不用再购买多个证书了"这话有点吊啊，回头看看公司的ssl证书是怎么买的。(￣▽￣)"
+
+
+
+![image-20231013111225692](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013111225692.png)
+
+
+
+以前浏览器看这个
+
+![image-20231013111729109](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013111729109.png)
+
+上图证书导出来 主体背景 就是 "使用者" 翻译问题
+
+
+
+现在看这个
+
+![image-20231013111620238](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013111620238.png)
+
+上图证书导出，证书主体背景的备用名称 就是"使用者可选名称"
+
+
+
+**删除根证书要到mmc里删除了**
+
+![image-20231013112344975](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013112344975.png)
+
+![image-20231013112426843](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013112426843.png)
+
+
+
+![image-20231013112444449](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013112444449.png)
+
+这就删除了
+
+删除 "受信任的根证书"后，再次打开看看
+
+![image-20231013112835014](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231013112835014.png)
+
+**一样不安全，所以①导入ca证书；②subject Alternative Name里有网站地址。**
 
 
 
@@ -847,8 +1058,7 @@ scp /etc/pki/CA/cacert.pem root@httpdServer:/etc/httpd/conf.d/ssl      # 把ca�
 
 
 
-
-浅排一下打开www.a.com慢的问题
+## 浅排一下打开www.a.com慢的问题
 
 ![image-20231012200245911](7-基于主机头的多虚拟主机和实现HTTPS加密.assets/image-20231012200245911.png)
 
