@@ -3561,8 +3561,81 @@ cp -a apr-util-1.6.3 httpd-2.4.58/srclib/apr-util
 <p><strong>6&#x3001;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x5E38;&#x89C4;&#x4F9D;&#x8D56;&#x5305;</strong></p>
 <pre><code class="lang-shell">yum -y install gcc pcre-devel openssl-devel expat-devel; yum -y groupinstall  &quot;Development Tools&quot;
 </code></pre>
+<p><strong>7&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;</strong></p>
+<pre><code class="lang-shell">cd httpd-2.4.58
+
+./configure \
+--prefix=/app/httpd24 \
+--enable-so \
+--enable-ssl \
+--enable-cgi \
+--enable-rewrite \
+--with-zlib \
+--with-pcre \
+--with-included-apr \
+--enable-modules=most \
+--enable-mpms-shared=all \
+--with-mpm=prefork
+
+make &amp;&amp; make install
+</code></pre>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023095213226.png" alt="image-20231023095213226"></p>
+<p>&#x4E0A;&#x56FE;&#x662F;&#x627E;&#x5230;cpu&#x6838;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x5E76;&#x53D1;&#x7F16;&#x8BD1;&#x7684;</p>
+<p>&#x7F16;&#x8BD1;&#x7684;&#x8FC7;&#x7A0B;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023134143573.png" alt="image-20231023134143573"></p>
+<p><strong>8&#x3001;&#x8FDB;&#x5165;&#x7F16;&#x8BD1;&#x6307;&#x5B9A;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x4E0B;&#x67E5;&#x770B;&#x4E00;&#x4E0B;&#x5B89;&#x88C5;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;PATH&#x53D8;&#x91CF;&#x6216;&#x505A;&#x8F6F;&#x8FDE;&#x63A5;</strong></p>
+<pre><code class="lang-shell">cd /app/httpd24
+echo &apos;PATH=/app/httpd24/bin:$PATH&apos; &gt; /etc/profile.d/httpd.sh
+. /etc/profile.d/httpd.sh
+
+&#x6216;&#x8005;&#x7528;ln -s /app/httpd24/bin/apachectl /usr/local/sbin/
+&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#x5982;&#x679C;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86;httpd&#x5176;&#x4ED6;&#x7248;&#x672C;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x53BB;&#x6389;&#x5176;bin&#x6587;&#x4EF6;&#x8C03;&#x7528;&#x4F18;&#x5148;&#x3002;
+
+&#x4F46;&#x662F;&#x6574;&#x4E2A;bin&#x6587;&#x4EF6;&#x5939; &#x94FE;&#x8FC7;&#x53BB;&#x662F;&#x6CA1;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x5FC5;&#x987B;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x5728;$PATH&#x4E0B;&#x4E0D;&#x80FD;&#x5B50;&#x76EE;&#x5F55;&#x3002;
+</code></pre>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023104123496.png" alt="image-20231023104123496"></p>
+<hr>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023095610899.png" alt="image-20231023095610899"></p>
+<p>awk&#x7684;&#x7EE7;&#x7EED;&#x4F18;&#x5316;&#x4E4B;&#x53BB;&#x9664;&#x524D;&#x51E0;&#x5217;&#x548C;&#x7A7A;&#x683C;&#x7684;&#x65B9;&#x6CD5;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023101519099.png" alt="image-20231023101519099"></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023103302186.png" alt="image-20231023103302186"></p>
+<p><strong>&#x2460;&#x8F6F;&#x94FE;&#x63A5;&#x662F;&#x6587;&#x4EF6;&#x8FD8;&#x597D;&#x1F447;</strong></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023111159610.png" alt="image-20231023111159610"></p>
+<p><strong>&#x2461;&#x8F6F;&#x94FE;&#x63A5;&#x662F;&#x6587;&#x4EF6;&#x5939;&#x5C31;&#x4E00;&#x5B9A;&#x8981;&#x5C0F;&#x5FC3;&#x4E86;</strong></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023111743987.png" alt="image-20231023111743987"></p>
+<p><strong>9&#x3001;&#x542F;&#x52A8;&#x670D;&#x52A1;</strong></p>
+<pre><code>apachectl start
+</code></pre><p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023133122746.png" alt="image-20231023133122746"></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023132853457.png" alt="image-20231023132853457"></p>
+<p>&#x4F46;&#x662F;&#x67E5;&#x770B;&#x4E0D;&#x884C;&#xFF0C;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023134319670.png" alt="image-20231023134319670"></p>
+<p>&#x901A;&#x8FC7;&#x4FEE;&#x6539;systemctl&#x7684;&#x542F;&#x52A8;&#x914D;&#x7F6E;&#x4FEE;&#x6B63;</p>
+<p>&#x1F447;&#x8FD9;&#x662F;yum&#x5B89;&#x88C5;&#x7684;httpd&#x7684;systemctl&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x53C2;&#x8003;&#x4FEE;&#x6539;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023134519725.png" alt="image-20231023134519725"></p>
+<p>&#x4FEE;&#x6539;&#x4E4B;&#x1F447;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023141800153.png" alt="image-20231023141800153"></p>
+<p>systemctl&#x7684;&#x914D;&#x7F6E;&#x4FEE;&#x6539;&#x540E;&#x9700;&#x8981;reload&#x52A0;&#x8F7D;&#x4E00;&#x4E0B;&#x1F449;&#xFF1A;systemctl daemon-reload&#xFF0C;&#x518D;&#x542F;&#x52A8;&#x670D;&#x52A1;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023135846393.png" alt="image-20231023135846393"></p>
+<p>&#x6B7B;&#x6D3B;&#x8D77;&#x4E0D;&#x6765;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x592A;&#x597D;&#x6392;&#x67E5;&#xFF0C;&#x4F46;&#x662F;ps aux&#x53EF;&#x4EE5;&#x770B;&#x5230;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023140013638.png" alt="image-20231023140013638"></p>
+<p>&#x627E;&#x5230;&#x4E2A;&#x8FD9;&#x4E2A;&#xFF0C;&#x7528;&#x7684;&#x662F;daemon&#x7528;&#x6237;&#xFF0C;&#x800C;&#x4E0D;&#x662F;apache&#x8FD9;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E5F;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x2460;&#x6709;&#x8BE5;daemon&#x7528;&#x6237;&#x2461;httpd&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;&#x7528;&#x6237;&#x6267;&#x884C;</p>
+<p>&#x5F53;&#x670D;&#x52A1;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023141221943.png" alt="image-20231023141221943"></p>
+<p>status&#x663E;&#x793A;&#x8D85;&#x65F6;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023141416575.png" alt="image-20231023141416575"></p>
+<p>&#x7EE7;&#x7EED;&#x6392;&#x67E5;&#x901A;&#x8FC7;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x53EF;&#x89C1;&#xFF0C;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023141236029.png" alt="image-20231023141236029"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;  caught SIGWINCH&#xFF0C;shutting down gracefully&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x6539;&#x56DE;apachectl start&#x53D1;&#x73B0;&#x80FD;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x662F;ss -tlnup &#x7B49;3s&#x5C31;&#x80FD;&#x770B;&#x5230;80&#x7AEF;&#x53E3;&#x6253;&#x5F00;&#x4E86;&#xFF0C;&#x8BF4;&#x660E;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x6CA1;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x53BB;ps auxf&#x770B;&#x770B;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023144451421.png" alt="image-20231023144451421"></p>
+<p>&#x5C1D;&#x8BD5;&#x5C06;systemctl&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#x7684;&#x542F;&#x52A8;cli&#x6539;&#x6210;&#x4E0A;&#x56FE;&#x7684;&#x8BD5;&#x8BD5;</p>
+<p>&#x8FD8;&#x662F;&#x4E0D;&#x884C;&#xFF0C;&#x7B97;&#x4E86;&#x6362;&#x79CD;&#x65B9;&#x5F0F;&#x5427;&#xFF0C;systemctl &#x6709;&#x95EE;&#x9898;&#x5B9E;&#x5728;&#x4E0D;&#x884C;&#x5C31;&#x6362;&#x6210;&#x811A;&#x672C;&#x7684;&#x65B9;&#x5F0F;&#x1F447;</p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023150641197.png" alt="image-20231023150641197"></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023150934872.png" alt="image-20231023150934872"></p>
+<p><img src="10-httpd&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;.assets/image-20231023150944856.png" alt="image-20231023150944856"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2023-10-20 18:30:52
+2023-10-23 15:15:47
 </span></footer>
                                 
                                 </section>
@@ -3606,7 +3679,7 @@ cp -a apr-util-1.6.3 httpd-2.4.58/srclib/apr-util
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第10节 httpd源码编译安装","level":"1.31.10","depth":2,"next":{"title":"第三十章 实现LAMP架构","level":"1.32","depth":1,"path":"30-实现LAMP架构/30-实现LAMP架构.md","ref":"./30-实现LAMP架构/30-实现LAMP架构.md","articles":[{"title":"第1节 实现LAMP应用phpmyadmin","level":"1.32.1","depth":2,"path":"30-实现LAMP架构/1-实现LAMP应用phpmyadmin.md","ref":"./30-实现LAMP架构/1-实现LAMP应用phpmyadmin.md","articles":[]},{"title":"第2节 LAMP应用部署","level":"1.32.2","depth":2,"path":"30-实现LAMP架构/2-LAMP应用部署.md","ref":"./30-实现LAMP架构/2-LAMP应用部署.md","articles":[]},{"title":"第3节 实现FCGI的LAMP架构","level":"1.32.3","depth":2,"path":"30-实现LAMP架构/3-实现FCGI的LAMP架构.md","ref":"./30-实现LAMP架构/3-实现FCGI的LAMP架构.md","articles":[]},{"title":"第4节 编译安装LAMP环境部署应用01","level":"1.32.4","depth":2,"path":"30-实现LAMP架构/4-编译安装LAMP环境部署应用01.md","ref":"./30-实现LAMP架构/4-编译安装LAMP环境部署应用01.md","articles":[]},{"title":"第5节 编译安装LAMP环境部署应用02","level":"1.32.5","depth":2,"path":"30-实现LAMP架构/5-编译安装LAMP环境部署应用02.md","ref":"./30-实现LAMP架构/5-编译安装LAMP环境部署应用02.md","articles":[]}]},"previous":{"title":"第9节 http协议详解和相关工具","level":"1.31.9","depth":2,"path":"29-HTTP协议和APACHE/9-http协议详解和相关工具.md","ref":"./29-HTTP协议和APACHE/9-http协议详解和相关工具.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"原生IP平台":"https://www.dmit.io/aff.php?aff=5321"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"29-HTTP协议和APACHE/10-httpd源码编译安装.md","mtime":"2023-10-20T10:30:52.128Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-20T10:31:00.772Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第10节 httpd源码编译安装","level":"1.31.10","depth":2,"next":{"title":"第三十章 实现LAMP架构","level":"1.32","depth":1,"path":"30-实现LAMP架构/30-实现LAMP架构.md","ref":"./30-实现LAMP架构/30-实现LAMP架构.md","articles":[{"title":"第1节 实现LAMP应用phpmyadmin","level":"1.32.1","depth":2,"path":"30-实现LAMP架构/1-实现LAMP应用phpmyadmin.md","ref":"./30-实现LAMP架构/1-实现LAMP应用phpmyadmin.md","articles":[]},{"title":"第2节 LAMP应用部署","level":"1.32.2","depth":2,"path":"30-实现LAMP架构/2-LAMP应用部署.md","ref":"./30-实现LAMP架构/2-LAMP应用部署.md","articles":[]},{"title":"第3节 实现FCGI的LAMP架构","level":"1.32.3","depth":2,"path":"30-实现LAMP架构/3-实现FCGI的LAMP架构.md","ref":"./30-实现LAMP架构/3-实现FCGI的LAMP架构.md","articles":[]},{"title":"第4节 编译安装LAMP环境部署应用01","level":"1.32.4","depth":2,"path":"30-实现LAMP架构/4-编译安装LAMP环境部署应用01.md","ref":"./30-实现LAMP架构/4-编译安装LAMP环境部署应用01.md","articles":[]},{"title":"第5节 编译安装LAMP环境部署应用02","level":"1.32.5","depth":2,"path":"30-实现LAMP架构/5-编译安装LAMP环境部署应用02.md","ref":"./30-实现LAMP架构/5-编译安装LAMP环境部署应用02.md","articles":[]}]},"previous":{"title":"第9节 http协议详解和相关工具","level":"1.31.9","depth":2,"path":"29-HTTP协议和APACHE/9-http协议详解和相关工具.md","ref":"./29-HTTP协议和APACHE/9-http协议详解和相关工具.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","-donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"wechat":"例：/images/qr.png","alipay":"例：/images/qr.png","title":"默认空","button":"默认值：Donate","alipayText":"默认值：支付宝捐赠","wechatText":"默认值：微信捐赠"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"原生IP平台":"https://www.dmit.io/aff.php?aff=5321"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"29-HTTP协议和APACHE/10-httpd源码编译安装.md","mtime":"2023-10-23T07:15:47.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-23T07:16:13.589Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
