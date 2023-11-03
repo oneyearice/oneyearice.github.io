@@ -359,3 +359,23 @@ location的路径拼接👇
 ![image-20231102183316842](4-nginx实现web服务器01.assets/image-20231102183316842.png)
 
 这个等于，其实就是除去fqdn对应的root，www.site1.com去掉就行了，如果等于location里的path，那么www.site1.com就对应到/opt/testdir/ 这个location里定义的root根了。
+
+
+
+![image-20231103092116834](4-nginx实现web服务器01.assets/image-20231103092116834.png)
+
+就是nginx作为应用程序处理请求URL的时候不区分大小写，但是如果nginx跑在windows上就真的是不区分大小写了，但是如果跑在nginx上由于nginx的文件系统文件名是区分大小写的，所以还是会区分的最终。
+
+
+
+### location用的非常多，比如现在做一个动静分离
+
+比如各种图片就属于静态资源
+
+![image-20231103094737724](4-nginx实现web服务器01.assets/image-20231103094737724.png)
+
+![image-20231103094809930](4-nginx实现web服务器01.assets/image-20231103094809930.png)
+
+![image-20231103095407350](4-nginx实现web服务器01.assets/image-20231103095407350.png)
+
+上图就是意思一下，实际动态文件php|jsp|asp不是简单的放在这里的，而是后端的反向代理发给后边能处理jsp的比如是PHP也就是fastCGI的服务器地址
