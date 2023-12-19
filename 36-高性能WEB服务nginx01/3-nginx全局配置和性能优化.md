@@ -309,7 +309,7 @@ use mothod 不用指定，默认就是epoll应该也是最好的方式了。也�
 
 
 
-### accept_mutex 默认off不会惊群
+### accept_mutex 默认on不会惊群
 
 <img src="3-nginx全局配置和性能优化.assets/image-20231101095143403.png" alt="image-20231101095143403" style="zoom: 33%;" />
 
