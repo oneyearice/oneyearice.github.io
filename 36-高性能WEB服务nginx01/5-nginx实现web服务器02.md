@@ -186,7 +186,7 @@ root的最后/写不写都行，因为时location 和 root 拼接的，location�
 
 
 
-为了防止这种浏览器的不良行为，应该如何应对，现在来讲，可能也就是你自己的配置问题，没有对应的文件存在👇比如这种：就会让别人有机可乘。当然chrome不会
+为了防止这种浏览器的不良行为，应该如何应对，现在来讲，可能也就是你自己的配置问题，没有对应的文件存在👇比如这种：就会让别人有机可乘。当然chrome不会，可以将404报错改成200这种正确响应码。
 
 ![image-20240116151548811](5-nginx实现web服务器02.assets/image-20240116151548811.png)
 
@@ -244,13 +244,113 @@ http://www.site1.com/images/default.jpg被alias成http://www.site1.com/data/imag
 
 
 
-
-
-
-
-
-
 ![image-20240116182414458](5-nginx实现web服务器02.assets/image-20240116182414458.png)
 
 如果/images/
+
+
+
+### keepalive_timeout
+
+![image-20240117105122175](5-nginx实现web服务器02.assets/image-20240117105122175.png)
+
+
+
+![image-20240117105648767](5-nginx实现web服务器02.assets/image-20240117105648767.png)
+
+这个65怎么体现在测试中：
+
+通过telnet 80 并发送一次get可以感受到时间的长短，操作主要事项①get一次得到页面内容后②不要再做任何操作。此时可以观测到配置的时间。
+
+
+
+注意这两个参数是不同的
+
+![image-20240117134637548](5-nginx实现web服务器02.assets/image-20240117134637548.png)
+
+keepalive_time是一个链接可以存活多久
+
+keepalive_timeout是一个client请求的链接，空闲时间可以存活多久。
+
+
+
+![image-20240117134950166](5-nginx实现web服务器02.assets/image-20240117134950166.png)
+
+可见启用了keepalive_timeout但是没有说多少秒。
+
+![image-20240117135118474](5-nginx实现web服务器02.assets/image-20240117135118474.png)
+
+写道head里的是10秒，实际是65秒。
+
+
+
+### 持久链接断开的情况
+
+1、keepalive_timeout时间到了。
+
+2、请求的资源个数超了，比如一次长连接允许请求文件为3个。测试👇
+
+![image-20240117135632993](5-nginx实现web服务器02.assets/image-20240117135632993.png)
+
+
+
+![image-20240117135714790](5-nginx实现web服务器02.assets/image-20240117135714790.png)
+
+
+
+### 禁止那种浏览器使用长连接
+
+keepalive_disable none | browser ...;
+
+手机上各种浏览器
+
+
+
+### 向客户端发送超时时长
+
+send_timeout time;
+
+向客户端发送响应报文的超时时长，此处是指两次写操作之间的间隔时长，而非整个响应时间过程的传输时长。
+
+服务器响应发送时间间隔，也就是两次写操作的间隔，这里写，我的理解是 server要构建response的，自然是写内容的要。
+
+
+
+### 上传文件的限制？
+
+client_max_body_size size; 请求报文中实体的最大值,默认1M，超过了就报错413
+
+client_body_buffer_size size;上传的文件是有buffer的，超过buffer大小默认16K，就会暂存到磁盘上的下面client_body_temp_path指令所定义的位置。
+
+client_body_temp_path path [level1 [level2 [level3]]];
+
+设定存储客户端请求报文的body部分的临时存储路径及子目录结构和数量
+
+目录名为16进制的数字；用hash之后的值从后往前截取第1、2、3级作为文件名
+
+比如： client_body_temp_path /var/tmp/client_body 1 2 2       # 三级目录1 2 2，分别用1个字符，2个字符，2个字符。
+
+1 1级目录占1位16进制，即2^4=16个目录 0-f
+
+2 2级目录占2位16进制，即2^8=256个目录 00-ff
+
+2 3级目录占2位16进制，即2^8=256个目录 00-ff
+
+👇计算下这样三级命名文件夹的好处--就是用上传的文件的哈希值作为分层目录，这样能够支持1048576个子文件，每个子文件里如果放1个文件也就是100w个文件了。好处就是如果整个100w放在一个文件夹里ls都能卡死，分层放置，查找自然就快了。L1目录顶多16个，L2目录256个，L3目录256个也是。
+
+![image-20240117144137085](5-nginx实现web服务器02.assets/image-20240117144137085.png)
+
+![image-20240117144200552](5-nginx实现web服务器02.assets/image-20240117144200552.png)
+
+
+
+```shell
+上传服务器配置生产案例：  
+location	/upload {
+	client_max_body_size 100m；  
+	client_body_buffer_size 2048k;
+	client_body_temp_path /apps/nginx/temp 1 2 2;
+	…
+}
+```
 
