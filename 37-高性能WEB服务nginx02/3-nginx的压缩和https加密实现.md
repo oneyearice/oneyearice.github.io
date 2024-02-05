@@ -242,6 +242,18 @@ openssl x509 -in ming.crt -text -noout发现这种Makefile的方式并没有X509
 
 ![image-20240201132058522](3-nginx的压缩和https加密实现.assets/image-20240201132058522.png)
 
+这里补充一个取消xxx.key生成的时候输入密码的要求，也就是不加密了
+
+![image-20240205150009632](3-nginx的压缩和https加密实现.assets/image-20240205150009632.png)
+
+去掉-aes128就行了
+
+![image-20240205150102097](3-nginx的压缩和https加密实现.assets/image-20240205150102097.png)
+
+
+
+
+
 2、openssl的配置文件修改
 
 ![image-20240201132150628](3-nginx的压缩和https加密实现.assets/image-20240201132150628.png)
