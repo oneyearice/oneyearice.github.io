@@ -278,7 +278,7 @@ TLS SNI就是TLS的sever name indication（sni)
 
 ![image-20240205173246718](4-nginx的rewrite模块实现.assets/image-20240205173246718.png)
 
-好了不管了
+
 
 
 
