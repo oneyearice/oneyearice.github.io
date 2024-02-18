@@ -431,6 +431,10 @@ location /api {
 
 
 
+![image-20240218142139356](5-nginx反向代理实现.assets/image-20240218142139356.png)
+
+
+
 
 
 
