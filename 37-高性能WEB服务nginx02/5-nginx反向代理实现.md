@@ -251,7 +251,7 @@ ngx_stream_proxy_module就是tcp的反代，不知道是否支持udp哦/
 
 ### 一个应用场景
 
-就是程序员还是喜欢把ip地址写死在代码里，所以就让他们写成nginx的反代IP，然后后面的DB也好服务也罢这些IP可以变动的，反代IP相对固定唯一区分端口就行了，除了这个点，还有个好处，就是代码里可能都是也给nginx的IP然后端口区分就行了，既是nginx反代IP多个也是统一在nginx上的相对集中便于管理的。
+就是程序员还是喜欢把ip地址写死在代码里，所以就让他们写成nginx的反代IP，然后后面的DB也好服务也罢这些IP可以变动的，反代IP相对固定唯一区分端口就行了，除了这个点，还有个好处，就是代码里可能都是也给nginx的IP然后端口区分就行了，即使nginx反代IP多个也是统一在nginx上的相对集中便于管理的。
 
 
 
@@ -273,13 +273,171 @@ ngx_stream_proxy_module就是tcp的反代，不知道是否支持udp哦/
 
 2、然后FW做DNAT映射到后面的VIP，这个里的VIP可以是LVS来做，然后LVS做TCP/UDP的反代，然后HTTP的就走TCP反代到nginx，再由nginx进行反代。这样无非就是四层的流量会走内核LVS快一点，但是其实HTTP就会多了一层LVS，所以这里可以将LVS和NGINX并排做成一个层级的，LVS给TCP/UDP服务，而nginx給HTTP服务。
 
-3、fw的ha，fw自身解决，比如HASRP，比如juniper的nsrp。
+3、fw的ha，fw自身解决，比如HSRP，比如juniper的nsrp。
 
 4、lvs和nginx的ha就是依靠通用协议keepalive。
 
 5、反代(lvs/nginx)接收vip进来的流量负载分担到身后内网的服务器，比如web网站这种动态资源站点比如image这种静态资源站点。
 
 6、服务器本身还会去后面找DB，DB还需要做集群，这样可实现HA；或者用读写分离，如果是读写分离就是前置调度器，而调度器也要HA，同样读写分离调度器2个也需要用keepalive做HA的。
+
+keepalive是一个通用的东西，实现浮动IP都可以用。
+
+7、静态页面可以用NFS服务器挂一下就行了。然后用rsysnc+I notify来实现实时备份。https://cloud.tencent.com/developer/article/1373541
+
+
+
+## 具体实现
+
+### ngx_http_proxy_module模块反代
+
+![image-20240218102112657](5-nginx反向代理实现.assets/image-20240218102112657.png)
+
+![image-20240218102147096](5-nginx反向代理实现.assets/image-20240218102147096.png)
+
+做反代在192.168.126.132上配置👇
+
+![image-20240218103732705](5-nginx反向代理实现.assets/image-20240218103732705.png)
+
+![image-20240218103747833](5-nginx反向代理实现.assets/image-20240218103747833.png)
+
+
+
+![image-20240218104148390](5-nginx反向代理实现.assets/image-20240218104148390.png)
+
+
+
+
+
+反代对于用户来讲，是看不到真实的server IP的；
+
+
+
+后端服务器认为是谁在访问呢
+
+![image-20240218104738410](5-nginx反向代理实现.assets/image-20240218104738410.png)
+
+调度器也就是反代nginx上肯定是可以看到真实的用户IP的👇
+
+![image-20240218104331671](5-nginx反向代理实现.assets/image-20240218104331671.png)
+
+
+
+
+
+看下telnet www.site1.com 80的效果：只有192.168.126.130上也就是调度器上由TCP连接
+
+![image-20240218105059322](5-nginx反向代理实现.assets/image-20240218105059322.png)
+
+后端server192.168.126.132上是没有的
+
+![image-20240218105156975](5-nginx反向代理实现.assets/image-20240218105156975.png)
+
+原因就是，nginx的反代写的的http而不是telnet，人家是看协议的。
+
+
+
+telnet测试http的方式👇，可见请求后没有断，应该能说明反代和后端都支持长连接吧。
+
+![image-20240218105823517](5-nginx反向代理实现.assets/image-20240218105823517.png)
+
+反代上的log👇
+
+![image-20240218105850708](5-nginx反向代理实现.assets/image-20240218105850708.png)
+
+server上的log👇
+
+![image-20240218105902323](5-nginx反向代理实现.assets/image-20240218105902323.png)
+
+
+
+### 针对特定的文件夹(uri)进行反代调度-动静分离
+
+![image-20240218111709627](5-nginx反向代理实现.assets/image-20240218111709627.png)
+
+相当于动静分离了👆只要是图片后缀的就调度到192.168.126.132上，只要是api路径的就调度到133上
+
+![image-20240218112142419](5-nginx反向代理实现.assets/image-20240218112142419.png)
+
+搞个图片👆
+
+![image-20240218114135307](5-nginx反向代理实现.assets/image-20240218114135307.png)
+
+👆133的页面内容，但是反代里写的是
+
+<img src="5-nginx反向代理实现.assets/image-20240218114316114.png" alt="image-20240218114316114" style="zoom:33%;" />会导致访问http://192.168.126.133/api，而该文件是不存在的。
+
+所以创建所需的文件夹api，
+
+![image-20240218114958355](5-nginx反向代理实现.assets/image-20240218114958355.png)
+
+![image-20240218115006036](5-nginx反向代理实现.assets/image-20240218115006036.png)
+
+
+
+或者api干脆就是个文件也行
+
+![image-20240218114814804](5-nginx反向代理实现.assets/image-20240218114814804.png)
+
+![image-20240218114823593](5-nginx反向代理实现.assets/image-20240218114823593.png)访问图片的就会调度到192.168.126.132上👇
+
+![image-20240218114110538](5-nginx反向代理实现.assets/image-20240218114110538.png)
+
+
+
+注意
+
+![image-20240218115841873](5-nginx反向代理实现.assets/image-20240218115841873.png)
+
+如果写成
+
+```
+location /api {
+	proxy_pass http://192.168.126.133/    # 实际访问的就是http://192.168.126.133/index.html了，此乃替换。
+}
+location /api {
+	proxy_pass http://192.168.126.133    # 实际访问的就是http://192.168.126.133/api；或者是http://192.168.126.133/api/index.html 此乃凭借
+}
+location /api {
+	proxy_pass http://192.168.126.133/index.html    # 实际访问的就是http://192.168.126.133/index.html。此乃替换
+}
+
+
+```
+
+![image-20240218122624548](5-nginx反向代理实现.assets/image-20240218122624548.png)
+
+
+
+![image-20240218122654785](5-nginx反向代理实现.assets/image-20240218122654785.png)
+
+修改后端服务监听的端口
+
+![image-20240218122849702](5-nginx反向代理实现.assets/image-20240218122849702.png)
+
+好了👇
+
+<img src="5-nginx反向代理实现.assets/image-20240218122827516.png" alt="image-20240218122827516" style="zoom:50%;" />
+
+
+
+如果server那边用iptables drop，没有响应会导致tcp三次握手都失败，而且是没有回应，这样client端看到的就是504报错。
+
+![image-20240218124206324](5-nginx反向代理实现.assets/image-20240218124206324.png)
+
+所以502和504的区别：502server可能没有监听倒是会明确告诉你一个信息的，504就是超时了。
+
+
+
+
+
+
+
+
+
+以上就是实现了初始的调度，但是调度还要涉及 健康检查和往健康的server上调度的功效。
+
+
 
 
 
