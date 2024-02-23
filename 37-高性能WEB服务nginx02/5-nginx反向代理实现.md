@@ -396,7 +396,7 @@ location /api {
 	proxy_pass http://192.168.126.133/    # 实际访问的就是http://192.168.126.133/index.html了，此乃替换。
 }
 location /api {
-	proxy_pass http://192.168.126.133    # 实际访问的就是http://192.168.126.133/api；或者是http://192.168.126.133/api/index.html 此乃凭借
+	proxy_pass http://192.168.126.133    # 实际访问的就是http://192.168.126.133/api；或者是http://192.168.126.133/api/index.html 此乃拼接
 }
 location /api {
 	proxy_pass http://192.168.126.133/index.html    # 实际访问的就是http://192.168.126.133/index.html。此乃替换
