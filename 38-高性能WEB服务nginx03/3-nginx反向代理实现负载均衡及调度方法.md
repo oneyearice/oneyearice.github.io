@@ -483,6 +483,22 @@ for i in {1..10};do echo `hostname -I` Page $i > /var/www/html/test$i.html;done
 
 
 
+好，如果是以上的调度算法，会有会话保持的问题，也就是说用户访问http://www.site1.com/test1.html是一个realserver，然后访问http://www.site1.com/test5.html又是一个realserver，那么一些保留的会话信息就没了。比如cookies，登入的信息，如果基于uri调度到别的机器，那么login就没了。还比如php文件的访问，php是程序了，程序运行依赖的一些环境换了realserver可能也存在问题，比如之前的cookies肯定就没了。
+
+**解决思路有**：
+
+①session服务器前文提到过，
+
+![image-20240229145237521](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229145237521.png)
+
+②
+
+
+
+
+
+
+
 
 
 
