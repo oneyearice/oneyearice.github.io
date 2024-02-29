@@ -487,11 +487,65 @@ for i in {1..10};do echo `hostname -I` Page $i > /var/www/html/test$i.html;done
 
 **解决思路有**：
 
-①session服务器前文提到过，
+①session服务器前文提到过，可以过去复习下，就会知道redis的作用，cookie的设置以及time()的计算方式，哈哈，不要怕花时间就可以再次捡起来这些有用/无用的知识了，天地无用~
 
 ![image-20240229145237521](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229145237521.png)
 
+上图的章节里提到了这么几个方案：
+
+1.1  session缓存，就是session id放到cookie里面来玩的， (session就是server存放的表示某个会话的一堆信息，但是id就是代表啦，可以认为session id就类似数据库表里的主键，比如id 1000代表登入网站的用户名，购物车里的东西等等信息。) 。 # hash $cookie_name; 这样写就行。
+
+​						但是cookie有很多，所谓cookie就是很多个key:value键值对，hash写的时候要写清楚是哪一个cookie的key。 
+
+1.2  session复制，所有的realserver互相同步也就是复制会话，肯定不可取。
+
+1.3  session服务器，就是用redis来做session服务器，这个是很好的方案，不过login的信息要拆分到mysql里去做数据持久化的。redis是基于内存的，不是持久化存放的。
+
+
+
+补充以下cookies
+
+![image-20240229181148469](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229181148469.png)
+
+像这种👇就是一个包里有N个cookie的，每个cookie就是一个键值对。
+
+![image-20240229181614143](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229181614143.png)
+
+如果前端调度器也就是nginx反代，就需要明确指定依据cookies里的哪个cookie也就是键值对来调度。
+
+要知道client发动的请求里会有一大堆cookies的。
+
+
+
+这个👇sticky指令确实能够实现基于cookie来调度，不过是商业版是收费的，需要用hash指令实现。
+
+![image-20240229182754748](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229182754748.png)
+
+hash实现就免费啦👇 再查查变量就能用起来啦。
+
+```
+hash $cookie_name;
+```
+
+![image-20240229183005573](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229183005573.png)
+
+![image-20240229183200407](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229183200407.png)
+
+
+
+
+
+
+
+顺便瞧瞧redis的功效
+
+<img src="3-nginx反向代理实现负载均衡及调度方法.assets/image-20240229165053392.png" alt="image-20240229165053392" style="zoom:50%;" />
+
+
+
 ②
+
+
 
 
 
