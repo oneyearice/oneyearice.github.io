@@ -815,9 +815,64 @@ curl -b 测试 一个cookie就是一个-b
 
 
 
+# 调度cookie
+
+几人上面测试cookies是可以抓到的，那么就用hash $cookie_name来调度
+
+![image-20240304103221805](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240304103221805.png)
+
+下面就通过curl -b 测试 固定的sessionid是不是都是固定调度到同一个realserver上了呢。
+
+![image-20240304103406822](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240304103406822.png)
+
+不过实际情况就是server给client打上sessionid了，nginx然后利用这个sessionid来区分对待不同的client和server。
 
 
 
 
 
+此外还有keepalive 参数
+
+**keepalive 连接数N;**
+
+为每个worker进程保留的空闲的长连接数量，可节约nginx端口，并减少 连接管理的消耗
+
+![image-20240304104921855](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240304104921855.png)
+
+
+
+client-------nginx----------varnish1 | 2 | 3 | 很多个varish ---- 后端很多个realserver
+
+![image-20240304113339033](3-nginx反向代理实现负载均衡及调度方法.assets/image-20240304113339033.png)
+
+
+
+```
+hash $request_uri 的解释
+
+hash ( /a.html ) = 128bit % 6 => 0 -5     #  varnish的权重是1 2 3 ，所以整体权重就是6，hash值对6取模，也就是0 1 2 3 4 5 个结果。
+
+
+
+varnish 1/6 0   		# 1/6就是hash % 6结果-0就 调度到 这个台varnish
+varnish 2/6 1,2   	#  hash % 6 结果是1，2 就往这里调度
+varnish 3/6 3,4,5    # hash % 6 结果是 3 4 5 就往这里调度。
+```
+
+
+
+如果varnish挂了一台，或者后端realserver增加了，varnish跟不上业务量了，再加一个varnish
+
+此时调度分母变成了10，意味着hash ( /a.html ) = 128bit % 6 变成了 % 10，此时取模的结果全变了，意味着所有缓存全部失效！此时缓存穿透，压力全部给到后端服务器了，业务瞬间爆了。因为业务基本都是靠缓存提供快速响应的，缓存没了，靠服务器是提供不起来的。varnish可能就承担了80%的业务量，后端realserver只是20%顶多也许。
+
+```
+varnish 1/10
+varnish 2/10
+varnish 3/10
+varnish 4/10
+```
+
+这就是一致性hash算法产生的背景。
+
+下章继续
 
