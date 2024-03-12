@@ -144,6 +144,16 @@ hash $request_uri consistent;
 
 
 
+
+
+一些版本需要yum -y install nginx-mod-stream 来手动安装stream模块，当然一般情况/etc/nginx/nginx.conf主配置文件里是包含了这个模块的
+
+<img src="4-nginx四层代理功能和tengine编译安装.assets/image-20240311193546708.png" alt="image-20240311193546708" style="zoom:33%;" />
+
+
+
+
+
 所以http的反代-调度是写在http语句块下的，
 
 而，L4的反代-调度是写在stream语句块下的
@@ -435,6 +445,450 @@ https://tengine.taobao.org/document_cn/http_concat_cn.html
 该模块类似于apache中的mod_concat模块，用于合并多个文件在一个响应报文中。
 
 
+
+### 安装测下Tengine
+
+下载最新的试试看
+
+```
+curl -LO https://tengine.taobao.org/download/tengine-3.1.0.tar.gz
+ 
+tar xvf tengine-3.1.0.tar.gz
+ 
+cd tengine-3.1.0.tar.gz
+
+
+编译前，需安装依赖
+
+yum install gcc pcre-devel openssl-devel zlib-devel
+
+编译前，需要添加nginx用户
+useradd -r -s /sbin/nologin nginx
+
+编译的时候考虑下stream模块是否支持，当然支持了，2015年的nginx-1.9.0支持stream的，tengine-3.1.0都是2023年了，没问题~,其实如果不支持会报错的，同时也可以这么看下是否支持
+./configure --help |grep stream   看看是否有--with-stream字眼。有就支持咯
+
+./configure --prefix=/apps/nginx \
+--user=nginx \
+--group=nginx \
+--with-http_ssl_module \
+--with-http_v2_module \
+--with-http_realip_module \
+--with-http_stub_status_module \
+--with-http_gzip_static_module \
+--with-pcre \
+--with-stream \
+--with-stream_ssl_module \
+--with-stream_realip_module
+
+ 
+make && make install
+
+ln -s /apps/nginx/sbin/nginx /usr/bin/nginx
+
+nginx 启动就行，如果报错，就按提示解决报错
+```
+
+确认是否支持stream模块👇
+
+![image-20240311104751014](4-nginx四层代理功能和tengine编译安装.assets/image-20240311104751014.png)
+
+然后就ok了
+
+![image-20240311105657369](4-nginx四层代理功能和tengine编译安装.assets/image-20240311105657369.png)
+
+
+
+尝试启用concat，但是由于编译的时候没有加上这个模块，所以还是不支持。
+
+![image-20240311110227904](4-nginx四层代理功能和tengine编译安装.assets/image-20240311110227904.png)
+
+结果发现开发版3.1.0不支持唉
+
+![image-20240311110436643](4-nginx四层代理功能和tengine编译安装.assets/image-20240311110436643.png)
+
+换
+
+![image-20240311111026628](4-nginx四层代理功能和tengine编译安装.assets/image-20240311111026628.png)
+
+妈的，2.3.1支持的，他这个分开发版本和稳定版，3.1.0是开发版，还没有详细的明细
+
+![image-20240311111207265](4-nginx四层代理功能和tengine编译安装.assets/image-20240311111207265.png)
+
+就首页有说，难不成大版本1就是稳定版，2就是开发版？
+
+
+
+```
+重新下载
+curl -LO https://tengine.taobao.org/download/tengine-2.3.1.tar.gz
+```
+
+![image-20240311111603248](4-nginx四层代理功能和tengine编译安装.assets/image-20240311111603248.png)
+
+操，有个屁
+
+
+
+```
+再换
+curl -LO https://tengine.taobao.org/download/tengine-2.1.2.tar.gz
+```
+
+![image-20240311111745525](4-nginx四层代理功能和tengine编译安装.assets/image-20240311111745525.png)
+
+有了，操，但是这个版本没有stream模块，
+
+```
+./configure --prefix=/apps/nginx \
+--user=nginx \
+--group=nginx \
+--with-http_ssl_module \
+--with-http_v2_module \
+--with-http_realip_module \
+--with-http_stub_status_module \
+--with-http_gzip_static_module \
+--with-pcre \
+--with-http_concat_module
+```
+
+报错和处理
+
+![image-20240311112720494](4-nginx四层代理功能和tengine编译安装.assets/image-20240311112720494.png)
+
+参考：https://www.linuxquestions.org/questions/slackware-arm-108/gcc-7-x-compile-issue-with-nginx-4175608107/
+
+
+
+继续编译，继续报错
+
+![image-20240311113115194](4-nginx四层代理功能和tengine编译安装.assets/image-20240311113115194.png)
+
+处理方法，注释掉这行，
+
+![image-20240311113247197](4-nginx四层代理功能和tengine编译安装.assets/image-20240311113247197.png)
+
+再次编译，再次报错
+
+![image-20240311113321949](4-nginx四层代理功能和tengine编译安装.assets/image-20240311113321949.png)
+
+妈的，所以tenginx的concat到底行不行，为了一个concat，结果高版本的tenginx里没有concat，用低版本里结果stream不支持，而且openssl也要降版本，操。参考：https://blog.csdn.net/qq_39720249/article/details/84655501
+
+![image-20240311113735834](4-nginx四层代理功能和tengine编译安装.assets/image-20240311113735834.png)
+
+
+
+```
+curl -LO https://www.openssl.org/source/old/1.0.1/openssl-1.0.1u.tar.gz
+
+tar xvf openssl-1.0.1u.tar.gz
+
+cd openssl-1.0.1u
+
+./config --prefix=/apps/nginx/openssl-1.0.1u
+
+make && make install
+
+再重新编译tenginx试试看咯
+
+```
+
+![image-20240311115156438](4-nginx四层代理功能和tengine编译安装.assets/image-20240311115156438.png)
+
+编译报错
+
+![image-20240311115946043](4-nginx四层代理功能和tengine编译安装.assets/image-20240311115946043.png)
+
+![image-20240311120108780](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120108780.png)
+
+给你个openssl目录
+
+![image-20240311120347862](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120347862.png)
+
+![image-20240311120444899](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120444899.png)
+
+ok
+
+![image-20240311120455040](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120455040.png)
+
+继续make
+
+![image-20240311120729649](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120729649.png)
+
+fuck 报错是openssl.o
+
+下错版本呢了，继续
+
+![image-20240311120826356](4-nginx四层代理功能和tengine编译安装.assets/image-20240311120826356.png)
+
+
+
+```
+curl -LO https://www.openssl.org/source/old/1.0.1/openssl-1.0.1o.tar.gz
+cd openssl-1.0.1o
+tar xvf openssl-1.0.1o.tar.gz
+cd openssl-1.0.1o
+rm -rf tengine-2.1.2/openssl   # 删除之前的openssl目录
+mv openssl-1.0.1o tengine-2.1.2/openssl
+
+cd tengine-2.1.2
+
+./configure --prefix=/apps/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre --with-http_concat_module --with-cc-opt="-Wno-error"
+
+make && make install
+
+还是openssl.o的报错，
+```
+
+可能是旧版的openssl没有删除导致的。
+
+https://juejin.cn/post/7106429674942627854
+
+按这个来一遍再
+
+
+
+![image-20240311202759788](4-nginx四层代理功能和tengine编译安装.assets/image-20240311202759788.png)
+
+
+
+
+
+
+
+```
+yum -y install remove nginx
+yum -y remove nginx
+
+cd /usr/local/ ; curl -LO https://tengine.taobao.org/download/tengine-2.1.2.tar.gz
+tar xvf tengine-2.1.2.tar.gz
+cd tengine-2.1.2
+ll
+./configure --help |grep concat
+./configure --help |grep stream
+yum remove openssl openssl-devel
+cd ..
+curl -LO https://www.openssl.org/source/old/1.0.1/openssl-1.0.1o.tar.gz
+tar xvf openssl-1.0.1o.tar.gz
+cd openssl-1.0.1o
+./config --prefix=/opt/ldkjdata/nginx/openssl-1.0.1o
+make && make install
+
+这是OK的
+```
+
+
+
+```
+cd ../tengine-2.1.2
+pwd
+vim src/os/unix/ngx_user.c
+./configure --prefix=/apps/nginx --user=nginx --group=nginx --with-openssl=../openssl-1.0.1o --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre --with-http_concat_module --with-cc-opt="-Wno-error"
+make -j 2 && make install
+
+最后一步报错openssl的问题还是，反正解决要么正面搞定openssl，要么用3.x.xtenginx安装dso的concat模块。
+
+```
+
+
+
+![image-20240311210108349](4-nginx四层代理功能和tengine编译安装.assets/image-20240311210108349.png)
+
+
+
+
+
+### **方案二：就用最新的然后利用--add-module=结合单独下载模块**
+
+
+
+
+
+**到这个网站下载concat模块**
+
+https://github.com/alibaba/nginx-http-concat
+
+然后下载最新的tenginx 3.1.0，再编译的时候加上这个模块就行了
+
+```
+git clone https://github.com/alibaba/nginx-http-concat.git
+git clone https://github.com/vozlt/nginx-module-sts.git
+
+cd tengine-3.1.0
+
+./configure --prefix=/apps/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre --with-stream --with-stream_ssl_module --with-stream_realip_module --add-module=/root/nginx-http-concat
+
+make -j 2 && make install
+
+
+```
+
+
+
+![image-20240312105753287](4-nginx四层代理功能和tengine编译安装.assets/image-20240312105753287.png)
+
+
+
+OK鸡巴开了
+
+![image-20240312105720094](4-nginx四层代理功能和tengine编译安装.assets/image-20240312105720094.png)
+
+![image-20240312115230107](4-nginx四层代理功能和tengine编译安装.assets/image-20240312115230107.png)
+
+虽然ok了，但是我有一个疑问啊，就是为什么
+
+1、官网分开发稳定版和稳定版，首页稳定版只显示到2013年，什么鬼
+
+2、开发稳定版里最新的竟然不带concat模块，还需要去11年前的github库里下载，什么鬼
+
+
+
+
+
+
+
+**下载stream模块去试试tengine-2.1.2，不行就算了**
+
+因为编译，所以找了个源文件，
+
+https://github.com/vozlt/nginx-module-stream-sts
+
+
+
+还是用tengine-2.1.2来弄试试
+
+```
+./configure --prefix=/apps/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre --add-module=/root/nginx-module-sts --with-cc-opt="-Wno-error" --add-module=/root/nginx-module-stream-sts
+
+make dso_install     # 注意这里不直接make
+
+make && make install  # 然后再make 
+```
+
+![image-20240312114016086](4-nginx四层代理功能和tengine编译安装.assets/image-20240312114016086.png)
+
+![image-20240312114117855](4-nginx四层代理功能和tengine编译安装.assets/image-20240312114117855.png)
+
+![image-20240312114133551](4-nginx四层代理功能和tengine编译安装.assets/image-20240312114133551.png)
+
+还是一样的报错，不过stream模块好像可以这么加。
+
+![image-20240312114237936](4-nginx四层代理功能和tengine编译安装.assets/image-20240312114237936.png)
+
+openssl，算了不弄了。就上面的方法搞定就行了。
+
+
+
+
+
+# nginx优化
+
+
+
+默认的Linux内核参数考虑的是最通用场景，不符合用于支持高并发访问的Web服务器的 定义，根据业务特点来进行调整，当Nginx作为静态web内容服务器、反向代理或者提供 压缩服务器的服务器时，内核参数的调整都是不同的，此处针对最通用的、使Nginx支持 更多并发请求的TCP网络参数做简单的配置,修改/etc/sysctl.conf来更改内核参数
+
+fs.file-max = 999999
+
+表示单个进程较大可以打开的句柄数
+
+net.ipv4.tcp_tw_reuse = 1
+
+参数设置为 1 ，表示允许将TIME_WAIT状态的socket重新用于新的TCP链接，这对于 服务器来说意义重大，因为总有大量TIME_WAIT状态的链接存在
+
+net.ipv4.tcp_keepalive_time = 600
+
+当keepalive启动时，TCP发送keepalive消息的频度；默认是2小时，将其设置为10分钟， 可更快的清理无效链接
+
+net.ipv4.tcp_fin_timeout = 30
+
+当服务器主动关闭链接时，socket保持在FIN_WAIT_2状态的较大时间
+
+
+
+net.ipv4.tcp_max_tw_buckets = 5000
+表示操作系统允许TIME_WAIT套接字数量的较大值，如超过此值，TIME_WAIT  套接字将立刻被清除并打印警告信息,默认为8000，过多的TIME_WAIT套接字会使  Web服务器变慢
+
+net.ipv4.ip_local_port_range = 1024 65000    ，比如nginx 往后端发送连接的源随机端口
+
+定义UDP和TCP链接的本地端口的取值范围
+
+net.ipv4.tcp_rmem = 10240 87380 12582912
+定义了TCP接受缓存的最小值、默认值、较大值
+
+net.ipv4.tcp_wmem = 10240 87380 12582912
+定义TCP发送缓存的最小值、默认值、较大值
+
+net.core.netdev_max_backlog = 8096    # backlog不是log是队列
+当网卡接收数据包的速度大于内核处理速度时，会有一个列队保存这些数据包。 这个参数表示该列队的较大值
+
+
+
+
+
+net.core.rmem_default = 6291456  表示内核套接字接受缓存区默认大小
+net.core.wmem_default = 6291456  表示内核套接字发送缓存区默认大小
+net.core.rmem_max = 12582912	表示内核套接字接受缓存区最大大小
+net.core.wmem_max = 12582912 表示内核套接字发送缓存区最大大小
+
+注意：以上的四个参数，需要根据业务逻辑和实际的硬件成本来综合考虑
+
+
+
+net.ipv4.tcp_syncookies = 1
+与性能无关。用于解决TCP的SYN攻击
+
+net.ipv4.tcp_max_syn_backlog = 8192
+这个参数表示TCP三次握手建立阶段接受SYN请求列队的较大长度，默认1024，将其 设置的大一些可使出现Nginx繁忙来不及accept新连接时，Linux不至于丢失客户端发起 的链接请求
+
+net.ipv4.tcp_tw_recycle = 1
+这个参数用于设置启用timewait快速回收
+
+net.core.somaxconn=262114
+选项默认值是128，这个参数用于调节系统同时发起的TCP连接数，在高并发的请求中，
+默认的值可能会导致链接超时或者重传，因此需要结合高并发请求数来调节此值。
+
+net.ipv4.tcp_max_orphans=262114
+选项用于设定系统中最多有多少个TCP套接字不被关联到任何一个用户文件句柄上。如 果超过这个数字，孤立链接将立即被复位并输出警告信息。这个限制指示为了防止简单的  DOS攻击，不用过分依靠这个限制甚至认为的减小这个值，更多的情况是增加这个值
+
+
+
+
+
+
+
+
+
+# zabbix-agent 监控记录
+
+
+
+1、主动、被动 
+
+见https://blog.51cto.com/u_15094852/2968778
+
+参考一下https://blog.51cto.com/shone/5333216
+
+
+
+然后记录我的关键配置
+
+**ser端**
+
+用被动，也就是 “zabbix 客户端”，键值 这里写的是 ping，其实就是agent上的配置，往下看
+
+![image-20240312152958892](4-nginx四层代理功能和tengine编译安装.assets/image-20240312152958892.png)
+
+
+
+**agent端配置**
+
+![image-20240312153215184](4-nginx四层代理功能和tengine编译安装.assets/image-20240312153215184.png)
+
+
+
+agent上测试👇，其实agent上最好写成这种，但是server上我不会传参
+
+![image-20240312153839395](4-nginx四层代理功能和tengine编译安装.assets/image-20240312153839395.png)
 
 
 
