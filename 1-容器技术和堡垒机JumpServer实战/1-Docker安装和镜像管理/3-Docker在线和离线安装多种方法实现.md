@@ -1,2 +1,225 @@
 # 第3节 Docker在线和离线安装多种方法实现
 
+
+
+# 安装
+
+https://docs.docker.com/desktop/install/linux-install/
+
+
+
+所需平台：
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240328143825244.png" alt="image-20240328143825244" style="zoom:50%;" /> 
+
+
+
+所需资源：
+
+![image-20240328143852525](3-Docker在线和离线安装多种方法实现.assets/image-20240328143852525.png)
+
+说是4G内存，其实2G也能安装。工作中肯定不是2G就能OK的。
+
+生产中的服务器，内存也有高达1T的，就是为了跑好多容器的。
+
+安装方法，我们一般不按照destop这种GUI版，正常就安装Engine
+
+https://docs.docker.com/engine/install/centos/
+
+![image-20240328144842502](3-Docker在线和离线安装多种方法实现.assets/image-20240328144842502.png)
+
+
+
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+```
+
+#### [Install Docker Engine](https://docs.docker.com/engine/install/centos/#install-docker-engine)
+
+1. Install Docker Engine, containerd, and Docker Compose:
+
+   Latest Specific version
+
+   ------
+
+   To install the latest version, run:
+
+   
+
+   ```console
+   $ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   
+   $ sudo yum install docker-ce   # 上面一行其实只要敲这一行，安装docker-ce就行了，后面的都会走依赖包自动安装好的。  -ce所谓的ce就是社区版，还有一个-ee就是企业版。
+   ```
+
+   If prompted to accept the GPG key, verify that the fingerprint matches `060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35`, and if so, accept it.
+
+   This command installs Docker, but it doesn't start Docker. It also creates a `docker` group, however, it doesn't add any users to the group by default.
+
+   ------
+
+2. Start Docker.
+
+   
+
+   ```console
+   $ sudo systemctl start docker
+   ```
+
+3. Verify that the Docker Engine installation is successful by running the `hello-world` image.
+
+   
+
+   ```console
+   $ sudo docker run hello-world
+   ```
+
+   This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.
+
+You have now successfully installed and started Docker Engine.
+
+
+
+## 使用国内源的安装方法
+
+
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240328150818466.png" alt="image-20240328150818466" style="zoom:50%;" /> 
+
+https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/
+
+
+
+
+
+操作备忘，我之前就有docker，这里需要删掉
+
+ubuntu方面
+
+![image-20240328161908092](3-Docker在线和离线安装多种方法实现.assets/image-20240328161908092.png)
+
+
+
+![image-20240328161554525](3-Docker在线和离线安装多种方法实现.assets/image-20240328161554525.png)
+
+这种指定版本安装存在的小问题就是，docker-ce你指定了是24.0.0，但是其他依赖包没有手动指定，就会下载最新的了。
+
+![image-20240328162440641](3-Docker在线和离线安装多种方法实现.assets/image-20240328162440641.png)
+
+docker-ce是install的时候指定的版本，其他未指定的就下载最新的了。
+
+![image-20240328163019794](3-Docker在线和离线安装多种方法实现.assets/image-20240328163019794.png)
+
+
+
+​		所以要安装docker 某个老版本的时候，需要严禁一点，就是手动指定各个包的版本。其实也就是图上dpkg -l |grep docker所列出来的各个包
+
+​		最新的版本的安装自然就是统一的，就保证仓库的rpm源是最新的直接yum就行了。
+
+
+
+![image-20240328164654179](3-Docker在线和离线安装多种方法实现.assets/image-20240328164654179.png)
+
+
+
+![image-20240328164711753](3-Docker在线和离线安装多种方法实现.assets/image-20240328164711753.png)
+
+
+
+![image-20240328164737491](3-Docker在线和离线安装多种方法实现.assets/image-20240328164737491.png)
+
+
+
+![image-20240328164759683](3-Docker在线和离线安装多种方法实现.assets/image-20240328164759683.png)
+
+这样就保证了ce和ce-cli的版本一致，当然最好还是全部一致。
+
+
+
+我就不重新装了，我没啥要求，yum install就行了，要注意docker的各个包版本要一致，不要踩坑。
+
+![image-20240328165844259](3-Docker在线和离线安装多种方法实现.assets/image-20240328165844259.png)
+
+这是我的版本
+
+
+
+## 容器里安装docker-client，并不是套娃，而是client的命令
+
+server就用宿主机的
+
+client就调用远端的server执行docker cli
+
+场景：
+
+容器里面将来可以执行docker cli连接远端的docker server也就是docker engine来执行 docker操作。
+
+比如👇C1容器里执行docker cli把C2容器给停了，当然C1要通过docker cli 命令连接到宿主上的docker服务进程来执行命令的。
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240328172515739.png" alt="image-20240328172515739" style="zoom:33%;" />
+
+​		其实就是本来docker-cli都是在宿主上敲的命令，现在可以在运行的容器里面执行，换而言之，C1一旦安装了docker-cli就可以变相的等价于宿主机上敲docker-cli以此达到控制宿主上所有容器的效果。
+
+​		docker的命令真正的执行都是docker-server来执行的，docker-cli在哪里敲都一样，你在宿主上敲和在容器里敲都一样的效果。
+
+​		client和server可以不在一台机器上，网络可达就行了，之前看书的时候也试过cli里可以指定连接的engine也就是server的。
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240328173734038.png" alt="image-20240328173734038" style="zoom:33%;" />
+
+
+
+就跟mysql client可以管理本机的mysql db，也可以管理远端的db一样，cli里指定-h a.b.c.d就行了。
+
+
+
+**那么问题来了该如何在容器里安装docker-cli命令呢**
+
+1、通过镜像提前封装进去，可以的，可能就是不太灵活
+
+2、使用官方通用的安装脚本来弄
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240328174844778.png" alt="image-20240328174844778" style="zoom:50%;" /> 
+
+两条命令就ok了👆
+
+
+
+### docker的二进制安装-适用于无法上网的机器
+
+
+
+
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240329095253881.png" alt="image-20240329095253881" style="zoom:50%;" /> 
+
+
+
+
+
+<img src="3-Docker在线和离线安装多种方法实现.assets/image-20240329095339230.png" alt="image-20240329095339230" style="zoom:50%;" />
+
+
+
+
+
+然后二进制安装的一个优点👇就是可以明确看到之前的这几个模块，
+
+![image-20240329095522383](3-Docker在线和离线安装多种方法实现.assets/image-20240329095522383.png)
+
+
+
+
+
+
+
+
+
+
+
