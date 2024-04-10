@@ -502,3 +502,9 @@ alpine也是有完全镜像和极简镜像的，好比centos的all-in-one和mini
 
 ```
 
+
+
+
+
+--
+
