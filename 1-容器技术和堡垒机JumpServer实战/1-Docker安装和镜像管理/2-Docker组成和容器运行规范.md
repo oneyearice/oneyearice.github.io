@@ -88,7 +88,7 @@ IPC Namespace(inter-process communication) 共享内存，消息队列都是隔�
 
 UTSNamespace(Unix Timesharing System) 主机名和域名的隔离
 
-PID Namespace(process identification) 进程编号隔离，大家都是1号进程，但是互补干扰就是隔离。整个进程树的隔离
+PID Namespace(process identification) 进程编号隔离，大家都是1号进程，但是互不干扰就是隔离。整个进程树的隔离
 
 Net Namespace(network)  典型代表就是ip地址可以一样的，正因为隔离了才能一样哦
 
@@ -192,7 +192,7 @@ Control group就是内核中的另一个重要技术，联系，上面讲了内�
 
 还有一个 docker的namespace其实就是linux内核的namespace，内核什么版本里有什么名称空间，可能高版本的内核会多几个，但关键的就是上文所讲的那几个。
 
-而k8s的namespace是用户空间里的东西，是用户认为创建自定义的，今天创建明天删除都是可以操作的。
+而k8s的namespace是用户空间里的东西，是用户人为创建自定义的，今天创建明天删除都是可以操作的。
 
 
 
