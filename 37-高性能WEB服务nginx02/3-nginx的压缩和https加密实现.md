@@ -777,12 +777,13 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 # 最后总结
 
-307 Temprorary Redirect
-307 Internal Redirect
+**307 Temprorary Redirect**
 
-浏览器的输入手法
+**307 Internal Redirect**
 
-无痕测试注意
+**浏览器的输入手法**
+
+**无痕测试注意**
 
 
 
@@ -790,7 +791,11 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 
 
+
+
 307 Internal Redirect，是网站server回应里的Strict-Transport-Security键值将浏览器的HSTS列表里[chrome://net-internals/#hsts]加上了，所以你怎么输入都会让你直接走HTTPS
+
+
 
 
 
@@ -798,11 +803,15 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 
 
+
+
 浏览器由于内置机制，当你输入www.sw.com，未指定http还是https的时候，会优先https的，但是也要和输入手法结合在一起的👇
 
-​		浏览器里的历史记录会影响url输入的行为，比如有www.sw.com的记录，是http://www.sw.com,那么你输入www.sw.com就会走http:了
+​		 1、浏览器里的历史记录会影响url输入的行为，比如有www.sw.com的记录，是http://www.sw.com,那么你输入www.sw.com就会走http:了
 
-​		但是地址栏里输入sw，后ctrl + enter就不会 被历史记录的影响。此时就会优先Https，然后多次被拒后才会307 Temprorary Redirect回退到http
+​		 2、但是地址栏里输入sw，后ctrl + enter就不会 被历史记录的影响。此时就会优先Https，然后多次被拒后才会307 Temprorary Redirect回退到http
+
+
 
 
 
