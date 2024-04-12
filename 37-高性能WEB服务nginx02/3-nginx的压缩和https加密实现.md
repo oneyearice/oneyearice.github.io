@@ -527,7 +527,7 @@ HSTS是
 
 ## 1、背景
 
-www.sw.com 和 sw.com是我每部用的一个域名 都解析到了192.168.0.9，是内部的soft站点，套了nginx，只监听了80
+www.sw.com 和 sw.com是我内部用的一个域名 都解析到了192.168.0.9，是内部的soft站点，套了nginx，只监听了80
 
 
 
@@ -629,3 +629,181 @@ chrome://net-internals/#hsts这个里面生成www.sw.com的HSTS
 
 
 
+
+
+### 再研究下上面说的题外话，为什么我内部的www.sw.com会443跳80：
+
+![image-20240412171120039](3-nginx的压缩和https加密实现.assets/image-20240412171120039.png)
+
+
+
+
+
+
+
+![image-20240412171027692](3-nginx的压缩和https加密实现.assets/image-20240412171027692.png)
+
+
+
+
+
+
+
+![image-20240412171322474](3-nginx的压缩和https加密实现.assets/image-20240412171322474.png)
+
+
+
+
+
+
+
+**分析判断：** 
+
+1、收到307 临时 重定向，就会转到location的URL上，那么local 的url哪里定义的？还以为什么会收到307 临时 重定向 ？
+
+<img src="3-nginx的压缩和https加密实现.assets/image-20240412171413111.png" alt="image-20240412171413111" style="zoom:40%;" />
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/307
+
+
+
+location 首部 从浏览器可知就是http://www.sw.com👇
+
+![image-20240412171631630](3-nginx的压缩和https加密实现.assets/image-20240412171631630.png)
+
+
+
+我觉的location 首部 这里找找，也许默认就是server name 和 listen的组合也就是http://www.sw.com👇
+
+![image-20240412171544913](3-nginx的压缩和https加密实现.assets/image-20240412171544913.png)
+
+
+
+为什么会产生307 临时重定向
+
+![image-20240412172526104](3-nginx的压缩和https加密实现.assets/image-20240412172526104.png)
+
+
+
+
+
+
+
+![image-20240412172724958](3-nginx的压缩和https加密实现.assets/image-20240412172724958.png)
+
+
+
+
+
+
+
+无痕测试
+
+1、输入sw     按ctrl enter，也就是访问https://www.sw.com
+
+2、但是server那边不管是accesslog和errorlog都没有看到443的访问，也正常，因为443的流量就进不来，没监听啊
+
+3、所以这个是浏览器自身的行为，一定是，瞬间就调到80了👇 
+
+![image-20240412173111004](3-nginx的压缩和https加密实现.assets/image-20240412173111004.png)
+
+
+
+有可能就是它的回退既然要到处https，万一不行，总要回退吧，我认为就是这样的。
+
+![image-20240412173500428](3-nginx的压缩和https加密实现.assets/image-20240412173500428.png)
+
+
+
+
+
+就是浏览的自身行为👇
+
+![image-20240412174444478](3-nginx的压缩和https加密实现.assets/image-20240412174444478.png)
+
+10.9压根没有HTTP的报文回过去，在80 connect 联通之前。所以"307 Temporary Redirect" 我判断是浏览器的自身行为---当
+
+①你输入的是www.sw.com的时候由于未指定http还是https，所以它(可能就是https everywhere) 优先让你用https，
+
+②但是多次被拒绝后，回退到http了；
+
+③如果你直接输入https://www.sw.com，由于明确制定了，所以就打不开啦；
+
+④如果你直接输入http://www.sw.com，由于明确指定了http，所以就没有类似https everywhere的事啦就不会有**"307 Temporary Redirect"**啦，直接就打开啦。
+
+
+
+
+
+### 另外，无痕 里 两种 输入方式，普通模式里一样
+
+1、www.sw.com   不是每次都能看到优先https，很多时候是没有说给你先https去443连接的，就直接http了。            # 这是因为这种行为，浏览器会参考历史数据的，删掉涉及sw的历史记录，www.sw.com 就会和 👇下面的方式一样了，也能看到优先HTTPS了就。
+
+2、输入sw，然后ctrl + enter，每次都是优先https    #  这种行为不会，就直接补上HTTPS了优先了。
+
+
+
+
+
+<img src="3-nginx的压缩和https加密实现.assets/image-20240412181535173.png" alt="image-20240412181535173" style="zoom:50%;" />
+
+**历史记录 不等于 缓存 ！**
+
+
+
+![image-20240412180429765](3-nginx的压缩和https加密实现.assets/image-20240412180429765.png)
+
+
+
+
+
+### 无痕有历史url的证据👇
+
+![image-20240412180653541](3-nginx的压缩和https加密实现.assets/image-20240412180653541.png)
+
+一旦这些历史url在，也是www.sw.com能够自动补出来，www.sw.com就会直接使用http://www.sw.com去访问，因为历史数据里成功的就是http吗。而输入 sw 再ctrl + enter 就是快速提交内容，而且通过测试多次测试多次频繁测试可以说这种就是不会被历史数据影响的手段。就好像ctrl+r 一样是不用缓存刷新一样。
+
+
+
+
+
+### 无痕开两个，第二个无痕访问第一个无痕的url没有意义了就，等于不是无痕了，所以无痕测试的时候要关闭所有浏览器窗口包括无痕
+
+这里不演示了就，多次体验过了已经。
+
+
+
+
+
+# 最后总结
+
+307 Temprorary Redirect
+307 Internal Redirect
+
+浏览器的输入手法
+
+无痕测试注意
+
+
+
+最终都是浏览器内部的行为，但Internal才是和server交互出来的内部配置，而Temprorary才是真正内部就有的只需要server拒绝浏览器多次请求就行，是一种回退类似。
+
+
+
+307 Internal Redirect，是网站server回应里的Strict-Transport-Security键值将浏览器的HSTS列表里[chrome://net-internals/#hsts]加上了，所以你怎么输入都会让你直接走HTTPS
+
+
+
+307 Temprorary Redirect，是浏览器自身行为，是一种回退行为，特别是443被拒后的80回退
+
+
+
+浏览器由于内置机制，当你输入www.sw.com，未指定http还是https的时候，会优先https的，但是也要和输入手法结合在一起的👇
+
+​		浏览器里的历史记录会影响url输入的行为，比如有www.sw.com的记录，是http://www.sw.com,那么你输入www.sw.com就会走http:了
+
+​		但是地址栏里输入sw，后ctrl + enter就不会 被历史记录的影响。此时就会优先Https，然后多次被拒后才会307 Temprorary Redirect回退到http
+
+
+
+无痕测试只能一个无痕窗口，否则还是会利用其他无痕里的缓存。
