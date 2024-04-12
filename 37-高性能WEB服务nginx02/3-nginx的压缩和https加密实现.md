@@ -519,3 +519,113 @@ HSTS是
 
 
 
+
+
+# 307，导致的内部网站打不开
+
+
+
+## 1、背景
+
+www.sw.com 和 sw.com是我每部用的一个域名 都解析到了192.168.0.9，是内部的soft站点，套了nginx，只监听了80
+
+
+
+但是有一天突然 我的笔记本 访问www.sw.com或sw.com的时候打不开，**无痕可以👇**，无痕不用本地的HSTS列表所以可以。
+
+![image-20240412164334777](3-nginx的压缩和https加密实现.assets/image-20240412164334777.png)
+
+题外话：就是这里有一个307 把444重定向为80的动作，和本段研究内容无关。
+
+
+
+进一步发现：即使手动输入http://www.sw.com也会307到https://www.sw.com，**页面直接打不开👇**，是一个报错页面
+
+![image-20240412162514278](3-nginx的压缩和https加密实现.assets/image-20240412162514278.png)
+
+红色的www.sw.com其实就是被307到了https://www.sw.om也就是 浏览器地址栏 里的 https👆
+
+
+
+然后手动输入http://sw.com，**网页打开不全👇**，原因就是http://sw.com里的部分图片，框架，走的还是http://www.sw.com；而http://www.sw.com就会被307到https://www.sw.com，多了个s。
+
+![image-20240412164147207](3-nginx的压缩和https加密实现.assets/image-20240412164147207.png)
+
+![image-20240412164155547](3-nginx的压缩和https加密实现.assets/image-20240412164155547.png)
+
+
+
+
+
+
+
+
+
+## 2、原因
+
+就是HSTS导致的
+
+1、浏览器里的
+
+chrome://net-internals/#hsts
+
+可以查到www.sw.com存在的，于是就是会被浏览器直接给你在浏览器内部做了307了，很骚啊
+
+
+
+删掉就可以了
+
+
+
+2、为什么其他电脑的
+
+chrome://net-internals/#hsts
+
+里没有www.sw.com
+
+
+
+分析：可能是www.sw.com这个，不是分析了，我实测了一下，就是你用代理访问了www.sw.com就会在
+
+chrome://net-internals/#hsts这个里面生成www.sw.com的HSTS
+
+![image-20240412163019479](3-nginx的压缩和https加密实现.assets/image-20240412163019479.png)
+
+![image-20240412163037576](3-nginx的压缩和https加密实现.assets/image-20240412163037576.png)
+
+找到原因了，并且是可以复现的故障现象，very nice
+
+
+
+**进一步分析**，就是Strict-Transport-Security，就是这个互联网的www.sw.com的服务器端给了这个回应选项导致的。
+
+![image-20240412163232057](3-nginx的压缩和https加密实现.assets/image-20240412163232057.png)
+
+
+
+这一点前面的章节里也有提到，不过没有这次故障处理后得到的逻辑清晰
+
+![image-20240412163453541](3-nginx的压缩和https加密实现.assets/image-20240412163453541.png)
+
+
+
+
+
+
+
+所以要复现故障
+
+1、打开代理
+
+2、访问www.sw.com    # 拿到HSTS
+
+3、关闭代理
+
+4、访问www.sw.com		# 得到网页直接打不开的 故障现象1
+
+5、访问http://sw.com    	# 得到网页打不开不全的 故障现象2
+
+
+
+
+
