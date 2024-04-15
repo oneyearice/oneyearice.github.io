@@ -777,6 +777,8 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 # 最后总结
 
+
+
 **307 Temprorary Redirect**
 
 **307 Internal Redirect**
