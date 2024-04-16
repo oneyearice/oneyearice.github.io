@@ -310,6 +310,79 @@ docker run alpine:3.19.1 tail -f /dev/null
 
 
 
+### docker run -d nginx   -d的后台和nginx的前台
+
+1、-d的后台是docker run 这个命令后台执行
+
+2、nginx容器前台执行，是nginx容器的COMMAND是容器里的cli是在容器里前台
+
+所以要区分开来
+
+一般都是-d 在后台run，服务类的容器肯定要容器里的cmd是前天的。
+
+
+
+
+
+nginx为例，容器里的cmd是前台执行的，日志(比如访问日志)就是屏幕STDOUT的，docker run -d run在后太后，日志就用cli去看
+
+![image-20240416111024282](1-Docker运行容器的常见用法.assets/image-20240416111024282.png)
+
+后台运行-d 的容器log查看也简单docker logs idxxx就行👇
+
+![image-20240416111411691](1-Docker运行容器的常见用法.assets/image-20240416111411691.png)
+
+**docker logs -f xxx  就很nice**
+
+![image-20240416112145563](1-Docker运行容器的常见用法.assets/image-20240416112145563.png)
+
+
+
+还有传统艺能watch -n xxx
+
+![image-20240416112505684](1-Docker运行容器的常见用法.assets/image-20240416112505684.png)
+
+下图是wathc -n 5 docker logs nginx001的效果👇，就是-n 5秒刷一次，也是实时的。
+
+![image-20240416112520742](1-Docker运行容器的常见用法.assets/image-20240416112520742.png)
+
+
+
+
+
+### 容器的自启动，不是说原来exited，变成了up，而是说up还是up
+
+1、之前学过一个，这是docker 服务重启，容器原本UP的还是UP。
+
+![image-20240416113106028](1-Docker运行容器的常见用法.assets/image-20240416113106028.png)
+
+stop 过30s start 都是ok的，就是说容器随docker服务，原来启动的，还是启动的
+
+![image-20240416113451378](1-Docker运行容器的常见用法.assets/image-20240416113451378.png)
+
+当然原来是停止的，就不会自启动了。
+
+
+
+
+
+2、容器服务重启的时候，重启的时候容器的状态是什么 + policy 是什么 ==> 重启引擎后 容器的状态会是什么
+
+![image-20240416113650207](1-Docker运行容器的常见用法.assets/image-20240416113650207.png)
+
+no	：  退出了不重新UP，	这是默认值，# 重启的时候容器是退出的（不管是异常还是正常），那么重启服务后，容器还是退出，这就是no。
+
+
+
+on-failure[:max-retries]	 :   异常退出就重新UP，尝试N次。   non-zero exit status，这是$? ≠0 的意思，就是异常退出，状态码不等于0。  # 重启前容器是异常退出的，重启服务后，容器就会尝试起来。
+
+
+
+always    ：  无论退出码是什么--也就是不管是正常退出还是异常退出--也就是不管认为退出($?=0)还是异常退出($?≠0)都随宿主机器起来而起来；  #   重启服务(啥重启机器，重启机器也是对应到重启docker 引擎，搞搞清楚，讲的什么东西，当然整体还是不错，这里讲的很，不好说什么了)的时候容器不管是怎么退出的，是你重启导致退出还是本来就是认为退出的，重启后都给你起来。 与no相对。
+
+
+
+unless-stopped	：  重启机器(服务)的时候容器如果是人为退出的，那么启动了就不会给你UP容器，如果容器是异常退出的，比如重启的时候容器还是UP( 那么重启的时候容器就会是异常退出 )，重启后容器就给你UP起来
 
 
 
@@ -317,8 +390,37 @@ docker run alpine:3.19.1 tail -f /dev/null
 
 
 
+![image-20240416142113963](1-Docker运行容器的常见用法.assets/image-20240416142113963.png)
 
-# 镜像的制作
+
+
+
+
+![image-20240416142548690](1-Docker运行容器的常见用法.assets/image-20240416142548690.png)
+
+
+
+![image-20240416142725440](1-Docker运行容器的常见用法.assets/image-20240416142725440.png)
+
+然后重启机器，此时web003就不会起来了，因为docker run 的是后默认是---restart no的，就是说重启等动作反正导致你退出的，docker引擎起来你容器也不会up的。
+
+
+
+通过上面的截图可知web01是--restart always 方式启动的容器
+
+![image-20240416143008774](1-Docker运行容器的常见用法.assets/image-20240416143008774.png)
+
+启动后就是👇
+
+![image-20240416143124882](1-Docker运行容器的常见用法.assets/image-20240416143124882.png)
+
+
+
+所以重启宿主要用--restart always 这种或者至少--restart unless-stoped，而重启docker 服务，原来是up的希望它继续在重启服务后继续up就可以用live-restore配置选项，但该选项也做不到原来退出重启服务后给你起来的，而--restart always就可以👇
+
+![image-20240416143448657](1-Docker运行容器的常见用法.assets/image-20240416143448657.png)
+
+
 
 
 
