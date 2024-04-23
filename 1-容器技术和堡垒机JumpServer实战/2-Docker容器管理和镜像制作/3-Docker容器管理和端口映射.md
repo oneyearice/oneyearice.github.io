@@ -414,6 +414,16 @@ restart -s 1也不行
 
 
 
+尝试上图操作先停止docker，发现配置文件可以改过来了，但是由于容器时restart always了，还是不行，需要重启容器，下面cli可以实现不删除容器，修改暴露端口的需求
+
+```shell
+systemctl stop docker
+systemctl stop docker.socket
+vim xxxx
+systemctl start docker
+docker restart 9472a68122b9	
+```
+
 
 
 
