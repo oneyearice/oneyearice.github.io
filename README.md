@@ -71,6 +71,5 @@ git clone https://github.com/oneyearice/oneyearice.github.io.git
 后面再看吧，是否可以进一步弄成两个脚本，pull和push，pull就上面的1 2 3，push就是4
 ```
 
+求打赏
 
-
-云服推荐：原生、靠谱干净的IP👉https://www.dmit.io/aff.php?aff=5321
