@@ -70,9 +70,9 @@
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     },
     "donate": {
-      "wechat": "wx.png",
+      "wechat": "/wx.png",
       "button": "打赏",
-      "wechatText": "微信扫描"
+      "wechatText": "微信扫码"
     },
     "ad": {
       "contentTop": "<div>Ads at the top of the page</div>",
