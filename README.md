@@ -1,51 +1,61 @@
 # Introduction
 
-* [课程介绍和<font color=red>·</font><font color=green>小</font><font color=red>·</font>目标](./introduction/课程介绍和小目标.md)
-
- 		linxu~PY，-go~>
 
 
-
-* 目录生成的方法：
-  * 打开pycharm里的windows/summary/list/directory_generate.py，运行
-  * 将运行结果去头掐尾后，复制到nodepad过滤一遍格式，然后再复制到SUMMARY.md中即可。
-  * 然后再gitbook init初始化目录结构。
+## 概述
 
 
 
+**本文编写宗旨**：大量举例截图和详尽的过程演示；
+
+**这样做的目的**：因为有大量过程截图案例，所以复习起来效果会更好。
+
+**文章涉及内容**：从linux基础应用到架构全面覆盖
 
 
-* github 创建项目的提示备忘：
 
-  ### …or create a new repository on the command line
 
-  
 
-  ```
-  echo "# oneyearice.github.io" >> README.md
-  git init
-  git add README.md
-  git commit -m "first commit"
-  git branch -M main
-  git remote add origin https://github.com/oneyearice/oneyearice.github.io.git
-  git push -u origin main
-  ```
+## 项目维护备忘
 
-  ### …or push an existing repository from the command line
 
-  
 
-  ```
-  git remote add origin https://github.com/oneyearice/oneyearice.github.io.git
-  git branch -M main
-  git push -u origin main
-  ```
+### 目录生成的方法：
 
-  ### …or import code from another repository
+* 打开pycharm里的windows/summary/list/directory_generate.py，运行
+* 将运行结果去头掐尾后，复制到nodepad过滤一遍格式，然后再复制到SUMMARY.md中即可。
+* 然后再gitbook init初始化目录结构。
 
-  You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
 
-## 多终端pull和push注意点：
+
+### github 创建项目：
+
+**…or create a new repository on the command line**
+
+```
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/oneyearice/oneyearice.github.io.git
+git push -u origin main
+```
+
+**…or push an existing repository from the command line**
+
+```
+git remote add origin https://github.com/oneyearice/oneyearice.github.io.git
+git branch -M main
+git push -u origin main
+```
+
+**…or import code from another repository**
+
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
+
+### 多终端pull和push注意点：
 
 ```
 1、首先pull下来，得到最新的版本，如果是第一次git clone即可
@@ -70,6 +80,4 @@ git clone https://github.com/oneyearice/oneyearice.github.io.git
 ```
 后面再看吧，是否可以进一步弄成两个脚本，pull和push，pull就上面的1 2 3，push就是4
 ```
-
-求打赏
 
