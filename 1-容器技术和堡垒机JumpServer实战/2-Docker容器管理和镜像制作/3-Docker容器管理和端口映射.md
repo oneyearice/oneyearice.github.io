@@ -418,15 +418,12 @@ restart -s 1也不行
 
 ```shell
 systemctl stop docker
-systemctl stop docker.socket
-vim xxxx
-systemctl start docker
-docker restart 9472a68122b9	
+systemctl stop docker.socket  # 这个不需要
+docker stop xxx  # 这个不配：后面需要重启容器：配置的话：后面需要启动容器，哈哈哈~
+vim /var/lib/docker/containers/xxx..xxxaad092/hostconfig.json  # 修改暴露端口
+systemctl start docker  # 启动服务后，还得手动重启容器，否则容器之前没有停可能就保持了之前的状态信息然后
+docker restart 9472a68122b9	  # 发现必须restart，容器跟随docker服务起来好像不行有点奇怪。不奇怪，因为之前没有停，直接被服务重启了
 ```
-
-
-
-
 
 
 
