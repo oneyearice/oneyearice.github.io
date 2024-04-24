@@ -71,11 +71,8 @@
     },
     "donate": {
       "wechat": "wx.png",
-      "alipay": "例：/images/qr.png",
-      "title": "默认空",
-      "button": "默认值：Donate",
-      "alipayText": "默认值：支付宝捐赠",
-      "wechatText": "默认值：微信捐赠"
+      "button": "打赏",
+      "wechatText": "微信扫描"
     },
     "ad": {
       "contentTop": "<div>Ads at the top of the page</div>",
