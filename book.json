@@ -70,7 +70,7 @@
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     },
     "donate": {
-      "wechat": "例：/images/qr.png",
+      "wechat": "wx.png",
       "alipay": "例：/images/qr.png",
       "title": "默认空",
       "button": "默认值：Donate",
