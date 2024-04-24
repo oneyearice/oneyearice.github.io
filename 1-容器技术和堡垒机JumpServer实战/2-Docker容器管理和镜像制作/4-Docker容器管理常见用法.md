@@ -6,7 +6,7 @@
 
 
 
-**概述**
+## **概述**
 
 docker logs 本质是查看容器在终端打印出来的信息，只要你的容器有STDOUT就会被docker logs在外面抓到，不过一般来讲都是容器里的日志才会在屏幕打印，所以docker logs也就起了个名字叫logs否则正宗点应该叫docker stdout，哈哈。
 
@@ -32,7 +32,9 @@ run一个nginx看看上面说的，通过docker top 可见nginx是daemon off也�
 
 
 
-**测试:docker logs其实是看的容器里的屏幕打印(stdout和stderr)**
+## **docker logs其实是看的容器里的屏幕打印(stdout和stderr)**
+
+测试如下👇
 
 此时就可以通过docker logs看到容器里的STDOUT
 
@@ -114,9 +116,69 @@ logs一样可见，
 
 
 
+**docker ps docker看到的容器的日志，在宿主机上也有文件落地的**
+
+查看容器日志落在宿主上的文件位置：
+
+```
+/var/lib/docker/containers/0axxxx...xxxb471ca/0axxx...xxx471ca-json.log
+```
+
+![image-20240424164325068](4-Docker容器管理常见用法.assets/image-20240424164325068.png)
+
+然后logs越来越多，会导致磁盘空间占用越来越多，常用方法
+
+![image-20240424165444650](4-Docker容器管理常见用法.assets/image-20240424165444650.png)
 
 
 
+
+
+# **关于替换掉容器里的原本cli**
+
+​		比如原来容器的cli是一个脚本来启动容器的，现在该脚本被你替换为tail -f xxx了，自然也就不会启动nginx服务了，所以这种情况就要小心了。
+
+![image-20240424170721370](4-Docker容器管理常见用法.assets/image-20240424170721370.png)
+
+
+
+![image-20240424171550061](4-Docker容器管理常见用法.assets/image-20240424171550061.png)
+
+虽然外面看
+
+![image-20240424171813170](4-Docker容器管理常见用法.assets/image-20240424171813170.png)
+
+但是里面你把脚本替了，里面端口都没开👇
+
+![image-20240424180541705](4-Docker容器管理常见用法.assets/image-20240424180541705.png)
+
+
+
+替代cli的使用场景，一般是用来测试查看的。
+
+
+
+
+
+# 容器里的hosts文件
+
+
+
+类比宿主的hosts本地解析情况
+
+![image-20240424181546719](4-Docker容器管理常见用法.assets/image-20240424181546719.png)
+
+容器里多了一个容器IP，且解析到容器ID。当然127.0.0.1还是老样子
+
+![image-20240424181529142](4-Docker容器管理常见用法.assets/image-20240424181529142.png)
+
+还有个仅仅是验证hosts文件，可以docker run --rm 来做，演示完退出容器后直接删除容器
+
+![image-20240424182341015](4-Docker容器管理常见用法.assets/image-20240424182341015.png)
+
+
+
+![image-20240424182420774](4-Docker容器管理常见用法.assets/image-20240424182420774.png)
 
 
 
