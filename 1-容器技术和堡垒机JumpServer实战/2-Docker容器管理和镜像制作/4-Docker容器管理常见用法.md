@@ -534,7 +534,28 @@ https://github.com/openspug/spug
 
 https://www.spug.cc/
 
+```shell
+docker run -d --restart=always --name=spug -p 80:80 registry.aliyuncs.com/openspug/spug
+# 通过镜像名指定的从阿里云下载，走的是https默认。
+```
+
+![image-20240426111117446](4-Docker容器管理常见用法.assets/image-20240426111117446.png)
 
 
 
+此时页面可以打开了
+
+![image-20240426114447620](4-Docker容器管理常见用法.assets/image-20240426114447620.png)
+
+
+
+还需要初始化一个登入密码
+
+```shell
+docker exec spug init_spug admin 123456
+```
+
+init_spug是人家容器里自带的脚本，这里也就是当作cli还执行的
+
+![image-20240426114733073](4-Docker容器管理常见用法.assets/image-20240426114733073.png)
 
