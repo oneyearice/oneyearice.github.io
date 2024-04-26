@@ -552,10 +552,12 @@ docker run -d --restart=always --name=spug -p 80:80 registry.aliyuncs.com/opensp
 还需要初始化一个登入密码
 
 ```shell
-docker exec spug init_spug admin 123456
+docker exec spug init_spug admin 123456  # 初始化并创建登入账号密码
 ```
 
 init_spug是人家容器里自带的脚本，这里也就是当作cli还执行的
 
 ![image-20240426114733073](4-Docker容器管理常见用法.assets/image-20240426114733073.png)
+
+![image-20240426115738819](4-Docker容器管理常见用法.assets/image-20240426115738819.png)
 
