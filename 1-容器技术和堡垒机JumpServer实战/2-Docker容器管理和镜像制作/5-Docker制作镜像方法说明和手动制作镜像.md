@@ -116,7 +116,7 @@ apt -y install wget curl net-tools procps psmisc iputils-ping iproute2 vim tzdat
 
 我让GPT分析了原因，
 
-<img src="5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428140041462.png" alt="image-20240428140041462" style="zoom:33%;" />
+<img src="5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428140041462.png" alt="image-20240428140041462" style="zoom:47%;" />
 
 
 
@@ -147,7 +147,7 @@ apt -y install wget curl net-tools procps psmisc iputils-ping iproute2 **vim tzd
 
 
 
-以上粗体的软件，安装都依赖tzdate，所以都会涉及localtime文件的覆盖，而localtime当初创建容器的时候就是被宿主机给占用了的，即使没有ro的方式也是被占用的，也无法被覆盖。
+以上粗体的软件，安装都依赖tzdata，所以都会涉及localtime文件的覆盖，而localtime当初创建容器的时候就是被宿主机给占用了的，即使没有ro的方式也是被占用的，也无法被覆盖。
 
 ![image-20240428144856303](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428144856303.png)
 
@@ -156,11 +156,11 @@ apt -y install wget curl net-tools procps psmisc iputils-ping iproute2 **vim tzd
 **2、应对措施**
 1、时间不对可能导致apt update出错；但没必要修改时区。
 
-2、如果进一步修改时区，就可能导致apt install 的包依赖到tzdate就无法mv覆盖
+2、如果进一步修改时区，就可能导致apt install 的包依赖到tzdata就无法mv覆盖
 
 这真是个大聪明的机制。
 
-3.1、解决方法也有：使用docker cp 将时区文件复制进去，而不是-v挂载进去，这样tzdate安装的时候就可以mv 覆盖这个时区文件了。
+3.1、解决方法也有：使用docker cp 将时区文件复制进去，而不是-v挂载进去，这样tzdata安装的时候就可以mv 覆盖这个时区文件了。
 
 3.2 、其实解决方法也可以：不要修改时区，UTC也好GMT也罢，都是准确的时间，无非是可读性不好吧。
 
@@ -216,17 +216,17 @@ chronyc makestep   # 手动同步网络时间校准下
 
 
 
-### 2、挂载时区文件导致依赖tzdate包无法安装及解决
+### 2、挂载时区文件导致依赖tzdata包无法安装及解决
 
 首先不挂在时区文件，就不会存在这个问题👇
 
-**不映射时区文件tzdate安装ok👇**
+**不映射时区文件tzdata安装ok👇**
 
 ![image-20240428164252215](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428164252215.png)
 
 
 
-**映射时区文件，导致安装tzdate依赖包出错**
+**映射时区文件，导致安装tzdata依赖包出错**
 
 ![image-20240428164537948](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428164537948.png)
 
@@ -234,7 +234,7 @@ chronyc makestep   # 手动同步网络时间校准下
 
 **处理方法**
 
-使用docker cp 将时区文件复制进去，而不是-v挂载进去，这样tzdate安装的时候就可以mv 覆盖这个时区文件了。
+使用docker cp 将时区文件复制进去，而不是-v挂载进去，这样tzdata安装的时候就可以mv 覆盖这个时区文件了。
 
 👇下图是cp -L将软连接的源文件内容复制进去了，仅cp -a这种是没用的，因为软连接进不去，因为容器里没有软连接指向的源文件。
 
@@ -252,11 +252,11 @@ chronyc makestep   # 手动同步网络时间校准下
 apt -y install wget curl net-tools procps psmisc iputils-ping iproute2 vim tzdata tcpdump telnet traceroute tree iotop unzip zip nfs-common lrzsz && apt clean
 ```
 
-就很丝滑~也会涉及tzdate的安装，它会修改一些东西，比如
+就很丝滑~也会涉及tzdata的安装，它会修改一些东西，比如
 
 ![image-20240428181539057](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240428181539057.png)
 
-这些都是tzdate设置的，也不知道他基于什么给我设置成上海时区，也许是从宿主拿的，测试一下
+这些都是tzdata设置的，也不知道他基于什么给我设置成上海时区，也许是从宿主拿的，测试一下
 
 并不是人家tzdata默认时区就是上海，哈哈
 
@@ -276,31 +276,121 @@ apt -y install wget curl net-tools procps psmisc iputils-ping iproute2 vim tzdat
 
 
 
+**容器里一般是没有selinux，防火墙也是关闭的**
+
+![image-20240429095020812](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429095020812.png)
+
+因为容器里没有getenforce、sestatus这两个确认selinux没开的命令
+
+![image-20240429095424739](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429095424739.png)
+
+所以就用文件ls -Z 的方式来看，即使已经关闭了selinux，但是这个文件当初是受到selinux关照的，也会有selinux的信息的👇，同时前面就会有一个点 .
+
+![image-20240429095507931](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429095507931.png)
+
+而容器里是没有的
+
+![image-20240429095721545](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429095721545.png)
+
+
+
+### 然后将定制好的ubuntu制作成镜像
+
+![image-20240429100240258](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429100240258.png)
+
+通过docker commit将容器生成镜像，不要和docker save搞混了，docker save是image的导出以及docker load对镜像的导入。而docker commit是容器生成镜像。
+
+![image-20240429100934983](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429100934983.png)
+
+这样镜像就从容器制作出来了👆。
+
+
+
+**然后就可以基于自己制作的镜像来创建容器了**
+
+![image-20240429114040194](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429114040194.png)
+
+
+
+一般镜像制作
+
+<img src="5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429114928596.png" alt="image-20240429114928596" style="zoom:50%;" />
+
+
+
+![image-20240429115240794](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429115240794.png)
+
+按图的思路进行打各种服务的镜像，以后的应用都不是应用了，全是镜像了。而app镜像全是基于系统环境镜像的，也就是比如APP2镜像之前还得有Tomcat8镜像和JDK8u镜像和系统基础镜像以及原始镜像。
+
+所以镜像自然就会非常多了，
+
+
+
+由于都是基于一个base镜像打出来的，所以底层环境，工具、账号开局的都是一样的，账号ID也是一样的，这就解决了NFS如果ID不一致的问题(回头补一个NFS的章节梳理下这个问题)
+
+
+
+如果非要按下图👇红色箭头来一步到位的方式来打镜像
+
+![image-20240429120112641](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429120112641.png)
+
+也不是不行，只是APP2和APP3都是直接从原始镜像制作出来的，这样环境可能是不统一的，就算一个人做出来的，环境也是基本不一致的，维护不好。
+
+
+
+镜像制作出来，不要本地存放，要上传到仓库服务器harbor统一安置，其他机器都从harbor拉去。
+
+
+
+用commit这种方式制作出来的镜像，也就是从容器进去手动安装配置的结果，这种方式过几个月你都压根记不起来当初你在容器里做了哪些配置，然后commit出来的镜像里带了哪些功能，维护很不方便。这种方式也无法自动化，因为没有一个文档性的东西把历史操作存起来，都是临时性的操作，不好规范化，脚本化，不好运维。
+
+
+
+好处就是commit命令会了，基本就会制作镜像了，哈哈。
+
+
+
+生产是不用这种方式制作镜像的。
 
 
 
 
 
+**自动(批量执行)制作镜像**
+
+需要一个脚本文件( 好比ansible剧本 )，里面定义了如何来创建定制镜像的详细过程。
+
+该文件自然有自己的格式，语法。也就是dockerfile里的常用10来个cli的学习。以及docker build命令依据dockerfile文件来创建镜像。
+
+```shell
+docker build -t xxx:v1.0 .    # -t 后面跟的是镜像名词和版本tag，  .就是相对路径，默认就找Dockerfile这个文件。
+
+docker build -t xxx:v1.0 -f /xx/xx/xx/file001   # -f 手动指定文件，就不使用默认的Dockerfile文件了。
+```
+
+而这个默认dockerfile其实是有固定大小写名称的👇**Dockeffile**
+
+![image-20240429140918671](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429140918671.png)
 
 
 
+所以每个镜像都用docker build + Dockerfile来创建的，
 
+![image-20240429141826508](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429141826508.png)
 
+这么多镜像，是不是都叫Dockerfile不就冲突了嘛，所以需要用文件夹区分开来。
 
+关于Dockerfile们的存放路径，可以按上图，跟着镜像存放，也可以单独放到独立的文件夹下分门别类
 
+```shell
+mkdir -p /data/dockerfile/{base/{ubuntu,centos,alpine,busybox},web/{jdk,nginx,tomcat}}
+```
 
+![image-20240429142250546](5-Docker制作镜像方法说明和手动制作镜像.assets/image-20240429142250546.png)
 
+将来这些分类下面就都会有一个Dockerfile
 
-
-
-
-
-
-**自动制作镜像**
-
-​		
-
-
+比如你要做nginx镜像，就得先去alpine或者centos制作操作系统镜像。
 
 
 
