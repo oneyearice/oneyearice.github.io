@@ -167,9 +167,65 @@ build一下
 
 <img src="1-Dockerfile常见指令用法.assets/image-20240508142427718.png" alt="image-20240508142427718" style="zoom:50%;" /> 
 
-哎，不对，html页面内容不对，里面有两个网站的，一个是nginx.conf主配文件里的，一个是conf.d下的子配置文件，明显这个helo helo ----xxx被nginx.conf给截胡了。
+哎，不对，html页面内容不对，里面有两个网站的，一个是nginx.conf主配文件里的，一个是conf.d下的子配置文件，明显这个helo helo ----xxx被nginx.conf里的location配置给截胡了。
 
 ![image-20240508142914011](1-Dockerfile常见指令用法.assets/image-20240508142914011.png)
+
+上图主配置文件的server块里的root再location /下，然后使用的是相对路径，这个相对路径就是当初编译的时候的路径，怎么查看呢👇
+
+![image-20240508143923683](1-Dockerfile常见指令用法.assets/image-20240508143923683.png)
+
+所以root html就是在/apps/niginx/html下的index.html文件了
+
+汇总一下
+
+![image-20240508144150845](1-Dockerfile常见指令用法.assets/image-20240508144150845.png)
+
+所以被截胡了
+
+所以换个curl方式就可以优先应用子配置文件了👇
+
+![image-20240508152013795](1-Dockerfile常见指令用法.assets/image-20240508152013795.png)
+
+
+
+然后进一步把IP地址的curl也让子配置文件优先👇
+
+![image-20240508153225891](1-Dockerfile常见指令用法.assets/image-20240508153225891.png)
+
+
+
+## nginx的转发优先级
+
+基本实验需求已实现，但是关于nginx的server块优先级，涉及子配置文件，主配文件，location，还有server块里的ip+port > servername ,servername里的又细化为
+
+<img src="1-Dockerfile常见指令用法.assets/image-20240508160833051.png" alt="image-20240508160833051" style="zoom:50%;" />
+
+**以上是模糊的梳理，还需进一步明确优先级。**
+
+1、include写在主配置文件的server前面，基本上就是include那里的子配置文件优先看了
+
+​			\#  然后因为80是默认的，写不写都是，所以基本上轮不到主配置文件的server块了
+
+​			\#  然后多个include还是看谁在前
+
+2、然后include所指的子配置文件夹里(一般就是conf.d)就看多个文件之间，以及单个文件内的server块之间的优先了
+
+​		2.1    按字母顺序查找
+
+<img src="1-Dockerfile常见指令用法.assets/image-20240508180310422.png" alt="image-20240508180310422" style="zoom:30%;" />
+
+​		2.2    单个文件里就按
+
+​						①ip+port 最优
+
+​						②才是这张图👇
+
+<img src="1-Dockerfile常见指令用法.assets/image-20240508160833051.png" alt="image-20240508160833051" style="zoom:30%;" />
+
+3、然后再实现一个curl ip 走一个，curl 域名走一个需求，方法①代理②配置文件里写map？
+
+
 
 
 
