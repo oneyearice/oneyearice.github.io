@@ -75,7 +75,5 @@ git clone https://github.com/oneyearice/oneyearice.github.io.git
 4、我的笔记本电脑需要注释掉book.json里的"-anchor-navigation-ex"👈这样注释，运行脚本自动push--如果push失败，看报错，一般就是需要先git pull一下然后再运行脚本，因为可能最近的一次push是别的终端push的。这是合理的机制。
 ```
 
-```
-后面再看吧，是否可以进一步弄成两个脚本，pull和push，pull就上面的1 2 3，push就是4
-```
+若优化，pull就上面的1 2 3，push就是4
 
