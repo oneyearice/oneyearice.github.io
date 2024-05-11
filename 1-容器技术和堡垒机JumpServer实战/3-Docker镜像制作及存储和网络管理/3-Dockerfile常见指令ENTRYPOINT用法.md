@@ -200,5 +200,53 @@ CMD推荐使用CMD ["","",""]的方式👇这样追加到ENTRYPOINT就不会有�
 
 
 
+以下梳理以下：------------------
+
+1、exec bash 改成exec sleep或者其他的试试，应该不一定要exec bash才能继承环境
+
+
+
+2、看看nginx容器官方的dockerfile的脚本里是否有有exec
+
+![image-20240511182532008](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240511182532008.png)
+
+CMD的列表形式，里的所有参数变成了ENTYRPOINT命令的所有参数，又变成了exec "$@"的所有参数
+
+
+
+
+
+3、ENTRYPOINT和CMD是docker run的时候生效的，所以-e是可以往里面传参的。
+
+
+
+4、然后把下图理解一下
+
+![image-20240511180950454](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240511180950454.png)
+
+👆关键是：CMD和ENTYRPOINT以及-e之间的组合
+
+ENTRYPOINT是docker run的时候执行，然后ENTRYPOINT的脚本内容是：
+
+1、生成nginx的配置文件。
+
+2、结尾exec "$@"，这个$@就是脚本entrypoint.sh "usr/sbin/nginx -g daemon off "  这些所有位置参数了。
+
+3、所以就是1、2合起来就是生成配置文件，并且运行nginx
+
+4、再结合docker run -e的传参，就实现了动态的设定配置文件里的server_name和listen以及root的功能
+
+5、确实比我上面的要高端一点，更加然别人肃然起敬，哈哈哈，至少我被这种用法唬住了~
+
+好，后面讲上述重新整理成实现截图。
+
+-----------------
+
+
+
+
+
+
+
 
 
