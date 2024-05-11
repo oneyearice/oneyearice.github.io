@@ -505,7 +505,7 @@ if __name__ == '__main__':
 - ip:          '2.0.1.2'
   device_type: 'juniper'
   username:    'xxxx'
-  password:    'xxxx.1234'
+  password:    'xxxx'
   secret:      ''
   community:   ''
   location:    '-1F机房'
