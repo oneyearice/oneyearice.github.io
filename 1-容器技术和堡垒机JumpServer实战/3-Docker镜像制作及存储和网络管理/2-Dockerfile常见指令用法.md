@@ -176,7 +176,7 @@ ok，nginx的端口和HOST自定义就搞定了👆。
 web前端的细节本文不涉及，我也不太会，请别人写的，这里说明下具体注意点
 1、页面长这样
 
-<img src="E:/整理/Captura/udemy/3/IT001.assets/image-20240511102124988.png" alt="image-20240511102124988" style="zoom:40%;" />
+<img src="2-Dockerfile常见指令用法.assets/image-20240511155959498.png" alt="image-20240511155959498" style="zoom:40%;" />
 
 
 
@@ -184,7 +184,7 @@ web前端的细节本文不涉及，我也不太会，请别人写的，这里�
 
 首先当用户填写姓名和座位号的时候，就会在服务器那头收集三个信息分别是：姓名、座位号、IP地址这三个，并入库**infocollection**
 
-<img src="E:/整理/Captura/udemy/3/IT001.assets/image-20240511103102616.png" alt="image-20240511103102616" style="zoom:43%;" />
+<img src="2-Dockerfile常见指令用法.assets/image-20240511155943742.png" alt="image-20240511155943742" style="zoom:50%;" />
 
 限制如下：
 
@@ -640,7 +640,7 @@ if __name__ == '__main__':
 
 输入的样子如下👇
 
-![image-20240511111203712](E:/整理/Captura/udemy/3/IT001.assets/image-20240511111203712.png)
+<img src="2-Dockerfile常见指令用法.assets/image-20240511160020904.png" alt="image-20240511160020904" style="zoom:42%;" />
 
 
 
@@ -848,7 +848,7 @@ python3 /pycharm_project_418/switch/pickInfo/ipMacPort/client_ip_cam.py
 
 如下图👇
 
-![image-20240511115552562](E:/整理/Captura/udemy/3/IT001.assets/image-20240511115552562.png)
+![image-20240511160051667](2-Dockerfile常见指令用法.assets/image-20240511160051667.png)
 
 此时就有了   上文开头处提到的  "  **\>>** 此时就需要写一个脚本来实现基于mac、ip、交换机的端口的信息查询。"   这么一个脚本
 
@@ -858,7 +858,7 @@ python3 /pycharm_project_418/switch/pickInfo/ipMacPort/client_ip_cam.py
 
 当前材料：infocollection表有了、查询ip mac 端口信息的json文件也有了。
 
-<img src="E:/整理/Captura/udemy/3/IT001.assets/image-20240511103102616.png" alt="image-20240511103102616" style="zoom:43%;" />
+<img src="2-Dockerfile常见指令用法.assets/image-20240511160059693.png" alt="image-20240511160059693" style="zoom:50%;" />
 
 
 
@@ -866,15 +866,15 @@ python3 /pycharm_project_418/switch/pickInfo/ipMacPort/client_ip_cam.py
 
 1、将**infocollection**表的信息通过上面的json文件进行查找，得到这么一个信息，并落库👇
 
-![image-20240511142715551](E:/整理/Captura/udemy/3/IT001.assets/image-20240511142715551.png)
+![image-20240511160109274](2-Dockerfile常见指令用法.assets/image-20240511160109274.png)
 
 2、然后将user_mac拆出来落入user_mac表；也将seat sw port落入seat_sw_port表
 
-<img src="E:/整理/Captura/udemy/3/IT001.assets/image-20240511142836190.png" alt="image-20240511142836190" style="zoom:50%;" />
+<img src="2-Dockerfile常见指令用法.assets/image-20240511160115693.png" alt="image-20240511160115693" style="zoom:50%;" />
 
 
 
-<img src="E:/整理/Captura/udemy/3/IT001.assets/image-20240511142909342.png" alt="image-20240511142909342" style="zoom:50%;" />
+<img src="2-Dockerfile常见指令用法.assets/image-20240511160124579.png" alt="image-20240511160124579" style="zoom:50%;" />
 
 
 
@@ -882,7 +882,7 @@ python3 /pycharm_project_418/switch/pickInfo/ipMacPort/client_ip_cam.py
 
 4、最后就是基于user_mac，去查ip，去查端口，然后利用端口去索引seat_sw_port得到seat座位号。于是就有了最终的一个结果👇
 
-![image-20240511143819803](E:/整理/Captura/udemy/3/IT001.assets/image-20240511143819803.png)
+![image-20240511160132466](2-Dockerfile常见指令用法.assets/image-20240511160132466.png)
 
 上图生成的脚本就是每天都要运行一次的了，来保证ip变了，座位变了都能及时发现。
 
@@ -890,7 +890,7 @@ python3 /pycharm_project_418/switch/pickInfo/ipMacPort/client_ip_cam.py
 
 最终呈现的效果如下👇
 
-![image-20240511142422256](E:/整理/Captura/udemy/3/IT001.assets/image-20240511142422256.png)
+![image-20240511160138185](2-Dockerfile常见指令用法.assets/image-20240511160138185.png)
 
 
 
