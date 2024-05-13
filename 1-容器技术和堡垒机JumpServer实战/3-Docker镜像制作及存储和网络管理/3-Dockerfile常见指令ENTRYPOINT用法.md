@@ -200,9 +200,9 @@ CMD推荐使用CMD ["","",""]的方式👇这样追加到ENTRYPOINT就不会有�
 
 
 
-以下梳理以下：------------------
+### 梳理一下
 
-1、exec bash 改成exec sleep或者其他的试试，应该不一定要exec bash才能继承环境
+1、exec bash 改成exec sleep或者其他的试试，应该不一定要exec bash才能继承环境，不是这么个意思，是只有用bash才能保住本来要退出来的子进程。而用exec sleep或起的，自然是可以继承环境，但是不能保住子进程不退出啊。
 
 
 
@@ -214,15 +214,78 @@ CMD的列表形式，里的所有参数变成了ENTYRPOINT命令的所有参数�
 
 
 
-
-
 3、ENTRYPOINT和CMD是docker run的时候生效的，所以-e是可以往里面传参的。
 
 
 
 4、然后把下图理解一下
 
-![image-20240511180950454](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240511180950454.png)
+```shell
+echo 'helo e5 ri 8 dai' > index.html
+
+---------------------------------
+vim Dockerfile
+FROM nginx:1.26-alpine
+LABEL maintainer="oneyearice <oneyearice@gmail.com>"
+ENV DOC_ROOT='/data/website/'
+RUN makedir -p ${DOC_ROOT}
+COPY nginx.conf /apps/nginx/conf/
+ADD index.html ${DOC_ROOT}
+ADD entrypoint.sh /bin/
+EXPOSE 80/TCP 8080
+#HEALTCHECK --start-period=3s CMD wget -O - -q http://${IP:=0.0.0.0}:{PORT:-80}/
+
+ENTRYPOINT ["/bin/entrypoint.sh"]
+
+#CMD指令采用列表方式，其所有内容都将成为ENTYRPOINT的参数
+CMD ["/usr/sbin/nginx","-g","daemon off;"]
+
+----------------------------
+cat entrypoint.sh
+#!/bin/sh
+#注意，alpine只有sh没有bash，此处要用sh
+cat > /etc/nginx/conf/conf.d/www.conf << EOF
+server {
+	server_name ${HOSTNAME:-"www.ming.org"};
+	listen ${IP:-0.0.0.0}:${PORT:-80};
+	root ${DOC_ROOT:-/apps/nginx/html/};
+}
+EOF
+exec "$@"
+
+----------------------------
+vim nginx.conf
+worker_processes  auto;
+events {
+    worker_connections  10240;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    include /apps/nginx/conf/conf.d/*.conf;
+    server {
+        listen       80;
+        server_name  localhost;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+
+
+------------------
+chmod +x entrypoint.sh
+docker build -t nginx_web_env:v1.0 .
+docker run --name n1 --rm -P -e "PORT=8080" -e "HOSTNAME=www.ming.org" nginx:v1.0
+
+```
 
 👆关键是：CMD和ENTYRPOINT以及-e之间的组合
 
@@ -240,7 +303,329 @@ ENTRYPOINT是docker run的时候执行，然后ENTRYPOINT的脚本内容是：
 
 好，后面讲上述重新整理成实现截图。
 
------------------
+
+
+**执行一个脚本，然后运行程序的常规玩法**
+
+ENTRYPOINT执行一个脚本(一个环境初始化的脚本)，然后脚本最后一行写上exec "$@"，CMD写一行命令，这种套路就是ENTYPOINT的脚本先执行，然后再将执行权交给CMD。
+
+
+
+
+
+**再次实现动态传参的web定制效果**
+
+1、首先是原材料
+
+
+
+![image-20240513112111463](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513112111463.png)
+
+
+
+
+
+通过Dockerfile可知build好了以后/data/website/里存在一个index.html页面。
+
+然后entrypint.sh的脚本又是默认使用的/apps/nginx/html/下的index.html页面，由于ENV在之前设置$DOC_ROOT为/data/website/所以server块的root其实就是指向了/data/website/的。除非后面docker run -e DOC_ROOT=/apps/nginx/html 指回去，所以这里是一个神经病一样的配置了，需要优化的，优化的措施就是在Dockerfile里删掉DOC_ROOT相关： 实验暂时不改作为测试对比
+
+```shell
+ENV DOC_ROOT='/data/website/'
+mkdir -p ${DOC_ROOT} &&
+```
+
+还有不要写$HOSTNAME这个只会是容器的ID，改成
+
+```shell
+server_name ${HOST:-"www.ming.org"};
+还有修改脚本执行路径为/，如果不ADD到/usr/sbin这些PATH路径下
+```
+
+![image-20240513114421915](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513114421915.png)
+
+
+
+
+
+2、然后build
+
+![image-20240513114610405](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513114610405.png)
+
+
+
+3、然后run一下
+
+发现没有UP，进一步排查发现是$@里是空值，理由如下
+
+![image-20240513133951958](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513133951958.png)
+
+如果在脚本中添加一个行echo可知，脚本确实执行了，只不过参数没有拿到。
+
+我们改变ENTRYPOINT的书写方式
+
+![image-20240513134236632](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513134236632.png)
+
+发现此时$@确实拿到了参数，这样就可以让exec执行了，报错的问题先不着急处理，先梳理以上两张图的结论
+
+1、**CMD和ENTRYPOINT的结合没有问题**，不管是ENTRYPOITN 用不用列表形式，其合并的逻辑是一样的
+
+![image-20240513134459046](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513134459046.png)
+
+![image-20240513134442810](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513134442810.png)
+
+只不过非列表有一个默认/bin/sh 然后统统加上-c攒成列表的行为👆，而列表形式就比较干净👇
+
+![image-20240513134513103](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513134513103.png)
+
+![image-20240513134527905](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513134527905.png)
+
+所以$@位置参数
+
+我怀疑前一个$@里是否一点东西都没有，👇验证果然是的
+
+![image-20240513135853689](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513135853689.png)
+
+
+
+2、**但是$@的传递必须使用script.sh arg1 arg2 arg3的方式**，而不支持bash script.sh arg1 arg2 arg3这种
+
+但是$@的传参现在看下来只能用列表的方式才能规范化下得到想要的效果。这是在容器build的场景中，而在宿主的SHELL下script.sh arg1 arg2 arg3 和bash script.sh arg1 arg2 arg3 的$@倒是一样的
+
+![image-20240513140114854](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513140114854.png)
+
+这一点容器没有宿主的SHELL灵活👆。
+
+
+
+**好下面继续处理之前的分号报错**
+
+![image-20240513140342852](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513140342852.png)
+
+原因就是👆CMD里daemon off;不要单引号<img src="3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513141821927.png" alt="image-20240513141821927" style="zoom:50%;" />
+
+**最终重来一遍：**
+
+1、原材料修改为
+
+![image-20240513140833720](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513140833720.png)
+
+2、build
+
+![image-20240513141009395](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513141009395.png)
+
+3、run
+
+![image-20240513141122808](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513141122808.png)
+
+这里有个细节，就是你ngin -g daemon off;   上图是容器里这么执行确实时ok的👆，但是手动执行其实是会报错的👇
+
+![image-20240513141325500](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513141325500.png)
+
+看到没，这也是容器里里代码逻辑的第二点细节，
+
+①第一个就是我上面将的$@，容器build的时候必须使用列表格式，本质上也就是不认sh -c './script.sh arg1 arg2 arg3'，这种脚本里面读不出来$@，必须是script.sh arg1 arg2 arg3
+
+②第二个就是CMD里列表单元其实不用加引号，虽然手动的时候需要引号，也就是nginx -g 'daemon off;'手动不加引号不行，但是CMD里加了引号才不行👇下图就是一开始的配置结果报错反而
+
+<img src="3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513141629928.png" alt="image-20240513141629928" style="zoom:40%;" />
+
+
+
+
+
+
+
+### 然后发现有出错了
+
+因为这一次我用的是官方镜像，而官方镜像的配置文件压根不在/apps/nginx/conf这个下面，我操作的都是这个目录，压根就是错误的
+
+不相信exec -it进去可见
+
+![image-20240513145132382](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513145132382.png)
+
+所以再次重新修改buid的原材料
+
+在此之前探明人家nginx里的目录是否存在，已经server块是否有子配置文件
+
+![image-20240513145427499](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513145427499.png)
+
+有一个default，根据之前所学，default.conf首字母为d很容器就会抢先，这个注意下，后面测试
+
+
+
+1、原材料
+
+进入到官方的nginx，run起来看看index.html在上图的default.conf里明确制定了，所以我们脚本也要修改
+
+![image-20240513150107014](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513150107014.png)
+
+去掉nginx.conf主配置文件，将www.conf生成到/etc/nginx/conf/conf.d/下
+
+可预判优先级抢不过default.conf。实验继续
+
+2、run
+
+![image-20240513150727172](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513150727172.png)
+
+
+
+3、进去curl测试下
+
+![image-20240513151104226](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513151104226.png)
+
+![image-20240513151121982](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513151121982.png)
+
+实测就是两个子配置文件优先级方面，系统还是都会去看一遍的，port > server_name 这些都是所有子配置文件合并起来看的，如果大家都一样，就是一直到server_name都一样才会去说看排序第一个子配置文件，也就是字母排序第一个的default.conf文件了。
+
+以下就是调整www.conf名称抢先default.conf的测试过程👇
+
+![image-20240513153151735](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513153151735.png)![image-20240513153308016](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513153308016.png)
+
+
+
+### 了解了这些细节后，下面测试完整走一遍
+
+1、原材料
+
+![image-20240513155149903](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513155149903.png)
+
+
+
+2、build
+
+![image-20240513155346560](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513155346560.png)
+
+
+
+3、run
+
+先不带-e参数run一次
+
+![image-20240513155422761](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513155422761.png)
+
+curl
+
+![image-20240513155500356](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513155500356.png)
+
+IP就是走的default.conf，域名就是走的www.conf
+
+进去调整www.conf重命名为a.conf，IP也会走www.conf了👇
+
+![image-20240513155836735](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513155836735.png)
+
+
+
+然后再带-e run一次
+
+![image-20240513162647756](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513162647756.png)
+
+一般不会写死IP，这里就是实验测试而已👆
+
+然后上图的web03容器run起来测试如下👇
+
+![image-20240513163312134](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513163312134.png)
+
+补一个dns解析如下
+
+![image-20240513163330199](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513163330199.png)
+
+所以实验ok，到此结束。
+
+确实可以实现server_name和port以及index.html文件的自定义，看效果
+
+1、原始材料，build的时候修改index.html
+
+![image-20240513163732825](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513163732825.png)
+
+2、run的时候修改域名和端口，测试如下
+
+![image-20240513164827709](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513164827709.png)
+
+
+
+### 再来一个测试手法：-H修改主机头
+
+![image-20240513174019915](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513174019915.png)
+
+上图👆的grep -Ev没有去掉空行，可以优化为 sh -c 'cat /etc/.......' 就行了。
+
+**无需本地写host**
+
+![image-20240513173833923](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513173833923.png)
+
+
+
+
+
+
+
+### 看一个例子脚本里的东西：高级表达式
+
+**注意：表达式只是表达式，并不是变量赋值**
+
+![image-20240513180658441](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513180658441.png)
+
+这图就是说，不存在变量赋值的情况下，你不要瞎搞👆
+
+echo $HOST,s是查看HOST变量的值，
+
+echo ${HOST:-"www.mong.org"} 是查看HOST变量的值，如果HOST变量没有值，这个表达式的结果就是www.mong.org。不是说HOST变量的结果，
+
+这两行从头到尾都没有说HOST的变量存在赋值的情况哦！
+
+
+
+同理看下面的例子，一个意思
+
+![image-20240513182042830](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513182042830.png)
+
+上图echo加个提示，否则看不清
+
+<img src="3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513182713336.png" alt="image-20240513182713336" style="zoom:50%;" />
+
+
+
+![image-20240513182753327](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513182753327.png)
+
+纠错DOC_ROOT在Dockerfile里的EVN是赋值了的，所以有的，但是HOST确实是没有赋值的。
+
+
+
+
+
+### 规范化
+
+1、CMD就是最后一个命令挂前台的
+
+2、ENTRYPOINT就是初始化的
+
+虽然你可以将CMD的命令合并到ENTRYPOINT的脚本里(比如将nginx -g "daemon off;"放到entrypoint.sh的最后一行，并注释exec "$@"，但是不会这么做，不清楚，属于大家都这么用的规范问题。
+
+
+
+什么 mysql、nginx都是这么玩的👇
+
+![image-20240513185136834](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513185136834.png)
+
+
+
+![image-20240513185400574](3-Dockerfile常见指令ENTRYPOINT用法.assets/image-20240513185400574.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

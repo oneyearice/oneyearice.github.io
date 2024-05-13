@@ -89,6 +89,8 @@ ok，nginx的端口和HOST自定义就搞定了👆。
 
 上图理解：
 
+首先一般来讲nginx.conf里是不配置server块的，所有子配置文件都放在一起，然后系会展开合并在一起去判断，先按ip和端口、再按server_name，如果两个一样，再按子文件的命名顺序，比如a.conf的www.mimng.org优于b.conf的www.ming.org。
+
 1、nginx的转发优先级：ip+port优先，如果一样，就看server_name，server_name里再细分
 
 2、curl的时候使用ip+port，就会从上往下查找配置文件
