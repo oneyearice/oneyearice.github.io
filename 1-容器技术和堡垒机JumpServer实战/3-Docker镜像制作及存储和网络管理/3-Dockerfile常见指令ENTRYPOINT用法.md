@@ -597,7 +597,7 @@ echo ${HOST:-"www.mong.org"} 是查看HOST变量的值，如果HOST变量没有�
 
 1、CMD就是最后一个命令挂前台的
 
-2、ENTRYPOINT就是初始化的
+2、ENTRYPOINT就是初始化的环境配置的
 
 虽然你可以将CMD的命令合并到ENTRYPOINT的脚本里(比如将nginx -g "daemon off;"放到entrypoint.sh的最后一行，并注释exec "$@"，但是不会这么做，不清楚，属于大家都这么用的规范问题。
 
