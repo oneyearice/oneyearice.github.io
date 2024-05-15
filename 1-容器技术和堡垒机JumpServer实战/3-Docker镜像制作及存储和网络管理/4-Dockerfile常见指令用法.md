@@ -181,6 +181,248 @@ mysql的数据就很需要volume持久化一下
 
 
 
+# WORKDIR，切换工作目录
+
+类似cd，切换文件夹的，确实切掉了，
+
+但是如果在Dockerfile里 RUN cd xxx/xx/xx  也仅仅是在这一条RUN里切换了路径，下一行又回到容器里的/根了。实验测试下👇
+
+1、原材料
+
+![image-20240515094644911](4-Dockerfile常见指令用法.assets/image-20240515094644911.png)
+
+2、build
+
+![image-20240515094700929](4-Dockerfile常见指令用法.assets/image-20240515094700929.png)
+
+2、run看效果👇
+
+![image-20240515094614219](4-Dockerfile常见指令用法.assets/image-20240515094614219.png)
+
+
+
+所以RUN cd和WORKDIR是不一样的，前置式只在RUN cd的哪一行临时切过去，后面又回到了默认的/路径，而WORKDIR就是后面都切过去了。
+
+至于RUN一行里用&& 还是; 都行，一行都是临时切过去了。
+
+![image-20240515095903604](4-Dockerfile常见指令用法.assets/image-20240515095903604.png)
+
+
+
+
+
+![image-20240515100158240](4-Dockerfile常见指令用法.assets/image-20240515100158240.png)
+
+
+
+
+
+# ONBUILD，
+
+父镜像build指定的CMD在当时不执行，在子镜像build的时候才执行。
+
+举例：rm -rf /，就是说父镜像ONBUILD制定了rm -rf /，一旦子镜像继承了就把子镜像的根删掉。  # 你要继承我，我就把你删了。。。 这里只是一个没人这个干的例子，呵呵。 也许你不想让别人用的镜像作为父镜像，就可以这么做，ONBUILD RUN rm -rf /*   呵呵。
+
+
+
+那么问题来了：
+
+```shell
+WORKDIR /bin
+ONBUILD touch helo.log
+```
+
+这个touch在子镜像build的时候创建的，那么是在子镜像的/下还是下/bin下呢？是子镜像的/bin下的，
+
+因为子镜像FROM xxx的时候已经继承了WORKDIR的默认工作目录已经是/bin了，然后ONBUILD又是子镜像才执行显然是在FROM以后的。
+
+1、首先父镜像里是没有touch helo.log文件的👇
+
+![image-20240515103149872](4-Dockerfile常见指令用法.assets/image-20240515103149872.png)
+
+
+
+顺便看一个视频中的典型错误案例👇
+
+<img src="4-Dockerfile常见指令用法.assets/image-20240515103423386.png" alt="image-20240515103423386" style="zoom:70%;" />
+
+图中错误就是，entrypoint.sh不会被执行，因为找不到路径，
+
+![image-20240515104435532](4-Dockerfile常见指令用法.assets/image-20240515104435532.png)
+
+理由很简单：你看下图是不是一样
+
+![image-20240515103500341](4-Dockerfile常见指令用法.assets/image-20240515103500341.png)
+
+解释给你听哦：①你要让光秃秃的xxx.sh，这种不带绝对/相对路径的脚本直接执行，那就要让xxx.sh放到$PATH变量里的路径里去；②结果你上面COPY是放到/根③你WORDIR /切到/根，人家也不会去/当前目录根里找这个xxx.sh的。哈哈，不要学到了K8S还在这里闹小学一年级的笑话~还说什么WORKDIR没切过去，这是WORKDIR的事嘛~，基础不牢地动山摇，人心不稳王座倾塌。
+
+
+
+下面就是Dockerfile制作一个父镜像，然后再Dockerfile.son做一个子镜像，其中父镜像里的是ONBUILD touch，哦错了，是ONBUILD RUN touch才对👇
+
+![image-20240515113331660](4-Dockerfile常见指令用法.assets/image-20240515113331660.png)
+
+
+
+由于父镜像里已经WORKDIR /bin了，所以父镜像docker run起来进去就是/bin下的；
+
+同样子镜像是继承的父镜像，所以子镜像的工作目录就是/bin的，所以再执行ONBUILD RUN touch helo.log就生成了文件了👇
+
+![image-20240515113645135](4-Dockerfile常见指令用法.assets/image-20240515113645135.png)
+
+
+
+判断下ONBUILD的 echo的动作是在WORKDIR前还是后
+
+![image-20240515114127155](4-Dockerfile常见指令用法.assets/image-20240515114127155.png)
+
+判读是在后，因为WORKDIR是父镜像build的时候就会执行，一旦执行，子镜像继承了就是工作目录默认就是/bin了，然后ONBUILD echo是CMD还是ENTRYPOINT啊，我的意思是在build阶段还是在docker run阶段生效啊？  就算ONBUILD是build生效，那也是子镜像执行，而子镜像FROM xxx继承父镜像这个FROM就是父镜像的WORKDIR已经完成了，所以ONBUILD是肯定是在WORKDIR的目录里的了。
+
+​		然后ONBUILD RUN或ONBUILD ENV、ONBUILD ARG、ONBUILD ENTRYPOINT
+
+
+
+![image-20240515114701564](4-Dockerfile常见指令用法.assets/image-20240515114701564.png)
+
+
+
+
+
+再看
+
+![image-20240515115756000](4-Dockerfile常见指令用法.assets/image-20240515115756000.png)
+
+buid一下，注意build的时候，镜像不要用之前的镜像名称，会有问题，待会单独研究。
+
+![image-20240515120431365](4-Dockerfile常见指令用法.assets/image-20240515120431365.png)
+
+验证结论的时候到了，
+
+![image-20240515120645577](4-Dockerfile常见指令用法.assets/image-20240515120645577.png)
+
+验证如下👇
+
+![image-20240515120602587](4-Dockerfile常见指令用法.assets/image-20240515120602587.png)
+
+
+
+![image-20240515120626395](4-Dockerfile常见指令用法.assets/image-20240515120626395.png)
+
+
+
+
+
+看案例，就是父镜像没再次build导致子镜像还是用的之前的父镜像的Dockerfile👇，总之看CACHE比较明朗就：
+
+![image-20240515121020476](4-Dockerfile常见指令用法.assets/image-20240515121020476.png)
+
+然后为什么会有之前的影响，继续研究
+
+![image-20240515121116670](4-Dockerfile常见指令用法.assets/image-20240515121116670.png)
+
+还是还原故障
+
+还原个屁，是自己搞错了，父镜像没有build覆盖原来的tag导致的
+
+![image-20240515122105517](4-Dockerfile常见指令用法.assets/image-20240515122105517.png)
+
+这里图中打叉的地方-t写错了，本来是覆盖nginx_env_web:1.5这个父镜像的，结果写成了_son了，所以原来的父镜像没变，也就是说ONBUILD echo '123321' > helo.log本来就在，所以子镜像继承了，人家CACHE既然看到了就说明利用了之前的分层了，就说明父镜像没有变了。
+
+
+
+# USER，指定后续指令的执行者
+
+![image-20240515134826639](4-Dockerfile常见指令用法.assets/image-20240515134826639.png)
+
+
+
+
+
+# HEALTHCHECK,健康检查
+
+![image-20240515135052422](4-Dockerfile常见指令用法.assets/image-20240515135052422.png)
+
+
+
+![image-20240515140746110](4-Dockerfile常见指令用法.assets/image-20240515140746110.png)
+
+注意👆上图IP:=哪里写错了，PORT也写错了，复习变量高级用法去，nnd。
+
+![image-20240515140809849](4-Dockerfile常见指令用法.assets/image-20240515140809849.png)
+
+
+
+starting就是正在检查中
+
+![image-20240515140819699](4-Dockerfile常见指令用法.assets/image-20240515140819699.png)
+
+过一会就发现检查失败了
+
+![image-20240515144541185](4-Dockerfile常见指令用法.assets/image-20240515144541185.png)
+
+失败的原因是HEALTHCHECK里的CMD里的变量高级用法写错了，
+
+修改后OK👇
+
+![image-20240515152651760](4-Dockerfile常见指令用法.assets/image-20240515152651760.png)
+
+上图👆就是默认的时间是30s timeout，30s检查ok了就判定为healthy。如果30s检查不OK，就retries 3次也就是90s才会判定unhealthy。
+
+然后研究下curl 和 wget的静默用法👇
+
+
+
+![image-20240515154933039](4-Dockerfile常见指令用法.assets/image-20240515154933039.png)
+
+```shell
+FROM nginx
+
+# 添加健康检查脚本
+COPY healthcheck.sh /usr/bin/healthcheck.sh
+RUN chmod +x /usr/bin/healthcheck.sh
+
+# 定义健康检查命令
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD /usr/bin/healthcheck.sh   # 这里为啥不能直接写curl和wget，肯定可以的啊，脚本结果还导致少了一个人家健康检查无法执行的返回值2
+```
+
+```shell
+if curl -I http://localhost:80/health >/dev/null 2>&1; then
+  exit 0
+else
+  exit 1
+fi
+```
+
+```shell
+#!/bin/sh
+if wget -q --spider http://localhost:80/health; then
+  exit 0
+else
+  exit 1
+fi
+```
+
+```shell
+所以这样写就行了
+#HEALTHCHECK --start-period=3s CMD wget -q --spider http://${IP:-0.0.0.0}:${PORT:-80}/
+HEALTHCHECK --start-period=3s CMD curl -I http://${IP:-0.0.0.0}:${PORT:-80}/ &> /dev/null
+#这样做的好处，就是docker logs里就没有多余的curl wget信息了，不过这些系也是timeout到了才会出现，比如默认30s就是要到最后一秒才会出现curl或wget日志,不太能理解，因为--start-perod=3s默认就是3秒就执行了啊，我以为日志就容器起来3s就curl就会有日志了，结果docker logs查看发现要等timeout30秒到了才会有日志出来。
+```
+
+HEALTHCHECK 后面的CMD只是HEALTHCHECK里的一个固定参数，不要理解成Dockerfile 的CMD哦
+
+![image-20240515144131411](4-Dockerfile常见指令用法.assets/image-20240515144131411.png)
+
+
+
+
+
+
+
+如果健康检查失败还需要进一步去处理故障的，GPT给了一些思路，不过有待后面学到docker-compose的时候验证：
+
+![image-20240515163353013](4-Dockerfile常见指令用法.assets/image-20240515163353013.png)
 
 
 
@@ -189,7 +431,10 @@ mysql的数据就很需要volume持久化一下
 
 
 
-# 工作案例-抓软件的包
+
+
+
+# 工作案例-抓某个软件的包
 
 1、背景
 
