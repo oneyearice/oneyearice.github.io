@@ -528,7 +528,7 @@ https://blog.csdn.net/weixin_51309915/article/details/122382555
 
 ### 方法2：取消白名单限制去做统计
 
-★放开本地的海外白名单，针对自己的IP，然后打开classwire软件，此时由于海外全通，所以discord可以打开，包括update，start都行， 这样等软件正常运行了，classwire就可以正常显示该软件的域名访问了。
+★放开本地的海外白名单，针对自己的IP，然后打开GlassWire软件，此时由于海外全通，所以discord可以打开，包括update，start都行， 这样等软件正常运行了，GlassWire就可以正常显示该软件的域名访问了。
 
 由于已经升级和能够打开了，所以还需要手动升级来让classwire看到流量
 
