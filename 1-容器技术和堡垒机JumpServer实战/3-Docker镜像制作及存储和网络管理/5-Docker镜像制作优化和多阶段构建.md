@@ -92,7 +92,7 @@
 
 
 
-### 针对COPY太多的问题
+### 针对COPY复制的文件太多了的问题
 
 需要引入.dockerignore文件
 
@@ -248,9 +248,264 @@ run
 
 
 
+![image-20240520115523543](5-Docker镜像制作优化和多阶段构建.assets/image-20240520115523543.png)
+
+
+
+![image-20240520115907203](5-Docker镜像制作优化和多阶段构建.assets/image-20240520115907203.png)
+
+好像CMD里只能写一条CLI，多了就要用/bin/sh -c 'cli1;cli2;cl3'这种方式包装成一个来执行了。
+
+
+
 ok了
 
 ![image-20240517182852100](5-Docker镜像制作优化和多阶段构建.assets/image-20240517182852100.png)
+
+
+
+ok了
+
+![image-20240520121424701](5-Docker镜像制作优化和多阶段构建.assets/image-20240520121424701.png)
+
+
+
+ok了
+
+![image-20240520121906431](5-Docker镜像制作优化和多阶段构建.assets/image-20240520121906431.png)
+
+
+
+## 多阶段构建正式开始-适合静态编译go
+
+不适合java和python咯。
+
+
+
+一个hello的go代码也就是1.9M，但是镜像就822MB大小，太夸张了。
+
+![image-20240520140228411](5-Docker镜像制作优化和多阶段构建.assets/image-20240520140228411.png)
+
+所以如何进一步缩减镜像大小呢
+
+```shell
+FROM golang:1.22-alpine as builder
+COPY hello.go /opt/
+WORKDIR /opt/
+RUN go build hello.go
+
+FROM alpine:3.19.1
+COPY --from=builder /opt/hello /opt/hello
+CMD ["/opt/hello"]
+
+```
+
+首先go是静态编译的，编译完了以后，就不依赖go编译环境了。就是RUN go build hello.go的go环境其实用完就不需要了。
+
+![image-20240520141437080](5-Docker镜像制作优化和多阶段构建.assets/image-20240520141437080.png)
+
+**所以就可以把基础镜像换一个更小的alpine或者busybox，加上之前编译的hello就可以运行了。**
+
+![image-20240520142123883](5-Docker镜像制作优化和多阶段构建.assets/image-20240520142123883.png)
+
+build一下
+
+![image-20240520142413507](5-Docker镜像制作优化和多阶段构建.assets/image-20240520142413507.png)
+
+此时image就从851M缩小到9.27MB了~~
+
+
+
+run一下ok
+
+![image-20240520144858020](5-Docker镜像制作优化和多阶段构建.assets/image-20240520144858020.png)
+
+
+
+
+
+**同样改成busybox来做二次构建**
+
+![image-20240520145421572](5-Docker镜像制作优化和多阶段构建.assets/image-20240520145421572.png)
+
+
+
+然后ok了
+
+![image-20240520145554035](5-Docker镜像制作优化和多阶段构建.assets/image-20240520145554035.png)
+
+busybox的镜像会比alpine再少3MB左右，其实说白了就是go是静态编译的，哪个image小就用哪个就行了。
+
+
+
+所以go的优势还是比较明显的
+
+1、并发的优势，写出来就是并发的；
+
+2、docker构建的优势，可以二次构建改成小的基础镜像，大大节省空间。
+
+3、java、python、c都不行，这些都有大量的依赖库共享的动态的。
+
+
+
+**然后将上面的alpine或者busybox进一步优化，用scratch这个祖先镜像就是空镜像，因为go是静态编译，所有东西自带了**
+
+![image-20240520150942841](5-Docker镜像制作优化和多阶段构建.assets/image-20240520150942841.png)
+
+
+
+一个hello world的go编译后
+
+![image-20240520151337253](5-Docker镜像制作优化和多阶段构建.assets/image-20240520151337253.png)
+
+用scrapt打包后也就是1.89MB，相当给力👇
+
+![image-20240520151123087](5-Docker镜像制作优化和多阶段构建.assets/image-20240520151123087.png)
+
+补充docker images 查看的SIZE单位是MB，如何看到KB的精确值呢，用inspect
+
+![image-20240520152012463](5-Docker镜像制作优化和多阶段构建.assets/image-20240520152012463.png)
+
+
+
+为什么go程序能够在scratch空镜像上跑，其原因有2：、
+
+1、**Go 是静态编译的**：Go 编译器默认会将所有依赖项静态链接到可执行文件中，这意味着生成的二进制文件包含了运行所需的所有库。这样做的好处是可以确保可执行文件在任何环境中都能运行，而不需要依赖系统上预安装的库。
+
+2、**文件系统方面**：
+
+2.1、**内核提供的文件系统支持**：
+
+​		当容器启动时，它与宿主机的 Linux 内核共享同一个内核实例。Linux 内核本身提供了文件系统的支持，包括对文件操作、文件描述符管理等基本功能的支持。
+
+​		容器的文件系统视图是通过 Linux 内核的 `chroot` 和 `mount` 等机制实现的，使得每个容器看起来像是有自己独立的文件系统。
+
+2.2、**容器镜像层**：
+
+​		虽然 `scratch` 镜像是一个空镜像，但容器在运行时仍然有一个最基本的文件系统布局。这些文件系统布局由 Docker 容器运行时环境提供。
+
+​		当你使用 `COPY` 指令将文件从构建阶段复制到 `scratch` 镜像时，这些文件被放置在容器的文件系统中，容器运行时将这些文件系统布局合并起来，使它们在容器内部可见。
+
+2.3、**构建阶段包含必要的文件**：
+
+​		在你的 `Dockerfile` 中，你使用了 `COPY --from=builder /opt/hello /opt/hello` 将编译好的 Go 应用程序从构建阶段复制到最终的 `scratch` 镜像中。虽然 `scratch` 镜像本身是空的，但你复制进去的文件会成为容器文件系统的一部分。
+
+​		因为 Go 应用程序是静态编译的，所以它不需要依赖额外的共享库或运行时环境，这使得它可以在 `scratch` 镜像中运行。
+
+2.4、**简而言之**，`scratch` 镜像通过 Docker 提供的基础文件系统布局和内核支持，结合在构建阶段复制进去的必要文件，能够满足应用程序的文件系统需求。以下是简要的示意图：
+
+
+
+
+
+### images如何查看当初FROM哪里的
+
+docker inspect查看就行，不过要递归到最初的那个
+
+![image-20240520161236941](5-Docker镜像制作优化和多阶段构建.assets/image-20240520161236941.png)
+
+![image-20240520161416430](5-Docker镜像制作优化和多阶段构建.assets/image-20240520161416430.png)
+
+
+
+docker history也行，不过同样从要找到最初的那个
+
+![image-20240520161403548](5-Docker镜像制作优化和多阶段构建.assets/image-20240520161403548.png)
+
+
+
+
+
+
+
+### scratch打出来的镜像ls没有如何查看文件
+
+因为连ls这个命令都没有，如何查看呢
+
+![image-20240520161943291](5-Docker镜像制作优化和多阶段构建.assets/image-20240520161943291.png)
+
+现在看不到了👆，以前可以看
+
+![image-20240520163745589](5-Docker镜像制作优化和多阶段构建.assets/image-20240520163745589.png)
+
+<img src="5-Docker镜像制作优化和多阶段构建.assets/image-20240520163836223.png" alt="image-20240520163836223" style="zoom:67%;" />
+
+
+
+<img src="5-Docker镜像制作优化和多阶段构建.assets/image-20240520163850884.png" alt="image-20240520163850884" style="zoom:50%;" />
+
+
+
+
+
+
+
+### 然后一些案例可以补充到这里
+
+
+
+**1、基于Alpine的微服务Apollo配置中心**
+
+https://github.com/apolloconfig/apollo?tab=readme-ov-file
+
+
+
+git clone项目拉下来
+
+![image-20240520171502065](5-Docker镜像制作优化和多阶段构建.assets/image-20240520171502065.png)
+
+编写Dockerfile
+
+```shell
+FROM openjdk:8-jre-alpine3.9
+RUN \
+	echo "http://mirrors.aliyun.com/alpine/v3.8/main" > /etc/apk/repositories && \
+	echo "http://mirrors.aliyun.com/alpine/v3.8/community" >> /etc/apk/repositories && \
+    apk update upgrade && \
+    apk add --no-cache procps curl bash tzdata && \
+ 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+	echo "Asia/Shanghai" > /etc/timezone && \
+ 	mkdir -p /apollo-config-server
+ 
+ADD apollo/ /apollo-config-server/       # apollo/.也行，apollo/*不行
+ENV APOLLO_CONFIG_SERVICE_NAME="service-apollo-config-server.sre"
+EXPOSE 8080
+CMD ["/apollo-config-server/scripts/build.sh"]
+```
+
+
+
+**过程排错：1**
+
+![image-20240520182656064](5-Docker镜像制作优化和多阶段构建.assets/image-20240520182656064.png)
+
+处理：
+
+是宿主的句柄小于容器里的句柄了
+
+![image-20240520183129865](5-Docker镜像制作优化和多阶段构建.assets/image-20240520183129865.png)
+
+
+
+![image-20240520183226402](5-Docker镜像制作优化和多阶段构建.assets/image-20240520183226402.png)
+
+这样就能跑下去了，时间比较长，明天继续
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
