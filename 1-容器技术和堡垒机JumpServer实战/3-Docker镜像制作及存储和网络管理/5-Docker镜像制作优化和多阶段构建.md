@@ -491,9 +491,15 @@ CMD ["/apollo-config-server/scripts/build.sh"]
 
 这样就能跑下去了，时间比较长，明天继续
 
+把宿主的ulimit的值改一下就继续run就行了，不过还得修改Dockerfile 安装openjdk8
+
+![image-20240521133800387](5-Docker镜像制作优化和多阶段构建.assets/image-20240521133800387.png)
+
+![image-20240521133731319](5-Docker镜像制作优化和多阶段构建.assets/image-20240521133731319.png)
 
 
 
+![image-20240521133510661](5-Docker镜像制作优化和多阶段构建.assets/image-20240521133510661.png)
 
 
 
