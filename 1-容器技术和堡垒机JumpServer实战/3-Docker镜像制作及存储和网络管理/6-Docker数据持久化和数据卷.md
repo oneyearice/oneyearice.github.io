@@ -355,8 +355,12 @@ docker build ok，run的时候没有达到预期的排错
 
 2、docker ps -a看看里面的信息，特别是CMD，不过看不全，没事用
 
+
+
 ```shell
-docker inspect web3-run -f '{{.Args}}' 
+docker inspect web3-run -f '{{.Args}}'    # 这种格式一定不能写到代码块外面，会导致gitbook提交报错👇就是编码
+
+File "gitbookScripts\summary\summary_script.py", line 33, in <module>UnicodeDecodeError: 'gbk' codec can't decode byte Ox80 in position 1204: illegal multibyte sequence[20864] Failed to execute script summary_script
 ```
 
 看的全
