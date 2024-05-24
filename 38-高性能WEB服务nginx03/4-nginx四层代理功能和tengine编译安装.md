@@ -882,6 +882,20 @@ net.ipv4.tcp_max_orphans=262114
 
 
 
+
+
+**agent先安装**
+
+zabbix的安装还是要注意版本的，举例
+
+agent和zabbix版本要统一,否则server端检测项起不来，即使agent那边zabbix-agent -t ping 回车有数值
+
+agent安装走官网zabbix.org下载repo源文件就行：
+
+https://www.zabbix.com/download?zabbix=6.4&os_distribution=centos&os_version=9&components=agent&db=&ws=
+
+
+
 **agent端配置**
 
 ![image-20240312153215184](4-nginx四层代理功能和tengine编译安装.assets/image-20240312153215184.png)
