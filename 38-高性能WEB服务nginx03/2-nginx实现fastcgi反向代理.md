@@ -412,7 +412,9 @@ https://stackoverflow.com/questions/70040287/php7-4-preg-replace-compilation-fai
 
 ![image-20240221175031801](2-nginx实现fastcgi反向代理.assets/image-20240221175031801.png)
 
-这样就实现了输入http://www.site1.com，注意上图我输入的时候最后是没有/的，是nginx自己302补了一个/![image-20240221175204504](2-nginx实现fastcgi反向代理.assets/image-20240221175204504.png)
+这样就实现了输入http://www.site1.com，注意上图我输入的时候最后是没有/的，是nginx自己302补了一个：
+
+![image-20240221175204504](2-nginx实现fastcgi反向代理.assets/image-20240221175204504.png)
 
 
 
@@ -432,7 +434,7 @@ https://stackoverflow.com/questions/70040287/php7-4-preg-replace-compilation-fai
 
 
 
-看图是http://site1.com/wp-admin/的403，我基本就认为是改路径下没有index.php和inde.html
+看图是http://site1.com/wp-admin/的403，我基本就认为是该路径下没有index.php和inde.html
 
 还是因为我做了动静分离，所以这个URL走的是下图的框框里的路径
 

@@ -402,13 +402,19 @@ docker run --volumes-from <数据卷容器>   Mount volumes from the specified c
 
 ### 实际配置开始-多个容器共享某部分数据的方案
 
-1、配置数据卷容器，server啦，因为只是提供别的容器，来复制挂载目录的。所以就只需要写好-v就信了
+1、配置数据卷容器，server啦，因为只是提供别的容器，来复制挂载目录的。所以就只需要写好-v就信了；
 
 ```SHELL
 docker run -d -v mydata:/data/website --name volume-server -e HOST='www.dalao.tk' web001_entrypoint:0.3
 ```
 
 这里留了一个-e HOST=xxx来测试是否可以复制，和-v一样被其他容器复制。
+
+而且容器都**不要UP**的，也不要用比较大的镜像去run，直接将上面的优化成
+
+```shell
+docker run -d -v mydata:/data/website --name volume-server -e HOST='www.dalao.tk' busybox
+```
 
 
 
@@ -469,11 +475,33 @@ docker run -d --volumes-from volume-server -p 83:80 --name web03 -e HOST="web03"
 
 
 
+![image-20240528095712010](7-Docker数据持久化和数据卷容器.assets/image-20240528095712010.png)
+
+上图注意：
+
+1、一般就用命名卷就好啦，上图用的宿主机的目录挂载的
+
+2、数据卷容器--就是用来被引用持久化容器，就不要run起来up的，也不要用大镜像busybox就不错；run完以后不删了就，当然删掉也没事，只要有一个容器引用了，后面就可以让别人引用它。
+
+3、虽然宿主机的目录挂载方式docker volume ls看不到，所以一般就会说这个严格以上不叫逻辑卷，虽然不叫对吧，但是依然可以被--volumes-from来引用。
+
+
+
+
+
+如果C1容器跑在A机器上，持久化自然也是做在A上，将来C1跑到B机器上运行，持久化的数据怎么同步到B呢，你说手动~~~，好的，   不过有更完善的解决方案-K8S，跨主机的方案。docker是单机。
+
+
+
+
+
+
+
 
 
 多个容器共享某部分数据的方案的典型应用场景
 
-nginx + php 以前是跑在一个宿主上的，现在容器化，就是两个容器，所以可以这两个容器共享一个持久化目录。
+nginx + php 以前是跑在一个宿主上的，现在容器化，如果跑在两个容器里(虽然一般是跑在一个容器)，所以可以这两个容器共享一个持久化目录。
 
 nginx和php的程序 应该是共享一个目录，要在一起的，，我去复习之前的动静分离的文章
 
