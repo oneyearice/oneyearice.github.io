@@ -99,7 +99,7 @@ nsenter -t <PID> -n ip link
 
 # 解决容器IP不固定的问题
 
-背景：
+**背景：**
 
 1、容器run起来了，IP不确定，run起来了IP是不是也会受dhcp的释放周期影响的咯。
 
@@ -107,7 +107,193 @@ nsenter -t <PID> -n ip link
 
 
 
-需求：解决这个不固定的问题咯，然后就可以更好的自动化咯。以及更换容器的网段。
+**需求：**
+
+解决这个不固定的问题咯，然后就可以更好的自动化咯。以及更换容器的网段。
+
+
+
+**落实：**
+
+
+
+## 修改docker0的dhcp的地址段
+
+
+
+方法1：
+
+```shell
+vim /etc/docker/daemon.json
+{
+	"bip": "172.19.0.0/16"  # 这里写错啦，这写host和掩码而不是子网，改成0.1就行
+}
+```
+
+![image-20240530150122996](8-Docker的默认网络和容器间通信.assets/image-20240530150122996.png)
+
+
+
+改完以后，哪怕删掉重启电脑，这个ip就是你改后的样子了，不会恢复到出厂默认值的。
+
+可能猜测是，考虑到以前已经有容器在了，不管是up还是exited的，哪怕你删除了，也给你留存上一次修改的记录。
+
+如果你想恢复出厂IP，那么就手动写成172.17.0.1/16，重启docker，顶多在删掉配置...不过无所谓了。
+
+
+
+
+
+
+
+方法2：
+
+```shell
+vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --bip=172.19.100.0/24
+```
+
+![image-20240530134834951](8-Docker的默认网络和容器间通信.assets/image-20240530134834951.png)
+
+方法2没有成功
+
+![image-20240530151945083](8-Docker的默认网络和容器间通信.assets/image-20240530151945083.png)
+
+
+
+
+
+
+
+## 桥接到自定义的网桥
+
+默认是docker的内外网卡都是桥接到docker0这个虚拟网桥的，现在改掉。
+
+
+
+### 1、首先创建网桥
+
+```shell
+yum -y install bridge-utils
+brctl addbr br0
+ip a a 172.20.100.1/24 dev br0
+brctl show
+
+```
+
+![image-20240530164736771](8-Docker的默认网络和容器间通信.assets/image-20240530164736771.png)
+
+发现docker100还没有IP地址，然后docker0和docker100都是UP的。
+
+
+
+![image-20240530165028628](8-Docker的默认网络和容器间通信.assets/image-20240530165028628.png)
+
+
+
+### 2、修改服务启动文件
+
+```shell
+vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -b docker 100
+
+```
+
+
+
+### 3、重载和重启
+
+```
+systemctl daemon-reload
+systemctl restart docker
+```
+
+
+
+### 4、查看确认
+
+```shell
+ps -ef |grep dockerd
+
+docker run --rm busybox hostname -i
+```
+
+
+
+![image-20240530165826921](8-Docker的默认网络和容器间通信.assets/image-20240530165826921.png)
+
+
+
+![image-20240530170035918](8-Docker的默认网络和容器间通信.assets/image-20240530170035918.png)
+
+
+
+再创建容器，就会桥接到docker100上了
+
+![image-20240530170154779](8-Docker的默认网络和容器间通信.assets/image-20240530170154779.png)
+
+
+
+![image-20240530170329555](8-Docker的默认网络和容器间通信.assets/image-20240530170329555.png)
+
+
+
+**在检查下容器里面是否可以ping通外面**
+![image-20240530170805223](8-Docker的默认网络和容器间通信.assets/image-20240530170805223.png)
+
+可以的，通过抓docker100的包也可以看到
+
+![image-20240530170824991](8-Docker的默认网络和容器间通信.assets/image-20240530170824991.png)
+
+尝试抓容器的宿主虚拟接口的包
+
+先定位这个容器id的内外IP是多少，当然我们通过上面抓包已经知道是172.20.100.2了。
+
+![image-20240530171202335](8-Docker的默认网络和容器间通信.assets/image-20240530171202335.png)
+
+所以这一次通过这个命令docker network inspect得知什么容器的里面的ip是什么后
+
+再检查这个容器里的接口名称
+
+### 如何知道exec 容器的接口名称
+
+1、比如我要使用这个bd98e2b01c59容器来做抓包
+
+就可以通过exec -it xxxx  ip a 知道接口对，就知道抓外面的哪个接口的包了
+
+![image-20240530171526764](8-Docker的默认网络和容器间通信.assets/image-20240530171526764.png)
+
+
+
+2、然后还可以通过，
+
+docker network inspect 你要操作容器的id去确认待会抓包看到的内网IP是啥
+
+![image-20240530171357089](8-Docker的默认网络和容器间通信.assets/image-20240530171357089.png)
+
+
+
+3、然后开始tcpdump 那个接口
+
+![image-20240530172016350](8-Docker的默认网络和容器间通信.assets/image-20240530172016350.png)
+
+
+
+![image-20240530172143088](8-Docker的默认网络和容器间通信.assets/image-20240530172143088.png)
+
+
+
+然后就看到包了
+
+![image-20240530172156224](8-Docker的默认网络和容器间通信.assets/image-20240530172156224.png)
+
+
+
+此时修了容器里的ip，也能够给通外面来，说明你修改了docker100为所有容器桥接的虚拟网桥，那么SNAT是自动给你做了的，无需配置的
+
+可以通过iptables -vnL -t nat确认的
+
+![image-20240530172500497](8-Docker的默认网络和容器间通信.assets/image-20240530172500497.png)
 
 
 
@@ -121,11 +307,9 @@ nsenter -t <PID> -n ip link
 
 
 
+# 工作案例-linux的ping测
 
-
-# 工作案例
-
-linux常ping脚本
+linux常ping脚本，
 
 
 
@@ -242,7 +426,7 @@ kill 也会起来
 
 
 
-stop纯人工停止自然不会起来咯，否则你怎么挺服务~
+stop纯人工停止自然不会起来咯，否则你怎么停服务~
 
 ![image-20240528183043114](8-Docker的默认网络和容器间通信.assets/image-20240528183043114.png)
 
@@ -255,4 +439,64 @@ stop纯人工停止自然不会起来咯，否则你怎么挺服务~
 ![image-20240528183549863](8-Docker的默认网络和容器间通信.assets/image-20240528183549863.png)
 
 
+
+
+
+以上就是简单的一个做法，或者不写服务用screen去做也不错，
+
+不过正规还是要上监控的，比如用zabbix-agent去实现，这个前文也有。
+
+
+
+
+
+
+
+# 案例2，如何做个远端节点的PING测监控
+
+
+
+其实和斗数一样，也是看三方四正
+
+
+
+举例，你要监控从上海到洛杉矶的云主机的ping测。就需要出5张图，也是一个三方四正
+
+①公司zabbix-----洛杉矶节点
+
+②proxy1代理----到洛杉矶节点
+
+③proxy2代理----到洛杉矶节点
+
+④公司zabbix----到proxy1节点
+
+⑤公司zabbix----到proxy2节点
+
+
+
+**看图**
+
+![image-20240530115548153](8-Docker的默认网络和容器间通信.assets/image-20240530115548153.png)
+
+
+
+有了这个总结，以后做监控，基本上如果重要的节点，就可以一步到位全面监控住。
+
+
+
+
+
+
+
+### 案例-ipsecvpn
+
+云上的VPN的网关其实是PAT出来的，要IDC的SSG开启NAT-T来解封的。
+
+
+
+https://cshihong.github.io/2019/04/17/IPSec%20VPN%E7%9A%84NAT%E7%A9%BF%E8%B6%8A-NAT-T-%E5%8E%9F%E7%90%86/
+
+文章中的这个传输模式同样不能转换端口的
+
+![image-20240530184126020](8-Docker的默认网络和容器间通信.assets/image-20240530184126020.png)
 
