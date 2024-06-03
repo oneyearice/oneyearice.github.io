@@ -514,24 +514,37 @@ docker run -d --name web001 -p 8080:80 busybox sh -c 'echo 12345 > index.html;ht
 
 
 
+link选项就是自动添加host了👇  添加了web001这个容器名 和 ip的解析。
+
 ![image-20240531182729129](8-Docker的默认网络和容器间通信.assets/image-20240531182729129.png)
 
 从0开始计数的👆，所有就是丢了16个。
 
 ![image-20240531183228497](8-Docker的默认网络和容器间通信.assets/image-20240531183228497.png)
 
-
-
 不知道为啥，我感觉这是坑。
 
-
-
-不知道哇
+**初步定位了**：就是使用默认的docker0不会卡这么久，而使用自建的docker100，我是用nmcli创建的这个网桥，就不行，ping就会卡30多个包才通这么久。。。
 
 ![image-20240531183733290](8-Docker的默认网络和容器间通信.assets/image-20240531183733290.png)
 
 
 
+举例，wordpress的运行就可以采用link的方式了
+
+```shell
+docker run --name db001 -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=123456 -d -v /data/mysql:/var/lib/mysql --restart=always mariadb:11.4.2
+
+
+
+docker run -d -p 80:80 --name wordpress --link db001 -v /data/wordpress:/var/www/html --restart=always wordpress:php8.3-apache
+
+
+```
+
+版本匹配注意下
+
+![image-20240603110121779](8-Docker的默认网络和容器间通信.assets/image-20240603110121779.png)
 
 
 
@@ -539,14 +552,115 @@ docker run -d --name web001 -p 8080:80 busybox sh -c 'echo 12345 > index.html;ht
 
 
 
+👇图中MYSQL_PASSWORD写成了MSYQL_XXX，导致排查了半天。。。
+
+![image-20240603103611416](8-Docker的默认网络和容器间通信.assets/image-20240603103611416.png)
+
+换了个公司内部源，终于pull下来了
+
+![image-20240603104348990](8-Docker的默认网络和容器间通信.assets/image-20240603104348990.png)
+
+DB没有暴露端口，因为就是让wordpress访问的，
+
+![image-20240603104548040](8-Docker的默认网络和容器间通信.assets/image-20240603104548040.png)
+
+然后打开网页报错
+
+![image-20240603104657365](8-Docker的默认网络和容器间通信.assets/image-20240603104657365.png)
+
+因为之前实验有残留信息，删除之前的持久化路径，删除所有容器，重新run就好了
+
+![image-20240603105037627](8-Docker的默认网络和容器间通信.assets/image-20240603105037627.png)
+
+
+
+![image-20240603105315022](8-Docker的默认网络和容器间通信.assets/image-20240603105315022.png)
+
+--link db001就是run 的时候就自动给你添加了 hosts解析，是db001这个主机名解析到db001这个容器name的IP。
+
+这样就是实现了db容器里的IP如果变了，也不会影响业务了。而且mysql不对外暴露端口，你想攻击都攻击不了。
+
+
+
+但是此时如果db001的容器里的IP地址手动改变，wordpress将无法访问。
+
+但是如果db001的容器IP是DHCP重新获取而改变，则wordpress可以自动更新/etc/hosts文件，也就可以继续访问。所以一般不会有人手动👇修改，所以--link也就是可以解决容器里ip变动的问题的。
+
+```shell
+docker exec -it --privileged db001 sh
+ip a add 172.17.0.100/16 dev eth0
+ip a del 172.17.0.2/16 dev eth0
+```
+
+此时wordpress无法连接db
+
+![image-20240603135132220](8-Docker的默认网络和容器间通信.assets/image-20240603135132220.png)
 
 
 
 
 
+**而且只要容器1stop了，然后新开一个容器2就会抢了容器1的IP了**
+
+![image-20240603141303713](8-Docker的默认网络和容器间通信.assets/image-20240603141303713.png)
 
 
 
+![image-20240603141532309](8-Docker的默认网络和容器间通信.assets/image-20240603141532309.png)
+
+此时都不用重启wordpress，hosts文件就会自动更新，所以业务也一定是OK的（已测过了）。
+
+
+
+# 容器别名
+
+
+
+本质就是run的时候hosts里一个ip对应多个容器名称
+
+
+
+实验过程，和别名使用场景不怎么相干了感觉，但是可以看到hosts的效果。
+
+![image-20240603143104243](8-Docker的默认网络和容器间通信.assets/image-20240603143104243.png)
+
+由于db001重新run，改名字，wordpress里的hosts文件还是写的db001，所以找不到了。
+
+但是此时业务倒是正常的👇前提是db002要up的，虽然docker exec -it wordpress ls报错，但是业务出奇的正常
+
+![image-20240603143413563](8-Docker的默认网络和容器间通信.assets/image-20240603143413563.png)
+
+但是问题依然要处理，别名来解决
+
+```shell
+docker run --name db001 -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=123456 -d -v /data/mysql:/var/lib/mysql --restart=always mariadb:11.4.2
+
+docker run -d -p 80:80 --name wordpress --link db001:"db002 db003 db004" -v /data/wordpress:/var/www/html --restart=always wordpress:php8.3-apache
+```
+
+![image-20240603151753414](8-Docker的默认网络和容器间通信.assets/image-20240603151753414.png)
+
+
+
+
+
+使用场景：
+
+1、程序里写死了是访问db004
+
+2、容器run的时候就不一定非得要叫db004，可以叫db001，
+
+3、然后run这个程序容器的时候可以使用 --lnk db001:db004，就可以将db004解析为db001的IP了。
+
+大概可以这么用。
+
+
+
+
+
+**总结：**
+
+![image-20240603162623865](8-Docker的默认网络和容器间通信.assets/image-20240603162623865.png)
 
 
 
@@ -747,3 +861,18 @@ https://cshihong.github.io/2019/04/17/IPSec%20VPN%E7%9A%84NAT%E7%A9%BF%E8%B6%8A-
 
 ![image-20240530184126020](8-Docker的默认网络和容器间通信.assets/image-20240530184126020.png)
 
+
+
+还有一个问题就是rekey的问题，
+
+
+
+理由：云上86400协商，云下28800协商，这是IKE阶段，也就是第一个阶段的周期，于是就会协商成28800也就是8小时，结果发现8小时就会断一次业务，排查发现必须是云下往云上ping一下或者发包来触发，否则要等15分钟左右才能重新拉起隧道。
+
+
+
+因为，云上发起的rekey，云下ssg没有开启rekey功能，所以无法重协商SPA，所以就断了，解决方法有2：
+
+1、云下做一个常ping放到screen后台运行就行了
+
+2、最好是SSG上在ipsec阶段开启rekey，注意要和monitor一起，否则开不了。
