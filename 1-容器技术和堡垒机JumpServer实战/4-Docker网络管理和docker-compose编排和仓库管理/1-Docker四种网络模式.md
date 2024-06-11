@@ -12,7 +12,7 @@ docker的5种网络模式
 
 4、host：主机
 
-5、network-name，这一种依赖于前种
+5、network-name，这一种依赖于前4种
 
 
 
@@ -85,7 +85,7 @@ vim /etc/docker/daemon.json
 
 ![image-20240603180235716](1-Docker四种网络模式.assets/image-20240603180235716.png)
 
-下面一个是辅助网关，具体用法不清楚~
+这个DefaultGatewayIPv4是默认网关，这里改成100.2，就不会走100.1了，要注意。
 
 
 
@@ -101,7 +101,7 @@ vim /etc/docker/daemon.json
 
 也不存在端口暴露一说，因为直接就是宿主IP的端口了。
 
-
+然后你想让容器性能非常好的时候，可以考虑使用host模式，因为没有NAT转发的步骤。
 
 ![image-20240603182728351](1-Docker四种网络模式.assets/image-20240603182728351.png)
 
@@ -110,6 +110,244 @@ vim /etc/docker/daemon.json
 看看这个，完全就是宿主上所有网卡都看的到了
 
 ![image-20240603182917476](1-Docker四种网络模式.assets/image-20240603182917476.png)
+
+
+
+同样可以inspect看看，不过host这是宿主的网络，所以没啥可看的
+
+![image-20240604091041962](1-Docker四种网络模式.assets/image-20240604091041962.png)
+
+
+
+
+
+# None模式
+
+
+
+![image-20240604091310115](1-Docker四种网络模式.assets/image-20240604091310115.png)
+
+
+
+none不是说一个网卡都没有，还是有一个lo口的
+
+![image-20240604092538024](1-Docker四种网络模式.assets/image-20240604092538024.png)
+
+自己访问自己还是可以的
+
+![image-20240604092714531](1-Docker四种网络模式.assets/image-20240604092714531.png)
+
+
+
+# Container模式
+
+<img src="1-Docker四种网络模式.assets/image-20240604093006776.png" alt="image-20240604093006776" style="zoom:50%;" />
+
+
+
+
+
+实验开始
+
+1、run一个正常的容器，也就是bridge
+
+![image-20240604093932778](1-Docker四种网络模式.assets/image-20240604093932778.png) 
+
+网络情况：
+
+![image-20240604094031568](1-Docker四种网络模式.assets/image-20240604094031568.png)
+
+
+
+2、再run一个Container网络模式的，容器
+
+![image-20240604094123835](1-Docker四种网络模式.assets/image-20240604094123835.png)
+
+不能说一摸一样，应该说就是同一个。能理解我这句话的意思吗O(∩_∩)O，一摸一样是两个东西 一样~，哈哈哈
+
+
+
+然后，只是网络共用，其他文件都是隔离，也就是其他命名空间都是独立隔离的。
+
+![image-20240604104335595](1-Docker四种网络模式.assets/image-20240604104335595.png)
+
+scp 才是基于ip的，docker cp是基于容器名的。
+
+
+
+因为docker run --network container:c1 --name c2   这样c1和c2就是一个网卡，所以端口监听要错开，而且只能由被引用方c1来暴露。c2 c3这些引用方不能暴露端口的，run -P直接报错：
+
+![image-20240604111650869](1-Docker四种网络模式.assets/image-20240604111650869.png)
+
+
+
+
+
+然后因为是共用的一个网卡，所以只要container:c1挂上后，c2也一样可以修改网卡的
+
+c1修改网卡
+
+![image-20240604104928809](1-Docker四种网络模式.assets/image-20240604104928809.png)
+
+此时c2容器里自然被改了
+
+![image-20240604104959676](1-Docker四种网络模式.assets/image-20240604104959676.png)
+
+
+
+然后此时作用引用c1的c2创建可以影响c1，但是c2退出不会影响c1，c3引用c1同样之前c2创建的ip还在
+
+![image-20240604110120943](1-Docker四种网络模式.assets/image-20240604110120943.png)
+
+如果c1这个被引用的源头没了（exit了，stop了）；注意即使start up了也没用了，c2 c3这些引用的也不会自动出现c1的接口的。
+
+![image-20240604110146632](1-Docker四种网络模式.assets/image-20240604110146632.png)
+
+引用c1的其他容器的网卡也就没了
+
+![image-20240604110204723](1-Docker四种网络模式.assets/image-20240604110204723.png)
+
+
+
+
+
+案例：wordpress
+
+正常 wordpress和mysql，一般先启用mysql，后启用wordpress，如果反了，就要会wordpress网页打不开，等mysql后起来，才能打开。 所以是无所谓的，大不了等等就行了。
+
+
+
+但是如果使用container模式的网络，就要先启用wordpress，我来试一下啊
+
+```shell
+docker run -d -p 80:80 --name wordpress -v /data/wordpress:/var/www/html --restart=always wordpress:php8.3-apache
+
+
+docker run --name db001 --network container:wordpress -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=123456 -d -v /data/mysql:/var/lib/mysql --restart=always mariadb:11.4.2
+
+```
+
+
+
+
+
+先运行wordpress：
+
+![image-20240604113718567](1-Docker四种网络模式.assets/image-20240604113718567.png)
+
+然后就不知道填啥了都：
+
+![image-20240604113936597](1-Docker四种网络模式.assets/image-20240604113936597.png)
+
+然后运行DB
+
+![image-20240604114128461](1-Docker四种网络模式.assets/image-20240604114128461.png)
+
+因为运行的是--network contaner:wordpress，所以就是共用的wordpress容器的网卡，所以下图直接填写127.0.0.1就行了：
+
+![image-20240604114118593](1-Docker四种网络模式.assets/image-20240604114118593.png)
+
+
+
+![image-20240604114211658](1-Docker四种网络模式.assets/image-20240604114211658.png)
+
+
+
+但是如果先启动db再启动wordpress就不行了
+
+![image-20240604114734588](1-Docker四种网络模式.assets/image-20240604114734588.png)
+
+因为作为引用方，是不可以暴露端口的。
+
+其实可以这样
+
+![image-20240604115049938](1-Docker四种网络模式.assets/image-20240604115049938.png)
+
+![image-20240604115146153](1-Docker四种网络模式.assets/image-20240604115146153.png)
+
+
+
+这样wordpress和db在一个网卡上，虽然是两个容器。这样通信效率更高了。
+
+
+
+
+
+
+
+
+
+如果遇到报错：
+
+![image-20240604113602266](1-Docker四种网络模式.assets/image-20240604113602266.png)
+
+👆这是由之前实验数据导致的，它这个报错都是establishing，tcp连接了都，都是由db信息了。
+
+
+
+以上就是docker网络的四种模式：
+
+![image-20240604134218985](1-Docker四种网络模式.assets/image-20240604134218985.png)
+
+closed就是none模式；就是单机不与外界沟通的模式。
+
+bridege是默认模式；就是桥接到默认的比如docker0网桥上的，自然同一个做SNAT的。
+
+joined就是container模式；就是jion别的容器的网卡。
+
+opencontainer就是host模式，桥接道网卡的；host就是主机一个网段的意思，所以叫host。
+
+
+
+
+
+
+
+
+
+有感：
+
+用神之法：就是群星拱之，神冷静观之，不受群星直接影响，要过一个空白地（a space），这个空白地就是自由所在，也是成长所在。廉贞+武官入命的人一定要学会此法；否则容易被其强烈影响，该影响若被某个化忌的大运结合就很危险。或者某宫杀星落陷再结命主廉贞+武官，同样会很强烈。或者孤星坐命的人一样。
+
+
+
+“Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.”
+
+— Often attributed to Steven Covey or Viktor E. Frankl
+
+
+
+七杀临身的解法：就是无为而治，用习惯来实现成果，化为习惯也就是终身制的努力了。
+
+关于无为：其实是润物细无声的意思，就是将行动化为细小的执行动作，正所谓日积跬步。
+
+有句话叫：弱者道之用，就是这个道理：其意思就是要徐徐图之，不可用力过猛，弱者就是无为，就是慢慢来的意思，很多感情上、事业上、生活上的用力过猛的开始往往都没有能够达到最终的一个好的结局。无为不是真的不作为，而是表面上看起来没有特别大的动作，润物细无声，其实它一直都在，不曾放弃，只是以柔弱的方式存在，这样不会激发起反作用力。正所谓反者道之动，事物都是走向它的对立面的，你想要一个好的结果，只有弱者道之用才能不激发这个反向趋势。
+
+
+
+地空用法：化煞为用，空灵之性，弱化群星对神的影响。要知道吉星也好杀星也罢，凶吉正如太极两仪，正如64卦我想高人应该选择的去用的。物尽其用也是这个道理吧。
+
+
+
+神在哪：两眼之间其后，菩提树(大脑)下。
+
+心神：心和神，正如心性和神，感性和理性的关系。心代表命盘和群星；神的强大就代表能否化盘为用，而不是被盘掌控。以神控盘，神清，神清则自在。以心牵神，神弱，神弱则堕入红尘欲望。但也要尊重心，自重就是尊重自己，不可被过度的理性变得僵硬固化，难....啊。
+
+炼神之法：是不是如呼吸一样，长长久久，绵绵不绝，去感受其所在空间。
+
+实操之法：当心里坠坠难安时，将心神聚集收敛，也就是将意念收集在两眼之间，菩提树下。也可以在心脏之处，但是菩提树下为佳。  大概是先看心，后看神的然后持续在神，能够体会热感。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
