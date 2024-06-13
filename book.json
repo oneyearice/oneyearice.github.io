@@ -29,6 +29,7 @@
     "anchor-navigation-ex",
     "-ad",
     "video-player",
+    "local-video",
     "ace"
   ],
   "pluginsConfig": {
