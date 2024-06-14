@@ -497,7 +497,13 @@ https://github.com/v2fly/docker
 
 ![image-20240522164614007](6-Docker数据持久化和数据卷.assets/image-20240522164614007.png)
 
-修改配置文件
+修改配置文件为👇根据你server那边的进行配置就行。
+
+![image-20240614144312541](6-Docker数据持久化和数据卷.assets/image-20240614144312541.png)
+
+
+
+
 
 ![image-20240522164836662](6-Docker数据持久化和数据卷.assets/image-20240522164836662.png)
 
@@ -563,6 +569,64 @@ https://www.cnblogs.com/zhenyuyaodidiao/p/5494569.html
 ![image-20240524171508068](6-Docker数据持久化和数据卷.assets/image-20240524171508068.png)
 
 还是用softehter就行~
+
+
+
+然后如何设置全局代理，配置变量就行了，不管是本地还是给鄙人用
+
+1、linux
+
+![image-20240614141823439](6-Docker数据持久化和数据卷.assets/image-20240614141823439.png)
+
+
+
+2、windows
+
+![image-20240614142106162](6-Docker数据持久化和数据卷.assets/image-20240614142106162.png)
+
+
+
+然后
+
+![image-20240614142201773](6-Docker数据持久化和数据卷.assets/image-20240614142201773.png)
+
+浏览器可以代理，cmd不行，也就是说明了
+
+socks不管是5还是4也无法代理cmd，全软件代理还得依靠APP本身指向socks。
+
+
+
+cmd 里没看到proxy变量设置，所有没有走代理，手动配置一个，就像linux一样
+
+![image-20240614143247516](6-Docker数据持久化和数据卷.assets/image-20240614143247516.png)
+
+![image-20240614143652684](6-Docker数据持久化和数据卷.assets/image-20240614143652684.png)
+
+cmd里还不用用socks变量，的用linux一样的socks5
+
+![image-20240614143743943](6-Docker数据持久化和数据卷.assets/image-20240614143743943.png)
+
+
+
+
+
+
+
+概念梳理：
+
+**全协议**：http的代理、socks4代理tcp、5就是tcp/udp都支持，这种需要APP自己走socks套接字才行的。默认浏览器就会走socks，但是cmd这些就需要手动配置代理变量为socks5，其他APPS同理。这是两个概念，全协议是隧道本身的属性，APPS走隧道时APPS自己的配置。
+
+
+
+有一种就是无需APPS配置，直接所有软件 浏览器、cmd、等等 统统走隧道，就是全软件代理。这就要虚拟网卡将默认网关全部打到隧道里去：
+
+**全软件**：最新的v2ray tun模式是由虚拟网卡的，电脑上所有软件的流量就虚拟网卡就是全软件代理了。包括cmd都代理了。  # 这种就是要虚拟网卡的。
+
+
+
+**全局**：沟通要统一，我习惯全局就是这里，是全部流量都走代理，就是不分流的意思。
+
+<img src="6-Docker数据持久化和数据卷.assets/image-20240614142912838.png" alt="image-20240614142912838" style="zoom:50%;" />
 
 
 
