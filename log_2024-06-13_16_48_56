@@ -1,17 +1,4 @@
-"½øÈëD:\oneyearice.github.ioÄ¿Â¼" 
-..\gitbook\README.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\SUMMARY.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\book.json
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\Ğò.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\summary_script.exe
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-[master 5f554a54c] publish_2024-06-13_16_48_56
- 2 files changed, 17 insertions(+)
- create mode 100644 log_2024-06-13_16_48_56
-branch 'master' set up to track 'origin/master'.
+[0;36minfo:[0m 18 plugins are installed 
+[0;36minfo:[0m 16 explicitly listed 
+
+[0;31mError: Couldn't locate plugins "video-player, local-video", Run 'gitbook install' to install plugins from registry.[0m
