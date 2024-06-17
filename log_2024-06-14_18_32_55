@@ -1,30 +1,20 @@
-"½øÈëD:\oneyearice.github.ioÄ¿Â¼" 
-..\gitbook\README.md
-¸´ÖÆÁË 1 ¸öÎÄ¼þ
-..\gitbook\SUMMARY.md
-¸´ÖÆÁË 1 ¸öÎÄ¼þ
-..\gitbook\book.json
-¸´ÖÆÁË 1 ¸öÎÄ¼þ
-..\gitbook\Ðò.md
-¸´ÖÆÁË 1 ¸öÎÄ¼þ
-..\gitbook\summary_script.exe
-¸´ÖÆÁË 1 ¸öÎÄ¼þ
-¸´ÖÆÁË 0 ¸öÎÄ¼þ
-tmp\gitbook\gitbook.js
-tmp\gitbook\style.css
-tmp\gitbook\theme.js
-tmp\gitbook\fonts\fontawesome\fontawesome-webfont.eot
-tmp\gitbook\fonts\fontawesome\fontawesome-webfont.svg
-tmp\gitbook\fonts\fontawesome\fontawesome-webfont.ttf
-tmp\gitbook\fonts\fontawesome\fontawesome-webfont.woff
-tmp\gitbook\fonts\fontawesome\fontawesome-webfont.woff2
-tmp\gitbook\fonts\fontawesome\FontAwesome.otf
-tmp\gitbook\gitbook-plugin-fontsettings\fontsettings.js
-tmp\gitbook\gitbook-plugin-fontsettings\website.css
-tmp\gitbook\images\apple-touch-icon-precomposed-152.png
-tmp\gitbook\images\favicon.ico
-¸´ÖÆÁË 13 ¸öÎÄ¼þ
-[master 26e182828] publish_2024-06-14_18_32_55
- 2 files changed, 29 insertions(+)
- create mode 100644 log_2024-06-14_18_32_55
-branch 'master' set up to track 'origin/master'.
+[0;36minfo:[0m 18 plugins are installed 
+[0;36minfo:[0m 14 explicitly listed 
+[0;36minfo:[0m loading plugin "expandable-chapters"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "search-plus"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "splitter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "github"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "donate"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "emphasize"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "include-codeblock"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "tbfed-pagefooter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "back-to-top-button"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "anchor-navigation-ex"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "ace"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "highlight"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "fontsettings"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "theme-default"... [0;32mOK[0m 
+[0;36minfo:[0m found 280 pages 
+[0;36minfo:[0m found 11786 asset files 
+
+[0;31mError: ENOENT: no such file or directory, stat 'D:\oneyearice.github.io\tmp\gitbook\gitbook-plugin-fontsettings\fontsettings.js'[0m

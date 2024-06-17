@@ -134,6 +134,8 @@ https://linux.cn/article-14970-1.html
 
 试试
 
+mariadb写在前面就先执行的意思，虽然这里无所谓
+
 ```
 name: <your project name>
 services:
@@ -266,9 +268,131 @@ docker-compose down # 停止+删除
 
 
 
+### 复杂一点的yml
+
+```yaml
+version: '3'
+services:
+  db:
+    image: mariadb:11.3.2
+    container_name: db
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=123456
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - wordpress-network
+  
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:php8.2-apache
+    container_name: wordpress
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=123456
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - wordpress-network
+
+volumes:
+  wordpress:
+  dbdata:
+
+networks:
+  wordpress-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+```
 
 
 
+![image-20240617111154223](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617111154223.png)
+
+
+
+由于yaml里wordpress里已经配置了DB的，打开网页，设置站点标题和管理员就进去了。
+
+![image-20240617115817879](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617115817879.png)
+
+
+
+
+
+### 再来一个yml
+
+```yaml
+name: spug-001
+services:
+  db:
+    image: mariadb:11.3.2
+    container_name: spug-db
+    restart: always
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - /data/spug/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=spug
+      - MYSQL_USER=spug
+      - MYSQL_PASSWORD=spug.cc
+      - MYSQL_ROOT_PASSWORD=spug.cc
+  
+  spug:
+    image: openspug/spug-service
+    #image: registry.aliyuncs.com/openspug/spug # 这是国内镜像
+    container_name: spug
+    privileged: true
+    restart: always
+    volumes:
+      - /data/spug/service:/data/spug
+      - /data/spug/repos:/data/repos
+    ports:
+      - "80:80"
+    environment:
+      - SPUG_DOCKER_VERSION=v3.2.1
+      - MYSQL_DATABASE=spug
+      - MYSQL_USER=spug
+      - MYSQL_PASSWORD=spug.cc
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+    depends_on:
+      - db
+      
+```
+
+docker-compose config -q   # 语法检查
+
+然后就docker-compose up -d，结果报错了
+
+![image-20240617134940054](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617134940054.png)
+
+这里面有CF的CDN啊
+
+![image-20240617140124758](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617140124758.png)
+
+emmm，改路由吧，从海外线路出去，或者image换成国内的：registry.aliyuncs.com/openspug/spug
+
+![image-20240617141341340](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617141341340.png)
+
+好了👆
+
+
+
+初始化登入密码
+
+![image-20240617172214421](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240617172214421.png)
 
 
 
@@ -307,7 +431,7 @@ done;done
 
 
 {% raw %}
-<video id="my-video" class="video-js" controls preload="auto" width="100%" data-setup='{"aspectRatio":"16:9"}'>
+<video id="my-video" class="video-js" controls preload="auto" width="50%" data-setup='{"aspectRatio":"16:9"}'>
   <source src="4-Docker-compose单机编排工具安装和实战案例.assets/shellForLoading.mp4" type='video/mp4' >
   <p class="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -315,13 +439,20 @@ done;done
   </p>
 </video>
 
+
 {% endraw %}
 
 
 
 
 
-优化：
+
+
+
+
+
+
+优化：使用斜杠转圈圈来表示加载的效果
 
 ```shell
 #!/bin/sh
@@ -340,6 +471,55 @@ done
 
 echo -ne "\r"  # 清除最后的加载字符
 ```
+
+
+
+<img src="4-Docker-compose单机编排工具安装和实战案例.assets/loading_斜杠.gif" alt="loading_斜杠.gif" style="zoom:50%;" />
+
+
+
+
+
+优化2：使用贪吃蛇小点点来做加载的显示。
+
+```shell
+[root@realserver2 loading2]# cat loading_gpt.sh
+#!/bin/sh
+
+#char=('\' '|' '/' '—')
+char=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+end=$((SECONDS+10))
+#echo "转$end秒"
+while [ $SECONDS -lt $end ]
+do
+    for i in "${char[@]}"
+    do
+        echo -ne "\r$i"
+        sleep 0.2
+    done
+done
+
+echo -ne "\r"  # 清除最后的加载字符
+
+printf "\033[32m✔\033[0m\n"
+
+[root@realserver2 loading2]#
+[root@realserver2 loading2]#
+[root@realserver2 loading2]# bash loading_gpt.sh
+✔
+```
+
+
+
+<img src="4-Docker-compose单机编排工具安装和实战案例.assets/loading_贪吃蛇.gif" alt="loading_贪吃蛇" style="zoom:50%;" />
+
+
+
+
+
+
+
+优化3：单任务转圈圈，汇总任务也准圈圈
 
 
 
