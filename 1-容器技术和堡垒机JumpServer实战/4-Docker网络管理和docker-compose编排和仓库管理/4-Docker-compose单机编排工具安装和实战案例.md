@@ -523,3 +523,235 @@ printf "\033[32m✔\033[0m\n"
 
 
 
+先看几个shell基础
+
+![image-20240618114245970](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618114245970.png)
+
+![image-20240618114323330](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618114323330.png)
+
+![image-20240618115041778](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618115041778.png)
+
+运算符里RANDOM可不加变量符号
+
+<img src="4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618115302405.png" alt="image-20240618115302405" style="zoom:100%;" />
+
+
+
+![image-20240618115800975](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618115800975.png)
+
+kill和wait的是start_task 这个函数的pid，就是行首的加载贪吃蛇效果。
+
+
+
+![image-20240618121120664](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618121120664.png)
+
+
+
+![image-20240618121519392](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618121519392.png)
+
+
+
+
+
+
+
+最终要这种效果👇
+
+![image-20240618122202294](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618122202294.png)
+
+![image-20240618122312391](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240618122312391.png)
+
+
+
+```shell
+[root@realserver2 loading3]# cat loading.sh
+#!/bin/bash
+
+chars=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+tasks=("任务1" "任务2" "任务3")
+
+
+
+# 开始任务
+function start_task {
+    local task_index=$1
+    local char_index=0
+    echo -ne "\n\r"
+    while true; do
+        echo -ne "${chars[$char_index]} ${tasks[$task_index]} \r"
+        char_index=$(( (char_index + 1) % ${#chars[@]} ))
+        sleep 0.1
+    done
+}
+
+# 完成任务
+function finish_task {
+    local task_index=$1
+    echo -ne "√ ${tasks[$task_index]}"
+    #echo -ne "\n\r"
+}
+
+
+
+# 定义更新进度汇总行的函数
+update_progress() {
+    echo -ne "任务进度: "
+    for status in "${task_status[@]}"; do
+        #echo -n "$status "
+        #printf "\033[32m$status\033[0m"
+        echo -ne "\033[32m$status\033[0m"
+    done
+    #echo -ne "\n\r"  # 保持在第一行
+}
+
+update_progress
+
+# 主程序
+function main {
+    for ((i=0; i<${#tasks[@]}; i++)); do
+        start_task $i &
+        task_pid=$!
+        # 模拟任务执行
+        sleep $(( (RANDOM % 5) + 1 ))
+        # 结束任务
+        kill $task_pid > /dev/null 2>&1
+        wait $task_pid
+        finish_task $i
+
+        # 顶行汇总
+        task_status[$((i))]="✔"
+        echo -ne "\033[$(( i + 1 ))A\r"  # 移动光标到第一行第一列
+        update_progress
+        echo -ne "\033[$(( i + 1 ))B\r"
+    done
+    echo
+}
+
+# 运行主程序
+main
+
+```
+
+
+
+![loading001](4-Docker-compose单机编排工具安装和实战案例.assets/loading001.gif)
+
+优化为带框框的
+
+```shell
+[root@realserver2 loading3]# cat loading002.sh
+#!/bin/bash
+
+chars=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+tasks=("任务1" "任务2" "任务3")
+
+
+# 开始任务
+function start_task {
+    local task_index=$1
+    local char_index=0
+    echo -ne "\n\r"
+    while true; do
+        echo -ne "${chars[$char_index]} ${tasks[$task_index]} \r"
+        char_index=$(( (char_index + 1) % ${#chars[@]} ))
+        sleep 0.1
+    done
+}
+
+# 完成任务
+function finish_task {
+    local task_index=$1
+    echo -ne "√ ${tasks[$task_index]}"
+    #echo -ne "\n\r"
+}
+
+task_status=()
+# 定义更新进度汇总行的函数
+proress_intial() {
+    echo -ne "任务进度: ["
+    for ((i=0; i<${#tasks[@]}; i++)); do
+        #task_status+=(" ")
+        echo -n " "
+    done
+    echo -n "]"
+    echo -ne "\r"  # 保持在第一行
+}
+
+proress_intial
+
+# 定义更新进度汇总行的函数
+update_progress() {
+    echo -ne "任务进度: ["
+    for status in "${task_status[@]}"; do
+        #echo -n "$status "
+        #printf "\033[32m$status\033[0m"
+        echo -ne "\033[32m$status\033[0m"
+    done
+    #echo -ne "\n\r"  # 保持在第一行
+}
+
+update_progress
+
+# 主程序
+function main {
+    for ((i=0; i<${#tasks[@]}; i++)); do
+        start_task $i &
+        task_pid=$!
+        # 模拟任务执行
+        sleep $(( (RANDOM % 5) + 1 ))
+        # 结束任务
+        kill $task_pid > /dev/null 2>&1
+        wait $task_pid
+        finish_task $i
+
+        # 顶行汇总
+        task_status[$((i))]="✔"
+        echo -ne "\033[$(( i + 1 ))A\r"  # 移动光标到第一行第一列
+        update_progress
+        echo -ne "\033[$(( i + 1 ))B\r"
+    done
+    echo
+}
+
+# 运行主程序
+main
+
+
+```
+
+
+
+![loading002](4-Docker-compose单机编排工具安装和实战案例.assets/loading002.gif)
+
+
+
+优化：任务进度汇总为，柱状增长形态
+
+
+
+不会了....
+
+
+
+优化：并发状态
+
+
+
+....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4355,8 +4355,171 @@ printf &quot;\033[32m&#x2714;\033[0m\n&quot;
 </code></pre>
 <p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/loading_&#x8D2A;&#x5403;&#x86C7;.gif" alt="loading_&#x8D2A;&#x5403;&#x86C7;" style="zoom:50%;"></p>
 <p>&#x4F18;&#x5316;3&#xFF1A;&#x5355;&#x4EFB;&#x52A1;&#x8F6C;&#x5708;&#x5708;&#xFF0C;&#x6C47;&#x603B;&#x4EFB;&#x52A1;&#x4E5F;&#x51C6;&#x5708;&#x5708;</p>
+<p>&#x5148;&#x770B;&#x51E0;&#x4E2A;shell&#x57FA;&#x7840;</p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618114245970.png" alt="image-20240618114245970"></p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618114323330.png" alt="image-20240618114323330"></p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618115041778.png" alt="image-20240618115041778"></p>
+<p>&#x8FD0;&#x7B97;&#x7B26;&#x91CC;RANDOM&#x53EF;&#x4E0D;&#x52A0;&#x53D8;&#x91CF;&#x7B26;&#x53F7;</p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618115302405.png" alt="image-20240618115302405" style="zoom:100%;"></p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618115800975.png" alt="image-20240618115800975"></p>
+<p>kill&#x548C;wait&#x7684;&#x662F;start_task &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;pid&#xFF0C;&#x5C31;&#x662F;&#x884C;&#x9996;&#x7684;&#x52A0;&#x8F7D;&#x8D2A;&#x5403;&#x86C7;&#x6548;&#x679C;&#x3002;</p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618121120664.png" alt="image-20240618121120664"></p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618121519392.png" alt="image-20240618121519392"></p>
+<p>&#x6700;&#x7EC8;&#x8981;&#x8FD9;&#x79CD;&#x6548;&#x679C;&#x1F447;</p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618122202294.png" alt="image-20240618122202294"></p>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/image-20240618122312391.png" alt="image-20240618122312391"></p>
+<pre><code class="lang-shell">[root@realserver2 loading3]# cat loading.sh
+#!/bin/bash
+
+chars=(&apos;&#x280B;&apos; &apos;&#x2819;&apos; &apos;&#x2839;&apos; &apos;&#x2838;&apos; &apos;&#x283C;&apos; &apos;&#x2834;&apos; &apos;&#x2826;&apos; &apos;&#x2827;&apos; &apos;&#x2807;&apos; &apos;&#x280F;&apos;)
+tasks=(&quot;&#x4EFB;&#x52A1;1&quot; &quot;&#x4EFB;&#x52A1;2&quot; &quot;&#x4EFB;&#x52A1;3&quot;)
+
+
+
+# &#x5F00;&#x59CB;&#x4EFB;&#x52A1;
+function start_task {
+    local task_index=$1
+    local char_index=0
+    echo -ne &quot;\n\r&quot;
+    while true; do
+        echo -ne &quot;${chars[$char_index]} ${tasks[$task_index]} \r&quot;
+        char_index=$(( (char_index + 1) % ${#chars[@]} ))
+        sleep 0.1
+    done
+}
+
+# &#x5B8C;&#x6210;&#x4EFB;&#x52A1;
+function finish_task {
+    local task_index=$1
+    echo -ne &quot;&#x221A; ${tasks[$task_index]}&quot;
+    #echo -ne &quot;\n\r&quot;
+}
+
+
+
+# &#x5B9A;&#x4E49;&#x66F4;&#x65B0;&#x8FDB;&#x5EA6;&#x6C47;&#x603B;&#x884C;&#x7684;&#x51FD;&#x6570;
+update_progress() {
+    echo -ne &quot;&#x4EFB;&#x52A1;&#x8FDB;&#x5EA6;: &quot;
+    for status in &quot;${task_status[@]}&quot;; do
+        #echo -n &quot;$status &quot;
+        #printf &quot;\033[32m$status\033[0m&quot;
+        echo -ne &quot;\033[32m$status\033[0m&quot;
+    done
+    #echo -ne &quot;\n\r&quot;  # &#x4FDD;&#x6301;&#x5728;&#x7B2C;&#x4E00;&#x884C;
+}
+
+update_progress
+
+# &#x4E3B;&#x7A0B;&#x5E8F;
+function main {
+    for ((i=0; i&lt;${#tasks[@]}; i++)); do
+        start_task $i &amp;
+        task_pid=$!
+        # &#x6A21;&#x62DF;&#x4EFB;&#x52A1;&#x6267;&#x884C;
+        sleep $(( (RANDOM % 5) + 1 ))
+        # &#x7ED3;&#x675F;&#x4EFB;&#x52A1;
+        kill $task_pid &gt; /dev/null 2&gt;&amp;1
+        wait $task_pid
+        finish_task $i
+
+        # &#x9876;&#x884C;&#x6C47;&#x603B;
+        task_status[$((i))]=&quot;&#x2714;&quot;
+        echo -ne &quot;\033[$(( i + 1 ))A\r&quot;  # &#x79FB;&#x52A8;&#x5149;&#x6807;&#x5230;&#x7B2C;&#x4E00;&#x884C;&#x7B2C;&#x4E00;&#x5217;
+        update_progress
+        echo -ne &quot;\033[$(( i + 1 ))B\r&quot;
+    done
+    echo
+}
+
+# &#x8FD0;&#x884C;&#x4E3B;&#x7A0B;&#x5E8F;
+main
+</code></pre>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/loading001.gif" alt="loading001"></p>
+<p>&#x4F18;&#x5316;&#x4E3A;&#x5E26;&#x6846;&#x6846;&#x7684;</p>
+<pre><code class="lang-shell">[root@realserver2 loading3]# cat loading002.sh
+#!/bin/bash
+
+chars=(&apos;&#x280B;&apos; &apos;&#x2819;&apos; &apos;&#x2839;&apos; &apos;&#x2838;&apos; &apos;&#x283C;&apos; &apos;&#x2834;&apos; &apos;&#x2826;&apos; &apos;&#x2827;&apos; &apos;&#x2807;&apos; &apos;&#x280F;&apos;)
+tasks=(&quot;&#x4EFB;&#x52A1;1&quot; &quot;&#x4EFB;&#x52A1;2&quot; &quot;&#x4EFB;&#x52A1;3&quot;)
+
+
+# &#x5F00;&#x59CB;&#x4EFB;&#x52A1;
+function start_task {
+    local task_index=$1
+    local char_index=0
+    echo -ne &quot;\n\r&quot;
+    while true; do
+        echo -ne &quot;${chars[$char_index]} ${tasks[$task_index]} \r&quot;
+        char_index=$(( (char_index + 1) % ${#chars[@]} ))
+        sleep 0.1
+    done
+}
+
+# &#x5B8C;&#x6210;&#x4EFB;&#x52A1;
+function finish_task {
+    local task_index=$1
+    echo -ne &quot;&#x221A; ${tasks[$task_index]}&quot;
+    #echo -ne &quot;\n\r&quot;
+}
+
+task_status=()
+# &#x5B9A;&#x4E49;&#x66F4;&#x65B0;&#x8FDB;&#x5EA6;&#x6C47;&#x603B;&#x884C;&#x7684;&#x51FD;&#x6570;
+proress_intial() {
+    echo -ne &quot;&#x4EFB;&#x52A1;&#x8FDB;&#x5EA6;: [&quot;
+    for ((i=0; i&lt;${#tasks[@]}; i++)); do
+        #task_status+=(&quot; &quot;)
+        echo -n &quot; &quot;
+    done
+    echo -n &quot;]&quot;
+    echo -ne &quot;\r&quot;  # &#x4FDD;&#x6301;&#x5728;&#x7B2C;&#x4E00;&#x884C;
+}
+
+proress_intial
+
+# &#x5B9A;&#x4E49;&#x66F4;&#x65B0;&#x8FDB;&#x5EA6;&#x6C47;&#x603B;&#x884C;&#x7684;&#x51FD;&#x6570;
+update_progress() {
+    echo -ne &quot;&#x4EFB;&#x52A1;&#x8FDB;&#x5EA6;: [&quot;
+    for status in &quot;${task_status[@]}&quot;; do
+        #echo -n &quot;$status &quot;
+        #printf &quot;\033[32m$status\033[0m&quot;
+        echo -ne &quot;\033[32m$status\033[0m&quot;
+    done
+    #echo -ne &quot;\n\r&quot;  # &#x4FDD;&#x6301;&#x5728;&#x7B2C;&#x4E00;&#x884C;
+}
+
+update_progress
+
+# &#x4E3B;&#x7A0B;&#x5E8F;
+function main {
+    for ((i=0; i&lt;${#tasks[@]}; i++)); do
+        start_task $i &amp;
+        task_pid=$!
+        # &#x6A21;&#x62DF;&#x4EFB;&#x52A1;&#x6267;&#x884C;
+        sleep $(( (RANDOM % 5) + 1 ))
+        # &#x7ED3;&#x675F;&#x4EFB;&#x52A1;
+        kill $task_pid &gt; /dev/null 2&gt;&amp;1
+        wait $task_pid
+        finish_task $i
+
+        # &#x9876;&#x884C;&#x6C47;&#x603B;
+        task_status[$((i))]=&quot;&#x2714;&quot;
+        echo -ne &quot;\033[$(( i + 1 ))A\r&quot;  # &#x79FB;&#x52A8;&#x5149;&#x6807;&#x5230;&#x7B2C;&#x4E00;&#x884C;&#x7B2C;&#x4E00;&#x5217;
+        update_progress
+        echo -ne &quot;\033[$(( i + 1 ))B\r&quot;
+    done
+    echo
+}
+
+# &#x8FD0;&#x884C;&#x4E3B;&#x7A0B;&#x5E8F;
+main
+</code></pre>
+<p><img src="4-Docker-compose&#x5355;&#x673A;&#x7F16;&#x6392;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x548C;&#x5B9E;&#x6218;&#x6848;&#x4F8B;.assets/loading002.gif" alt="loading002"></p>
+<p>&#x4F18;&#x5316;&#xFF1A;&#x4EFB;&#x52A1;&#x8FDB;&#x5EA6;&#x6C47;&#x603B;&#x4E3A;&#xFF0C;&#x67F1;&#x72B6;&#x589E;&#x957F;&#x5F62;&#x6001;</p>
+<p>&#x4E0D;&#x4F1A;&#x4E86;....</p>
+<p>&#x4F18;&#x5316;&#xFF1A;&#x5E76;&#x53D1;&#x72B6;&#x6001;</p>
+<p>....</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-06-17 18:35:52
+2024-06-19 09:10:57
 </span></footer>
                                 
                                 </section>
@@ -4400,7 +4563,7 @@ printf &quot;\033[32m&#x2714;\033[0m\n&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节 Docker-compose单机编排工具安装和实战案例","level":"1.41.4.4","depth":3,"next":{"title":"第5节 Docker私有仓库Harbor的部署和上传下载镜像","level":"1.41.4.5","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/5-Docker私有仓库Harbor的部署和上传下载镜像.md","ref":"./1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/5-Docker私有仓库Harbor的部署和上传下载镜像.md","articles":[]},"previous":{"title":"第3节 Docker实现跨宿主机通信和Docker-compose介绍","level":"1.41.4.3","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/3-Docker实现跨宿主机通信和Docker-compose介绍.md","ref":"./1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/3-Docker实现跨宿主机通信和Docker-compose介绍.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/4-Docker-compose单机编排工具安装和实战案例.md","mtime":"2024-06-17T10:35:52.616Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-06-17T10:36:08.253Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节 Docker-compose单机编排工具安装和实战案例","level":"1.41.4.4","depth":3,"next":{"title":"第5节 Docker私有仓库Harbor的部署和上传下载镜像","level":"1.41.4.5","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/5-Docker私有仓库Harbor的部署和上传下载镜像.md","ref":"./1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/5-Docker私有仓库Harbor的部署和上传下载镜像.md","articles":[]},"previous":{"title":"第3节 Docker实现跨宿主机通信和Docker-compose介绍","level":"1.41.4.3","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/3-Docker实现跨宿主机通信和Docker-compose介绍.md","ref":"./1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/3-Docker实现跨宿主机通信和Docker-compose介绍.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"1-容器技术和堡垒机JumpServer实战/4-Docker网络管理和docker-compose编排和仓库管理/4-Docker-compose单机编排工具安装和实战案例.md","mtime":"2024-06-19T01:10:57.765Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-06-19T01:11:08.930Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
