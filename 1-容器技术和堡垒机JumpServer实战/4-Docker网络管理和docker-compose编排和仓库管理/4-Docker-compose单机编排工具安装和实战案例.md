@@ -745,6 +745,72 @@ main
 
 
 
+### docker-compose  up -d
+
+# 这条cli如果敲击多遍之间，某个容器配置改变了，那么就会重建这个容器以及依赖于这个容器给i的容器。   对就是敲击怎么滴~
+
+如果修改docker-compose.yml，然后运行docker-compos up -d，只会影响修改的那个容器，也就是说只是重新创建修改以及受到修改影响的容器。举例
+
+1、Harbor的容器都依赖log
+
+所以只要修改了log，所有容器都会重建
+
+
+
+修改log的监听端口
+
+
+
+![image-20240704094632710](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094632710.png)
+
+
+
+为0.0.0.0
+
+![image-20240704094608050](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094608050.png)
+
+
+
+因为所有都依赖log
+
+![image-20240704094710592](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094710592.png)
+
+所以所有都重建
+
+![image-20240704094746843](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094746843.png)
+
+
+
+所有都依赖log的证据
+
+![image-20240704095040658](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704095040658.png)
+
+
+
+
+
+2、修改jobservice容器的target路径
+
+![image-20240704093853596](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704093853596.png)
+
+改为变量测试，也就是仅仅重启了受影响的容器
+
+![image-20240704094117112](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094117112.png)
+
+
+
+![image-20240704094227139](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094227139.png)
+
+
+
+同样修改变量的值，一样会重启该容器
+
+![image-20240704094539167](4-Docker-compose单机编排工具安装和实战案例.assets/image-20240704094539167.png)
+
+
+
+
+
 
 
 
