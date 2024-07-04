@@ -530,7 +530,7 @@ docker-compose up -d
 
 
 
-### 1、导入证书
+## 1、导入证书
 
 ![image-20240704162826164](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704162826164.png)
 
@@ -828,7 +828,7 @@ docker-compose up -d
 
 
 
-## 检查HA
+## 2、检查HA
 
 由于132这台改成域名+ssl，果然
 
@@ -926,15 +926,13 @@ curl --cacert /etc/pki/tls/certs/ca-bundle.crt https://your-secured-site.com
 
 然后要测试是否可以上传下载镜像，因为开了ssl
 
-### 测试上传下载image
+## 3、测试上传下载image
 
 
 
 
 
 
-
-## 测试上传下载
 
 
 
