@@ -847,9 +847,29 @@ docker-compose up -d
 同样要 安装ca.crt吧
 
 ```shell
+yum install -y ca-certificates  # 一般就有
+
+# 1√ 根证书到/etc/pki/ca-trust/source/anchors目录中远程就scp啦
 cp ca.crt /etc/pki/ca-trust/source/anchors/
 
+# 2√ 执行以下命令来更新 CA 证书存储，以便系统识别新的 CA 证书。
 update-ca-trust
+
+# 如果根证书是以*.pem结尾，需要转换成crt，然后再执行上述步骤。命令如下：
+openssl x509 -in ca.pem -inform PEM -out ca.crt
+
+
+============
+
+# 你可以使用 openssl 命令来验证 CA 证书是否已经成功安装。运行以下命令并检查输出是否包含你刚才添加的 CA 证书。
+# 这个也可以不做，直接用curl -L 域名 测试效果就行了，排查故障倒是分布检查需要的
+openssl verify -CAfile /etc/pki/tls/certs/ca-bundle.crt your_cert.pem
+
+
+#确保系统信任新的 CA 证书：在安装和更新 CA 证书后，系统应该信任由这个 CA 证书签署的所有证书。可以使用以下命令测试：
+# 其实没必要，直接curl -L 域名就行了，就能测试了，这个👇是没有做上面步骤的时候测试的吧，不管了。
+curl --cacert /etc/pki/tls/certs/ca-bundle.crt https://your-secured-site.com
+
 ```
 
 ![image-20240704180658320](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180658320.png)
