@@ -840,7 +840,7 @@ docker-compose up -d
 
 
 
-![image-20240704175801294](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704175801294.png)
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704175801294.png" alt="image-20240704175801294" style="zoom:40%;" />
 
 
 
@@ -878,17 +878,17 @@ curl --cacert /etc/pki/tls/certs/ca-bundle.crt https://your-secured-site.com
 
 测试
 
-![image-20240704180906267](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180906267.png)
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180906267.png" alt="image-20240704180906267" style="zoom:40%;" />
 
 
 
-![image-20240704180918115](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180918115.png)
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180918115.png" alt="image-20240704180918115" style="zoom:40%;" />
 
 
 
-![image-20240704180932000](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180932000.png)
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180932000.png" alt="image-20240704180932000" style="zoom:40%;" />
 
-![image-20240704180944129](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180944129.png)
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240704180944129.png" alt="image-20240704180944129" style="zoom:40%;" />
 
 
 
@@ -928,7 +928,226 @@ curl --cacert /etc/pki/tls/certs/ca-bundle.crt https://your-secured-site.com
 
 ## 3、测试上传下载image
 
+目前上传ok，但也要知道没有走https上传
 
+![image-20240705093559754](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705093559754.png)
+
+
+
+![image-20240705094005421](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705094005421.png)
+
+删除insecure-registries里的相关站点👆，让其走ssl。
+
+<img src="7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705094435690.png" alt="image-20240705094435690" style="zoom:50%;" />
+
+
+
+![image-20240705094449483](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705094449483.png)
+
+这个被拒绝了，要登入一下看看
+
+1、登入是要登入的，就是/root/.docker/config.json里有这个域名的信息
+
+2、重启了docker，harbor服务估计也有问题，80没了
+
+3、导入ca解决证书不信任问题，但是只是停留在curl层面就像PC打开浏览器的效果
+
+![image-20240705100059048](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705100059048.png)
+
+4、即使curl层面判断安全了，但是docker push login 还是不认。
+
+![image-20240705100116418](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705100116418.png)
+
+
+
+5、所以OS系统层面有系统层面的信任途径，docker有docker层面的信任途径
+
+OS就是上面3里面操作的
+
+docker层面的来搞一下👇
+
+```shell
+
+# 转换harbor的crt证书为cert后缀，docker识别crt文件为CA证书，cert为客户端证书，这里的客户端应该说的是CA颁发给客户端也就是server服务器的证书，而非docker的客户端。而且全文也只有ca证书和server的证书。
+# 不过其实这里是仅仅只是改了后缀而已，不存在转换一说
+openssl x509 -inform PEM -in harbor.ming.org.crt -out harbor.ming.org.cert
+
+# 所以仅仅等价于👇
+cp -a harbor.ming.org.crt harbor.ming.org.cert
+
+# 不相信可以对比两文件
+diff harbor.ming.org.crt harbor.ming.org.cert
+md5sum harbor.ming.org.crt harbor.ming.org.cert
+
+# 默认的配置文件路径里创建
+# 如果是docker就👇
+mkdir -pv /etc/docker/certs.d/harbor.ming.org/
+# 如果四containerd就👇
+mkdir -pv /etc/containerd/certs.d/harobr.ming.org/
+
+
+# 在docker客户端使用上面的证书文件
+# 注意，官方介绍还需要同时复制harbor.ming.org.key和ca.crt，实际不需要
+cp harbor.ming.org.cert 或 harbor.ming.org.crt  harbor.ming.org.key ca.crt /etc/docker/certs.d/harbor.ming.org/
+
+# 注意，实际只需要复制一个文件即可
+# ①实际操作1
+cp harbor.ming.org.crt /etc/docker/cert.d/harbor.ming.org/
+
+# 无需重启服务，docker客户端即可上传下载镜像
+# 新版如果无法登入，就重启docker服务
+# ②实际操作2 就行了
+systemctl restart docker
+```
+
+
+
+![image-20240705110728169](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705110728169.png)
+
+确实转的没意义👆
+
+
+
+![image-20240705111011758](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705111011758.png)
+
+就是要重启docker的，但是docker重启后，harbor估计就不正常了
+
+harbor是做成服务的，状态倒是OK，但是监听端口80没了![image-20240705111124788](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705111124788.png)
+
+不得已重启harbor吧
+
+![image-20240705111310351](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705111310351.png)
+
+
+
+然后就看到一开始提到的报错了
+
+```
+[root@realserver2 harbor]# docker login -u admin -p Harbor12345  harbor.ming.org
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Error response from daemon: Get "https://harbor.ming.org/v2/": Get "https://192.168.126.132/service/token?account=admin&client_id=docker&offline_token=true&service=harbor-registry": tls: failed to verify certificate: x509: cannot validate certificate for 192.168.126.132 because it doesn't contain any IP SANs
+
+```
+
+![image-20240705111453590](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705111453590.png)
+
+前文解决方法就是hostname写域名，但是这方法被我否掉了，因为HA没法做了。
+
+当然你说做了HA，SSL就配置在nginx就行了，单机不做SSL。也行~
+
+单机就hostname改为域名，然后不做HA，SSL也就OK了。
+
+但是我就要既做HA--hostname就得IP，然后就要ngnix和后面得nodes都做ssl呢，你说神经病。我呸
+
+就是要hostname写IP，正面解决这个报错，这个报错的本意还是证书里的信息选项不全。
+
+cannot validate certificate for 192.168.126.132 because it doesn't contain any IP SANs
+
+因为这个服务器证书里没有IP SANs信息，什么叫IP SANs
+
+Subject Alternative Name (SAN)   这个熟悉吧，所以加一行就行了
+
+```shell
+[ alt_names ]
+IP.1   = 192.168.126.132
+DNS.1  = *.ming.org
+DNS.2  = ming.org
+```
+
+将v3.ext优化为
+
+```shell
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1=*.ming.org
+DNS.2=ming.org
+```
+
+重新颁发server的证书，服务器的证书啊，一些文章称之为客户端证书，其实是指CA的客户端，CA为其客户颁发的证书。哦，这是一个意思。
+
+![image-20240705112316945](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705112316945.png)
+
+
+
+![image-20240705112445303](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705112445303.png)
+
+
+
+然后重新配置docker信任的ssl证书
+
+![image-20240705112746622](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705112746622.png)
+
+
+
+再看最终效果
+
+好了
+
+![image-20240705112805201](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705112805201.png)
+
+
+
+![image-20240705113011386](7-Docker私有仓库的安全加密HTTPS实现.assets/image-20240705113011386.png)
+
+
+
+搞定👆
+
+搞定啥了？搞定了
+
+1、HA
+
+2、nginx的ssl证书不要讲了
+
+3、HA环境下harbor.yml 的 hostname 必须写IP的情况下，每个单台harbor的ssl证书也做好了
+
+4、操作逻辑如下
+
+```shell
+1、curl 的 ssl 信任路径和加载
+2、docker的ssl信任路径和重启docker的必要性
+3、重启docker对harbor的服务起来没影响，但是对可怜的监听端口有影响，需要重启harbor
+4、harbor.yml这个初始化配置yml文件里hostname以后就记住必须写ip了
+5、报错如果是refuse拒绝，一般可能就是监听端口没了
+6、新版ssl要让浏览器也就是curl认可，需要SAN(subjectAltName)里有DNS1的域名，
+7、新版ssl要让docker push的时候不报错IP SAN，就要让SAN(subjectAltName)里有IP1信息，就是配置为ssl服务器的IP就行了
+差不多了，其他就是删改你乱七八糟但是又一个过程不拉的讨人厌的繁琐的操作记录了
+```
+
+
+
+
+
+
+
+# tomcat那篇弄完再来👇
+
+构建tomcat镜像运行jpress
+
+1、ubuntu基础镜像: ubuntu22.04
+
+2、jdk镜像: jdk-ubuntu22.04
+
+3、tomcat镜像: tomcat-jdk-ubuntu22.04
+
+4、最后一个jpress镜像也就是业务镜像: jpress-tomcat-jdk-ubuntu22.04
+
+​		1 2 3 就是都属于基础镜像，4就是业务镜像会存在改动，所以变动就做4步就行了。
+
+5、然后利用多阶段构建新开一个ubuntu然后二次构建，这样整体镜像就会小很多。如果是go不是java就直接用busybox来构建甚至用scratch空基础镜像来弄。 这步感觉要考虑插入上面哪一步里面，最好是第四步了。  # 就是能够脱离原环境到一个新的基础环境里运行得情况下就可以进行多阶段构建。还需要打几个常会用得检查工具 如 ping curl 
+
+7、上传到harbor上
+
+8、从另外一台主机下载 docker run jpress
+
+
+
+上传的jdk源码包，可以删掉，或者直接用ADD解压缩进去，但是还是有过程文件残留还是会占用空间，不一定能释放得掉，即使删掉一些，镜像可能也不会缩减。
 
 
 
