@@ -48,6 +48,12 @@ https://docs.jumpserver.org/zh/v4/quick_start/
 
 ![image-20240711094510299](2-JumpServer介绍和部署.assets/image-20240711094510299.png)
 
+其中2222端口是CLI窗口界面👇，登入需要先页面使用默认密码登入下也就是改一下密码，才能从cli登入。
+
+![image-20240715143414255](2-JumpServer介绍和部署.assets/image-20240715143414255.png)
+
+
+
 
 
 
@@ -129,7 +135,7 @@ docker run -d -p 3306:3306 --name mysql --restart always \
 # 验证，验证啥哦，容器里只有mysqld服务的软件，没有mysql这个客户端命令
 docker exec -it mysql sh
 mysql -p123456 -e 'show variables like "character%"'
-mysql -p123456 -e 'show variables like "collations%"'
+mysql -p123456 -e 'show variables like "collation%"'
 cat /var/lib/mysql/jumpserver/db.opt
 cat /etc/mysql/mysql.conf.d/mysqld.cnf
 cat /etc/mysql/conf.d/mysql.cnf
@@ -154,6 +160,10 @@ yum -y install mysql
 mysql -ujumpserver -p123456 -h192.168.126.133
 show databases;
 use jumpserver
+show variables like "character%";
+show variables like "collation%";
+select user,host from mysql.user;
+
 
 ```
 
@@ -172,8 +182,8 @@ docker run -d -p 6379:6379 --name redis --restart always redis:7.2.5
 
 ```shell
 yum -y install redis
-redis-cli -h a.b.c.d
-a.b.c.d>info
+redis-cli -h a.b.c.d   进入redis交互界面
+a.b.c.d>info   回车后显示👇
 # server
 redis_version:x.x.x
 redis_git_sha1:000000
@@ -211,47 +221,92 @@ else
 fi
 
 
-
+然后运行
 bash key.sh
 
+最后检测
 tail -n2 .bashrc  #获取两个变量的值
-SECRET_KEY=0a3ogsWlLXurREp8QQma0H8vN0E7BQsYX6ibUtRkcI5fhvvHqo
-BOOTSTRAP_TOKEN=EK1nBJ16PMJNw4SV
+SECRET_KEY=DiShVgRRBMEqM7kJ41ArYdvfVQ216amp3FUVxiHdxJNxTObkNU
+BOOTSTRAP_TOKEN=QZ54bEJphGpRhP1R
 ```
 
 
 
 ```shell
-docker run --name jms_all -d \
+docker run --name jms_all -d --restart always \
   -v /opt/jumpserver/core/data:/opt/jumpserver/data \
   -v /opt/jumpserver/koko/data:/opt/koko/data \
   -v /opt/jumpserver/lion/data:/opt/lion/data \
   -p 80:80 \
   -p 2222:2222 \
-  -e SECRET_KEY=0a3ogsWlLXurREp8QQma0H8vN0E7BQsYX6ibUtRkcI5fhvvHqo \
-  -e BOOTSTRAP_TOKEN=EK1nBJ16PMJNw4SV \
+  -e SECRET_KEY=DiShVgRRBMEqM7kJ41ArYdvfVQ216amp3FUVxiHdxJNxTObkNU \
+  -e BOOTSTRAP_TOKEN=QZ54bEJphGpRhP1R \
   -e LOG_LEVEL=ERROR \
-  -e DB_HOST=192.168.126.132 \  # 这里是jumpserver容器里连接db的ip，因为db容器端口暴露了，写宿主的IP就行
+  -e DB_HOST=192.168.126.133 \
   -e DB_PORT=3306 \
   -e DB_USER=jumpserver \
   -e DB_PASSWORD=123456 \
   -e DB_NAME=jumpserver \
-  -e REDIS_HOST=192.168.126.132 \  # 这里是jumpserver容器里连接redis的ip，因为暴露了，所以写宿主的IP就行
+  -e REDIS_HOST=192.168.126.133 \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD='' \
   --privileged=true \
-  jumpserver/jms_all:vxxx
+  jumpserver/jms_all:v3.10.12
 ```
 
 
 
-![image-20240711170805120](2-JumpServer介绍和部署.assets/image-20240711170805120.png)
+登入就行了，用户名密码 都是admin，这个和一键安装不一样，一键安装的密码是ChangeMe
+
+![image-20240715174202295](2-JumpServer介绍和部署.assets/image-20240715174202295.png)
 
 
 
 
 
-### 
+尝试复现一键安装的故障：
+
+1、首先停止本地的harbor
+
+systemctl stop  harbor
+
+
+
+2、然后复制官方的一键安装
+
+![image-20240715182554318](2-JumpServer介绍和部署.assets/image-20240715182554318.png)
+
+
+
+![image-20240715182955919](2-JumpServer介绍和部署.assets/image-20240715182955919.png)
+
+安装一如既往正常的，然后reboot看看是否会出现故障👆
+
+![image-20240715183021125](2-JumpServer介绍和部署.assets/image-20240715183021125.png)
+
+此时不出意外就会出现ssh登不上的情况，然后就可以找一下具体故障点了。
+
+不过可惜没有复现，猜测是harbor和jumpserver容器网络冲突了，导致eth0物理口的IP没有起来，当时是手动ifconfig down eth0 ifconfig up eth0后才能够ssh上去。
+
+明天复现看看吧，也可能是192.168.126.133那台docker run的时候run成了132了？不对啊，早就ctrl c了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
