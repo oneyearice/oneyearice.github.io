@@ -4067,9 +4067,257 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><b></b>&#x7B2C;6&#x8282; Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;</a></li></ul></div><h1 id="&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><a name="&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;6&#x8282; Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><b></b>&#x7B2C;6&#x8282; Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;</a></li><li><span class="title-icon "></span><a href="#&#x6982;&#x8FF0;"><b></b>&#x6982;&#x8FF0;</a></li><li><span class="title-icon "></span><a href="#haproxy&#x7B80;&#x4ECB;"><b></b>HAProxy&#x7B80;&#x4ECB;</a></li><li><span class="title-icon "></span><a href="#&#x5B89;&#x88C5;haproxy"><b></b>&#x5B89;&#x88C5;HAProxy</a></li><ul><li><span class="title-icon "></span><a href="#&#x7F16;&#x8BD1;&#x5B89;&#x88C5;"><b></b>&#x7F16;&#x8BD1;&#x5B89;&#x88C5;</a></li><ul><li><span class="title-icon "></span><a href="#1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;lua"><b></b>1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;Lua</a></li><li><span class="title-icon "></span><a href="#2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;haproxy"><b></b>2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;HAProxy</a></li></ul></ul></ul></div><h1 id="&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><a name="&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;6&#x8282;-haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;6&#x8282; Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;</h1>
+<h1 id="&#x6982;&#x8FF0;"><a name="&#x6982;&#x8FF0;" class="anchor-navigation-ex-anchor" href="#&#x6982;&#x8FF0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6982;&#x8FF0;</h1>
+<p>lvs  &#x56DB;&#x5C42;&#x4EE3;&#x7406;&#xFF0C;&#x8F6C;&#x53D1;&#x6027;&#x80FD;&#x5F3A;</p>
+<p>nginx 4&#x5C42;&#x548C;7&#x5C42;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;7&#x5C42;&#xFF0C;&#x4E14;&#x8F6C;&#x53D1;&#x6027;&#x80FD;&#x4E00;&#x822C;&#xFF1B;nginx&#x5E94;&#x8BE5;&#x8BF4;&#x662F;&#x4E13;&#x4E1A;&#x7684;web&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>HAproxy&#x90FD;&#x884C;&#xFF0C;&#x90FD;&#x662F;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;&#x8FD8;&#x6709;WEB&#x754C;&#x9762;&#x3002;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722092317002.png" alt="image-20240722092317002" style="zoom:50%;"></p>
+<p>HAproxy&#x7684;HA&#x8FD8;&#x5F97;&#x9760;keepalive&#x90A3;&#x4E48;HAproxy&#x7684;HA&#x662F;&#x5565;&#x5462;&#xFF0C;&#x662F;&#x540E;&#x7AEF;&#x8C03;&#x5EA6;&#x7684;&#x5197;&#x4F59;--&#x662F;&#x540E;&#x7AEF;&#x8282;&#x70B9;&#x7684;HA&#x8C03;&#x5EA6;&#x3002;</p>
+<p>HAProxy&#x672C;&#x8EAB;&#x7684;HA&#x8FD8;&#x662F;&#x7528;keepalive&#x6765;&#x505A;&#x7684;&#x3002;LVS&#x7684;HA&#x540C;&#x6837;&#x4E5F;&#x662F;keepalive&#xFF0C;nginx&#x7684;ha&#x4E5F;&#x8FD8;&#x662F;keepalive&#x3002;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722094323381.png" alt="image-20240722094323381"></p>
+<p>&#x56FE;&#x4E2D;HAProxy&#x53EF;&#x4EE5;&#x7528;LVS&#x4EE3;&#x66FF;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x6765;&#x505A;4&#x5C42;&#x8F6C;&#x53D1;&#xFF1B;&#x56FE;&#x4E2D;KA&#x5C31;&#x662F;keepalive&#x7F29;&#x5199;&#x3002;</p>
+<p>&#x53F3;&#x8FB9;&#x7684;nginx &#x5957;nginx/tomcat&#xFF0C;&#x524D;&#x9762;&#x7684;nginx&#x5C31;&#x662F;&#x505A;7&#x5C42;&#x8F6C;&#x53D1;&#xFF0C;&#x540E;&#x9762;&#x7684;nginx&#x5C31;&#x662F;web&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x56FE;&#x5C31;&#x662F;&#x53C2;&#x8003;&#x4E00;&#x4E0B;</p>
+<h1 id="haproxy&#x7B80;&#x4ECB;"><a name="haproxy&#x7B80;&#x4ECB;" class="anchor-navigation-ex-anchor" href="#haproxy&#x7B80;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>HAProxy&#x7B80;&#x4ECB;</h1>
+<p>LVS&#xFF1A; 4&#x5C42;&#x8F6C;&#x53D1;&#x6548;&#x7387;&#x6700;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;c---lvs----ser,    lvs&#x5728;&#x4E2D;&#x95F4;&#x662F;&#x4E0D;&#x4EA7;&#x751F;&#x4E24;&#x4E2A;&#x6BB5;tcp&#x7684;&#x3002;</p>
+<p>HAProxy&#xFF1A;4&#x5C42;&#x8F6C;&#x53D1;&#x6548;&#x7387;&#x867D;&#x7136;&#x6BD4;nginx&#x9AD8;&#xFF0C;&#x4F46;&#x662F;&#x6BD4;lvs&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;c---HAproxy----ser&#xFF0C;HAProxy&#x5728;&#x4E2D;&#x95F4;&#x662F;&#x62C6;&#x5305;&#x540E;&#x91CD;&#x65B0;&#x4E0E;server&#x5EFA;&#x7ACB;tcp&#x4E86;&#xFF0C;&#x524D;&#x540E;&#x662F;&#x4E24;&#x6BB5;&#x8FDE;&#x63A5;&#x3002;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722095457236.png" alt="image-20240722095457236"></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;HAPorxy&#x8F6C;&#x53D1;&#x7684;&#x6D41;&#x91CF;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;4&#x5C42;&#x8FD8;&#x662F;7&#x5C42;&#xFF0C;&#x90FD;&#x662F;&#x6539;&#x53D8;&#x4E86;&#x6570;&#x636E;&#x5305;&#x7684;&#x6E90;IP&#x5730;&#x5740;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x548C;nginx&#x4E00;&#x6837;&#x8FD8;&#x8981;&#x505A;&#x771F;&#x5B9E;IP&#x7684;&#x900F;&#x4F20;&#x3002;</p>
+<p>&#x56DB;&#x5C42;</p>
+<p>LVS: Linux Virtual Server</p>
+<p>Nginx: 1.9&#x7248;&#x672C;&#x4E4B;&#x540E; &#x901A;&#x8FC7; stream&#x6A21;&#x5757;&#x5B9E;&#x73B0;</p>
+<p>HAProxy&#xFF1A;High Availability Proxy  mode tcp   &#x4E0D;&#x652F;&#x6301;udp?</p>
+<p>&#x4E03;&#x5C42;</p>
+<p>HAProxy &#x901A;&#x8FC7;  mode http &#x6307;&#x4EE4;</p>
+<p>Nginx &#x76F4;&#x63A5;&#x5199;&#x5728; http&#x6A21;&#x5757;</p>
+<p>&#x5E94;&#x7528;&#x573A;&#x666F;</p>
+<p>&#x56DB;&#x5C42;&#xFF1A;Redis mysql rabbitmq memcached&#x7B49;</p>
+<p>&#x4E03;&#x5C42;&#xFF1A;nginx tomcat apache php &#x56FE;&#x7247;&#x3001;&#x52A8;&#x9759;&#x5206;&#x79BB;&#x3001;api&#x7B49;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722105047767.png" alt="image-20240722105047767"></p>
+<p>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;GUI&#x5E26;&#x6765;&#x7684;&#x597D;&#x5904;&#x3002;</p>
+<p>&#x5B98;&#x7F51;</p>
+<p>1&#x3001;&#x514D;&#x8D39;&#x793E;&#x533A;&#x7248;</p>
+<p><a href="https://www.haproxy.org/" target="_blank">https://www.haproxy.org/</a></p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722105910443.png" alt="image-20240722105910443" style="zoom:50%;"></p>
+<p>&#x7528;TLS&#xFF0C;stable&#x522B;&#x7528;&#xFF0C;&#x53F7;&#x79F0;&#x7A33;&#x5B9A;&#x4E5F;&#x522B;&#x7528;&#x3002;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722111329003.png" alt="image-20240722111329003"></p>
+<p>2&#x3001;&#x6536;&#x8D39;&#x4F01;&#x4E1A;&#x7248;</p>
+<p><a href="https://www.haproxy.com" target="_blank">https://www.haproxy.com</a></p>
+<h1 id="&#x5B89;&#x88C5;haproxy"><a name="&#x5B89;&#x88C5;haproxy" class="anchor-navigation-ex-anchor" href="#&#x5B89;&#x88C5;haproxy"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B89;&#x88C5;HAProxy</h1>
+<p>&#x7EA2;&#x5E3D;&#x7CFB;&#x5217; yum&#x76F4;&#x63A5;&#x5C31;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;&#xFF0C;&#x4F46;&#x662F;&#x7248;&#x672C;&#x8F83;&#x4F4E;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722113736828.png" alt="image-20240722113736828"></p>
+<p>&#x5BB9;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x662F;&#x505A;&#x8FB9;&#x7F18;&#x7F51;&#x7EDC;&#x8F6C;&#x53D1;&#x7684;&#xFF0C;&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#xFF0C;&#x5BB9;&#x5668;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x6709;&#x6027;&#x80FD;&#x635F;&#x8017;&#x7684;&#x3002;</p>
+<p>&#x65B0;&#x7248;&#x672C;&#x7684;&#x5B89;&#x88C5;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722114906752.png" alt="image-20240722114906752"></p>
+<p>debian/ubuntu&#x6709;&#x76F4;&#x63A5;&#x7684;&#x5B89;&#x88C5;&#x5305;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x8981;&#x4E48;&#x662F;&#x5BB9;&#x5668;&#xFF0C;&#x8981;&#x4E48;&#x5C31;&#x662F;&#x81EA;&#x5DF1;&#x7F16;&#x8BD1;&#x4E86;</p>
+<h2 id="&#x7F16;&#x8BD1;&#x5B89;&#x88C5;"><a name="&#x7F16;&#x8BD1;&#x5B89;&#x88C5;" class="anchor-navigation-ex-anchor" href="#&#x7F16;&#x8BD1;&#x5B89;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7F16;&#x8BD1;&#x5B89;&#x88C5;</h2>
+<h3 id="1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;lua"><a name="1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;lua" class="anchor-navigation-ex-anchor" href="#1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;lua"><i class="fa fa-link" aria-hidden="true"></i></a>1&#x3001;&#x524D;&#x7F6E;&#x8F6F;&#x4EF6;Lua</h3>
+<p><a href="https://www.lua.org/start.html" target="_blank">https://www.lua.org/start.html</a></p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722134710530.png" alt="image-20240722134710530"></p>
+<pre><code class="lang-shell">lua -v
+
+yum install -y gcc readline-devel
+
+
+curl -L -R -O https://www.lua.org/ftp/lua-5.4.7.tar.gz
+tar zxf lua-5.4.7.tar.gz -C /usr/local/src 
+cd lua-5.4.7
+make all test
+make install  # &#x5B98;&#x7F51;&#x4E0A;&#x7ADF;&#x7136;&#x6CA1;&#x6709;&#x8FD9;&#x4E00;&#x6761;...
+
+
+
+# -R&#x5C31;&#x662F;&#x65F6;&#x95F4;&#x8BBE;&#x7F6E;&#x4E3A;remote-time&#x5C31;&#x662F;&#x5F80;&#x4E0A;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5F53;&#x524D;&#x672C;&#x5730;&#x7684;&#x65F6;&#x95F4;
+[root@realserver2 ~]# curl --help all |grep -E &apos;^ .*-R&apos;
+ -R, --remote-time   Set the remote file&apos;s time on the local output
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x5C31;&#x662F;&#x6709;R&#x6CA1;&#x6709;R&#x7684;&#x533A;&#x522B;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722135352027.png" alt="image-20240722135352027"></p>
+<p>&#x8FD9;&#x5C31;&#x5B89;&#x88C5;&#x597D;&#x4E86;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722151005154.png" alt="image-20240722151005154"></p>
+<h3 id="2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;haproxy"><a name="2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;haproxy" class="anchor-navigation-ex-anchor" href="#2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;haproxy"><i class="fa fa-link" aria-hidden="true"></i></a>2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;HAProxy</h3>
+<p><strong>&#x7EA2;&#x5E3D;&#x7CFB;&#x5217;:</strong></p>
+<pre><code class="lang-shell"># HAProxy 1.8&#x53CA;1.9&#x7248;&#x672C;&#x7F16;&#x8BD1;&#x53C2;&#x6570;&#xFF1A;
+make ARCH=x86_64 TARGET=linux2628 USE_PCRE=1 USE_OPENSSL=1 USE_ZLIB=1 USE_SYSTEMD=1 USE_CPU_AFFINITY=1 PREFIX=/usr/local/haproxy
+
+
+
+# HAProxy 2.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x7F16;&#x8BD1;&#x53C2;&#x6570;&#xFF1A;
+yum -y install gcc openssl-devel pcre-devel systemd-devel zlib-devel
+curl -LRO http://git.haproxy.org/?p=haproxy-3.0.git
+tar xvf haproxy-3.x.x.tar.gz -C /usr/local/src
+cd /usr/local/src/haproxy-3.x.x/
+
+# &#x67E5;&#x770B;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;
+ll Makefile
+cat READEME
+CAT INSTALL
+
+# &#x53C2;&#x8003;INSTALL&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;
+make clean
+
+# &#x6CE8;&#x610F;&#x5982;&#x679C;&#x5C06;&#x6765;&#x9700;&#x8981;&#x88AB;Prometheus&#x76D1;&#x63A7;&#x7684;&#x8BDD;&#x5C31;&#x8981;&#x52A0;&#x4E0A;USE_PROMEX=1
+make -j 4 ARCH=X86_64 TARGET=linux-glibc USE_PCRE=1 USE_OPENSSL=1 USE_ZLIB=1 USE_SYSTEMD=1 USE_PROMEX=1 USE_LUA=1 LUA_INC=/usr/local/src/lua-5.4.7/src/ LUA_LIB=/usr/local/src/lua-5.4.7/src/
+
+make install PREFIX=/apps/haproxy
+
+ln -s /apps/haproxy/sbin/haproxy /usr/sbin/
+
+tree /apps/haproxy/
+
+
+# &#x6E90;&#x7801;&#x5305;&#x5B89;&#x88C5;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5F04;&#x4E00;&#x4E2A;services&#x6587;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA;&#x8D77;&#x9001;services&#x7684;cfg&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+vim /usr/lib/systemd/system/haproxy.service
+[Unit]
+Description=HAProxy Load Balancer
+After=syslog.target network.target
+
+# ExecStarPre&#x662F;&#x4E0E;&#x542F;&#x52A8;&#xFF0C;&#x5C31;&#x662F;&#x542F;&#x52A8;&#x524D;&#x7684;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x884C;&#x5C31;&#x4E0D;&#x4F1A;&#x542F;&#x52A8;&#x4E86;
+# USR2&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;haproxy&#x62FF;&#x6765;reload&#x4E86;&#x5E94;&#x8BE5;
+[Service]
+ExecStartPre=/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -c -q
+ExecStart=/usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /var/lib/haproxy/haproxy.pid
+ExecReload=/bin/kill -USR2 $MAINPID
+LimitNOFILE=100000
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+-------------------------
+
+# &#x7F16;&#x5199;haproxy&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+mkdir /etc/haproxy
+
+vim /etc/haproxy/haproxy.cfg
+global
+    maxconn 100000
+    chroot /apps/haproxy
+    stats socket /var/lib/haproxy/haproxy.sock mode 600 level admin
+    #uid 99
+    #gid 99
+    user haproxy
+    group haproxy
+    daemon
+    #nbproc 4
+    #cpu-map 1 0
+    #cpu-map 2 1
+    #cpu-map 3 2
+    #cpu-map 4 3
+    pidfile /var/lib/haproxy/haproxy.pid
+    log 127.0.0.1 local2 info
+
+defaults
+    option http-keep-alive
+    option forwardfor
+    maxconn 100000
+    mode http
+    timeout connect 300000ms
+    timeout client     300000ms
+    timeout server    300000ms
+
+listen stats
+    mode http
+    bind 0.0.0.0:9999
+    stats enable
+    log global
+    stats uri     /haproxy-status
+    stats auth    haadmin:123456
+
+listen web_port
+    bind 0.0.0.0:80
+    mode http
+    log global
+    server web1 127.0.0.1:8080 check inter 3000 fall 2 rise 5
+
+------------------------------------------------
+# &#x51C6;&#x5907;socket&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+# mkdir /var/lib/haproxy  # &#x4E0B;&#x9762;useradd&#x7684;&#x65F6;&#x5019;&#x5E26;&#x4E0A;-m&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x7528;&#x6237;&#x548C;&#x7528;&#x6237;&#x7EC4;&#x8FD8;&#x7CBE;&#x786E;&#x5230;&#x4E86;haproxy&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8981;&#x6572;&#x4E86;
+
+# &#x521B;&#x5EFA;&#x7528;&#x6237;&#x548C;&#x7528;&#x6237;&#x7EC4;
+useradd -r -s /sbin/nologin haproxy -d /var/haproxy -m  # -d /var/haproxy&#x672C;&#x6765;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#xFF0C;&#x4F46;&#x662F;-m&#x52A0;&#x4E0A;&#x53BB;&#x5C31;&#x5F88;&#x5B8C;&#x7F8E;&#x4E86;&#xFF0C;&#x554A;&#xFF0C;&#x4F60;&#x8BF4;&#x4E0D;&#x7528;-r &#xFF0C;&#x4E5F;&#x4E0D;&#x7528;-m&#xFF0C;&#x90A3;&#x4E0D;&#x884C;&#xFF0C;&#x90A3;&#x6837;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x90AE;&#x7BB1;&#x4E86;&#x3002;&#x8FD9;&#x4E5F;&#x7B97;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7528;&#x6CD5;&#x4E86;&#x5427;&#x3002;
+
+# &#x68C0;&#x67E5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8BED;&#x6CD5;
+haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# &#x52A0;&#x8F7D;service&#x6587;&#x4EF6;
+systemctl daemon-reload
+
+# &#x542F;&#x52A8;
+systemctl enable --now haproxy
+</code></pre>
+<p>&#x8FC7;&#x7A0B;&#x8BB0;&#x5F55;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722155203285.png" alt="image-20240722155203285"></p>
+<p>&#x62A5;&#x9519;&#x5904;&#x7406;&#xFF0C;make&#x7684;&#x62A5;&#x9519;&#xFF0C;&#x4E00;&#x822C;&#x5C31;&#x662F;&#x8981;&#x5B89;&#x88C5;xxx-dev</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722161119189.png" alt="image-20240722161119189"></p>
+<p>&#x53D1;&#x73B0;&#x5E76;&#x4E0D;&#x662F;dev&#x800C;&#x662F;zlib-devel</p>
+<p>&#x6700;&#x540E;&#x5B89;&#x88C5;oK&#xFF0C;&#x1F447;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x3002;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722163511333.png" alt="image-20240722163511333" style="zoom:50%;"></p>
+<p>&#x5C31;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5199;&#x4E2A;&#x8F6F;&#x8FDE;&#x63A5;&#x5C31;&#x884C;&#x3002;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x5F88;&#x591A;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x5219;&#x5C06;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x76EE;&#x5F55;&#x52A0;&#x5165;PATH&#x53D8;&#x91CF;&#x3002;</p>
+<p>PATH&#x53D8;&#x91CF;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722163755583.png" alt="image-20240722163755583"></p>
+<p>&#x7136;&#x540E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5728;&#x6E90;&#x7801;&#x5305;&#x91CC;&#x7684;example&#x76EE;&#x5F55;&#x4E0B;&#x6709;&#x6848;&#x4F8B;&#x7684;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722170025348.png" alt="image-20240722170025348"></p>
+<p>&#x7EA0;&#x9519; -r -d&#x5C31;&#x662F;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#xFF1F;&#x662F;&#x7684;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x5BB6;&#x76EE;&#x5F55;&#x8FD8;&#x662F;mail&#x90FD;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x5FC5;&#x8981;-d&#x1F447;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722173729453.png" alt="image-20240722173729453"></p>
+<p>kill USR2&#x662F;&#x5565;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722181917370.png" alt="image-20240722181917370"></p>
+<p>&#x6709;&#x70B9;&#x5C0F;&#x95EE;&#x9898;&#x597D;&#x50CF;</p>
+<p><img src="6-Haproxy&#x4ECB;&#x7ECD;&#x548C;&#x591A;&#x79CD;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;.assets/image-20240722185347002.png" alt="image-20240722185347002"></p>
+<p><strong>ubuntu:</strong></p>
+<pre><code class="lang-shell"># &#x5B89;&#x88C5;&#x57FA;&#x7840;&#x547D;&#x4EE4;&#x53CA;&#x7F16;&#x8BD1;&#x4F9D;&#x8D56;&#x73AF;&#x5883;
+apt update &amp;&amp; apt -y install gcc make libssl-dev libpcre3 libpcre3-dev zlib1g-dev libreadline-dev libsystemd-dev
+
+# &#x5B89;&#x88C5;Lua&#x65B9;&#x6CD5;1&#xFF1A;&#x5305;&#x5B89;&#x88C5;Lua
+apt update &amp;&amp; apt -y install liblua5.x-dev
+
+# &#x5B89;&#x88C5;Lua&#x65B9;&#x6CD5;2&#xFF1A;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Lua
+cd /usr/local/src
+wget https://www.lua.org/ftp/lua-5.4.7.tar.gz
+tar zxf lua-5.4.7.tar.gz -C /usr/local/src 
+cd lua-5.4.7
+make all test
+make install  # &#x5B98;&#x7F51;&#x4E0A;&#x7ADF;&#x7136;&#x6CA1;&#x6709;&#x8FD9;&#x4E00;&#x6761;...
+
+
+# &#x6216;&#x5B89;&#x88C5;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;Lua
+#&#x1F447; https://haproxy.debian.net/#distribution=Ubuntu&amp;release=jammy&amp;version=3.0
+apt update
+# apt-get install --no-install-recommends software-properties-common
+# add-apt-repository ppa:vbernat/haproxy-3.0
+# apt-get install haproxy=3.0.\*
+
+
+# HAProxy 1.8&#x53CA;1.9&#x7248;&#x672C;&#x7F16;&#x8BD1;&#x53C2;&#x6570;&#xFF1A;
+make ARCH=x86_64 TARGET=linux2628 USE_PCRE=1 USE_OPENSSL=1 USE_ZLIB=1 USE_SYSTEMD=1 USE_CPU_AFFINITY=1 PREFIX=/usr/local/haproxy
+
+
+
+# HAProxy 2.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x7F16;&#x8BD1;&#x53C2;&#x6570;&#xFF1A;
+yum -y intall gcc openssl-devel pcre-devel systemd-devel
+tar xvf haproxy-3.x.x.tar.gz -C /usr/local/src
+cd /usr/local/src/haproxy-3.x.x/
+
+# &#x67E5;&#x770B;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;
+ll Makefile
+cat READEME
+CAT INSTALL
+
+# &#x53C2;&#x8003;INSTALL&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;
+make clean
+
+make -j 4 ARCH=X86_64 TARGET=linux-glibc USE_PCRE=1 USE_OPENSSL=1 USE_ZLIB=1 USE_SYSTEMD=1 USE_PROMEX=1 USE_LUA=1 LUA_INC=/usr/local/src/lua-5.4.7/src/ LUA_LIB=/usr/local/src/lua-5.4.7/src/
+
+make install PREFIX=/apps/haproxy
+
+ln -s /apps/haproxy/sbin/haproxy /usr/sbin/
+
+tree /apps/haproxy/
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-03-19 11:16:11
+2024-07-22 18:54:09
 </span></footer>
                                 
                                 </section>
@@ -4109,7 +4357,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第6节 Haproxy介绍和多种安装方法","level":"1.41.5.6","depth":3,"previous":{"title":"第5节 JumpServer管理数据库资产和批量导入导出","level":"1.41.5.5","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/5-JumpServer管理数据库资产和批量导入导出.md","ref":"./1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/5-JumpServer管理数据库资产和批量导入导出.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/6-Haproxy介绍和多种安装方法.md","mtime":"2024-03-19T03:16:11.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-07-19T10:58:51.490Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第6节 Haproxy介绍和多种安装方法","level":"1.41.5.6","depth":3,"previous":{"title":"第5节 JumpServer管理数据库资产和批量导入导出","level":"1.41.5.5","depth":3,"path":"1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/5-JumpServer管理数据库资产和批量导入导出.md","ref":"./1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/5-JumpServer管理数据库资产和批量导入导出.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"1-容器技术和堡垒机JumpServer实战/5-Docker资源限制和堡垒机JumpServer/6-Haproxy介绍和多种安装方法.md","mtime":"2024-07-22T10:54:09.007Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-07-22T10:55:26.307Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
