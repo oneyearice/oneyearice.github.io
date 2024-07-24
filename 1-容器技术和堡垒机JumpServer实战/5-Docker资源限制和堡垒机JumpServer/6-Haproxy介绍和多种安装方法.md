@@ -662,9 +662,31 @@ start_haproxy
 
 ![image-20240723113435599](6-Haproxy介绍和多种安装方法.assets/image-20240723113435599.png)
 
+
+
 ```powershell
-for /L  %i in (1,1,10) do @dig hd.zuixiaoyao.com +short |findstr "43" && timeout /t 1 >nul
+for /L  %i in (1,1,10) do @dig hd.zxxxxxx.com +short |findstr "43" && timeout /t 1 >nul
 ```
+
+
+
+
+
+# 工作案例-jumpserver使用注意
+
+
+
+我是直接把jumpserver挂外网的，直接访问是jumpserver做了安全限制，报错如下
+
+<img src="6-Haproxy介绍和多种安装方法.assets/image-20240723174150447.png" alt="image-20240723174150447" style="zoom:60%;" />
+
+处理方法如下
+
+![image-20240723174321261](6-Haproxy介绍和多种安装方法.assets/image-20240723174321261.png)
+
+再重启就行了
+
+![image-20240723174341437](6-Haproxy介绍和多种安装方法.assets/image-20240723174341437.png)
 
 
 
