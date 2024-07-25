@@ -1,4 +1,0 @@
-[0;36minfo:[0m 18 plugins are installed 
-[0;36minfo:[0m 15 explicitly listed 
-
-[0;31mError: Couldn't locate plugins "local-video", Run 'gitbook install' to install plugins from registry.[0m
