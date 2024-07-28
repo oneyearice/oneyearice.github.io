@@ -1,17 +1,14 @@
-"½øÈëD:\oneyearice.github.ioÄ¿Â¼" 
-..\gitbook\README.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\SUMMARY.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\book.json
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\Ğò.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\summary_script.exe
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-[master ee3b3415d] publish_2024-07-28_16_21_36
- 2 files changed, 16 insertions(+)
- create mode 100644 log_2024-07-28_16_21_36
-branch 'master' set up to track 'origin/master'.
+[0;36minfo:[0m 18 plugins are installed 
+[0;36minfo:[0m 14 explicitly listed 
+[0;36minfo:[0m loading plugin "expandable-chapters"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "search-plus"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "splitter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "github"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "donate"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "emphasize"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "include-codeblock"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "tbfed-pagefooter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "back-to-top-button"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "anchor-navigation-ex"... [0;31mERROR[0m
+
+[0;31mPluginError: Error with plugin "anchor-navigation-ex": Cannot find module 'cheerio'[0m
