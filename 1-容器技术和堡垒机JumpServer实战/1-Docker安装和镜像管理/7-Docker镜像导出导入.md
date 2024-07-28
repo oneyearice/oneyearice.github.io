@@ -96,7 +96,7 @@ load的时候👆-i或<使用TDIN都行，不过此时load会导致dangling镜�
 
 ![image-20240411133601695](7-Docker镜像导出导入.assets/image-20240411133601695.png)
 
-```
+```shell
 docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` -o  all_images.tar
 
 
