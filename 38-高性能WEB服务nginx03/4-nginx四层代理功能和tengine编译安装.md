@@ -856,9 +856,7 @@ net.ipv4.tcp_max_orphans=262114
 
 
 
-
-
-# zabbix-agent 监控记录
+# 工作案例-zabbix-agent 监控记录
 
 
 
@@ -925,4 +923,64 @@ agent上测试👇，其实agent上最好写成这种，但是server上我不会
 **然后agent里配置文件Server要写的，不然tcp 10050 会瞬断**
 
 ![image-20240529154912400](4-nginx四层代理功能和tengine编译安装.assets/image-20240529154912400.png)
+
+
+
+
+
+# 工作案例-fail2ban
+
+
+
+1、依赖firewalld
+
+会用到的cli
+
+```shell
+firewall-cmd --list all
+
+# icmp要放了
+firewall-cmd --zone=public --add-rich-rule='rule protocol value="icmp" accept' --permanent
+
+
+# zabbix-agent 被动10050要放了
+firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" port port="10050" protocol="tcp" accept' --permanent
+
+firewall-cmd --reload
+
+```
+
+
+
+2、安装配置fail2ban
+
+
+
+```shell
+yum -y install fail2ban
+
+cd /etc/fail2ban/
+
+# 配置文件里只需要在sshd下添加一行 enabled = true 就行
+# 其他惩罚机制也在这个conf文件里，默认就好了。
+vim jail.conf
+...
+[sshd]
+
+enabled = true
+...
+
+# 注意fail2ban生效本质上是在firewalld里添加一条deny来着
+systemclt restart fail2ban
+
+
+```
+
+
+
+![image-20240729144821728](4-nginx四层代理功能和tengine编译安装.assets/image-20240729144821728.png)
+
+
+
+
 
