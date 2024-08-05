@@ -9,6 +9,11 @@
 [0;36minfo:[0m loading plugin "include-codeblock"... [0;32mOK[0m 
 [0;36minfo:[0m loading plugin "tbfed-pagefooter"... [0;32mOK[0m 
 [0;36minfo:[0m loading plugin "back-to-top-button"... [0;32mOK[0m 
-[0;36minfo:[0m loading plugin "anchor-navigation-ex"... [0;31mERROR[0m
-
-[0;31mPluginError: Error with plugin "anchor-navigation-ex": Cannot find module 'cheerio'[0m
+[0;36minfo:[0m loading plugin "anchor-navigation-ex"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "ace"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "highlight"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "fontsettings"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "theme-default"... [0;32mOK[0m 
+[0;36minfo:[0m found 675 pages 
+[0;36minfo:[0m found 13542 asset files 
+[0;33mwarn:[0m "options" property is deprecated, use config.get(key) instead 
