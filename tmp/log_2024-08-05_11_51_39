@@ -16,3 +16,8 @@
 [0;36minfo:[0m loading plugin "theme-default"... [0;32mOK[0m 
 [0;36minfo:[0m found 675 pages 
 [0;36minfo:[0m found 13559 asset files 
+[0;33mwarn:[0m "options" property is deprecated, use config.get(key) instead 
+[0;31merror:[0m error while generating page "1-容器技术和堡垒机JumpServer实战/1-Docker安装和镜像管理/7-Docker镜像导出导入.md": 
+
+[0;31mTemplate render error: (D:\gitbook\1-容器技术和堡垒机JumpServer实战\1-Docker安装和镜像管理\7-Docker镜像导出导入.md) [Line 100, Column 50]
+  unexpected token: .[0m
