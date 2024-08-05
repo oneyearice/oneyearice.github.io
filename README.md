@@ -77,3 +77,31 @@ git clone https://github.com/oneyearice/oneyearice.github.io.git
 
 若优化，pull就上面的1 2 3，push就是4
 
+
+
+```shell
+使用nvm来管理nodejs两个版本
+1、我要用gitbook，所以要用nodejs v12
+2、我要用ES6 Module 好像nodejs v12 也行的。。。哈哈
+```
+
+
+
+玩gitbook要注意两个点一个就是js的修改
+
+C:\Users\oneye\AppData\Roaming\npm\node_modules\gitbook-cli\node_modules\npm\node_modules\graceful-fs
+
+![image-20240805115037059](README.assets/image-20240805115037059.png)
+
+还有一个就是nodes 的版本要低的，所以采用nvm来管理。
+
+![image-20240805114822484](README.assets/image-20240805114822484.png)
+
+
+
+参考
+
+https://www.cnblogs.com/eternalnight/p/15192585.html
+
+https://www.cnblogs.com/hacv/p/14311409.html
+
