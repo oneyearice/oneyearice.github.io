@@ -96,7 +96,7 @@ load的时候👆-i或<使用TDIN都行，不过此时load会导致dangling镜�
 
 ![image-20240411133601695](7-Docker镜像导出导入.assets/image-20240411133601695.png)
 
-```shell
+```bash
 docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` -o  all_images.tar
 
 
@@ -106,6 +106,8 @@ docker save `docker images --format "{{.Repository}}:{{.Tag}}"` |gzip > all_imag
 
 docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` |gzip > all_images_end.tar.gz
 ```
+
+
 
 因为压缩要时间的，所以你自己选择具体cli👆
 
