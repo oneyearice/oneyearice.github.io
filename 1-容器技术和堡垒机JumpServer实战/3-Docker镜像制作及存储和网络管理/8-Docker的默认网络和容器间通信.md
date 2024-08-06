@@ -54,10 +54,7 @@ docker0相当于一个交换机，eth0--veth   都桥接上去。这样容器之
 
 但要注意：会导致 进入多层 bash，如果操作不当
 
-```shell
-docker inspect --format '{{.State.Pid}}' <container_id>
-nsenter -t <PID> -n ip link
-```
+![image-20240806104254903](8-Docker的默认网络和容器间通信.assets/image-20240806104254903.png)
 
 ![image-20240528153501437](8-Docker的默认网络和容器间通信.assets/image-20240528153501437.png)
 

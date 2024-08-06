@@ -96,16 +96,7 @@ load的时候👆-i或<使用TDIN都行，不过此时load会导致dangling镜�
 
 ![image-20240411133601695](7-Docker镜像导出导入.assets/image-20240411133601695.png)
 
-```bash
-docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` -o  all_images.tar
-
-
-# 推荐这个吧👇，虽然uniq那种也不错
-docker save `docker images --format "{{.Repository}}:{{.Tag}}"` |gzip > all_images.tar.gz
-
-
-docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` |gzip > all_images_end.tar.gz
-```
+![image-20240806103919786](7-Docker镜像导出导入.assets/image-20240806103919786.png)
 
 
 
@@ -117,13 +108,9 @@ docker save `docker images --format "{{.Repository}}" |sort |uniq |xargs` |gzip 
 
 综上所述，推荐的cli是
 
-```shell
-docker save `docker images --format "{{.Repository}}"` |sort |uniq |gzip > all_images.tar.gz          # 和上图的区别就是省略掉了xargs，不用也一样的效果
+![image-20240806103852285](7-Docker镜像导出导入.assets/image-20240806103852285.png)
 
-👆上面的cli，有错误，反引号写错了，导致sort cpu占用率100% 无限永久卡住了，修改后👇就恢复了
 
-docker save `docker images --format "{{.Repository}}" |sort |uniq` |gzip > all_images_no_xargs.tar.gz       # 这个就行了★
-```
 
 sort卡住不动的CPU👇
 

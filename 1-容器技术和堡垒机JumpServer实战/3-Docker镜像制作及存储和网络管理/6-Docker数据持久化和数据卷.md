@@ -357,21 +357,17 @@ docker build ok，run的时候没有达到预期的排错
 
 2、docker ps -a看看里面的信息，特别是CMD，不过看不全，没事用
 
+![image-20240806104053135](6-Docker数据持久化和数据卷.assets/image-20240806104053135.png)
+
+由于又报错了
+
+![image-20240806104143401](6-Docker数据持久化和数据卷.assets/image-20240806104143401.png)
+
+所以上面说的 <img src="6-Docker数据持久化和数据卷.assets/image-20240806104205927.png" alt="image-20240806104205927" style="zoom:50%;" />
+
+还是改为截图吧
 
 
-```shell
-docker inspect web3-run -f '{{.Args}}'    # 这种格式一定不能写到代码块外面，会导致gitbook提交报错👇就是编码
-
-File "gitbookScripts\summary\summary_script.py", line 33, in <module>UnicodeDecodeError: 'gbk' codec can't decode byte Ox80 in position 1204: illegal multibyte sequence[20864] Failed to execute script summary_script
-
-
-还有时间格式也要去掉冒号，否则推送的脚本里的重定向日志文件名名称会有故障。
-nowTime = datetime.now().strftime('%Y-%m-%d_%H_%M_%S')
-
-with os.popen('gitbook build ./ ../oneyearice.github.io/tmp >> log_%s' % nowTime, 'r') as p:  # 这个在移植到其他机器上build会包插件找不到文件css\js等错误，但是明明都有的，搞不懂。
-    x = p.read()
-print(x)
-```
 
 看的全
 
