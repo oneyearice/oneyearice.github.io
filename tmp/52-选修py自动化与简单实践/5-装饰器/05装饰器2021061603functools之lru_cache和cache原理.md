@@ -1,2 +1,0 @@
-# 05装饰器2021061603functools之lru_cache和cache原理.md
-
