@@ -1,2 +1,0 @@
-# Prometheus和Kubernetes09
-
