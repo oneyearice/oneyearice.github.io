@@ -733,6 +733,16 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 
 
+多日以后的一个截图👇补到这里佐证
+
+![image-20241012180546018](3-nginx的压缩和https加密实现.assets/image-20241012180546018.png)
+
+
+
+
+
+
+
 
 
 ### 另外，无痕 里 两种 输入方式，普通模式里一样
@@ -801,7 +811,23 @@ location 首部 从浏览器可知就是http://www.sw.com👇
 
 
 
-307 Temprorary Redirect，是浏览器自身行为，是一种回退行为，特别是443被拒后的80回退
+307 Temprorary Redirect，是浏览器自身行为，~~是一种回退行为，特别是443被拒后的80回退~~ 回退是回退，这里307 Temporaray Reirect是 httpUpgrade到https
+
+![image-20241012180546018](3-nginx的压缩和https加密实现.assets/image-20241012180546018.png)
+
+上图👆是多日以后的一个作证图，补到这里。
+
+![image-20241012181537605](3-nginx的压缩和https加密实现.assets/image-20241012181537605.png)
+
+
+
+
+
+![image-20241012181551822](3-nginx的压缩和https加密实现.assets/image-20241012181551822.png)
+
+
+
+
 
 
 
