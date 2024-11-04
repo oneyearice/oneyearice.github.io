@@ -9590,9 +9590,157 @@
                                 <section class="normal markdown-section">
                                 
                                 <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;1&#x8282;-&#x7F51;&#x7EDC;&#x57FA;&#x7840;"><b></b>&#x7B2C;1&#x8282;. &#x7F51;&#x7EDC;&#x57FA;&#x7840;</a></li></ul></div><h1 id="&#x7B2C;1&#x8282;-&#x7F51;&#x7EDC;&#x57FA;&#x7840;"><a name="&#x7B2C;1&#x8282;-&#x7F51;&#x7EDC;&#x57FA;&#x7840;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;1&#x8282;-&#x7F51;&#x7EDC;&#x57FA;&#x7840;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;1&#x8282;. &#x7F51;&#x7EDC;&#x57FA;&#x7840;</h1>
-<p>&#x7CFB;&#x7F51;&#x5DE5;&#xFF0C;&#x7565;</p>
+<p><img src="1-&#x7F51;&#x7EDC;&#x57FA;&#x7840;.assets/image-20241028173653963.png" alt="image-20241028173653963" style="zoom:50%;"></p>
+<p>core-sw&#xFF1A;</p>
+<pre><code>en
+conf t
+no ip domain-lookup
+
+vlan 100
+vlan 101
+vlan 10
+vlan 127
+
+int e0/0
+sw mo ac
+sw ac vlan 100
+
+int e0/1
+sw mo ac
+sw ac vlan 10
+
+int e0/2
+sw tr en do
+sw mo tru
+sw tr all vlan remove 1
+
+int e0/3
+sw mo ac
+sw ac vlan 101
+
+
+
+int vlan 10
+no shu
+ip add 192.168.10.1 255.255.255.0
+
+int vlan 100
+no shu
+ip add 172.31.0.1 255.255.255.252
+
+int vlan 101
+no shu
+ip add 172.31.0.5 255.255.255.252
+
+int vlan 127
+no shu
+ip add 192.168.127.100 255.255.255.0
+
+ip route 0.0.0.0 0.0.0.0 172.31.0.2
+</code></pre><p>sw1:</p>
+<pre><code>en
+conf t
+no ip domain-lookup
+
+vlan 127
+
+int e0/0
+sw tr en do
+sw mo tru
+sw tr all vlan remove 1
+
+int e0/2
+sw mo ac
+sw ac vlan 127
+
+int vlan 127
+no shu
+ip add 192.168.127.101 255.255.255.0
+</code></pre><p>dnsmasq.conf</p>
+<pre><code class="lang-bash">strict-order
+no-resolv
+dns-forward-max=2048
+
+server=/poe.com/8.8.8.8
+server=/google.com/8.8.8.8
+
+
+server=223.5.5.5
+server=114.114.114.114
+
+address=/autodesk.com/127.0.1.123
+address=/js-agent.newrelic.com/127.0.1.123
+address=/teamviewer.com/127.0.1.123
+
+<span class="hljs-comment">####################################</span>
+listen-address=0.0.0.0,192.168.10.2,127.0.0.1
+<span class="hljs-comment">#cache-size=150000</span>
+<span class="hljs-comment">#log-queries</span>
+<span class="hljs-comment">#log-facility=/tmp/dnsmasq.log</span>
+<span class="hljs-comment">#log-async=50</span>
+conf-dir=/etc/dnsmasq.d
+
+
+mkdir /run/systemd/resolve/
+touch /run/systemd/resolve/stub-resolv.conf
+<span class="hljs-built_in">echo</span> nameserver 127.0.0.53 &gt;&gt;  /run/systemd/resolve/stub-resolv.conf
+
+systemctl status display-manager
+systemctl stop lightdm
+</code></pre>
+<p>dhcp</p>
+<pre><code class="lang-bash">vim /etc/dhcp/dhcpd.conf
+
+apt install isc-dhcp-server
+
+authoritative;
+ddns-update-style none;
+ignore client-updates;
+default-lease-time 129600;
+max-lease-time 259200;
+option time-offset  -18000;
+<span class="hljs-built_in">log</span>-facility <span class="hljs-built_in">local</span>4;
+
+
+subnet 192.168.10.0 netmask 255.255.255.0 {
+        }
+
+
+
+subnet 192.168.20.0 netmask 255.255.255.0 {
+        option routers   192.168.20.1;
+        option subnet-mask  255.255.255.0;
+        option domain-name-servers 192.168.10.2,192.168.10.3;
+        range 192.168.30.2 192.168.30.200;
+        }
+
+host xiaoming {
+        hardware ethernet e4:b9:7a:ea:6f:e9;
+        fixed-address 192.168.30.71;
+        }
+
+
+
+vim /etc/default/isc-dhcp-server
+INTERFACES=<span class="hljs-string">&quot;eth0&quot;</span>
+
+mkdir /run/dhcp-server
+chown dhcpd.dhcpd /run/dhcp-server
+
+<span class="hljs-built_in">exec</span> dhcpd -user dhcpd -group dhcpd <span class="hljs-_">-f</span> -4 -pf /run/dhcp-server/dhcpd.pid -cf /etc/dhcp/dhcpd.conf
+
+systemctl restart isc-dhcp-server
+
+
+&#x53BB;&#x4EA4;&#x6362;&#x673A;&#x4E0A;&#x914D;&#x7F6E;&#x4E2D;&#x7EE7;
+int vlan 20
+ip helper-add 192.168.10.2
+ip add 192.168.20.1 255.255.255.0
+</code></pre>
+<p><a href="https://blog.51cto.com/mmx123/6413008" target="_blank">https://blog.51cto.com/mmx123/6413008</a></p>
+<p>&#x5236;&#x4F5C;linux9.4&#x955C;&#x50CF;&#x1F446;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-07-28 14:47:37
+2024-11-01 18:25:17
 </span></footer></body></html>
                                 
                                 </section>
@@ -9636,7 +9784,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节 网络基础","level":"1.15.1","depth":2,"next":{"title":"第2节 网络架构","level":"1.15.2","depth":2,"path":"13-网络协议和管理/2-网络架构.md","ref":"./13-网络协议和管理/2-网络架构.md","articles":[]},"previous":{"title":"第十三章 网络协议和管理","level":"1.15","depth":1,"path":"13-网络协议和管理/13-网络协议和管理.md","ref":"./13-网络协议和管理/13-网络协议和管理.md","articles":[{"title":"第1节 网络基础","level":"1.15.1","depth":2,"path":"13-网络协议和管理/1-网络基础.md","ref":"./13-网络协议和管理/1-网络基础.md","articles":[]},{"title":"第2节 网络架构","level":"1.15.2","depth":2,"path":"13-网络协议和管理/2-网络架构.md","ref":"./13-网络协议和管理/2-网络架构.md","articles":[]},{"title":"第3节 TCP&IP","level":"1.15.3","depth":2,"path":"13-网络协议和管理/3-TCP&IP.md","ref":"./13-网络协议和管理/3-TCP&IP.md","articles":[]},{"title":"第4节 IP地址规划","level":"1.15.4","depth":2,"path":"13-网络协议和管理/4-IP地址规划.md","ref":"./13-网络协议和管理/4-IP地址规划.md","articles":[]},{"title":"第5节 linux的网络和路由配置管理","level":"1.15.5","depth":2,"path":"13-网络协议和管理/5-linux的网络和路由配置管理.md","ref":"./13-网络协议和管理/5-linux的网络和路由配置管理.md","articles":[]},{"title":"第6节 网络配置和故障拍错","level":"1.15.6","depth":2,"path":"13-网络协议和管理/6-网络配置和故障拍错.md","ref":"./13-网络协议和管理/6-网络配置和故障拍错.md","articles":[]},{"title":"第7节 多网卡集成的企业级应用","level":"1.15.7","depth":2,"path":"13-网络协议和管理/7-多网卡集成的企业级应用.md","ref":"./13-网络协议和管理/7-多网卡集成的企业级应用.md","articles":[]},{"title":"第8节 网桥实现和ubuntu网络配置","level":"1.15.8","depth":2,"path":"13-网络协议和管理/8-网桥实现和ubuntu网络配置.md","ref":"./13-网络协议和管理/8-网桥实现和ubuntu网络配置.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"13-网络协议和管理/1-网络基础.md","mtime":"2024-07-28T06:47:37.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-10-25T02:41:28.106Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节 网络基础","level":"1.15.1","depth":2,"next":{"title":"第2节 网络架构","level":"1.15.2","depth":2,"path":"13-网络协议和管理/2-网络架构.md","ref":"./13-网络协议和管理/2-网络架构.md","articles":[]},"previous":{"title":"第十三章 网络协议和管理","level":"1.15","depth":1,"path":"13-网络协议和管理/13-网络协议和管理.md","ref":"./13-网络协议和管理/13-网络协议和管理.md","articles":[{"title":"第1节 网络基础","level":"1.15.1","depth":2,"path":"13-网络协议和管理/1-网络基础.md","ref":"./13-网络协议和管理/1-网络基础.md","articles":[]},{"title":"第2节 网络架构","level":"1.15.2","depth":2,"path":"13-网络协议和管理/2-网络架构.md","ref":"./13-网络协议和管理/2-网络架构.md","articles":[]},{"title":"第3节 TCP&IP","level":"1.15.3","depth":2,"path":"13-网络协议和管理/3-TCP&IP.md","ref":"./13-网络协议和管理/3-TCP&IP.md","articles":[]},{"title":"第4节 IP地址规划","level":"1.15.4","depth":2,"path":"13-网络协议和管理/4-IP地址规划.md","ref":"./13-网络协议和管理/4-IP地址规划.md","articles":[]},{"title":"第5节 linux的网络和路由配置管理","level":"1.15.5","depth":2,"path":"13-网络协议和管理/5-linux的网络和路由配置管理.md","ref":"./13-网络协议和管理/5-linux的网络和路由配置管理.md","articles":[]},{"title":"第6节 网络配置和故障拍错","level":"1.15.6","depth":2,"path":"13-网络协议和管理/6-网络配置和故障拍错.md","ref":"./13-网络协议和管理/6-网络配置和故障拍错.md","articles":[]},{"title":"第7节 多网卡集成的企业级应用","level":"1.15.7","depth":2,"path":"13-网络协议和管理/7-多网卡集成的企业级应用.md","ref":"./13-网络协议和管理/7-多网卡集成的企业级应用.md","articles":[]},{"title":"第8节 网桥实现和ubuntu网络配置","level":"1.15.8","depth":2,"path":"13-网络协议和管理/8-网桥实现和ubuntu网络配置.md","ref":"./13-网络协议和管理/8-网桥实现和ubuntu网络配置.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"13-网络协议和管理/1-网络基础.md","mtime":"2024-11-01T10:25:17.861Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-11-04T06:57:29.004Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
