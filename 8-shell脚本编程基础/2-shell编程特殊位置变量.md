@@ -62,17 +62,25 @@ root:x:0:0:root:/root:/bin/bash
 
 ![img](2-shell编程特殊位置变量.assets/clip_image006-16439584030233.jpg)
 
-![img](2-shell编程特殊位置变量.assets/clip_image008-16439584030234.jpg)
+<img src="2-shell编程特殊位置变量.assets/image-20241126152910290.png" alt="image-20241126152910290" style="zoom:40%;" />
 
  
 
+<img src="2-shell编程特殊位置变量.assets/image-20241126153352102.png" alt="image-20241126153352102" style="zoom:50%;" />
+
+
+
+### 查看上级父进程编号
+
 ![img](2-shell编程特殊位置变量.assets/clip_image010-16439584030235.jpg)
 
-## 查看上级父进程编号
 
-## 查看环境变量
 
-![img](2-shell编程特殊位置变量.assets/clip_image012-16439584030246.jpg)
+### 查看环境变量
+
+env都是环境变量
+
+![image-20241126153735472](2-shell编程特殊位置变量.assets/image-20241126153735472.png)
 
 举例EDITOR=vim
 
@@ -82,7 +90,7 @@ vipw是调用的EDITOR编辑器这个变量，而EDITOR默认复制应该就是v
 
 <img src="2-shell编程特殊位置变量.assets/image-20220204153802553.png" alt="image-20220204153802553" style="zoom:67%;" /> 
 
-现在将EDITOR改成vim，再看，发现还是黑底白字，只有将EDITOR提升为环境变量，才会出彩，也就是vipw调用的是环境变量EDITOR里的值，普通变量没有关系。
+现在将EDITOR改成vim，再看，发现还是黑底白字，只有将EDITOR提升为环境变量，才会出彩，也就是vipw调用的是环境变量EDITOR里的值，和普通变量没有关系(因为当EDITOR为局部变量的时候，vipw就调不出来它的vim值)。
 
 <img src="2-shell编程特殊位置变量.assets/image-20220204154115391.png" alt="image-20220204154115391" style="zoom:67%;" /> 
 
@@ -90,7 +98,13 @@ vipw是调用的EDITOR编辑器这个变量，而EDITOR默认复制应该就是v
 
 **环境变量可以由父进程传给子进程**，**但是不能从子进程传给父进程**，也就是说子进程里修改的环境变量只在子进程里有效，退出子进程后，在父进程中还是原来的值；**但是子进程再次赋值可以影响身后的子进程**
 
-![img](2-shell编程特殊位置变量.assets/clip_image016-16439584030248.jpg)
+
+
+环境变量--export等命令申明过的才是，就会传递给子进程
+
+<img src="2-shell编程特殊位置变量.assets/image-20241126154150578.png" alt="image-20241126154150578" style="zoom:50%;" />
+
+
 
 ```
 [23:49:22 root@host1 ~]#export name=ming
