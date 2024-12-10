@@ -64,17 +64,15 @@ root:x:0:0:root:/root:/bin/bash
 
 <img src="2-shell编程特殊位置变量.assets/image-20241126152910290.png" alt="image-20241126152910290" style="zoom:40%;" />
 
- 
+###  
+
+### 查看上级父进程编号
 
 <img src="2-shell编程特殊位置变量.assets/image-20241126153352102.png" alt="image-20241126153352102" style="zoom:50%;" />
 
 
 
-### 查看上级父进程编号
-
-![img](2-shell编程特殊位置变量.assets/clip_image010-16439584030235.jpg)
-
-
+### 
 
 ### 查看环境变量
 
