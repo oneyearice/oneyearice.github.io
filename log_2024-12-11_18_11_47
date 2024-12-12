@@ -1,18 +1,20 @@
-"½øÈëD:\oneyearice.github.ioÄ¿Â¼" 
-..\gitbook\README.md
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-..\gitbook\SUMMARY.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\book.json
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-..\gitbook\Ğò.md
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-..\gitbook\summary_script.exe
-¸´ÖÆÁË 1 ¸öÎÄ¼ş
-¸´ÖÆÁË 0 ¸öÎÄ¼ş
-tmp\1-»ù´¡ÖªÊ¶½éÉÜ\1-»ù´¡ÖªÊ¶½éÉÜ.html
-tmp\1-»ù´¡ÖªÊ¶½éÉÜ\1-»ù´¡ÖªÊ¶½éÉÜ.md
-tmp\1-»ù´¡ÖªÊ¶½éÉÜ\1-¼ÆËã»ú»ù´¡.html
-tmp\1-»ù´¡ÖªÊ¶½éÉÜ\1-¼ÆËã»ú»ù´¡.md
-tmp\1-»ù´¡ÖªÊ¶½éÉÜ\2-²Ù×÷ÏµÍ³»ù´¡.html
-¸´ÖÆÁË 4 ¸öÎÄ¼ş
+[0;36minfo:[0m 18 plugins are installed 
+[0;36minfo:[0m 14 explicitly listed 
+[0;36minfo:[0m loading plugin "expandable-chapters"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "search-plus"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "splitter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "github"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "donate"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "emphasize"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "include-codeblock"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "tbfed-pagefooter"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "back-to-top-button"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "anchor-navigation-ex"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "ace"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "highlight"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "fontsettings"... [0;32mOK[0m 
+[0;36minfo:[0m loading plugin "theme-default"... [0;32mOK[0m 
+[0;36minfo:[0m found 675 pages 
+[0;36minfo:[0m found 16451 asset files 
+
+[0;31mError: ENOSPC: no space left on device, write[0m
