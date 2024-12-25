@@ -9594,9 +9594,427 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><b></b>7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.md</a></li></ul></div><h1 id="7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><a name="7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md" class="anchor-navigation-ex-anchor" href="#7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><i class="fa fa-link" aria-hidden="true"></i></a>7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.md</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><b></b>7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.md</a></li><li><span class="title-icon "></span><a href="#&#x57FA;&#x4E8E;vrrp-script-&#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;ha"><b></b>&#x57FA;&#x4E8E;VRRP Script &#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;HA</a></li><li><span class="title-icon "></span><a href="#haproxykeepalived"><b></b>haproxy+keepalived</a></li><ul><ul><li><span class="title-icon "></span><a href="#&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;vip&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;&#x4E0A;"><b></b>&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;VIP(&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;)&#x4E0A;</a></li><li><span class="title-icon "></span><a href="#&#x5B9E;&#x73B0;haproxy&#x7684;ha"><b></b>&#x5B9E;&#x73B0;haproxy&#x7684;HA</a></li><li><span class="title-icon "></span><a href="#&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;"><b></b>&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;</a></li><li><span class="title-icon "></span><a href="#&#x4F46;&#x662F;killall--0-&#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;"><b></b>&#x4F46;&#x662F;killall -0 &#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;</a></li><li><span class="title-icon "></span><a href="#&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;"><b></b>&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;</a></li><li><span class="title-icon "></span><a href="#&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;"><b></b>&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;</a></li><li><span class="title-icon "></span><a href="#&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;"><b></b>&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;</a></li></ul></ul><li><span class="title-icon "></span><a href="#nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;"><b></b>nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;</a></li><li><span class="title-icon "></span><a href="#mysql&#x7684;ha-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;"><b></b>mysql&#x7684;HA-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;</a></li><li><span class="title-icon "></span><a href="#zabbix-server&#x7684;ha"><b></b>zabbix-server&#x7684;ha</a></li><li><span class="title-icon "></span><a href="#keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;"><b></b>keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;</a></li><li><span class="title-icon "></span><a href="#&#x603B;&#x7ED3;"><b></b>&#x603B;&#x7ED3;</a></li></ul></div><h1 id="7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><a name="7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md" class="anchor-navigation-ex-anchor" href="#7keepalived&#x5B9E;&#x73B0;haproxy&#x548C;nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;md"><i class="fa fa-link" aria-hidden="true"></i></a>7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.md</h1>
+<h1 id="&#x57FA;&#x4E8E;vrrp-script-&#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;ha"><a name="&#x57FA;&#x4E8E;vrrp-script-&#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;ha" class="anchor-navigation-ex-anchor" href="#&#x57FA;&#x4E8E;vrrp-script-&#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;ha"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x4E8E;VRRP Script &#x5B9E;&#x73B0;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7684;HA</h1>
+<p><strong>nginx&#x548C;haproxy&#x7684;&#x670D;&#x52A1;HA</strong></p>
+<p>&#x4E0A;&#x9762;&#x8BB2;&#x4E86;virtual_server&#x81EA;&#x5E26;&#x96C6;&#x6210;&#x7684;&#x8BED;&#x53E5;&#x5757;&#x5B9E;&#x73B0;&#x4E86;LVS&#x7684;HA&#xFF0C;&#x4E0B;&#x9762;&#x7528;&#x811A;&#x672C;&#x66F2;&#x7EBF;&#x6551;&#x56FD;&#x4E86;</p>
+<p><img src="5.Keepalived&#x591A;&#x4E3B;&#x6A21;&#x5F0F;&#x548C;&#x5B9E;&#x73B0;LVS.assets/image-20241223151715056.png" alt="image-20241223151715056"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223181016176.png" alt="image-20241223181016176"></p>
+<p>&#x5229;&#x7528;kill 0  &#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x662F;&#x5426;OK</p>
+<p><img src="5.Keepalived&#x591A;&#x4E3B;&#x6A21;&#x5F0F;&#x548C;&#x5B9E;&#x73B0;LVS.assets/image-20241223152122691.png" alt="image-20241223152122691"></p>
+<p><img src="5.Keepalived&#x591A;&#x4E3B;&#x6A21;&#x5F0F;&#x548C;&#x5B9E;&#x73B0;LVS.assets/image-20241223152109718.png" alt="image-20241223152109718"></p>
+<p><img src="5.Keepalived&#x591A;&#x4E3B;&#x6A21;&#x5F0F;&#x548C;&#x5B9E;&#x73B0;LVS.assets/image-20241223153012907.png" alt="image-20241223153012907"></p>
+<p>&#x53EA;&#x662F;&#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x6B7B;&#x6D3B;&#xFF0C;&#x5E76;&#x4E0D;&#x4EE3;&#x8868;&#x597D;&#x574F;&#xFF0C;curl&#x624D;&#x662F;&#x4E1A;&#x52A1;&#x7684;&#x68C0;&#x67E5;</p>
+<h1 id="haproxykeepalived"><a name="haproxykeepalived" class="anchor-navigation-ex-anchor" href="#haproxykeepalived"><i class="fa fa-link" aria-hidden="true"></i></a>haproxy+keepalived</h1>
+<pre><code class="lang-bash">yum -y install haproxy
+
+vim /etc/haproxy/haproxf.cfg
+    ...
+    <span class="hljs-comment"># &#x7ED3;&#x5C3E;&#x52A0;&#x4E0A;</span>
+    listen www.ming.org_80
+    <span class="hljs-built_in">bind</span> 192.168.126.100:80
+    server server1 192.168.126.138:80 check
+    server server2 192.168.126.139:80 check
+</code></pre>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223161351491.png" alt="image-20241223161351491"></p>
+<p>&#x4F46;&#x662F;haproxy&#x7684;bind&#x5730;&#x5740;&#x8981;&#x5B58;&#x5728;&#x7684;&#xFF0C;VIP&#x6CA1;&#x6709;&#x843D;&#x5728;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x662F;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;IP&#x7684;&#xFF0C;&#x6240;&#x4EE5;haproxy&#x670D;&#x52A1;&#x8D77;&#x4E0D;&#x6765;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223162454355.png" alt="image-20241223162454355"></p>
+<p>&#x901A;&#x8FC7;journalct -u&#x53EF;&#x89C1;&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223162441999.png" alt="image-20241223162441999"></p>
+<h3 id="&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;vip&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;&#x4E0A;"><a name="&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;vip&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;&#x4E0A;" class="anchor-navigation-ex-anchor" href="#&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;vip&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;&#x4E0A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4FEE;&#x6539;&#x5185;&#x6838;&#x53C2;&#x6570;&#x4F7F;&#x5F97;haproxy&#x76D1;&#x542C;&#x5728;VIP(&#x6CA1;&#x843D;&#x8FC7;&#x6765;-&#x4ECE;&#x8282;&#x70B9;)&#x4E0A;</h3>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223163202181.png" alt="image-20241223163202181"></p>
+<pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;net.ipv4.ip_nonlocal_bind = 1&quot;</span> &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223163401650.png" alt="image-20241223163401650"></p>
+<p>&#x6B64;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223163439020.png" alt="image-20241223163439020"></p>
+<p>&#x540C;&#x6837;&#x4E3B;&#x8282;&#x70B9;&#x4E5F;&#x8981;&#x914D;&#x7F6E;&#x5426;&#x5219;VIP&#x98D8;&#x8D70;&#x4E86;&#xFF0C;haproxy&#x5230;&#x65F6;&#x5019;&#x5C31;&#x8D77;&#x4E0D;&#x6765;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223163513774.png" alt="image-20241223163513774"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223173721279.png" alt="image-20241223173721279"></p>
+<p>&#x5220;&#x9664;&#x4E4B;&#x524D;&#x5B9E;&#x9A8C;&#x7684;lvs&#x914D;&#x7F6E;&#x5C31;&#x662F;vs&#x7684;&#x8BED;&#x53E5;&#x5757;&#xFF0C;&#x4E3B;&#x4ECE;&#x90FD;&#x5220;&#xFF0C;&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x4F1A;&#x5BFC;&#x81F4;lvs&#x7684;&#x8F6C;&#x53D1;&#x89C4;&#x5219;&#x1F447;&#xFF0C;&#x6E05;&#x5E72;&#x51C0;&#x5C31;&#x884C;&#xFF0C;&#x548C;haproxy&#x51B2;&#x7A81;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223174253677.png" alt="image-20241223174253677"></p>
+<p><strong>&#x6D4B;&#x8BD5;OK</strong></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241223175226212.png" alt="image-20241223175226212"></p>
+<h3 id="&#x5B9E;&#x73B0;haproxy&#x7684;ha"><a name="&#x5B9E;&#x73B0;haproxy&#x7684;ha" class="anchor-navigation-ex-anchor" href="#&#x5B9E;&#x73B0;haproxy&#x7684;ha"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B9E;&#x73B0;haproxy&#x7684;HA</h3>
+<p>&#x8981;&#x5B9E;&#x73B0;haproxy&#x6302;&#x4E86;&#xFF0C;keepavlied&#x7684;VIP&#x4E5F;&#x8981;&#x5207;&#x8D70;</p>
+<p>&#x628A;&#x811A;&#x672C;&#x5199;&#x5230;keepalived&#x7684;&#x4E3B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x63A8;&#x8350;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x4EE5;&#x4FBF;&#x590D;&#x7528;</p>
+<pre><code class="lang-bash">[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/keepalived.conf</span>
+! Configuration File <span class="hljs-keyword">for</span> keepalived
+
+global_defs {
+   router_id 192.168.126.136
+   vrrp_mcast_group4 230.0.0.0
+}
+
+vrrp_script check_down {
+    <span class="hljs-comment"># &#x7FFB;&#x8BD1;&#x4E0B;&#x1F447;&#xFF1A;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x4E3A;True&#xFF0C;&#x771F;&#x5C31;&#x662F;&#x4E0D;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x64CD;&#x4F5C;OPTIONS(interval\weight\fall\rise\timeout&#x8FD9;&#x4E9B;)&#xFF1B;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5B58;&#x5728;(&#x6587;&#x4EF6;&#x88AB;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x4E86;)&#x5C31;&#x4E3A;fasle&#x5047;-&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;OPTIONS&#x7279;&#x522B;&#x65F6;weight&#x6743;&#x91CD;-30&#x3002;</span>
+    script <span class="hljs-string">&quot;[ ! -f /etc/keepalived/down ]&quot;</span>
+    interval 1
+    <span class="hljs-comment"># &#x8FD9;&#x4E2A;&#x6743;&#x91CD;&#x5C31;&#x662F;vrrp&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5177;&#x4F53;&#x65F6;&#x5728;&#x5B50;&#x914D;&#x7F6E;&#x6587;&#x4EF6;vrrp&#x8BED;&#x53E5;&#x5757;&#x91CC;&#x5B9A;&#x4E49;&#x7684;</span>
+    weight -30
+    fall 3
+    rise 2
+    timeout 2
+}
+
+include /apps/keepalived/etc/keepalived/conf.d/*.conf
+[root@ka01 ~]<span class="hljs-comment">#</span>
+
+
+<span class="hljs-comment"># &#x8C03;&#x7528;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x811A;&#x672C;</span>
+[root@ka01 ~]<span class="hljs-comment"># vim /apps/keepalived/etc/keepalived/conf.d/www.ming.org.conf</span>
+vrrp_instance VI_1 {
+    state BACKUP
+    interface eth1
+    virtual_router_id 51
+    priority 100
+    advert_int 3
+    <span class="hljs-comment">#nopreempt</span>
+    preempt_delay 10
+    authentication {
+        auth_<span class="hljs-built_in">type</span> PASS
+        auth_pass cisco
+    }
+    virtual_ipaddress {
+        192.168.126.100/24 dev eth0 label eth0:1
+    }
+    unicast_src_ip 10.1.1.1
+    unicast_peer{
+        10.1.1.2
+    }
+
+    <span class="hljs-comment">#notify_master &quot;/apps/keepalived/bin/notify.sh master&quot;</span>
+    <span class="hljs-comment">#notify_backup &quot;/apps/keepalived/bin/notify.sh backup&quot;</span>
+    <span class="hljs-comment">#notify_fault &quot;/apps/keepalived/bin/notify.sh fault&quot;</span>
+
+    <span class="hljs-comment"># Allow packets addressed to the VIPs above to be received</span>
+    accept
+
+    track_script {
+        check_down
+    }
+}
+</code></pre>
+<p>&#x4E3B;&#x4ECE;keepalived&#x8282;&#x70B9;&#x90FD;&#x914D;&#x7F6E;&#x4E0B;</p>
+<p>&#x7136;&#x540E;&#x7531;&#x4E8E;&#x6B64;&#x65F6;&#x811A;&#x672C;&#x5224;&#x65AD;&#x539F;&#x5219;&#x662F;&#xFF1A;script &quot;[ ! -f /etc/keepalived/down ]&quot;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x65F6;&#x8BE5;down&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;=&gt;&#x53D6;&#x975E;&#x4E3A;&#x771F;&#xFF0C;&#x6240;&#x4EE5;&#x811A;&#x672C;&#x6267;&#x884C;&#x4E3A;&#x771F;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x542F;&#x7528;&#x8BED;&#x53E5;&#x5757;&#x4E0B;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x3002;&#x4E5F;&#x5C31;&#x4E0D;&#x4F1A;&#x5207;&#x4E3B;&#xFF0C;VIP&#x4E0D;&#x4F1A;&#x98D8;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#xFF0C;&#x5207;&#x6362;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x8BE5;&#x6587;&#x4EF6;&#x5C31;&#x884C;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224112314916.png" alt="image-20241224112314916"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224112333046.png" alt="image-20241224112333046"></p>
+<p>&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x89E6;&#x53D1;&#x811A;&#x672C;&#x1F447;&#xFF0C;&#x4E3B;&#x4ECE;&#x5207;&#x6362;&#xFF0C;VIP&#x6F02;&#x79FB;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224112553634.png" alt="image-20241224112553634"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224112639100.png" alt="image-20241224112639100"></p>
+<p>&#x7EE7;&#x7EED;&#x5728;&#x4ECE;&#x8282;&#x70B9;&#x6D4B;&#x8BD5;&#xFF0C;&#x521B;&#x5EFA;down&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;VIP&#x5C31;&#x8BA9;&#x51FA;&#x53BB;&#x4E86;&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224113325775.png" alt="image-20241224113325775"></p>
+<p>&#x4E24;&#x8FB9;&#x90FD;&#x6709;&#x811A;&#x672C;&#x6267;&#x884C;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x770B;&#x5404;&#x81EA;&#x539F;&#x59CB;&#x4F18;&#x5148;&#x7EA7;&#x90FD;&#x51CF;&#x53BB;weight&#x540E;&#x7684;&#x5927;&#x5C0F;&#x4E86;&#x3002;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224114430472.png" alt="image-20241224114430472"></p>
+<p>&#x6CE8;&#x91CA;&#x6389;nopreempt &#x89C2;&#x5BDF;&#x53EF;&#x89C1;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224114458397.png" alt="image-20241224114458397"></p>
+<p>&#x6062;&#x590D;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224114508699.png" alt="image-20241224114508699"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224115835274.png" alt="image-20241224115835274" style="zoom:50%;"></p>
+<h3 id="&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;"><a name="&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;" class="anchor-navigation-ex-anchor" href="#&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5229;&#x7528;killall&#x5B9E;&#x73B0;haproxy&#x7684;&#x68C0;&#x67E5;-&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;</h3>
+<p>&#x9519;&#x8BEF;&#x5199;&#x6CD5;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224144457000.png" alt="image-20241224144457000"></p>
+<p>&#x811A;&#x672C;&#x540E;&#x9762; &#x4E0D;&#x8981;&#x603B;&#x662F;&#x5E26;[]&#x65B9;&#x62EC;&#x53F7;&#xFF0C;&#x8FD9;&#x79CD;test&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x6BD4;&#x8F83;&#x7ED3;&#x679C;&#x4E3A;&#x771F;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x1F446;&#x4E0A;&#x56FE;&#x4E00;&#x5B9A;&#x4F1A;&#x4E22;&#x5931;VIP&#x7684;&#xFF0C;&#x4E3B;&#x53D8;&#x4ECE;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x811A;&#x672C;&#x5B58;&#x5728;&#x9519;&#x8BEF;&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224145100368.png" alt="image-20241224145100368"></p>
+<p>&#x7136;&#x540E;reload&#x540E;&#x770B;status&#x679C;&#x7136;&#x662F;2&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224144934967.png" alt="image-20241224144934967"></p>
+<p>&#x53BB;&#x6389;&#x65B9;&#x62EC;&#x53F7;&#x5C31;&#x884C;</p>
+<pre><code class="lang-bash">[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/keepalived.conf</span>
+! Configuration File <span class="hljs-keyword">for</span> keepalived
+
+global_defs {
+   router_id 192.168.126.136
+   vrrp_mcast_group4 230.0.0.0
+}
+
+vrrp_script check_down {
+        script <span class="hljs-string">&quot;[ ! -f /etc/keepalived/down ]&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+vrrp_script check_haproxy {
+        script <span class="hljs-string">&quot;/usr/bin/killall -0 haproxy&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+
+include /apps/keepalived/etc/keepalived/conf.d/*.conf
+[root@ka01 ~]<span class="hljs-comment">#</span>
+
+[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/conf.d/www.ming.org.conf</span>
+vrrp_instance VI_1 {
+    state BACKUP
+    interface eth1
+    virtual_router_id 51
+    priority 100
+    advert_int 3
+    <span class="hljs-comment">#nopreempt</span>
+    preempt_delay 10
+    authentication {
+        auth_<span class="hljs-built_in">type</span> PASS
+        auth_pass cisco
+    }
+    virtual_ipaddress {
+        192.168.126.100/24 dev eth0 label eth0:1
+    }
+    unicast_src_ip 10.1.1.1
+    unicast_peer{
+        10.1.1.2
+    }
+
+    <span class="hljs-comment">#notify_master &quot;/apps/keepalived/bin/notify.sh master&quot;</span>
+    <span class="hljs-comment">#notify_backup &quot;/apps/keepalived/bin/notify.sh backup&quot;</span>
+    <span class="hljs-comment">#notify_fault &quot;/apps/keepalived/bin/notify.sh fault&quot;</span>
+
+    <span class="hljs-comment"># Allow packets addressed to the VIPs above to be received</span>
+    accept
+
+    track_script {
+        check_down
+        check_haproxy
+    }
+}
+[root@ka01 ~]<span class="hljs-comment">#</span>
+</code></pre>
+<p>reload&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x653E;&#x5FC3;restart&#x90FD;&#x6CA1;&#x6709;&#x95EE;&#x9898;</p>
+<p>VIP&#x4E5F;&#x5728;&#xFF0C;&#x6CA1;&#x95EE;&#x9898;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224145621588.png" alt="image-20241224145621588"></p>
+<p>&#x505C;&#x6389;haproxy&#x89C2;&#x5BDF;&#x662F;&#x5426;&#x5207;&#x6362;&#x4E3B;&#x4ECE;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224145930208.png" alt="image-20241224145930208"></p>
+<h4 id="&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x811A;&#x672C;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4F9D;&#x65E7;&#x4F7F;&#x7528;&#x4E0D;&#x592A;&#x4E25;&#x8C28;&#x7684;killall"><a name="&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x811A;&#x672C;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4F9D;&#x65E7;&#x4F7F;&#x7528;&#x4E0D;&#x592A;&#x4E25;&#x8C28;&#x7684;killall" class="anchor-navigation-ex-anchor" href="#&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x811A;&#x672C;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4F9D;&#x65E7;&#x4F7F;&#x7528;&#x4E0D;&#x592A;&#x4E25;&#x8C28;&#x7684;killall"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x811A;&#x672C;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4F9D;&#x65E7;&#x4F7F;&#x7528;&#x4E0D;&#x592A;&#x4E25;&#x8C28;&#x7684;killall</h4>
+<pre><code class="lang-bash">[root@ka01 ~]<span class="hljs-comment"># cat /etc/keepalived/check_haproxy.sh</span>
+<span class="hljs-meta">#!/bin/bash
+</span>
+/usr/bin/killall -0 haproxy
+[root@ka01 ~]<span class="hljs-comment">#</span>
+[root@ka01 ~]<span class="hljs-comment"># chmod +x /etc/keepalived/check_haproxy.sh</span>
+[root@ka01 ~]<span class="hljs-comment"># ll /etc/keepalived/check_haproxy.sh</span>
+-rwxr-xr-x 1 root root 41 Dec 24 15:01 /etc/keepalived/check_haproxy.sh
+[root@ka01 ~]<span class="hljs-comment">#</span>
+</code></pre>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224150237288.png" alt="image-20241224150237288"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224150437100.png" alt="image-20241224150437100"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224150458239.png" alt="image-20241224150458239"></p>
+<p>&#x7531;&#x4E8E;&#x662F;restart&#xFF0C;&#x4F1A;&#x5C06;VIP&#x8BA9;&#x51FA;&#x53BB;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x5F00;&#x542F;&#x4E86;preempt_delay 10&#x6240;&#x4EE5;10s&#x540E;&#x4F1A;&#x62A2;&#x56DE;&#x6765;&#x7684;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224150642062.png" alt="image-20241224150642062" style="zoom:40%;"></p>
+<p>&#x7136;&#x540E;&#x505C;&#x6389;haproxy&#xFF0C;&#x53D1;&#x73B0;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;VIP&#x7684;&#x5207;&#x6362;&#x7684;&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224150804297.png" alt="image-20241224150804297" style="zoom:33%;"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224151508621.png" alt="image-20241224151508621"></p>
+<p>ka001&#x4ECE;100 &#x51CF;&#x5230;&#x4E86;70&#xFF0C;&#x7136;&#x540E;&#x4EA4;&#x51FA;VIP&#x53D8;&#x6210;&#x4ECE;&#x4E86;&#x1F446;</p>
+<p>&#x1F447;&#x8FD9;&#x662F;ka01&#x4E0A;&#x7684;haproxy&#x53C8;&#x8D77;&#x6765;&#x4E86;&#xFF0C;prority&#x5C31;&#x6062;&#x590D;&#x4E3A;100&#x4E86;&#xFF0C;&#x7136;&#x540E;<strong>&#x53C8;</strong>&#x5F00;&#x542F;&#x4E86;&#x62A2;&#x5360;&#xFF0C;&#x5C31;&#x56DE;&#x6765;&#x4E86;&#x1F447;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224151932936.png" alt="image-20241224151932936"></p>
+<h3 id="&#x4F46;&#x662F;killall--0-&#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;"><a name="&#x4F46;&#x662F;killall--0-&#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;" class="anchor-navigation-ex-anchor" href="#&#x4F46;&#x662F;killall--0-&#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F46;&#x662F;killall -0 &#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;</h3>
+<p>&#x4ED6;&#x53EA;&#x80FD;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5728;&#x4E0D;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x8FDB;&#x7A0B;STOP&#x5728;&#x90A3;&#xFF0C;&#x8FD8;&#x662F;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x5728;&#x90A3;&#xFF0C;killall -0&#x662F;&#x770B;&#x4E0D;&#x51FA;&#x6765;&#x7684;&#x1F447;</p>
+<p>killall -19 STOP&#xFF0C;killall -19 &#x6062;&#x590D;CONT</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224153358580.png" alt="image-20241224153358580"></p>
+<p>&#x6B64;&#x65F6;VIP&#x5E94;&#x8BE5;&#x5207;&#x8D70;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x5224;&#x65AD;&#x903B;&#x8F91;&#x5BFC;&#x81F4;&#x672A;&#x5207;&#xFF0C;&#x6240;&#x4EE5;&#x4E1A;&#x52A1;&#x6302;&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224154930813.png" alt="image-20241224154930813"></p>
+<h3 id="&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;"><a name="&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;" class="anchor-navigation-ex-anchor" href="#&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C31;&#x5E94;&#x8BE5;&#x7528;curl&#x53BB;&#x68C0;&#x67E5;-&#x7136;&#x540E;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x601D;&#x8DEF;</h3>
+<pre><code class="lang-bash">[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/keepalived.conf</span>
+! Configuration File <span class="hljs-keyword">for</span> keepalived
+
+global_defs {
+   router_id 192.168.126.136
+   vrrp_mcast_group4 230.0.0.0
+}
+
+vrrp_script check_down {
+        script <span class="hljs-string">&quot;[ ! -f /etc/keepalived/down ]&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+vrrp_script check_haproxy {
+        <span class="hljs-comment"># &#x8FD9;&#x4E2A;&#x68C0;&#x67E5;&#x8C8C;&#x4F3C;OK&#xFF0C;&#x5176;&#x5B9E;&#x4F1A;&#x6296;&#x52A8;&#x7684;&#x4E1A;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5F53;curl&#x7684;&#x7ED3;&#x679C;&#x4E0D;&#x662F;0&#x7684;&#x65F6;&#x5019;&#x5C31;&#x662F;false&#x4E8E;&#x662F;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6743;&#x91CD;&#x964D;&#x4F4E;&#xFF0C;&#x8BA9;&#x51FA;&#x4E3B;&#xFF0C;VIP&#x98D8;&#x8D70;&#xFF0C;&#x4E8E;&#x662F;curl &#x5C31;&#x53D8;&#x6210;&#x4E86;true&#xFF0C;&#x4E8E;&#x662F;VIP&#x5C31;&#x62A2;&#x56DE;&#x6765;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x6848;&#x4F8B;&#xFF01;&#xFF01;</span>
+        script <span class="hljs-string">&quot;/usr/bin/curl -Im1 192.168.126.100&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+
+include /apps/keepalived/etc/keepalived/conf.d/*.conf
+[root@ka01 ~]<span class="hljs-comment">#</span>
+</code></pre>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224164852718.png" alt="image-20241224164852718"></p>
+<h3 id="&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;"><a name="&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;" class="anchor-navigation-ex-anchor" href="#&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6700;&#x7EC8;&#x9488;&#x5BF9;haproxy&#x8FD8;&#x662F;&#x6539;&#x6210;</h3>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224164647020.png" alt="image-20241224164647020"></p>
+<p>&#x627E;&#x5230;&#x8FDB;&#x7A0B;&#xFF0C;&#x4E14;&#x4E0D;&#x662F;STOP&#x7684;&#x5C31;&#x884C;&#x554A;</p>
+<pre><code class="lang-bash">[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/keepalived.conf</span>
+! Configuration File <span class="hljs-keyword">for</span> keepalived
+
+global_defs {
+   router_id 192.168.126.136
+   vrrp_mcast_group4 230.0.0.0
+}
+
+vrrp_script check_down {
+        script <span class="hljs-string">&quot;[ ! -f /etc/keepalived/down ]&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+vrrp_script check_haproxy {
+        script <span class="hljs-string">&quot;ps auxf |grep -v color |grep haproxy  |grep -Ev &apos;T(s|l)&apos;&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+
+include /apps/keepalived/etc/keepalived/conf.d/*.conf
+
+
+[root@ka01 ~]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/conf.d/www.ming.org.conf</span>
+vrrp_instance VI_1 {
+    state BACKUP
+    interface eth1
+    virtual_router_id 51
+    priority 100
+    advert_int 3
+    <span class="hljs-comment">#nopreempt</span>
+    preempt_delay 10
+    authentication {
+        auth_<span class="hljs-built_in">type</span> PASS
+        auth_pass cisco
+    }
+    virtual_ipaddress {
+        192.168.126.100/24 dev eth0 label eth0:1
+    }
+    unicast_src_ip 10.1.1.1
+    unicast_peer{
+        10.1.1.2
+    }
+
+    <span class="hljs-comment">#notify_master &quot;/apps/keepalived/bin/notify.sh master&quot;</span>
+    <span class="hljs-comment">#notify_backup &quot;/apps/keepalived/bin/notify.sh backup&quot;</span>
+    <span class="hljs-comment">#notify_fault &quot;/apps/keepalived/bin/notify.sh fault&quot;</span>
+
+    <span class="hljs-comment"># Allow packets addressed to the VIPs above to be received</span>
+    accept
+
+    track_script {
+        check_down
+        check_haproxy
+    }
+}
+[root@ka01 ~]<span class="hljs-comment">#</span>
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x90FD;OK&#x4E86;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224164930164.png" alt="image-20241224164930164"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224165441153.png" alt="image-20241224165441153"></p>
+<h3 id="&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;"><a name="&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;" class="anchor-navigation-ex-anchor" href="#&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6700;&#x7EC8;&#x6539;&#x6210;&#x8FD9;&#x6837;&#x4E86;&#x1F447;</h3>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224171708413.png" alt="image-20241224171708413"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224171717052.png" alt="image-20241224171717052"></p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x7528;&#x811A;&#x672C;&#xFF0C;&#x4F1A;&#x8FD9;&#x6837;&#x1F447;&#x62A5;&#x9519;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224171807634.png" alt="image-20241224171807634"></p>
+<p>&#x4E0A;&#x56FE;&#x1F446;&#x4E0D;&#x5199;&#x6210;&#x811A;&#x672C;&#xFF0C;&#x6267;&#x884C;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x660E;&#x660E;&#x5355;&#x6572;&#x5C31;&#x662F;echo $?&#x662F;0&#x6765;&#x7740;&#xFF0C;&#x8D70;vrrp&#x91CC;&#x5C31;&#x662F;1&#x1F447;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x5199;&#x6210;&#x811A;&#x672C;&#x3002;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224171846116.png" alt="image-20241224171846116"></p>
+<h1 id="nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;"><a name="nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;" class="anchor-navigation-ex-anchor" href="#nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;"><i class="fa fa-link" aria-hidden="true"></i></a>nginx&#x7684;ha&#x4E5F;&#x7528;keepalived&#x6765;&#x505A;</h1>
+<p>&#x89C2;&#x5BDF;nginx&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x7136;&#x4E0D;&#x89C2;&#x5BDF;&#x4E00;&#x822C;&#x4E5F;&#x662F;&#x5982;&#x6B64;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241224173032817.png" alt="image-20241224173032817"></p>
+<p>&#x7AD9;&#x70B9;&#x53CD;&#x4EE3;&#x4E5F;&#x597D;&#xFF0C;&#x9875;&#x9762;&#x5B9E;&#x5B9E;&#x5728;&#x5728;&#x7684;&#x5185;&#x5BB9;&#x4E5F;&#x7F62;&#xFF0C;&#x90FD;&#x63A8;&#x8350;&#x4E00;&#x4E2A;&#x7AD9;&#x70B9;&#x5199;&#x5230;&#x4E00;&#x4E2A;&#x5B50;&#x914D;&#x7F6E;&#x6587;&#x4EF6;(&#x6CE8;&#x610F;&#x4EE5;.conf&#x7ED3;&#x5C3E;)&#x91CC;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x4F18;&#x5148;&#x62A2;&#x5728;&#x4E0B;&#x9762;&#x7684;server 80&#x4E0A;&#x3002;</p>
+<pre><code class="lang-bash">[root@ka01 conf.d]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/keepalived.conf</span>
+! Configuration File <span class="hljs-keyword">for</span> keepalived
+
+global_defs {
+   router_id 192.168.126.136
+   vrrp_mcast_group4 230.0.0.0
+}
+
+
+vrrp_script check_haproxy {
+        script <span class="hljs-string">&quot;/etc/keepalived/check_nginx.sh&quot;</span>
+        interval 1
+        weight -30
+        fall 3
+        rise 2
+        timeout 2
+}
+
+
+include /apps/keepalived/etc/keepalived/conf.d/*.conf
+[root@ka01 conf.d]<span class="hljs-comment">#</span>
+
+
+[root@ka01 conf.d]<span class="hljs-comment"># cat /apps/keepalived/etc/keepalived/conf.d/www.ming.org.conf</span>
+vrrp_instance VI_1 {
+    state BACKUP
+    interface eth1
+    virtual_router_id 51
+    priority 100
+    advert_int 3
+    <span class="hljs-comment">#nopreempt</span>
+    preempt_delay 10
+    authentication {
+        auth_<span class="hljs-built_in">type</span> PASS
+        auth_pass cisco
+    }
+    virtual_ipaddress {
+        192.168.126.100/24 dev eth0 label eth0:1
+    }
+    unicast_src_ip 10.1.1.1
+    unicast_peer{
+        10.1.1.2
+    }
+
+    <span class="hljs-comment">#notify_master &quot;/apps/keepalived/bin/notify.sh master&quot;</span>
+    <span class="hljs-comment">#notify_backup &quot;/apps/keepalived/bin/notify.sh backup&quot;</span>
+    <span class="hljs-comment">#notify_fault &quot;/apps/keepalived/bin/notify.sh fault&quot;</span>
+
+    <span class="hljs-comment"># Allow packets addressed to the VIPs above to be received</span>
+    accept
+
+    track_script {
+        check_down
+        check_haproxy
+    }
+}
+
+
+[root@ka01 conf.d]<span class="hljs-comment"># cat /etc/keepalived/check_nginx.sh</span>
+<span class="hljs-meta">#!/bin/bash</span>
+/usr/bin/ps aux |grep -v color |grep nginx  |grep -Ev <span class="hljs-string">&apos;T(s|l)&apos;</span>
+[root@ka01 conf.d]<span class="hljs-comment">#</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;nginx&#x68C0;&#x6D4B;&#x811A;&#x672C;&#x53EA;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5728;master&#x4E0A;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x4E3B;&#x4E0A;&#x53D1;&#x73B0;nginx&#x6302;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x964D;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x8BA9;&#x51FA;VIP&#xFF0C;slave&#x5347;&#x7EA7;&#x6210;&#x4E3B;&#xFF0C;&#x544A;&#x8B66;&#x53D1;&#x51FA;&#xFF0C;&#x7136;&#x540E;&#x4EBA;&#x5DE5;&#x6216;&#x8005;&#x81EA;&#x52A8;&#x4ECB;&#x5165;&#x4FEE;&#x590D;&#x6545;&#x969C;&#xFF0C;delay xxx &#x62A2;&#x56DE;&#x4E3B;&#x3002;&#x4ECE;&#x6CA1;&#x5FC5;&#x8981;&#x914D;&#x7F6E;nginx&#x68C0;&#x6D4B;&#x811A;&#x672C;&#xFF0C;&#x4ECE;&#x7684;nginx&#x68C0;&#x6D4B;&#x5982;&#x679C;&#x6709;&#x610F;&#x4E49;&#x5C31;&#x662F;&#x4ECE;&#x8282;&#x70B9;&#x6B64;&#x65F6;&#x5347;&#x7EA7;&#x4E3A;&#x4E3B;&#x8282;&#x70B9;&#x4E86;&#xFF0C;&#x53D1;&#x73B0;nginx&#x6302;&#x4E86;&#xFF0C;&#x81EA;&#x964D;prority&#x8BA9;&#x51FA;VIP&#x7ED9;&#x522B;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x8FD9;&#x4E2A;&#x522B;&#x7684;&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x662F;&#x7B2C;&#x4E09;&#x4E2A;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E4B;&#x524D;&#x7684;&#x4E3B;&#xFF0C;&#x800C;&#x4E00;&#x822C;&#x6211;&#x4EEC;&#x5C31;2&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x8BA9;&#x7ED9;&#x4E4B;&#x524D;&#x7684;&#x4E3B;&#xFF0C;&#x52A0;&#x5165;&#x4E4B;&#x524D;&#x7684;&#x4E3B;&#x6062;&#x590D;&#x4E86;&#x81EA;&#x7136;&#x6709;&#x62A2;&#x5360;&#x548C;prority&#x4F18;&#x5148;&#x7EA7;&#x6062;&#x590D;&#x7ED3;&#x5408;&#x540E;&#x4F1A;&#x62A2;&#x56DE;&#x6765;&#xFF0C;&#x4E0D;&#x7528;&#x4ECE;&#x53BB;&#x8BA9;&#x7684;&#x52A8;&#x4F5C;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x4ECE;&#x65E0;&#x9700;&#x914D;&#x7F6E;nginx&#x68C0;&#x6D4B;&#x811A;&#x672C;&#x3002;</p>
+<h1 id="mysql&#x7684;ha-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;"><a name="mysql&#x7684;ha-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;" class="anchor-navigation-ex-anchor" href="#mysql&#x7684;ha-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;"><i class="fa fa-link" aria-hidden="true"></i></a>mysql&#x7684;HA-&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x548C;keepalived&#x6765;&#x5E72;&#x5427;</h1>
+<p>&#x6709;&#x72B6;&#x6001;&#x7684;HA&#x53EF;&#x80FD;&#x8FD8;&#x662F;&#x8981;&#x627E;&#x5E94;&#x7528;&#x81EA;&#x8EAB;&#x7684;HA&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7528;keepalived&#x6765;&#x5F04;&#xFF0C;keepalived&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x670D;&#x52A1;&#x7684;HA&#x6765;&#x7740;&#x3002;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225095549942.png" alt="image-20241225095549942"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225095622490.png" alt="image-20241225095622490"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225095839784.png" alt="image-20241225095839784"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225095901920.png" alt="image-20241225095901920"></p>
+<h1 id="zabbix-server&#x7684;ha"><a name="zabbix-server&#x7684;ha" class="anchor-navigation-ex-anchor" href="#zabbix-server&#x7684;ha"><i class="fa fa-link" aria-hidden="true"></i></a>zabbix-server&#x7684;ha</h1>
+<p>&#x548C;msyql&#x4E00;&#x6837;&#xFF0C;zabbix 6.0&#x5F00;&#x59CB;&#x672C;&#x8EAB;&#x81EA;&#x5E26;HA&#x4E86;&#xFF0C;&#x8FD8;&#x662F;&#x4E0D;&#x8981;&#x7528;keepalive&#x6765;&#x5B9E;&#x73B0;zabbix&#x7684;HA&#x4E86;&#x3002;</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225100020736.png" alt="image-20241225100020736" style="zoom:50%;"></p>
+<h1 id="keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;"><a name="keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;" class="anchor-navigation-ex-anchor" href="#keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;"><i class="fa fa-link" aria-hidden="true"></i></a>keepalived&#x7684;&#x811A;&#x672C;&#x6267;&#x884C;&#x884C;&#x4E3A;</h1>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x8D26;&#x53F7;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x53CD;&#x800C;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#xFF0C;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;&#x597D;&#x50CF;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x8BE5;&#x9ED8;&#x8BA4;&#x7528;&#x6237;&#x7684;&#xFF0C;yum&#x641E;&#x4E0D;&#x597D;&#x6709;&#xFF0C;&#x5C31;&#x8981;&#x6CE8;&#x610F;&#x6743;&#x9650;&#x53EF;&#x80FD;&#x4E0D;&#x591F;&#x7684;&#x95EE;&#x9898;&#x3002;  &#x4E0D;&#x5B58;&#x5728;&#x6700;&#x597D;&#xFF0C;&#x5C31;&#x4EE5;root&#x8FD0;&#x884C;&#x4E86;&#xFF0C;&#x6743;&#x9650;&#x6CA1;&#x95EE;&#x9898;~</p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225100344574.png" alt="image-20241225100344574"></p>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225100410045.png" alt="image-20241225100410045"></p>
+<h1 id="&#x603B;&#x7ED3;"><a name="&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x603B;&#x7ED3;</h1>
+<p><img src="7.Keepalived&#x5B9E;&#x73B0;Haproxy&#x548C;Nginx&#x5176;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x9AD8;&#x53EF;&#x7528;.assets/image-20241225105146337.png" alt="image-20241225105146337"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-07-28 14:47:59
+2024-12-25 10:53:52
 </span></footer></body></html>
                                 
                                 </section>
@@ -9640,7 +10058,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.Keepalived实现Haproxy和Nginx其它服务的高可用.md","level":"2.6.1.7","depth":3,"next":{"title":"45-Redis","level":"2.7","depth":1,"path":"45-Redis/45-Redis.md","ref":"./45-Redis/45-Redis.md","articles":[{"title":"NoSQL数据库Redis","level":"2.7.1","depth":2,"path":"45-Redis/NoSQL数据库Redis/NoSQL数据库Redis.md","ref":"./45-Redis/NoSQL数据库Redis/NoSQL数据库Redis.md","articles":[{"title":"1.NoSQL和Redis特性.md","level":"2.7.1.1","depth":3,"path":"45-Redis/NoSQL数据库Redis/1.NoSQL和Redis特性.md","ref":"./45-Redis/NoSQL数据库Redis/1.NoSQL和Redis特性.md","articles":[]},{"title":"2.Redis工作机制和编译安装.md","level":"2.7.1.2","depth":3,"path":"45-Redis/NoSQL数据库Redis/2.Redis工作机制和编译安装.md","ref":"./45-Redis/NoSQL数据库Redis/2.Redis工作机制和编译安装.md","articles":[]},{"title":"3.Redis性能优化和客户端访问.md","level":"2.7.1.3","depth":3,"path":"45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","ref":"./45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","articles":[]},{"title":"4.Redis程序访问和多实例.md","level":"2.7.1.4","depth":3,"path":"45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","ref":"./45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","articles":[]},{"title":"5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","level":"2.7.1.5","depth":3,"path":"45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","ref":"./45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","articles":[]},{"title":"6.Redis的持久化RDB和AOF实现.md","level":"2.7.1.6","depth":3,"path":"45-Redis/NoSQL数据库Redis/6.Redis的持久化RDB和AOF实现.md","ref":"./45-Redis/NoSQL数据库Redis/6.Redis的持久化RDB和AOF实现.md","articles":[]},{"title":"7.Redis常见命令用法.md","level":"2.7.1.7","depth":3,"path":"45-Redis/NoSQL数据库Redis/7.Redis常见命令用法.md","ref":"./45-Redis/NoSQL数据库Redis/7.Redis常见命令用法.md","articles":[]}]},{"title":"Redis数据类型和主从复制哨兵机制","level":"2.7.2","depth":2,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/Redis数据类型和主从复制哨兵机制.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/Redis数据类型和主从复制哨兵机制.md","articles":[{"title":"1.Redis的五种数据类型.md","level":"2.7.2.1","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/1.Redis的五种数据类型.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/1.Redis的五种数据类型.md","articles":[]},{"title":"2.Redis的五种数据类型.md","level":"2.7.2.2","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/2.Redis的五种数据类型.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/2.Redis的五种数据类型.md","articles":[]},{"title":"3.Redis消息队列和集群简介.md","level":"2.7.2.3","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/3.Redis消息队列和集群简介.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/3.Redis消息队列和集群简介.md","articles":[]},{"title":"4.Redis集群模式类型和主从复制实现原理.md","level":"2.7.2.4","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/4.Redis集群模式类型和主从复制实现原理.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/4.Redis集群模式类型和主从复制实现原理.md","articles":[]},{"title":"5.Redis主从复制实现和故障转换.md","level":"2.7.2.5","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/5.Redis主从复制实现和故障转换.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/5.Redis主从复制实现和故障转换.md","articles":[]},{"title":"6.Redis主从复制优化和故障排错.md","level":"2.7.2.6","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/6.Redis主从复制优化和故障排错.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/6.Redis主从复制优化和故障排错.md","articles":[]},{"title":"7.Redis的哨兵sentinel机制工作原理.md","level":"2.7.2.7","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/7.Redis的哨兵sentinel机制工作原理.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/7.Redis的哨兵sentinel机制工作原理.md","articles":[]},{"title":"8.Redis的哨兵sentinel实现案例和客户端访问.md","level":"2.7.2.8","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/8.Redis的哨兵sentinel实现案例和客户端访问.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/8.Redis的哨兵sentinel实现案例和客户端访问.md","articles":[]}]},{"title":"Redis集群和微服务","level":"2.7.3","depth":2,"path":"45-Redis/Redis集群和微服务/Redis集群和微服务.md","ref":"./45-Redis/Redis集群和微服务/Redis集群和微服务.md","articles":[{"title":"1.Redis集群的工作原理.md","level":"2.7.3.1","depth":3,"path":"45-Redis/Redis集群和微服务/1.Redis集群的工作原理.md","ref":"./45-Redis/Redis集群和微服务/1.Redis集群的工作原理.md","articles":[]},{"title":"2.Redis集群架构和创建.md","level":"2.7.3.2","depth":3,"path":"45-Redis/Redis集群和微服务/2.Redis集群架构和创建.md","ref":"./45-Redis/Redis集群和微服务/2.Redis集群架构和创建.md","articles":[]},{"title":"3.Redis的集群访问和故障转移.md","level":"2.7.3.3","depth":3,"path":"45-Redis/Redis集群和微服务/3.Redis的集群访问和故障转移.md","ref":"./45-Redis/Redis集群和微服务/3.Redis的集群访问和故障转移.md","articles":[]},{"title":"4.Redis扩容机制和实现.md","level":"2.7.3.4","depth":3,"path":"45-Redis/Redis集群和微服务/4.Redis扩容机制和实现.md","ref":"./45-Redis/Redis集群和微服务/4.Redis扩容机制和实现.md","articles":[]},{"title":"5.Redis集群动态缩容和维护.md","level":"2.7.3.5","depth":3,"path":"45-Redis/Redis集群和微服务/5.Redis集群动态缩容和维护.md","ref":"./45-Redis/Redis集群和微服务/5.Redis集群动态缩容和维护.md","articles":[]}]}]},"previous":{"title":"6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","level":"2.6.1.6","depth":3,"path":"44-KeepAlived/高可用集群Keepalived/6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","ref":"./44-KeepAlived/高可用集群Keepalived/6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"44-KeepAlived/高可用集群Keepalived/7.Keepalived实现Haproxy和Nginx其它服务的高可用.md","mtime":"2024-07-28T06:47:59.514Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-19T07:51:20.922Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.Keepalived实现Haproxy和Nginx其它服务的高可用.md","level":"2.6.1.7","depth":3,"next":{"title":"45-Redis","level":"2.7","depth":1,"path":"45-Redis/45-Redis.md","ref":"./45-Redis/45-Redis.md","articles":[{"title":"NoSQL数据库Redis","level":"2.7.1","depth":2,"path":"45-Redis/NoSQL数据库Redis/NoSQL数据库Redis.md","ref":"./45-Redis/NoSQL数据库Redis/NoSQL数据库Redis.md","articles":[{"title":"1.NoSQL和Redis特性.md","level":"2.7.1.1","depth":3,"path":"45-Redis/NoSQL数据库Redis/1.NoSQL和Redis特性.md","ref":"./45-Redis/NoSQL数据库Redis/1.NoSQL和Redis特性.md","articles":[]},{"title":"2.Redis工作机制和编译安装.md","level":"2.7.1.2","depth":3,"path":"45-Redis/NoSQL数据库Redis/2.Redis工作机制和编译安装.md","ref":"./45-Redis/NoSQL数据库Redis/2.Redis工作机制和编译安装.md","articles":[]},{"title":"3.Redis性能优化和客户端访问.md","level":"2.7.1.3","depth":3,"path":"45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","ref":"./45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","articles":[]},{"title":"4.Redis程序访问和多实例.md","level":"2.7.1.4","depth":3,"path":"45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","ref":"./45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","articles":[]},{"title":"5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","level":"2.7.1.5","depth":3,"path":"45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","ref":"./45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","articles":[]},{"title":"6.Redis的持久化RDB和AOF实现.md","level":"2.7.1.6","depth":3,"path":"45-Redis/NoSQL数据库Redis/6.Redis的持久化RDB和AOF实现.md","ref":"./45-Redis/NoSQL数据库Redis/6.Redis的持久化RDB和AOF实现.md","articles":[]},{"title":"7.Redis常见命令用法.md","level":"2.7.1.7","depth":3,"path":"45-Redis/NoSQL数据库Redis/7.Redis常见命令用法.md","ref":"./45-Redis/NoSQL数据库Redis/7.Redis常见命令用法.md","articles":[]}]},{"title":"Redis数据类型和主从复制哨兵机制","level":"2.7.2","depth":2,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/Redis数据类型和主从复制哨兵机制.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/Redis数据类型和主从复制哨兵机制.md","articles":[{"title":"1.Redis的五种数据类型.md","level":"2.7.2.1","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/1.Redis的五种数据类型.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/1.Redis的五种数据类型.md","articles":[]},{"title":"2.Redis的五种数据类型.md","level":"2.7.2.2","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/2.Redis的五种数据类型.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/2.Redis的五种数据类型.md","articles":[]},{"title":"3.Redis消息队列和集群简介.md","level":"2.7.2.3","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/3.Redis消息队列和集群简介.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/3.Redis消息队列和集群简介.md","articles":[]},{"title":"4.Redis集群模式类型和主从复制实现原理.md","level":"2.7.2.4","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/4.Redis集群模式类型和主从复制实现原理.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/4.Redis集群模式类型和主从复制实现原理.md","articles":[]},{"title":"5.Redis主从复制实现和故障转换.md","level":"2.7.2.5","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/5.Redis主从复制实现和故障转换.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/5.Redis主从复制实现和故障转换.md","articles":[]},{"title":"6.Redis主从复制优化和故障排错.md","level":"2.7.2.6","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/6.Redis主从复制优化和故障排错.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/6.Redis主从复制优化和故障排错.md","articles":[]},{"title":"7.Redis的哨兵sentinel机制工作原理.md","level":"2.7.2.7","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/7.Redis的哨兵sentinel机制工作原理.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/7.Redis的哨兵sentinel机制工作原理.md","articles":[]},{"title":"8.Redis的哨兵sentinel实现案例和客户端访问.md","level":"2.7.2.8","depth":3,"path":"45-Redis/Redis数据类型和主从复制哨兵机制/8.Redis的哨兵sentinel实现案例和客户端访问.md","ref":"./45-Redis/Redis数据类型和主从复制哨兵机制/8.Redis的哨兵sentinel实现案例和客户端访问.md","articles":[]}]},{"title":"Redis集群和微服务","level":"2.7.3","depth":2,"path":"45-Redis/Redis集群和微服务/Redis集群和微服务.md","ref":"./45-Redis/Redis集群和微服务/Redis集群和微服务.md","articles":[{"title":"1.Redis集群的工作原理.md","level":"2.7.3.1","depth":3,"path":"45-Redis/Redis集群和微服务/1.Redis集群的工作原理.md","ref":"./45-Redis/Redis集群和微服务/1.Redis集群的工作原理.md","articles":[]},{"title":"2.Redis集群架构和创建.md","level":"2.7.3.2","depth":3,"path":"45-Redis/Redis集群和微服务/2.Redis集群架构和创建.md","ref":"./45-Redis/Redis集群和微服务/2.Redis集群架构和创建.md","articles":[]},{"title":"3.Redis的集群访问和故障转移.md","level":"2.7.3.3","depth":3,"path":"45-Redis/Redis集群和微服务/3.Redis的集群访问和故障转移.md","ref":"./45-Redis/Redis集群和微服务/3.Redis的集群访问和故障转移.md","articles":[]},{"title":"4.Redis扩容机制和实现.md","level":"2.7.3.4","depth":3,"path":"45-Redis/Redis集群和微服务/4.Redis扩容机制和实现.md","ref":"./45-Redis/Redis集群和微服务/4.Redis扩容机制和实现.md","articles":[]},{"title":"5.Redis集群动态缩容和维护.md","level":"2.7.3.5","depth":3,"path":"45-Redis/Redis集群和微服务/5.Redis集群动态缩容和维护.md","ref":"./45-Redis/Redis集群和微服务/5.Redis集群动态缩容和维护.md","articles":[]}]}]},"previous":{"title":"6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","level":"2.6.1.6","depth":3,"path":"44-KeepAlived/高可用集群Keepalived/6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","ref":"./44-KeepAlived/高可用集群Keepalived/6.Keepalived实现多主模式的LVS和其它服务高可的vrrp_script实现说明.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"44-KeepAlived/高可用集群Keepalived/7.Keepalived实现Haproxy和Nginx其它服务的高可用.md","mtime":"2024-12-25T02:53:52.306Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-25T03:08:35.482Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
