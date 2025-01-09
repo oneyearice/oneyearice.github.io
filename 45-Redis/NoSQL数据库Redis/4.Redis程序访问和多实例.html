@@ -9594,9 +9594,85 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><b></b>4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.md</a></li></ul></div><h1 id="4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><a name="4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md" class="anchor-navigation-ex-anchor" href="#4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><i class="fa fa-link" aria-hidden="true"></i></a>4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.md</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><b></b>4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.md</a></li><li><span class="title-icon "></span><a href="#shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;"><b></b>shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;</a></li><ul><li><span class="title-icon "></span><a href="#&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;"><b></b>&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;</a></li></ul></ul></div><h1 id="4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><a name="4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md" class="anchor-navigation-ex-anchor" href="#4redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;md"><i class="fa fa-link" aria-hidden="true"></i></a>4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.md</h1>
+<h1 id="shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;"><a name="shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;" class="anchor-navigation-ex-anchor" href="#shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;"><i class="fa fa-link" aria-hidden="true"></i></a>shell&#x5199;&#x5165;redis&#x7684;&#x6548;&#x7387;</h1>
+<p>RDB&#x5316;&#x4E34;&#x65F6;&#x5F00;&#x4E00;&#x4E0B;&#x1F447;&#xFF0C;&#x9632;&#x6B62;&#x548C;&#x4E0A;&#x4E00;&#x7BC7;python&#x5199;&#x5165;&#x7684;&#x65F6;&#x5019;&#x4E00;&#x6837;&#x62A5;&#x9519;&#x5199;&#x5230;322&#x4E2A;&#x5C31;&#x4E0D;&#x884C;&#x4E86;&#x3002;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230164854671.png" alt="image-20241230164854671"></p>
+<p>&#x7136;&#x540E;&#x5C1D;&#x8BD5;&#x7981;&#x7528; <code>stop-writes-on-bgsave-error</code>&#xFF0C;&#x4EE5;&#x907F;&#x514D; Redis &#x56E0; RDB &#x5FEB;&#x7167;&#x5931;&#x8D25;&#x800C;&#x963B;&#x6B62;&#x5199;&#x64CD;&#x4F5C;&#xFF1A; &#x5728; Redis &#x914D;&#x7F6E;&#x6587;&#x4EF6; <code>redis.conf</code> &#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;&#x9879;&#x5E76;&#x5C06;&#x5176;&#x8BBE;&#x7F6E;&#x4E3A; <code>no</code>&#xFF1A;&#x1F447;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230165759472.png" alt="image-2024123016575r9472"></p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230164938004.png" alt="image-20241230164938004"></p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#*****************************************************************</span>
+<span class="hljs-comment">#Author:            oneyearice</span>
+<span class="hljs-comment">#QQ:                123456789</span>
+<span class="hljs-comment">#Date:              2024-12-30</span>
+<span class="hljs-comment">#FileName:          redis_test.sh</span>
+<span class="hljs-comment">#URL:               https://www.oneyearice.github.io</span>
+<span class="hljs-comment">#Description:       The test script</span>
+<span class="hljs-comment">#Copyright(C):     All rights reserved</span>
+<span class="hljs-comment">#*****************************************************************</span>
+NUM=10000
+PASS=
+HOST=127.0.0.1
+PORT=6379
+DATABASE=0
+
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq <span class="hljs-variable">$NUM</span>`;<span class="hljs-keyword">do</span>
+    redis-cli -h <span class="hljs-variable">${HOST}</span> -p <span class="hljs-variable">${PORT}</span> -n <span class="hljs-variable">${DATABASE}</span> --no-auth-warning <span class="hljs-built_in">set</span> key<span class="hljs-variable">${i}</span> value<span class="hljs-variable">${i}</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-built_in">echo</span><span class="hljs-string">&quot;<span class="hljs-variable">$NUM</span>&#x4E2A;key&#x5199;&#x5165;&#x5230;Redis&#x5B8C;&#x6210;&quot;</span>
+~
+</code></pre>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230165203433.png" alt="image-20241230165203433"></p>
+<p>&#x7136;&#x540E;&#x6267;&#x884C;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230165248123.png" alt="image-20241230165248123"></p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230165413209.png" alt="image-20241230165413209"></p>
+<p>&#x8017;&#x65F6;1m23&#x79D2;&#x1F446;</p>
+<p>&#x7136;&#x540E;&#x5BF9;&#x6BD4;&#x6267;&#x884C;python&#x7684;10000&#x6761;&#x5199;&#x5165;</p>
+<pre><code class="lang-bash">[root@server ~]<span class="hljs-comment"># cat redis_test.py</span>
+<span class="hljs-comment">#!/usr/bin/python3</span>
+import redis
+pool = redis.ConnectionPool(host=<span class="hljs-string">&quot;127.0.0.1&quot;</span>,port=6379,decode_responses=True)
+<span class="hljs-comment">#pool = redis.ConnectionPool(host=&quot;127.0.0.1&quot;,port=6379,password=&quot;123456&quot;,decode_responses=True)</span>
+r = redis.Redis(connection_pool=pool)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(10000):
+    r.set(<span class="hljs-string">&quot;k%d&quot;</span> % i,<span class="hljs-string">&quot;v%d&quot;</span> % i)
+    data=r.get(<span class="hljs-string">&quot;k%d&quot;</span> % i)
+    <span class="hljs-built_in">print</span>(data)
+[root@server ~]<span class="hljs-comment">#</span>
+</code></pre>
+<p>&#x5148;&#x6E05;&#x7A7A;redis&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230170237917.png" alt="image-20241230170237917"></p>
+<p>&#x7136;&#x540E;&#x6267;&#x884C;&#x1F447;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230170252513.png" alt="image-20241230170252513"></p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230170320072.png" alt="image-20241230170320072"></p>
+<p>&#x8017;&#x65F6;13&#x79D2;</p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x6253;&#x5F00;stop-writes-on-bgsave-error no &#x53EF;&#x80FD;&#x5C31;&#x9700;&#x8981;&#x6B63;&#x9762;&#x5904;&#x7406; &#x6743;&#x9650;&#x95EE;&#x9898;&#x1F447;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230171307497.png" alt="image-20241230171307497"></p>
+<p>&#x6B63;&#x9762;&#x89E3;&#x51B3;&#x5C31;&#x8FD9;&#x6837;&#x4E5F;&#x884C;&#xFF0C;&#x6211;&#x5C31;&#x4E0D;&#x5F04;&#x4E86;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230171527012.png" alt="image-20241230171527012" style="zoom:50%;"> </p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230171538147.png" alt="image-20241230171538147" style="zoom:50%;"> </p>
+<h2 id="&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;"><a name="&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;" class="anchor-navigation-ex-anchor" href="#&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56FE;&#x5F62;&#x5316;&#x7684;redis&#x5BA2;&#x6237;&#x7AEF;</h2>
+<p> <a href="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/redis-desktop-manager-0.8.8.384.exe">redis-desktop-manager-0.8.8.384.exe</a> </p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230172149706.png" alt="image-20241230172149706" style="zoom:50%;"></p>
+<p>&#x8FD8;&#x6709;&#xFF1A;<a href="https://goanother.com/cn/" target="_blank">https://goanother.com/cn/</a></p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230172746753.png" alt="image-20241230172746753"></p>
+<p>&#x6211;&#x5C31;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x5427;&#xFF1A;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230172739039.png" alt="image-20241230172739039"></p>
+<p>&#x5148;&#x628A;&#x5BC6;&#x7801;&#x52A0;&#x4E0A;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230173609135.png" alt="image-20241230173609135" style="zoom:44%;"> </p>
+<p>redis&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#x6237;&#x540D;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x53EA;&#x6709;&#x5BC6;&#x7801;&#x7684;&#x4FEE;&#x6539;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230173858186.png" alt="image-20241230173858186" style="zoom:50%;"> </p>
+<p>&#x8FD9;&#x8F6F;&#x4EF6;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#x7684;redis001 &#x5373;&#x4F7F;&#x4FEE;&#x6539;&#x6B63;&#x786E;&#x540E;&#x8FD8;&#x662F;&#x70B9;&#x4E0D;&#x5F00;&#xFF0C;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x624D;&#x884C;&#xFF1A;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230174234086.png" alt="image-20241230174234086"></p>
+<p>&#x6267;&#x884C;&#x4E00;&#x4E0B;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230174742820.png" alt="image-20241230174742820"></p>
+<p>&#x7136;&#x540E;&#x53EF;&#x89C1;&#x1F447;</p>
+<p><img src="4.Redis&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x548C;&#x591A;&#x5B9E;&#x4F8B;.assets/image-20241230174723496.png" alt="image-20241230174723496" style="zoom:50%;"></p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-12-30 16:40:47
+2024-12-30 18:32:16
 </span></footer></body></html>
                                 
                                 </section>
@@ -9640,7 +9716,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.Redis程序访问和多实例.md","level":"2.7.1.4","depth":3,"next":{"title":"5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","level":"2.7.1.5","depth":3,"path":"45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","ref":"./45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","articles":[]},"previous":{"title":"3.Redis性能优化和客户端访问.md","level":"2.7.1.3","depth":3,"path":"45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","ref":"./45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","mtime":"2024-12-30T08:40:47.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-30T08:40:57.998Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.Redis程序访问和多实例.md","level":"2.7.1.4","depth":3,"next":{"title":"5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","level":"2.7.1.5","depth":3,"path":"45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","ref":"./45-Redis/NoSQL数据库Redis/5.Redis动态修改配置和慢查询及数据持久化RDB机制.md","articles":[]},"previous":{"title":"3.Redis性能优化和客户端访问.md","level":"2.7.1.3","depth":3,"path":"45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","ref":"./45-Redis/NoSQL数据库Redis/3.Redis性能优化和客户端访问.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"45-Redis/NoSQL数据库Redis/4.Redis程序访问和多实例.md","mtime":"2024-12-30T10:32:16.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-01-09T04:29:18.025Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
