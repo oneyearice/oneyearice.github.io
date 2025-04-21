@@ -353,12 +353,20 @@ tmp\gitbook\gitbook-plugin-anchor-navigation-ex\lib\plugin.js
 tmp\gitbook\gitbook-plugin-anchor-navigation-ex\style\plugin.css
 tmp\gitbook\gitbook-plugin-back-to-top-button\plugin.css
 tmp\gitbook\gitbook-plugin-back-to-top-button\plugin.js
+tmp\gitbook\gitbook-plugin-donate\plugin.css
+tmp\gitbook\gitbook-plugin-donate\plugin.js
 tmp\gitbook\gitbook-plugin-emphasize\plugin.css
 tmp\gitbook\gitbook-plugin-fontsettings\fontsettings.js
 tmp\gitbook\gitbook-plugin-fontsettings\website.css
+tmp\gitbook\gitbook-plugin-github\plugin.js
 tmp\gitbook\gitbook-plugin-highlight\ebook.css
 tmp\gitbook\gitbook-plugin-highlight\website.css
+tmp\gitbook\gitbook-plugin-search-plus\jquery.mark.min.js
+tmp\gitbook\gitbook-plugin-search-plus\search.css
+tmp\gitbook\gitbook-plugin-search-plus\search.js
+tmp\gitbook\gitbook-plugin-splitter\splitter.css
+tmp\gitbook\gitbook-plugin-splitter\splitter.js
 tmp\gitbook\gitbook-plugin-tbfed-pagefooter\footer.css
 tmp\gitbook\images\apple-touch-icon-precomposed-152.png
 tmp\gitbook\images\favicon.ico
-复制了 351 个文件
+复制了 359 个文件
