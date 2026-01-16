@@ -79,7 +79,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html" />
+    <link rel="next" href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html" />
     
     
     <link rel="prev" href="04.KVM实现自动化创建虚拟机.html" />
@@ -4806,12 +4806,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
-                <a href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+                <a href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
                     
-                    06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md
+                    06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md
             
                 </a>
             
@@ -9594,9 +9594,310 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><b></b>05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.md</a></li></ul></div><h1 id="05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><a name="05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md" class="anchor-navigation-ex-anchor" href="#05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><i class="fa fa-link" aria-hidden="true"></i></a>05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.md</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><b></b>05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.md</a></li><li><span class="title-icon "></span><a href="#&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;"><b></b>&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;</a></li><ul><li><span class="title-icon "></span><a href="#&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;"><b></b>&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;</a></li><ul><li><span class="title-icon "></span><a href="#a-hdparm"><b></b>(A) hdparm</a></li><li><span class="title-icon "></span><a href="#b-dd"><b></b>(B) dd</a></li><li><span class="title-icon "></span><a href="#c-fio&#xFF08;&#x63A8;&#x8350;&#xFF09;"><b></b>(C) fio&#xFF08;&#x63A8;&#x8350;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#&#x6A21;&#x677F;clone"><b></b>&#x6A21;&#x677F;clone</a></li><ul><li><span class="title-icon "></span><a href="#win2008r2clone&#x7684;&#x95EE;&#x9898;"><b></b>win2008r2clone&#x7684;&#x95EE;&#x9898;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><b></b>&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;"><b></b>&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;"><b></b>&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;"><b></b>&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;"><b></b>&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-virsh-&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;"><b></b>1&#xFE0F;&#x20E3; virsh &#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;</a></li><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-libvirtdsocket-&#x4E3A;&#x5565;&#x662F;-dead&#xFF1F;"><b></b>2&#xFE0F;&#x20E3; libvirtd.socket &#x4E3A;&#x5565;&#x662F; dead&#xFF1F;</a></li><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-triggers-libvirtdservice-&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;"><b></b>3&#xFE0F;&#x20E3; &#x201C;Triggers: libvirtd.service&#x201D; &#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;</a></li></ul><li><span class="title-icon "></span><a href="#&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;"><b></b>&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#&#x1F50D;-&#x770B;-virtqemud-&#x72B6;&#x6001;"><b></b>&#x1F50D; &#x770B; virtqemud &#x72B6;&#x6001;</a></li><li><span class="title-icon "></span><a href="#&#x1F50D;-&#x770B;-virsh-&#x5B9E;&#x9645;&#x8FDE;&#x7684;-uri"><b></b>&#x1F50D; &#x770B; virsh &#x5B9E;&#x9645;&#x8FDE;&#x7684; URI</a></li><li><span class="title-icon "></span><a href="#&#x1F50D;-&#x770B;-socket"><b></b>&#x1F50D; &#x770B; socket</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x4F9D;&#x8D56;-libvirtd&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;"><b></b>&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x201C;&#x4F9D;&#x8D56; libvirtd&#x201D;&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x5BF9;&#x4E0D;&#x5BF9;&#xFF1F;"><b></b>&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x201C;&#x5BF9;&#x4E0D;&#x5BF9;&#x201D;&#xFF1F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x2705;-&#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F;-&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;"><b></b>&#x2705; &#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F; &#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x5FC5;&#x987B;&#x542F;-libvirtd&#xFF1F;"><b></b>&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x201C;&#x5FC5;&#x987B;&#x201D;&#x542F; libvirtd&#xFF1F;</a></li></ul></ul></div><h1 id="05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><a name="05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md" class="anchor-navigation-ex-anchor" href="#05kvm&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;virtio&#x9A71;&#x52A8;&#x5B89;&#x88C5;md"><i class="fa fa-link" aria-hidden="true"></i></a>05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.md</h1>
+<p><a href="https://sq.sf.163.com/blog/article/218148356914737152" target="_blank">https://sq.sf.163.com/blog/article/218148356914737152</a></p>
+<p>&#x4F7F;&#x7528;virtio_blk&#x9A71;&#x52A8;&#x7684;&#x786C;&#x76D8;&#x663E;&#x793A;&#x4E3A;/dev/vda&#xFF0C;&#x4F7F;&#x7528;IDE&#x786C;&#x76D8;&#x663E;&#x793A;&#x4E3A;/dev/had&#xFF0C;&#x4F7F;&#x7528;SATA&#x786C;&#x76D8;&#x663E;&#x793A;/dev/sda</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231160346471.png" alt="image-20251231160346471"></p>
+<p>&#x6211;&#x7684;&#x662F;vmware workstation&#x7684;vm&#x6765;&#x505A;kvm&#x6D4B;&#x8BD5;&#x7684;&#xFF0C;&#x6CA1;&#x6709;virtio&#x662F;&#x81EA;&#x7136;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;virtio&#x662F;kvm&#x91CC;&#x7684;&#x6280;&#x672F;&#x3002;</p>
+<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;</p>
+<p><a href="https://github.com/virtio-win/virtio-win-pkg-scripts?tab=readme-ov-file" target="_blank">https://github.com/virtio-win/virtio-win-pkg-scripts?tab=readme-ov-file</a></p>
+<h1 id="&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;"><a name="&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;" class="anchor-navigation-ex-anchor" href="#&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6D4B;&#x8BD5;virtio&#x6027;&#x80FD;</h1>
+<p>&#x6D4B;&#x8BD5;&#x5199;&#x901F;&#x5EA6;</p>
+<pre><code class="lang-shell">fio --name=write \
+    --filename=/tmp/fio_test \
+    --rw=write \
+    --bs=1M \
+    --size=2G \
+    --direct=1 \
+    --iodepth=16
+</code></pre>
+<p>&#x6D4B;&#x8BD5;&#x8BFB;&#x901F;&#x5EA6;</p>
+<pre><code class="lang-shell">fio --name=read \
+    --filename=/tmp/fio_test \
+    --rw=read \
+    --bs=1M \
+    --direct=1 \
+    --iodepth=16
+</code></pre>
+<p>&#x5982;&#x4F55;&#x7528;&#x4E0D;&#x540C;&#x5DE5;&#x5177;&#x6D4B;&#x8BD5;&#x673A;&#x5668;&#x6027;&#x80FD;&#xFF0C;&#x5305;&#x62EC;&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x3001;CPU&#x3001;&#x5185;&#x5B58;&#x3001;&#x7F51;&#x7EDC;&#x7B49;&#xFF0C;&#x540C;&#x65F6;&#x5B89;&#x5168;&#x53EF;&#x9760;&#x5730;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x5148;&#x8BB2;&#x78C1;&#x76D8;&#xFF0C;&#x7136;&#x540E;&#x6269;&#x5C55;&#x5230;&#x6574;&#x673A;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x3002;</p>
+<hr>
+<h2 id="&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;"><a name="&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;" class="anchor-navigation-ex-anchor" href="#&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x78C1;&#x76D8;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;</h2>
+<h3 id="a-hdparm"><a name="a-hdparm" class="anchor-navigation-ex-anchor" href="#a-hdparm"><i class="fa fa-link" aria-hidden="true"></i></a><strong>(A) hdparm</strong></h3>
+<ul>
+<li><strong>&#x7528;&#x9014;</strong>&#xFF1A;&#x987A;&#x5E8F;&#x8BFB;&#x6D4B;&#x8BD5;&#x3001;&#x7F13;&#x5B58;&#x8BFB;&#x6D4B;&#x8BD5;</li>
+<li><strong>&#x547D;&#x4EE4;&#x793A;&#x4F8B;</strong>&#xFF1A;</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x6D4B;&#x8BD5;&#x78C1;&#x76D8;&#x7F13;&#x5B58;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#xFF08;&#x4E0D;&#x8BBF;&#x95EE;&#x78C1;&#x76D8;&#xFF09;</span>
+hdparm -T /dev/sda
+
+<span class="hljs-comment"># &#x6D4B;&#x8BD5;&#x5B9E;&#x9645;&#x78C1;&#x76D8;&#x987A;&#x5E8F;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;</span>
+hdparm -t /dev/sda
+</code></pre>
+<ul>
+<li><strong>&#x7279;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x975E;&#x7834;&#x574F;&#x6027;&#xFF0C;&#x5FEB;&#x901F;</li>
+<li>&#x53EA;&#x6D4B;&#x8BFB;&#x53D6;&#xFF0C;&#x4E0D;&#x6D4B;&#x5199;&#x5165;</li>
+<li>&#x987A;&#x5E8F;&#x8BFB;&#xFF0C;&#x4E0D;&#x9002;&#x5408;&#x53CD;&#x6620;&#x968F;&#x673A; I/O &#x6027;&#x80FD;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="b-dd"><a name="b-dd" class="anchor-navigation-ex-anchor" href="#b-dd"><i class="fa fa-link" aria-hidden="true"></i></a><strong>(B) dd</strong></h3>
+<ul>
+<li><strong>&#x7528;&#x9014;</strong>&#xFF1A;&#x987A;&#x5E8F;&#x8BFB;&#x5199;&#x6D4B;&#x8BD5;&#xFF0C;&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x5199;&#x5165;&#x6027;&#x80FD;</li>
+<li><strong>&#x547D;&#x4EE4;&#x793A;&#x4F8B;</strong>&#xFF1A;</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x987A;&#x5E8F;&#x5199;&#x6D4B;&#x8BD5;&#xFF08;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x5199;&#x5230;&#x7CFB;&#x7EDF;&#x76D8;&#xFF09; &#x8DF3;&#x8FC7;buffer &#x76F4;&#x63A5;&#x5199;&#x78C1;&#x76D8;</span>
+dd <span class="hljs-keyword">if</span>=/dev/zero of=/tmp/testfile bs=1M count=1024 oflag=direct
+
+<span class="hljs-comment"># &#x987A;&#x5E8F;&#x5199;&#x6D4B;&#x8BD5;&#xFF08;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x5199;&#x5230;&#x7CFB;&#x7EDF;&#x76D8;&#xFF09;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;buffer</span>
+dd <span class="hljs-keyword">if</span>=/dev/zero of=/tmp/testfile bs=1M count=1024
+
+
+<span class="hljs-comment"># &#x987A;&#x5E8F;&#x8BFB;&#x6D4B;&#x8BD5;&#xFF0C;&#x8DF3;&#x8FC7;&#x7CFB;&#x7EDF;cache&#x76F4;&#x63A5;&#x8BFB;&#x78C1;&#x76D8;&#x3002;</span>
+dd <span class="hljs-keyword">if</span>=/tmp/testfile of=/dev/null bs=1M iflag=direct
+
+<span class="hljs-comment"># &#x987A;&#x5E8F;&#x8BFB;&#x6D4B;&#x8BD5; &#x4F7F;&#x7528;&#x7CFB;&#x7EDF;cache</span>
+dd <span class="hljs-keyword">if</span>=/tmp/testfile of=/dev/null bs=1M
+</code></pre>
+<ul>
+<li><strong>&#x7279;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x7B80;&#x5355;&#x3001;&#x53EF;&#x6D4B;&#x5199;&#x5165;&#x548C;&#x8BFB;&#x53D6;</li>
+<li>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x63A7;&#x5236;&#x5757;&#x5927;&#x5C0F;&#x3001;&#x6587;&#x4EF6;&#x5927;&#x5C0F;</li>
+<li>&#x5199;&#x5230;&#x7CFB;&#x7EDF;&#x76D8;&#x5371;&#x9669;&#xFF0C;&#x8981;&#x7528; <code>/tmp</code> &#x6216;&#x72EC;&#x7ACB;&#x6D4B;&#x8BD5;&#x76D8;</li>
+</ul>
+</li>
+</ul>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231170708577.png" alt="image-20251231170708577"></p>
+<hr>
+<h3 id="c-fio&#xFF08;&#x63A8;&#x8350;&#xFF09;"><a name="c-fio&#xFF08;&#x63A8;&#x8350;&#xFF09;" class="anchor-navigation-ex-anchor" href="#c-fio&#xFF08;&#x63A8;&#x8350;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>(C) fio&#xFF08;&#x63A8;&#x8350;&#xFF09;</strong></h3>
+<ul>
+<li><strong>&#x7528;&#x9014;</strong>&#xFF1A;&#x4E13;&#x4E1A; I/O &#x538B;&#x529B;&#x6D4B;&#x8BD5;&#xFF0C;&#x652F;&#x6301;&#x987A;&#x5E8F;/&#x968F;&#x673A;&#x8BFB;&#x5199;&#x3001;&#x591A;&#x961F;&#x5217;&#x6DF1;&#x5EA6;</li>
+<li><strong>&#x793A;&#x4F8B;&#x547D;&#x4EE4;</strong>&#xFF1A;&#x7ED5;&#x8FC7;&#x7F13;&#x5B58;--direct=1</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x987A;&#x5E8F;&#x5199;&#xFF0C;&#x5F02;&#x6B65; I/O&#xFF0C;16 &#x961F;&#x5217;&#x6DF1;&#x5EA6;&#xFF0C;</span>
+fio --name=seq_write --filename=/tmp/fio_<span class="hljs-built_in">test</span> \
+    --rw=write --bs=1M --size=2G \
+    --direct=1 --iodepth=16 --ioengine=libaio
+
+<span class="hljs-comment"># &#x987A;&#x5E8F;&#x8BFB;&#xFF0C;&#x5F02;&#x6B65; I/O&#xFF0C;16 &#x961F;&#x5217;&#x6DF1;&#x5EA6;&#xFF0C;&#x7ED5;&#x8FC7;&#x7F13;&#x5B58;</span>
+fio --name=seq_<span class="hljs-built_in">read</span> --filename=/tmp/fio_<span class="hljs-built_in">test</span> \
+    --rw=<span class="hljs-built_in">read</span> --bs=1M --size=2G \
+    --direct=1 --iodepth=16 --ioengine=libaio
+
+<span class="hljs-comment"># &#x968F;&#x673A;&#x5199;&#xFF0C;&#x5F02;&#x6B65; I/O&#xFF0C;32 &#x961F;&#x5217;&#x6DF1;&#x5EA6;&#xFF0C;4KB &#x5757;</span>
+fio --name=rand_write --filename=/tmp/fio_<span class="hljs-built_in">test</span> \
+    --rw=randwrite --bs=4k --size=2G \
+    --direct=1 --iodepth=32 --ioengine=libaio
+
+<span class="hljs-comment"># &#x968F;&#x673A;&#x8BFB;&#xFF0C;&#x5F02;&#x6B65; I/O&#xFF0C;32 &#x961F;&#x5217;&#x6DF1;&#x5EA6;&#xFF0C;4KB &#x5757;</span>
+fio --name=rand_<span class="hljs-built_in">read</span> --filename=/tmp/fio_<span class="hljs-built_in">test</span> \
+    --rw=randread --bs=4k --size=2G \
+    --direct=1 --iodepth=32 --ioengine=libaio
+
+<span class="hljs-comment"># &#x968F;&#x673A;&#x8BFB;&#x5199;&#x6DF7;&#x5408;&#xFF0C;&#x5F02;&#x6B65; I/O&#xFF0C;32 &#x961F;&#x5217;&#x6DF1;&#x5EA6;&#xFF0C;70% &#x8BFB; / 30% &#x5199;</span>
+fio --name=rand_rw --filename=/tmp/fio_<span class="hljs-built_in">test</span> \
+    --rw=randrw --bs=4k --size=2G \
+    --rwmixread=70 --direct=1 --iodepth=32 --ioengine=libaio
+</code></pre>
+<ul>
+<li><strong>&#x7279;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x53EF;&#x7CBE;&#x7EC6;&#x63A7;&#x5236; I/O &#x6A21;&#x5F0F;&#x3001;&#x5757;&#x5927;&#x5C0F;&#x3001;&#x5E76;&#x53D1;&#x6DF1;&#x5EA6;</li>
+<li>&#x53EF;&#x8F93;&#x51FA;&#x8BE6;&#x7EC6;&#x6027;&#x80FD;&#x6307;&#x6807;&#xFF08;IOPS&#x3001;&#x5EF6;&#x8FDF;&#x3001;&#x5E26;&#x5BBD;&#xFF09;</li>
+<li>&#x53EF;&#x5B89;&#x5168;&#x6D4B;&#x8BD5;&#xFF0C;&#x53EA;&#x8981;&#x5199;&#x5230;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x6216;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>&#x4E24;&#x6B21;&#x6D4B;&#x8BD5;&#xFF0C;&#x7ED3;&#x8BBA;&#xFF1A;&#x7F13;&#x5B58;&#x4E3A;&#x738B;</p>
+<p>&#x2460;&#x8DF3;&#x8FC7;&#x7F13;&#x51B2;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231174632508.png" alt="image-20251231174632508"></p>
+<p>&#x2461;&#x901A;&#x8FC7;&#x7F13;&#x51B2;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231174802145.png" alt="image-20251231174802145"></p>
+<p>&#x2462;&#x8DF3;&#x8FC7;&#x7F13;&#x51B2;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231174853069.png" alt="image-20251231174853069"></p>
+<p>&#x2463;&#x4E0D;&#x8DF3;&#x8FC7;&#x7F13;&#x51B2;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20251231174915595.png" alt="image-20251231174915595"></p>
+<h2 id="&#x6A21;&#x677F;clone"><a name="&#x6A21;&#x677F;clone" class="anchor-navigation-ex-anchor" href="#&#x6A21;&#x677F;clone"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6A21;&#x677F;clone</h2>
+<p>linux &#x6CA1;&#x5565;&#x95EE;&#x9898;&#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#x5565;&#x5C31;&#x53EF;&#x4EE5;&#x5F53;&#x6A21;&#x677F;&#xFF0C;</p>
+<p>windows&#x5F53;&#x6A21;&#x677F;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x4E3B;&#x673A;&#x540D;&#x548C;SID&#xFF0C;&#x8981;&#x6E05;&#x7406;&#x6389;&#xFF0C;&#x518D;&#x505A;&#x6A21;&#x677F;&#x1F447;&#x8FD9;&#x91CC;&#x7528;vm002&#x8FD9;&#x53F0;win2016&#x6765;&#x505A;&#xFF1A;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104113647638.png" alt="image-20260104113647638"></p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104112408748.png" alt="image-20260104112408748" style="zoom:50%;"></p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104113734028.png" alt="image-20260104113734028" style="zoom:50%;"></p>
+<pre><code class="lang-shell">virt-clone -o vm002 -n vm006-win2016 -f /var/lib/libvirt/images/vm006-win2016.qcow2
+</code></pre>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104115703437.png" alt="image-20260104115703437"></p>
+<h4 id="&#x76F4;&#x63A5;&#x5220;&#x9664;&#x5149;&#x9A71;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5149;&#x76D8;&#xFF09;"><a name="&#x76F4;&#x63A5;&#x5220;&#x9664;&#x5149;&#x9A71;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5149;&#x76D8;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x76F4;&#x63A5;&#x5220;&#x9664;&#x5149;&#x9A71;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5149;&#x76D8;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76F4;&#x63A5;&#x5220;&#x9664;&#x5149;&#x9A71;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5149;&#x76D8;&#xFF09;</h4>
+<pre><code>virsh edit vm006-win2016
+</code></pre><ul>
+<li>&#x5220;&#x9664; <code>&lt;disk device=&apos;cdrom&apos;&gt;</code> &#x5BF9;&#x5E94;&#x7684;&#x6574;&#x4E2A; <code>&lt;disk&gt;</code> &#x8282;&#x70B9;</li>
+<li>&#x4FDD;&#x5B58;&#x9000;&#x51FA;</li>
+<li>&#x542F;&#x52A8;&#x865A;&#x62DF;&#x673A;&#x5373;&#x53EF;</li>
+</ul>
+<h3 id="win2008r2clone&#x7684;&#x95EE;&#x9898;"><a name="win2008r2clone&#x7684;&#x95EE;&#x9898;" class="anchor-navigation-ex-anchor" href="#win2008r2clone&#x7684;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a>win2008r2clone&#x7684;&#x95EE;&#x9898;</h3>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104164933701.png" alt="image-20260104164933701"></p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104170735272.png" alt="image-20260104170735272"></p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104171027985.png" alt="image-20260104171027985"></p>
+<p>&#x4F46;&#x5176;&#x5B9E;&#x65B0;&#x7248;&#x672C;&#x7684;&#x673A;&#x5668;&#x6BD4;&#x5982;rokcy 9.7 virtsh list&#x5C31;&#x4E0D;&#x4F9D;&#x9760;libvirtd&#x670D;&#x52A1;&#x4E86;</p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104174125786.png" alt="image-20260104174125786"></p>
+<p><img src="05.KVM&#x865A;&#x62DF;&#x673A;&#x7BA1;&#x7406;VirtIO&#x9A71;&#x52A8;&#x5B89;&#x88C5;.assets/image-20260104174451994.png" alt="image-20260104174436808"></p>
+<hr>
+<h2 id="&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><a name="&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</h2>
+<blockquote>
+<p><strong><code>virsh list</code> &#x4E0D;&#x662F;&#x201C;&#x5FC5;&#x987B;&#x201D;&#x4F9D;&#x8D56; <code>libvirtd.service</code></strong></p>
+<p>&#x5728; <strong>&#x65B0;&#x7248;&#x672C; libvirt</strong> &#x91CC;&#xFF1A;</p>
+<p>&#x1F449; <strong><code>virsh</code> &#x5B9E;&#x9645;&#x8FDE;&#x7684;&#x662F; <code>virtqemud</code>&#xFF08;&#x800C;&#x4E0D;&#x662F; libvirtd&#xFF09;</strong></p>
+<p>&#x6240;&#x4EE5;&#x4F60;&#x73B0;&#x5728;&#x770B;&#x5230;&#x7684;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x274C; <code>libvirtd.*</code> &#x5168;&#x90E8; dead</li>
+<li>&#x2705; <code>virsh list --all</code> &#x6B63;&#x5E38;&#x8FD4;&#x56DE;</li>
+</ul>
+</blockquote>
+<p><strong>&#x8FD9;&#x662F;&#x201C;&#x6B63;&#x786E;&#x4E14;&#x5065;&#x5EB7;&#x201D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x662F;&#x5F02;&#x5E38;&#x3002;</strong></p>
+<hr>
+<h2 id="&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;"><a name="&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E8C;&#x3001;&#x4F60;&#x73B0;&#x5728;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x65F6;&#x4EE3;&#xFF1F;</h2>
+<p>&#x4F60;&#x8FD9;&#x53F0;&#x673A;&#x5668;&#x5C5E;&#x4E8E;&#xFF1A;</p>
+<blockquote>
+<p><strong>libvirt &#x201C;&#x62C6;&#x5206;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x201D;&#x65F6;&#x4EE3;&#xFF08;RHEL / Rocky / Alma 8+&#xFF09;</strong></p>
+</blockquote>
+<h3 id="&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;"><a name="&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8001;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x4EE5;&#x4E3A;&#x7684;&#xFF09;</h3>
+<pre><code class="lang-text">virsh
+  &#x2193;
+libvirtd
+  &#x2193;
+qemu-kvm
+</code></pre>
+<hr>
+<h3 id="&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;"><a name="&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65B0;&#x67B6;&#x6784;&#xFF08;&#x4F60;&#x5B9E;&#x9645;&#x7528;&#x7684;&#xFF09;</h3>
+<pre><code class="lang-text">virsh
+  &#x2193;
+libvirt client library
+  &#x2193;
+virtqemud      &#x2190; &#x7BA1;&#x7406;&#x865A;&#x673A;
+virtnetworkd  &#x2190; &#x7BA1;&#x7406;&#x7F51;&#x7EDC;
+virtstoraged  &#x2190; &#x7BA1;&#x7406;&#x5B58;&#x50A8;
+  &#x2193;
+qemu-kvm
+</code></pre>
+<p>&#x1F449; <strong><code>libvirtd</code> &#x5DF2;&#x7ECF;&#x9000;&#x5C45;&#x4E8C;&#x7EBF;&#xFF08;legacy&#xFF09;</strong></p>
+<hr>
+<h2 id="&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;"><a name="&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E09;&#x3001;&#x9010;&#x6761;&#x89E3;&#x91CA;&#x4F60;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF08;&#x91CD;&#x70B9;&#x5BF9;&#x53F7;&#x5165;&#x5EA7;&#xFF09;</h2>
+<h3 id="1&#xFE0F;&#x20E3;-virsh-&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;"><a name="1&#xFE0F;&#x20E3;-virsh-&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-virsh-&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; virsh &#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x5217;&#x51FA;&#x865A;&#x673A;&#xFF1F;</h3>
+<pre><code class="lang-bash">virsh list --all
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x6B63;&#x5E38;&#xFF1A;</p>
+<pre><code class="lang-text">1    vm001           running
+</code></pre>
+<p>&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li><code>virsh</code> &#x6210;&#x529F;&#x8FDE;&#x63A5;&#x5230;&#x4E86; <strong>libvirt socket</strong></li>
+<li>&#x540E;&#x7AEF;&#x6709; <strong>virtqemud</strong> &#x5728;&#x54CD;&#x5E94;</li>
+</ul>
+<hr>
+<h3 id="2&#xFE0F;&#x20E3;-libvirtdsocket-&#x4E3A;&#x5565;&#x662F;-dead&#xFF1F;"><a name="2&#xFE0F;&#x20E3;-libvirtdsocket-&#x4E3A;&#x5565;&#x662F;-dead&#xFF1F;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-libvirtdsocket-&#x4E3A;&#x5565;&#x662F;-dead&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; libvirtd.socket &#x4E3A;&#x5565;&#x662F; dead&#xFF1F;</h3>
+<pre><code class="lang-text">libvirtd.socket  Active: inactive (dead)
+</code></pre>
+<p>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li><strong>virtqemud &#x5DF2;&#x7ECF;&#x5728;&#x76D1;&#x542C; qemu &#x7684; socket</strong></li>
+<li>systemd &#x4E0D;&#x518D;&#x81EA;&#x52A8;&#x62C9;&#x8D77; <code>libvirtd</code></li>
+</ul>
+<p>&#x8FD9;&#x662F; <strong>&#x5B98;&#x65B9;&#x8BBE;&#x8BA1;&#x884C;&#x4E3A;</strong>&#xFF0C;&#x4E0D;&#x662F; bug</p>
+<hr>
+<h3 id="3&#xFE0F;&#x20E3;-triggers-libvirtdservice-&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;"><a name="3&#xFE0F;&#x20E3;-triggers-libvirtdservice-&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-triggers-libvirtdservice-&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; &#x201C;Triggers: libvirtd.service&#x201D; &#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;</h3>
+<pre><code class="lang-text">Triggers: &#x25CF; libvirtd.service
+</code></pre>
+<p>&#x610F;&#x601D;&#x662F;&#xFF1A;</p>
+<blockquote>
+<p><strong>&#x5982;&#x679C;&#x6709;&#x4EBA;&#x975E;&#x8981;&#x8FDE; legacy socket&#xFF0C;systemd &#x624D;&#x4F1A;&#x62C9;&#x8D77; libvirtd</strong></p>
+</blockquote>
+<p>&#x4F46;&#x4F60;&#x73B0;&#x5728;&#xFF1A;</p>
+<ul>
+<li>virsh &#x8D70;&#x7684;&#x662F; <strong>&#x65B0; socket</strong></li>
+<li>virt-manager &#x4E5F;&#x662F;</li>
+</ul>
+<p>&#x1F449; <strong>&#x6240;&#x4EE5; libvirtd &#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x62C9;&#x8D77;</strong></p>
+<hr>
+<h2 id="&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;"><a name="&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56DB;&#x3001;&#x9A8C;&#x8BC1;&#x4F60;&#x771F;&#x6B63;&#x4F9D;&#x8D56;&#x7684;&#x662F;&#x8C01;&#xFF08;&#x5EFA;&#x8BAE;&#x4F60;&#x4EB2;&#x81EA;&#x8DD1;&#xFF09;</h2>
+<h3 id="&#x1F50D;-&#x770B;-virtqemud-&#x72B6;&#x6001;"><a name="&#x1F50D;-&#x770B;-virtqemud-&#x72B6;&#x6001;" class="anchor-navigation-ex-anchor" href="#&#x1F50D;-&#x770B;-virtqemud-&#x72B6;&#x6001;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x1F50D; &#x770B; virtqemud &#x72B6;&#x6001;</h3>
+<pre><code class="lang-bash">systemctl status virtqemud
+</code></pre>
+<p>&#x4F60;&#x5927;&#x6982;&#x7387;&#x4F1A;&#x770B;&#x5230;&#xFF1A;</p>
+<pre><code class="lang-text">Active: active (running)
+</code></pre>
+<hr>
+<h3 id="&#x1F50D;-&#x770B;-virsh-&#x5B9E;&#x9645;&#x8FDE;&#x7684;-uri"><a name="&#x1F50D;-&#x770B;-virsh-&#x5B9E;&#x9645;&#x8FDE;&#x7684;-uri" class="anchor-navigation-ex-anchor" href="#&#x1F50D;-&#x770B;-virsh-&#x5B9E;&#x9645;&#x8FDE;&#x7684;-uri"><i class="fa fa-link" aria-hidden="true"></i></a>&#x1F50D; &#x770B; virsh &#x5B9E;&#x9645;&#x8FDE;&#x7684; URI</h3>
+<pre><code class="lang-bash">virsh uri
+</code></pre>
+<p>&#x901A;&#x5E38;&#x4F1A;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-text">qemu:///system
+</code></pre>
+<p>&#x8FD9;&#x5728;&#x65B0;&#x67B6;&#x6784;&#x4E0B;&#xFF1A;</p>
+<p>&#x1F449; <strong>&#x9ED8;&#x8BA4;&#x8D70; virtqemud</strong></p>
+<hr>
+<h3 id="&#x1F50D;-&#x770B;-socket"><a name="&#x1F50D;-&#x770B;-socket" class="anchor-navigation-ex-anchor" href="#&#x1F50D;-&#x770B;-socket"><i class="fa fa-link" aria-hidden="true"></i></a>&#x1F50D; &#x770B; socket</h3>
+<pre><code class="lang-bash">ss -lx | grep libvirt
+</code></pre>
+<p>&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x7C7B;&#x4F3C;&#xFF1A;</p>
+<pre><code class="lang-text">/run/libvirt/virtqemud-sock
+</code></pre>
+<p>&#x800C;&#x4E0D;&#x662F; <code>libvirtd-sock</code></p>
+<hr>
+<h2 id="&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x4F9D;&#x8D56;-libvirtd&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;"><a name="&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x4F9D;&#x8D56;-libvirtd&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x4F9D;&#x8D56;-libvirtd&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E94;&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x5F88;&#x591A;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8BF4;&#x201C;&#x4F9D;&#x8D56; libvirtd&#x201D;&#xFF1F;&#xFF08;&#x5386;&#x53F2;&#x5305;&#x88B1;&#xFF09;</h2>
+<p>&#x56E0;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li><strong>90% &#x7684;&#x4E2D;&#x6587;&#x6559;&#x7A0B;&#x8FD8;&#x505C;&#x7559;&#x5728; CentOS 7</strong></li>
+<li>&#x90A3;&#x4E2A;&#x65F6;&#x4EE3;&#x53EA;&#x6709; <code>libvirtd</code></li>
+</ul>
+<p>&#x4F46;&#x73B0;&#x5728;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7CFB;&#x7EDF;</th>
+<th>&#x63A8;&#x8350;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentOS 7</td>
+<td>libvirtd</td>
+</tr>
+<tr>
+<td>Rocky 8 / 9</td>
+<td><strong>virtqemud</strong></td>
+</tr>
+<tr>
+<td>Ubuntu 22+</td>
+<td>virtqemud</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x5BF9;&#x4E0D;&#x5BF9;&#xFF1F;"><a name="&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x5BF9;&#x4E0D;&#x5BF9;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x5BF9;&#x4E0D;&#x5BF9;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x516D;&#x3001;&#x4F60;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x5230;&#x5E95;&#x201C;&#x5BF9;&#x4E0D;&#x5BF9;&#x201D;&#xFF1F;</h2>
+<h3 id="&#x2705;-&#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F;-&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;"><a name="&#x2705;-&#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F;-&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F;-&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x975E;&#x5E38;&#x5BF9;&#xFF0C;&#x800C;&#x4E14;&#x662F; <strong>&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x72B6;&#x6001;</strong></h3>
+<p>&#x4F60;&#x7684;&#x73B0;&#x72B6;&#xFF1A;</p>
+<ul>
+<li>libvirtd&#xFF1A;&#x5173;&#x7740;</li>
+<li>virtqemud&#xFF1A;&#x5728;&#x8DD1;</li>
+<li>virsh&#xFF1A;&#x80FD;&#x7528;</li>
+<li>VM&#xFF1A;&#x6B63;&#x5E38;&#x8FD0;&#x884C;</li>
+</ul>
+<p>&#x1F449; <strong>&#x8FD9;&#x662F; libvirt &#x5B98;&#x65B9;&#x63A8;&#x8350;&#x5F62;&#x6001;</strong></p>
+<hr>
+<h2 id="&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x5FC5;&#x987B;&#x542F;-libvirtd&#xFF1F;"><a name="&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x5FC5;&#x987B;&#x542F;-libvirtd&#xFF1F;" class="anchor-navigation-ex-anchor" href="#&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x5FC5;&#x987B;&#x542F;-libvirtd&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E03;&#x3001;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F60;&#x201C;&#x5FC5;&#x987B;&#x201D;&#x542F; libvirtd&#xFF1F;</h2>
+<p>&#x53EA;&#x6709;&#x8FD9;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li><strong>&#x8001;&#x5DE5;&#x5177;&#x53EA;&#x652F;&#x6301; libvirtd</strong></li>
+<li><strong>&#x7B2C;&#x4E09;&#x65B9;&#x76D1;&#x63A7;&#x786C;&#x7F16;&#x7801; legacy socket</strong></li>
+<li><strong>&#x6781;&#x8001;&#x7248;&#x672C; virt-manager</strong></li>
+</ol>
+<p>&#x5426;&#x5219;&#xFF1A;</p>
+<blockquote>
+<p><strong>&#x4E0D;&#x5EFA;&#x8BAE;&#x518D;&#x4E3B;&#x52A8;&#x542F; libvirtd</strong></p>
+</blockquote>
+<hr>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2025-12-16 11:22:49
+2026-01-04 17:45:00
 </span></footer></body></html>
                                 
                                 </section>
@@ -9629,7 +9930,7 @@
                 </a>
                 
                 
-                <a href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html" class="navigation navigation-next " aria-label="Next page: 06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md">
+                <a href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html" class="navigation navigation-next " aria-label="Next page: 06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -9640,7 +9941,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"05.KVM虚拟机管理VirtIO驱动安装.md","level":"2.3.5","depth":2,"next":{"title":"06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","level":"2.3.6","depth":2,"path":"41-KVM虚拟化/06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","ref":"./41-KVM虚拟化/06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","articles":[]},"previous":{"title":"04.KVM实现自动化创建虚拟机.md","level":"2.3.4","depth":2,"path":"41-KVM虚拟化/04.KVM实现自动化创建虚拟机.md","ref":"./41-KVM虚拟化/04.KVM实现自动化创建虚拟机.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/05.KVM虚拟机管理VirtIO驱动安装.md","mtime":"2025-12-16T03:22:49.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-12-24T04:02:27.569Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"05.KVM虚拟机管理VirtIO驱动安装.md","level":"2.3.5","depth":2,"next":{"title":"06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","level":"2.3.6","depth":2,"path":"41-KVM虚拟化/06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","ref":"./41-KVM虚拟化/06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","articles":[]},"previous":{"title":"04.KVM实现自动化创建虚拟机.md","level":"2.3.4","depth":2,"path":"41-KVM虚拟化/04.KVM实现自动化创建虚拟机.md","ref":"./41-KVM虚拟化/04.KVM实现自动化创建虚拟机.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/05.KVM虚拟机管理VirtIO驱动安装.md","mtime":"2026-01-04T09:45:00.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-16T08:16:46.013Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

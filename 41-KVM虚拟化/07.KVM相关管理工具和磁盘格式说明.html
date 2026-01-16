@@ -82,7 +82,7 @@
     <link rel="next" href="08.KVM存储管理和默认网络模式.html" />
     
     
-    <link rel="prev" href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html" />
+    <link rel="prev" href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html" />
     
 
     </head>
@@ -4806,12 +4806,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
-                <a href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+                <a href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
                     
-                    06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md
+                    06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md
             
                 </a>
             
@@ -9594,9 +9594,796 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><b></b>07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.md</a></li></ul></div><h1 id="07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><a name="07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md" class="anchor-navigation-ex-anchor" href="#07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><i class="fa fa-link" aria-hidden="true"></i></a>07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.md</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><b></b>07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.md</a></li><ul><li><span class="title-icon "></span><a href="#&#x5173;&#x4E8E;&#x5173;&#x673A;"><b></b>&#x5173;&#x4E8E;&#x5173;&#x673A;</a></li><li><span class="title-icon "></span><a href="#virt-what"><b></b>virt-what</a></li><li><span class="title-icon "></span><a href="#&#x5B58;&#x50A8;&#x7BA1;&#x7406;"><b></b>&#x5B58;&#x50A8;&#x7BA1;&#x7406;</a></li><li><span class="title-icon "></span><a href="#&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;"><b></b>&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;"><b></b>&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;</a></li><ul><li><span class="title-icon "></span><a href="#&#x2705;-&#x5DE6;&#x8FB9;&#xFF08;ubuntu-2204-&#x90A3;&#x53F0;&#xFF09;"><b></b>&#x2705; &#x5DE6;&#x8FB9;&#xFF08;Ubuntu 22.04 &#x90A3;&#x53F0;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x274C;-&#x53F3;&#x8FB9;&#xFF08;localhost-&#x90A3;&#x53F0;&#xFF09;"><b></b>&#x274C; &#x53F3;&#x8FB9;&#xFF08;localhost &#x90A3;&#x53F0;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><b></b>&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#&#x2460;-xfs--&#x65B0;-ext4--reflink"><b></b>&#x2460; XFS / &#x65B0; ext4 + reflink</a></li><li><span class="title-icon "></span><a href="#&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;"><b></b>&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;</a></li></ul><li><span class="title-icon "></span><a href="#&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;"><b></b>&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x201C;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;&#x201D;</a></li><ul><li><span class="title-icon "></span><a href="#&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;"><b></b>&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x7A00;&#x758F;&#x5316;&#xFF1F;"><b></b>&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x201C;&#x7A00;&#x758F;&#x5316;&#x201D;&#xFF1F;</a></li><li><span class="title-icon "></span><a href="#&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x5F3A;&#x5236;&#x8BA9;-cp-&#x751F;&#x6548;&#xFF08;&#x5173;&#x952E;&#xFF09;"><b></b>&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x201C;&#x5F3A;&#x5236;&#x8BA9; cp &#x751F;&#x6548;&#x201D;&#xFF08;&#x5173;&#x952E;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#&#x2705;-&#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;"><b></b>&#x2705; &#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;"><b></b>&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-&#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><b></b>1&#xFE0F;&#x20E3; &#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</a></li><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-strace-&#x770B;-cp-&#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;"><b></b>2&#xFE0F;&#x20E3; strace &#x770B; cp &#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;"><b></b>&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;---sparse-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><b></b>1&#xFE0F;&#x20E3; --sparse &#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x6838;&#x5FC3;&#x4F5C;&#x7528;"><b></b>&#x6838;&#x5FC3;&#x4F5C;&#x7528;</a></li><li><span class="title-icon "></span><a href="#&#x672C;&#x8D28;&#x884C;&#x4E3A;"><b></b>&#x672C;&#x8D28;&#x884C;&#x4E3A;</a></li><li><span class="title-icon "></span><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;"><b></b>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><b></b>&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;---reflink-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><b></b>2&#xFE0F;&#x20E3; --reflink &#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x6838;&#x5FC3;&#x4F5C;&#x7528;_1"><b></b>&#x6838;&#x5FC3;&#x4F5C;&#x7528;</a></li><li><span class="title-icon "></span><a href="#&#x672C;&#x8D28;&#x884C;&#x4E3A;_1"><b></b>&#x672C;&#x8D28;&#x884C;&#x4E3A;</a></li><li><span class="title-icon "></span><a href="#&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><b></b>&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</a></li><li><span class="title-icon "></span><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;"><b></b>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-&#x4E3A;&#x4EC0;&#x4E48;---sparse-&#x548C;---reflink-&#x4F1A;&#x6253;&#x67B6;&#xFF1F;"><b></b>3&#xFE0F;&#x20E3; &#x4E3A;&#x4EC0;&#x4E48; --sparse &#x548C; --reflink &#x4F1A;&#x201C;&#x6253;&#x67B6;&#x201D;&#xFF1F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;"><b></b>&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;</a></li><li><span class="title-icon "></span><a href="#&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;"><b></b>&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;</a></li></ul><li><span class="title-icon "></span><a href="#4&#xFE0F;&#x20E3;-cp-&#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;"><b></b>4&#xFE0F;&#x20E3; cp &#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#5&#xFE0F;&#x20E3;-&#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><b></b>5&#xFE0F;&#x20E3; &#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#&#x2705;-&#x60F3;&#x8981;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;"><b></b>&#x2705; &#x60F3;&#x8981;&#x201C;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;&#x201D;</a></li><li><span class="title-icon "></span><a href="#&#x2705;-&#x60F3;&#x8981;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;"><b></b>&#x2705; &#x60F3;&#x8981;&#x201C;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x201D;</a></li><li><span class="title-icon "></span><a href="#&#x274C;-&#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;"><b></b>&#x274C; &#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;</a></li></ul><li><span class="title-icon "></span><a href="#6&#xFE0F;&#x20E3;-&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x6B63;&#x786E;&#x76F4;&#x89C9;"><b></b>6&#xFE0F;&#x20E3; &#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x201C;&#x6B63;&#x786E;&#x76F4;&#x89C9;&#x201D;</a></li><li><span class="title-icon "></span><a href="#7&#xFE0F;&#x20E3;-&#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;"><b></b>7&#xFE0F;&#x20E3; &#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x201C;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;&#x201D;</a></li><li><span class="title-icon "></span><a href="#8&#xFE0F;&#x20E3;-&#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><b></b>8&#xFE0F;&#x20E3; &#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-off"><b></b>1&#xFE0F;&#x20E3; off</a></li><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-metadata"><b></b>2&#xFE0F;&#x20E3; metadata</a></li><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-falloc"><b></b>3&#xFE0F;&#x20E3; falloc</a></li><li><span class="title-icon "></span><a href="#4&#xFE0F;&#x20E3;-full"><b></b>4&#xFE0F;&#x20E3; full</a></li><li><span class="title-icon "></span><a href="#&#x2705;-&#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;"><b></b>&#x2705; &#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;</a></li><li><span class="title-icon "></span><a href="#&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;"><b></b>&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;</a></li></ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-&#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;"><b></b>1&#xFE0F;&#x20E3; &#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><b></b>&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;</a></li><li><span class="title-icon "></span><a href="#&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><b></b>&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;</a></li></ul><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;"><b></b>2&#xFE0F;&#x20E3; &#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;</a></li><ul><li><span class="title-icon "></span><a href="#a-iostat"><b></b>a) iostat</a></li><li><span class="title-icon "></span><a href="#b-blktrace--blkparse"><b></b>b) blktrace / blkparse</a></li><li><span class="title-icon "></span><a href="#c-iotop--dstat"><b></b>c) iotop / dstat</a></li><li><span class="title-icon "></span><a href="#d-fio-&#x6D4B;&#x8BD5;"><b></b>d) fio &#x6D4B;&#x8BD5;</a></li></ul><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;"><b></b>3&#xFE0F;&#x20E3; &#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;</a></li><ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-qcow2-&#x955C;&#x50CF;&#x9009;&#x62E9;"><b></b>1&#xFE0F;&#x20E3; qcow2 &#x955C;&#x50CF;&#x9009;&#x62E9;</a></li><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;"><b></b>2&#xFE0F;&#x20E3; &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;</a></li><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-&#x865A;&#x62DF;&#x5316;-io-&#x6A21;&#x578B;"><b></b>3&#xFE0F;&#x20E3; &#x865A;&#x62DF;&#x5316; IO &#x6A21;&#x578B;</a></li><li><span class="title-icon "></span><a href="#4&#xFE0F;&#x20E3;-&#x7F13;&#x5B58;&#x7B56;&#x7565;"><b></b>4&#xFE0F;&#x20E3; &#x7F13;&#x5B58;&#x7B56;&#x7565;</a></li></ul><li><span class="title-icon "></span><a href="#4&#xFE0F;&#x20E3;-&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;"><b></b>4&#xFE0F;&#x20E3; &#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;</a></li></ul></ul></div><h1 id="07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><a name="07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md" class="anchor-navigation-ex-anchor" href="#07kvm&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;md"><i class="fa fa-link" aria-hidden="true"></i></a>07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.md</h1>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260107161605463.png" alt="image-20260107161605463"></p>
+<p>host cpu &#x662F;&#x5BBF;&#x4E3B;&#x673A;&#x7684;CPU</p>
+<p>vm&#x4E5F;&#x6709;uuid</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260107163439930.png" alt="image-20260107163439930"></p>
+<h2 id="&#x5173;&#x4E8E;&#x5173;&#x673A;"><a name="&#x5173;&#x4E8E;&#x5173;&#x673A;" class="anchor-navigation-ex-anchor" href="#&#x5173;&#x4E8E;&#x5173;&#x673A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x4E8E;&#x5173;&#x673A;</h2>
+<p>&#x5DE5;&#x4F5C;&#x4E2D;&#xFF0C;&#x91CD;&#x8981;&#x673A;&#x5668;&#xFF1A;</p>
+<p>1&#x3001;&#x5148;&#x5173;&#x673A;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;1&#x4E2A;&#x6708;</p>
+<p>2&#x3001;&#x518D;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x673A;&#x5668;&#x4E0A;(xml&#x548C;qcow2&#x4E24;&#x4E2A;&#x6587;&#x4EF6;)&#xFF0C;&#x518D;&#x653E;2&#x4E2A;&#x6708;</p>
+<p>3&#x3001;&#x5220;&#x9664;.</p>
+<p>&#x5176;&#x6B21;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x6D4B;&#x8BD5;&#x7684;&#x4E0D;&#x91CD;&#x8981;&#x7684;&#x673A;&#x5668;virsh undefine vmxxx &#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x4E0D;&#x63A8;&#x8350;&#x5E26;&#x4E0A;--remove-all-storage&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x628A;disk&#x548C;&#x6302;&#x8F7D;&#x7684;cdrom&#x91CC;&#x7684;iso&#x4E5F;&#x7ED9;&#x5220;&#x4E86;&#x3002;</p>
+<h2 id="virt-what"><a name="virt-what" class="anchor-navigation-ex-anchor" href="#virt-what"><i class="fa fa-link" aria-hidden="true"></i></a>virt-what</h2>
+<p>&#x8BC6;&#x522B;&#x673A;&#x5668;</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108135113112.png" alt="image-20260108135113112"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108135437594.png" alt="image-20260108135437594" style="zoom:65%;"></p>
+<h2 id="&#x5B58;&#x50A8;&#x7BA1;&#x7406;"><a name="&#x5B58;&#x50A8;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x5B58;&#x50A8;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B58;&#x50A8;&#x7BA1;&#x7406;</h2>
+<p>&#x865A;&#x62DF;&#x78C1;&#x76D8;&#x7C7B;&#x578B;</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108140016500.png" alt="image-20260108140016500"></p>
+<p>&#x5DEE;&#x5F02;&#x78C1;&#x76D8;&#x7684;&#x6548;&#x679C;&#xFF1A;&#x5171;&#x7528;&#x90E8;&#x5206;&#x8282;&#x7701;&#x7A7A;&#x95F4;</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108140415344.png" alt="image-20260108140415344"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108141312304.png" alt="image-20260108141312304"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108142220087.png" alt="image-20260108142220087"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108142614220.png" alt="image-20260108142614220"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108142625989.png" alt="image-20260108142625989"></p>
+<p>qcow2&#x7279;&#x6027;&#x591A;&#x1F447;format specific information&#xFF1A;</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108143257260.png" alt="image-20260108143257260"></p>
+<blockquote>
+<p>qcow2 &#x7684; file length &#x5C0F;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x8FD8;&#x201C;&#x6CA1;&#x5199;&#x8FC7;&#x6570;&#x636E;&#x201D;
+ raw &#x7684; file length &#x5927;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x201C;&#x5148;&#x628A;&#x5C3A;&#x5BF8;&#x5360;&#x597D;&#xFF0C;&#x4F46;&#x4E0D;&#x5360;&#x7A7A;&#x95F4;&#x201D;</p>
+<p>&#x8FD9;&#x662F;qcow2&#x7684;L1L2meta&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;&#x51B3;&#x5B9A;&#x7684;</p>
+</blockquote>
+<p><strong>dd&#x7684;&#x539A;&#x7F6E;&#x5907;</strong></p>
+<pre><code class="lang-shell">dd if=/dev/zero of=vm3.img bs=1M count=1024
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108145211733.png" alt="image-20260108145211733"></p>
+<p><strong>dd&#x7684;&#x7626;&#x7F6E;&#x5907;</strong></p>
+<pre><code class="lang-shell">dd if=/dev/zero of=vm5.img bs=1M count=0 seek=1204
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108145514622.png" alt="image-20260108145514622"></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108150341412.png" alt="image-20260108150341412"></p>
+<pre><code class="lang-shell"># &#x628A;&#x975E;&#x7A00;&#x758F; &#x590D;&#x5236;&#x6210; &#x7A00;&#x758F;, &#x4EC5;&#x4EC5;&#x5B66;&#x4E60;&#x7528;
+cp --sparse=always --reflink=never vm2.img vm2.img.bak
+
+# &#x628A;&#x7A00;&#x758F; &#x590D;&#x5236;&#x6210; &#x975E;&#x7A00;&#x758F;, &#x4EC5;&#x5B66;&#x4E60;&#x7528;
+cp --sparse=never --reflink=never  vm2.img.bak vm2.img.bak2
+
+# &#x4F46;&#x662F;&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#x4E2D;&#x4E0D;&#x4F1A;&#x8FD9;&#x4E48;&#x7528;&#xFF0C;
+# &#x573A;&#x666F;&#x4E00;&#xFF0C;&#x7626;&#x8EAB;
+qemu-img convert -O qcow2 src.raw tmp.qcow2
+qemu-img convert -O raw tmp.qcow2 dst.raw
+virt-sparsify src.raw dst.raw
+
+# &#x573A;&#x666F;&#x4E8C;&#xFF0C;&#x6A21;&#x677F;/&#x955C;&#x50CF;&#x590D;&#x5236;&#xFF08;&#x6781;&#x901F;&#xFF09;
+cp --reflink=always template.raw vm01.raw
+
+# &#x573A;&#x666F;&#x4E09;,&#x5236;&#x9020;&#x7A00;&#x758F;raw&#xFF08;&#x521D;&#x59CB;&#x5316;&#xFF09;
+truncate -s 100G vm.raw
+&#x6216;&#x8005;
+dd if=/dev/zero of=vm.raw bs=1M count=0 seek=102400
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108151850218.png" alt="image-20260108151850218"></p>
+<p>--sparse=always&#x505A;&#x4E0D;&#x51FA;&#x6765;&#x6548;&#x679C;&#x4E86;&#xFF0C;&#x8981;&#x52A0;&#x4E0A;--reflink-never</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108152401359.png" alt="image-20260108152401359"></p>
+<p>&#x539F;&#x56E0;&#x5982;&#x4E0B;</p>
+<p><img src="C:/Users/oneye/Downloads/76353712-2a9b-47f5-a1ab-549b159ec491.png" alt="76353712-2a9b-47f5-a1ab-549b159ec491"></p>
+<p>--sparse=always&#x505A;&#x4E0D;&#x51FA;&#x6765;&#x6548;&#x679C;&#x4E86;
+&#x5DE6;&#x8FB9;&#x7684;&#x53EF;&#x4EE5;&#xFF0C;&#x53F3;&#x8FB9;&#x7684;&#x4E0D;&#x884C;</p>
+<p>GTP&#x7B54;&#x590D;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x8FD9;&#x4E2A;&#x73B0;&#x8C61;&#x4F60;&#x6293;&#x5F97;<strong>&#x975E;&#x5E38;&#x51C6;</strong>&#xFF0C;&#x800C;&#x4E14;&#x4F60;&#x8FD9;&#x5F20;&#x5DE6;&#x53F3;&#x5BF9;&#x6BD4;&#x56FE;&#xFF0C;&#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x628A;<strong>&#x771F;&#x76F8;&#x7684;&#x4E00;&#x534A;&#x62CD;&#x51FA;&#x6765;&#x4E86;</strong>&#x3002;
+&#x7ED3;&#x8BBA;&#x6211;&#x5148;&#x7ED9;&#x4F60;&#xFF0C;&#x518D;&#x628A;<strong>&#x4E3A;&#x4EC0;&#x4E48;&#x201C;&#x5DE6;&#x8FB9;&#x80FD;&#xFF0C;&#x53F3;&#x8FB9;&#x4E0D;&#x80FD;&#x201D;</strong>&#x8BB2;&#x6E05;&#x695A;&#x3002;</p>
+<hr>
+<h2 id="&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;"><a name="&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x53E5;&#x8BDD;&#x7ED3;&#x8BBA;&#xFF08;&#x6838;&#x5FC3;&#xFF09;</h2>
+<blockquote>
+<p><strong>&#x4E0D;&#x662F; <code>--sparse=always</code> &#x5931;&#x6548;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x53F3;&#x8FB9;&#x7684; <code>cp</code> &#x6839;&#x672C;&#x201C;&#x6CA1;&#x8D70;&#x7A00;&#x758F;&#x8DEF;&#x5F84;&#x201D;</strong></p>
+<p>&#x1F449; &#x53F3;&#x8FB9;&#x88AB;<strong>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF; / cp &#x4F18;&#x5316;&#x8DEF;&#x5F84;&#xFF08;reflink / copy_file_range&#xFF09;&#x52AB;&#x6301;&#x4E86;</strong></p>
+</blockquote>
+<hr>
+<h2 id="&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;"><a name="&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;" class="anchor-navigation-ex-anchor" href="#&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F60;&#x8FD9;&#x4E24;&#x8FB9;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x5DEE;&#x5F02;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x1F447;</h2>
+<h3 id="&#x2705;-&#x5DE6;&#x8FB9;&#xFF08;ubuntu-2204-&#x90A3;&#x53F0;&#xFF09;"><a name="&#x2705;-&#x5DE6;&#x8FB9;&#xFF08;ubuntu-2204-&#x90A3;&#x53F0;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x5DE6;&#x8FB9;&#xFF08;ubuntu-2204-&#x90A3;&#x53F0;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x5DE6;&#x8FB9;&#xFF08;Ubuntu 22.04 &#x90A3;&#x53F0;&#xFF09;</h3>
+<ul>
+<li><p>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF1A;<strong>ext4&#xFF08;&#x5927;&#x6982;&#x7387;&#xFF09;</strong></p>
+</li>
+<li><p>cp &#x884C;&#x4E3A;&#xFF1A;<strong>read &#x2192; &#x5224;&#x65AD; 0 &#x2192; lseek() &#x6253;&#x6D1E;</strong></p>
+</li>
+<li><p>&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-text">virtual size: 1 GiB
+disk size:    0 B   &#x2705; &#x7A00;&#x758F;
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="&#x274C;-&#x53F3;&#x8FB9;&#xFF08;localhost-&#x90A3;&#x53F0;&#xFF09;"><a name="&#x274C;-&#x53F3;&#x8FB9;&#xFF08;localhost-&#x90A3;&#x53F0;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x274C;-&#x53F3;&#x8FB9;&#xFF08;localhost-&#x90A3;&#x53F0;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x274C; &#x53F3;&#x8FB9;&#xFF08;localhost &#x90A3;&#x53F0;&#xFF09;</h3>
+<p>&#x4ECE;&#x73B0;&#x8C61;&#x53EF;&#x4EE5;<strong>&#x53CD;&#x63A8;</strong>&#x51FA;&#x51E0;&#x4E2A;&#x975E;&#x5E38;&#x5173;&#x952E;&#x7684;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-text">cp --sparse=always vm2.img vm2.img.bak
+&#x2193;
+qemu-img info
+disk size: 1 GiB &#x274C;
+</code></pre>
+<p>&#x8FD9;&#x8BF4;&#x660E;&#xFF1A;</p>
+<blockquote>
+<p><strong>cp &#x6839;&#x672C;&#x6CA1;&#x6709;&#x9010;&#x5757;&#x8BFB;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</strong></p>
+<p>&#x1F449; &#x5B83;&#x8D70;&#x7684;&#x662F; <strong>&#x201C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7EA7;&#x590D;&#x5236;&#x201D;</strong>&#xFF0C;&#x4E0D;&#x662F;&#x5B57;&#x8282;&#x6D41;&#x590D;&#x5236;</p>
+</blockquote>
+<hr>
+<h2 id="&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><a name="&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x771F;&#x6B63;&#x7684;&#x5E55;&#x540E;&#x9ED1;&#x624B;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</h2>
+<h3 id="&#x2460;-xfs--&#x65B0;-ext4--reflink"><a name="&#x2460;-xfs--&#x65B0;-ext4--reflink" class="anchor-navigation-ex-anchor" href="#&#x2460;-xfs--&#x65B0;-ext4--reflink"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2460; XFS / &#x65B0; ext4 + reflink</h3>
+<p>&#x5982;&#x679C;&#x4F60;&#x7684;&#x53F3;&#x8FB9;&#x662F;&#x4E0B;&#x9762;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><strong>XFS&#xFF08;reflink=1&#xFF09;</strong></li>
+<li><strong>ext4 + &#x652F;&#x6301; copy_file_range</strong></li>
+<li><strong>&#x5E95;&#x5C42;&#x662F; CoW&#xFF08;&#x5982; CephFS&#x3001;OverlayFS&#xFF09;</strong></li>
+</ul>
+<p>&#x90A3;&#x4E48;&#xFF1A;</p>
+<blockquote>
+<p><code>cp</code> &#x9ED8;&#x8BA4;<strong>&#x4F18;&#x5148;&#x4F7F;&#x7528;</strong></p>
+<ul>
+<li><code>reflink</code></li>
+<li><code>copy_file_range()</code></li>
+</ul>
+</blockquote>
+<h3 id="&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;"><a name="&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;" class="anchor-navigation-ex-anchor" href="#&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x884C;&#x4E3A;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF1A;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x884C;&#x4E3A;</th>
+<th>&#x662F;&#x5426;&#x8BFB;&#x6570;&#x636E;</th>
+<th>&#x662F;&#x5426;&#x8BC6;&#x522B; 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reflink</td>
+<td>&#x274C; &#x4E0D;&#x8BFB;</td>
+<td>&#x274C;</td>
+</tr>
+<tr>
+<td>copy_file_range</td>
+<td>&#x274C; &#x4E0D;&#x8BFB;</td>
+<td>&#x274C;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x1F449; <strong>cp &#x6839;&#x672C;&#x201C;&#x6CA1;&#x770B;&#x5230; 0&#x201D;</strong></p>
+<hr>
+<h2 id="&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;"><a name="&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;" class="anchor-navigation-ex-anchor" href="#&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#x4F60;&#x770B;&#x5230;&#x7684;&#x201C;&#x8BE1;&#x5F02;&#x73B0;&#x8C61;&#x201D;</h2>
+<h3 id="&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;"><a name="&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;" class="anchor-navigation-ex-anchor" href="#&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53F3;&#x8FB9;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF1A;</h3>
+<pre><code class="lang-text">vm2.img  (&#x5DF2;&#x5199;&#x6EE1; 1G &#x7684; raw)
+   &#x2193;
+reflink / CFR
+   &#x2193;
+vm2.img.bak&#xFF08;&#x903B;&#x8F91; &amp; &#x7269;&#x7406;&#x90FD; 1G&#xFF09;
+</code></pre>
+<p>&#x5373;&#xFF1A;</p>
+<blockquote>
+<p><strong>&#x53EA;&#x662F;&#x590D;&#x5236;&#x4E86; block &#x6620;&#x5C04;&#x5173;&#x7CFB;</strong></p>
+<p>&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x673A;&#x4F1A;&#x5236;&#x9020; hole</p>
+</blockquote>
+<hr>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x7A00;&#x758F;&#x5316;&#xFF1F;"><a name="&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x7A00;&#x758F;&#x5316;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x7A00;&#x758F;&#x5316;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E3A;&#x4EC0;&#x4E48;&#x5DE6;&#x8FB9;&#x80FD;&#x201C;&#x7A00;&#x758F;&#x5316;&#x201D;&#xFF1F;</h2>
+<p>&#x56E0;&#x4E3A;&#x5DE6;&#x8FB9;&#xFF1A;</p>
+<ul>
+<li><p>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF; <strong>&#x4E0D;&#x652F;&#x6301; reflink</strong></p>
+</li>
+<li><p>cp &#x88AB;&#x8FEB;&#xFF1A;</p>
+<pre><code class="lang-text">read() &#x2192; &#x5224;&#x65AD;&#x5168; 0 &#x2192; lseek() &#x6253;&#x6D1E;
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x5F3A;&#x5236;&#x8BA9;-cp-&#x751F;&#x6548;&#xFF08;&#x5173;&#x952E;&#xFF09;"><a name="&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x5F3A;&#x5236;&#x8BA9;-cp-&#x751F;&#x6548;&#xFF08;&#x5173;&#x952E;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x5F3A;&#x5236;&#x8BA9;-cp-&#x751F;&#x6548;&#xFF08;&#x5173;&#x952E;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x5728;&#x53F3;&#x8FB9;&#x201C;&#x5F3A;&#x5236;&#x8BA9; cp &#x751F;&#x6548;&#x201D;&#xFF08;&#x5173;&#x952E;&#xFF09;</h2>
+<h3 id="&#x2705;-&#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;"><a name="&#x2705;-&#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x6B63;&#x786E;&#x547D;&#x4EE4;&#xFF08;&#x4F60;&#x8FD9;&#x4E00;&#x6B65;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#xFF09;</h3>
+<pre><code class="lang-bash">cp --sparse=always --reflink=never vm2.img vm2.img.bak2
+</code></pre>
+<p>&#x1F449; &#x8FD9;&#x6761;&#x547D;&#x4EE4;&#x7684;&#x542B;&#x4E49;&#x662F;&#xFF1A;</p>
+<ul>
+<li><code>--reflink=never</code>&#xFF1A;<strong>&#x7981;&#x6B62; CoW &#x5FEB;&#x901F;&#x590D;&#x5236;</strong></li>
+<li><code>--sparse=always</code>&#xFF1A;<strong>&#x5141;&#x8BB8;&#x6253;&#x6D1E;</strong></li>
+</ul>
+<p>&#x8FD9;&#x4E00;&#x6B65;&#xFF0C;99% &#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x6210;&#x529F;&#x3002;</p>
+<hr>
+<h2 id="&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;"><a name="&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F60;&#x9A8C;&#x8BC1;&#x8FD9;&#x51E0;&#x6761;&#xFF08;&#x4F1A;&#x604D;&#x7136;&#x5927;&#x609F;&#xFF09;</h2>
+<h3 id="1&#xFE0F;&#x20E3;-&#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><a name="1&#xFE0F;&#x20E3;-&#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-&#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; &#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h3>
+<pre><code class="lang-bash">df -T .
+</code></pre>
+<p>&#x5982;&#x679C;&#x770B;&#x5230;&#xFF1A;</p>
+<ul>
+<li><code>xfs</code></li>
+<li><code>overlay</code></li>
+<li><code>ceph</code></li>
+<li><code>ext4</code>&#xFF08;&#x65B0;&#x5185;&#x6838;&#xFF09;</li>
+</ul>
+<p>&#x90A3;&#x5C31;&#x5BF9;&#x4E0A;&#x4E86;&#x3002;</p>
+<hr>
+<h3 id="2&#xFE0F;&#x20E3;-strace-&#x770B;-cp-&#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;"><a name="2&#xFE0F;&#x20E3;-strace-&#x770B;-cp-&#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-strace-&#x770B;-cp-&#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; strace &#x770B; cp &#x5B9E;&#x9645;&#x5E72;&#x4E86;&#x5565;&#xFF08;&#x9AD8;&#x624B;&#x62DB;&#xFF09;</h3>
+<pre><code class="lang-bash">strace <span class="hljs-_">-e</span> copy_file_range,ioctl,<span class="hljs-built_in">read</span> cp vm2.img vm2.img.bak
+</code></pre>
+<p>&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x53F3;&#x8FB9;&#xFF1A;</p>
+<pre><code class="lang-text">copy_file_range(...)
+</code></pre>
+<p>&#x800C;&#x5DE6;&#x8FB9;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-text">read(...)
+write(...)
+lseek(...)
+</code></pre>
+<hr>
+<p> &#x8FD9;&#x662F;&#x4E2A;<strong>&#x95EE;&#x5230;&#x672C;&#x8D28;&#x7684;&#x95EE;&#x9898;</strong>&#x3002;
+&#x6211;&#x4E0D;&#x7ED5;&#x5F2F;&#x5B50;&#xFF0C;&#x76F4;&#x63A5;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;<strong>&#x201C;&#x8001;&#x8FD0;&#x7EF4; + &#x5B58;&#x50A8;&#x5DE5;&#x7A0B;&#x5E08;&#x89C6;&#x89D2;&#x201D;&#x7684;&#x7B54;&#x6848;</strong>&#x3002;</p>
+<hr>
+<h2 id="&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;"><a name="&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x89E3;&#x91CA;&#xFF08;&#x5148;&#x8BB0;&#x4F4F;&#xFF09;</h2>
+<blockquote>
+<p><strong><code>cp --sparse</code> &#x548C; <code>cp --reflink</code> &#x89E3;&#x51B3;&#x7684;&#x662F;&#x4E24;&#x4E2A;&#x201C;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x5C42;&#x9762;&#x201D;&#x7684;&#x95EE;&#x9898;</strong></p>
+<ul>
+<li><code>--sparse</code>&#xFF1A;<strong>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5C42;&#xFF08;0 / hole&#xFF09;</strong></li>
+<li><code>--reflink</code>&#xFF1A;<strong>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#xFF08;&#x5757;&#x6620;&#x5C04; / CoW&#xFF09;</strong></li>
+</ul>
+</blockquote>
+<p>&#x5B83;&#x4EEC;<strong>&#x4E0D;&#x51B2;&#x7A81;&#xFF0C;&#x4F46;&#x4F1A;&#x4E92;&#x76F8;&#x201C;&#x62A2;&#x63A7;&#x5236;&#x6743;&#x201D;</strong>&#x3002;</p>
+<hr>
+<h2 id="1&#xFE0F;&#x20E3;---sparse-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><a name="1&#xFE0F;&#x20E3;---sparse-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;---sparse-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; <code>--sparse</code> &#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;</h2>
+<h3 id="&#x6838;&#x5FC3;&#x4F5C;&#x7528;"><a name="&#x6838;&#x5FC3;&#x4F5C;&#x7528;" class="anchor-navigation-ex-anchor" href="#&#x6838;&#x5FC3;&#x4F5C;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6838;&#x5FC3;&#x4F5C;&#x7528;</h3>
+<blockquote>
+<p><strong>&#x5728;&#x590D;&#x5236;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C3D;&#x91CF;&#x628A;&#x201C;&#x5168; 0 &#x7684;&#x533A;&#x57DF;&#x201D;&#x53D8;&#x6210;&#x201C;hole&#xFF08;&#x7A7A;&#x6D1E;&#xFF09;&#x201D;</strong></p>
+</blockquote>
+<h3 id="&#x672C;&#x8D28;&#x884C;&#x4E3A;"><a name="&#x672C;&#x8D28;&#x884C;&#x4E3A;" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x8D28;&#x884C;&#x4E3A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x8D28;&#x884C;&#x4E3A;</h3>
+<pre><code class="lang-text">read &#x6570;&#x636E;&#x5757;
+&#x2193;
+&#x53D1;&#x73B0;&#x8FD9;&#x4E00;&#x5757;&#x5168;&#x662F; 0
+&#x2193;
+lseek &#x8DF3;&#x8FC7;
+&#x2193;
+&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E0D;&#x5206;&#x914D;&#x7269;&#x7406;&#x5757;
+</code></pre>
+<h3 id="&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;"><a name="&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x975E;&#x5E38;&#x5178;&#x578B;&#xFF09;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x573A;&#x666F;</th>
+<th>&#x4EF7;&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x865A;&#x62DF;&#x673A; raw &#x78C1;&#x76D8;</td>
+<td>&#x78C1;&#x76D8;&#x7626;&#x8EAB;</td>
+</tr>
+<tr>
+<td>&#x6570;&#x636E;&#x5E93;&#x5907;&#x4EFD;</td>
+<td>&#x51CF;&#x5C11;&#x7A7A;&#x95F4;</td>
+</tr>
+<tr>
+<td>dd / zerofill &#x6587;&#x4EF6;</td>
+<td>&#x56DE;&#x6536;&#x7A7A;&#x95F4;</td>
+</tr>
+<tr>
+<td>qcow2 &#x2192; raw</td>
+<td>&#x4FDD;&#x7559;&#x7A00;&#x758F;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><a name="&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6CE8;&#x610F;&#x4E00;&#x53E5;&#x8BDD;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;</h3>
+<blockquote>
+<p><code>--sparse</code> <strong>&#x53EA;&#x80FD;&#x5BF9;&#x201C;&#x8FD8;&#x6CA1;&#x5199;&#x8FC7;&#x7684; 0&#x201D;&#x6709;&#x6548;</strong></p>
+<p>&#x5BF9;&#x201C;&#x5DF2;&#x7ECF;&#x5199;&#x8FC7;&#x7684; 0&#xFF08;&#x771F;&#x5B9E; block&#xFF09;&#x201D;&#x65E0;&#x6548;</p>
+</blockquote>
+<hr>
+<h2 id="2&#xFE0F;&#x20E3;---reflink-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><a name="2&#xFE0F;&#x20E3;---reflink-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;---reflink-&#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; <code>--reflink</code> &#x5230;&#x5E95;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;</h2>
+<h3 id="&#x6838;&#x5FC3;&#x4F5C;&#x7528;_1"><a name="&#x6838;&#x5FC3;&#x4F5C;&#x7528;_1" class="anchor-navigation-ex-anchor" href="#&#x6838;&#x5FC3;&#x4F5C;&#x7528;_1"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6838;&#x5FC3;&#x4F5C;&#x7528;</h3>
+<blockquote>
+<p><strong>&#x5728;&#x652F;&#x6301; CoW &#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x8FDB;&#x884C;&#x201C;&#x79D2;&#x7EA7;&#x590D;&#x5236;&#x3001;&#x96F6; IO&#x201D;</strong></p>
+</blockquote>
+<h3 id="&#x672C;&#x8D28;&#x884C;&#x4E3A;_1"><a name="&#x672C;&#x8D28;&#x884C;&#x4E3A;_1" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x8D28;&#x884C;&#x4E3A;_1"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x8D28;&#x884C;&#x4E3A;</h3>
+<pre><code class="lang-text">&#x4E0D;&#x8BFB;&#x6587;&#x4EF6;
+&#x4E0D;&#x5199;&#x6587;&#x4EF6;
+&#x53EA;&#x590D;&#x5236; block &#x6620;&#x5C04;&#x5173;&#x7CFB;
+</code></pre>
+<h3 id="&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><a name="&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;" class="anchor-navigation-ex-anchor" href="#&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x652F;&#x6301;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h3>
+<ul>
+<li>XFS (reflink=1)</li>
+<li>Btrfs</li>
+<li>CephFS</li>
+<li>OverlayFS</li>
+<li>&#x90E8;&#x5206; ext4&#xFF08;&#x65B0;&#x5185;&#x6838;&#xFF09;</li>
+</ul>
+<h3 id="&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;"><a name="&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF08;&#x751F;&#x4EA7;&#x7EA7;&#xFF09;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x573A;&#x666F;</th>
+<th>&#x4EF7;&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5927;&#x6587;&#x4EF6;&#x5907;&#x4EFD;</td>
+<td>&#x79D2;&#x7EA7;&#x5B8C;&#x6210;</td>
+</tr>
+<tr>
+<td>VM &#x6A21;&#x677F;&#x590D;&#x5236;</td>
+<td>&#x51E0;&#x4E4E;&#x4E0D;&#x5360;&#x7A7A;&#x95F4;</td>
+</tr>
+<tr>
+<td>&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x5C42;</td>
+<td>CoW</td>
+</tr>
+<tr>
+<td>&#x5FEB;&#x7167;&#x526F;&#x672C;</td>
+<td>&#x6781;&#x901F;</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3&#xFE0F;&#x20E3;-&#x4E3A;&#x4EC0;&#x4E48;---sparse-&#x548C;---reflink-&#x4F1A;&#x6253;&#x67B6;&#xFF1F;"><a name="3&#xFE0F;&#x20E3;-&#x4E3A;&#x4EC0;&#x4E48;---sparse-&#x548C;---reflink-&#x4F1A;&#x6253;&#x67B6;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-&#x4E3A;&#x4EC0;&#x4E48;---sparse-&#x548C;---reflink-&#x4F1A;&#x6253;&#x67B6;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; &#x4E3A;&#x4EC0;&#x4E48; <code>--sparse</code> &#x548C; <code>--reflink</code> &#x4F1A;&#x201C;&#x6253;&#x67B6;&#x201D;&#xFF1F;</h2>
+<h3 id="&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;"><a name="&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;" class="anchor-navigation-ex-anchor" href="#&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F5C;&#x7528;&#x5728;&#x4E0D;&#x540C;&#x5C42;&#xFF1A;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x9009;&#x9879;</th>
+<th>&#x5C42;&#x7EA7;</th>
+<th>&#x662F;&#x5426;&#x8BFB;&#x6570;&#x636E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--sparse</td>
+<td>&#x5185;&#x5BB9;&#x5C42;</td>
+<td>&#x2705; &#x5FC5;&#x987B;</td>
+</tr>
+<tr>
+<td>--reflink</td>
+<td>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;</td>
+<td>&#x274C; &#x4E0D;&#x8BFB;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;"><a name="&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;" class="anchor-navigation-ex-anchor" href="#&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x51B2;&#x7A81;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x1F447;</h3>
+<blockquote>
+<p><strong>&#x4E00;&#x65E6;&#x4F7F;&#x7528; reflink&#xFF0C;cp &#x5C31;&#x4E0D;&#x4F1A;&#x8BFB;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</strong></p>
+<p>&#x2192; &#x5C31;&#x6C38;&#x8FDC;&#x770B;&#x4E0D;&#x5230; &#x201C;0&#x201D;
+&#x2192; <code>--sparse</code> &#x5931;&#x6548;</p>
+</blockquote>
+<hr>
+<h2 id="4&#xFE0F;&#x20E3;-cp-&#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;"><a name="4&#xFE0F;&#x20E3;-cp-&#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;" class="anchor-navigation-ex-anchor" href="#4&#xFE0F;&#x20E3;-cp-&#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>4&#xFE0F;&#x20E3; cp &#x7684;&#x771F;&#x5B9E;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#xFF09;</h2>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-text">reflink
+  &#x2193; &#x5931;&#x8D25;
+copy_file_range
+  &#x2193; &#x5931;&#x8D25;
+read/write + sparse
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x4F60;&#x770B;&#x5230;&#xFF1A;</p>
+<blockquote>
+<p>&#x201C;&#x660E;&#x660E;&#x52A0;&#x4E86; --sparse&#xFF0C;&#x4F46;&#x6CA1;&#x6548;&#x679C;&#x201D;</p>
+</blockquote>
+<p>&#x1F449; <strong>&#x5176;&#x5B9E; cp &#x6839;&#x672C;&#x6CA1;&#x8D70;&#x5230;&#x90A3;&#x4E00;&#x6B65;</strong></p>
+<hr>
+<h2 id="5&#xFE0F;&#x20E3;-&#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><a name="5&#xFE0F;&#x20E3;-&#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;" class="anchor-navigation-ex-anchor" href="#5&#xFE0F;&#x20E3;-&#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>5&#xFE0F;&#x20E3; &#x6B63;&#x786E;&#x642D;&#x914D;&#x65B9;&#x5F0F;&#xFF08;&#x91CD;&#x70B9;&#xFF09;</h2>
+<h3 id="&#x2705;-&#x60F3;&#x8981;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;"><a name="&#x2705;-&#x60F3;&#x8981;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x60F3;&#x8981;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x60F3;&#x8981;&#x201C;&#x771F;&#x6B63;&#x7A00;&#x758F;&#x5316;&#x201D;</h3>
+<pre><code class="lang-bash">cp --sparse=always --reflink=never src.img dst.img
+</code></pre>
+<p>&#x8FD9;&#x662F;&#x4F60;<strong>&#x521A;&#x624D;&#x5B9E;&#x9A8C;&#x91CC;&#x7F3A;&#x7684;&#x90A3;&#x4E00;&#x6B65;</strong></p>
+<hr>
+<h3 id="&#x2705;-&#x60F3;&#x8981;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;"><a name="&#x2705;-&#x60F3;&#x8981;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x60F3;&#x8981;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x60F3;&#x8981;&#x201C;&#x6781;&#x901F;&#x590D;&#x5236;&#x3001;&#x4E0D;&#x5360;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x201D;</h3>
+<pre><code class="lang-bash">cp --reflink=always src.img dst.img
+</code></pre>
+<p><strong>&#x4E0D;&#x5173;&#x5FC3; sparse</strong></p>
+<hr>
+<h3 id="&#x274C;-&#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;"><a name="&#x274C;-&#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x274C;-&#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x274C; &#x9519;&#x8BEF;&#x7406;&#x89E3;&#xFF08;&#x5F88;&#x591A;&#x4EBA;&#x4F1A;&#x8FD9;&#x6837;&#xFF09;</h3>
+<pre><code class="lang-bash">cp --sparse --reflink=always
+</code></pre>
+<p>&#x1F449; &#x7B49;&#x4E8E;&#xFF1A;</p>
+<blockquote>
+<p>&#x201C;&#x6211;&#x60F3;&#x7626;&#x8EAB;&#xFF0C;&#x4F46;&#x6211;&#x53C8;&#x4E0D;&#x770B;&#x5185;&#x5BB9;&#x201D;</p>
+</blockquote>
+<hr>
+<h2 id="6&#xFE0F;&#x20E3;-&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x6B63;&#x786E;&#x76F4;&#x89C9;"><a name="6&#xFE0F;&#x20E3;-&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x6B63;&#x786E;&#x76F4;&#x89C9;" class="anchor-navigation-ex-anchor" href="#6&#xFE0F;&#x20E3;-&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x6B63;&#x786E;&#x76F4;&#x89C9;"><i class="fa fa-link" aria-hidden="true"></i></a>6&#xFE0F;&#x20E3; &#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x5E2E;&#x4F60;&#x5EFA;&#x7ACB;&#x201C;&#x6B63;&#x786E;&#x76F4;&#x89C9;&#x201D;</h2>
+<blockquote>
+<ul>
+<li><code>--reflink</code>&#xFF1A;<strong>&#x6211;&#x4FE1;&#x4EFB;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</strong></li>
+<li><code>--sparse</code>&#xFF1A;<strong>&#x6211;&#x4FE1;&#x4EFB;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</strong></li>
+</ul>
+<p>&#x4E24;&#x8005;&#x53EA;&#x80FD;&#x9009;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x201C;&#x4E3B;&#x5BFC;&#x201D;</p>
+</blockquote>
+<hr>
+<h2 id="7&#xFE0F;&#x20E3;-&#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;"><a name="7&#xFE0F;&#x20E3;-&#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;" class="anchor-navigation-ex-anchor" href="#7&#xFE0F;&#x20E3;-&#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>7&#xFE0F;&#x20E3; &#x518D;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x201C;&#x8001;&#x5DE5;&#x7A0B;&#x5E08;&#x603B;&#x7ED3;&#x201D;</h2>
+<blockquote>
+<p><strong>cp &#x4E0D;&#x662F;&#x538B;&#x7F29;&#x5DE5;&#x5177;</strong>
+<strong>&#x4E0D;&#x662F;&#x955C;&#x50CF;&#x5DE5;&#x5177;</strong></p>
+<p>&#x5B83;&#x53EA;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x5FEB;&#x901F;&#x590D;&#x5236;&#xFF08;reflink&#xFF09;</li>
+<li>&#x6216;&#x5FE0;&#x5B9E;&#x590D;&#x5236;&#xFF08;read/write + sparse&#xFF09;</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="8&#xFE0F;&#x20E3;-&#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><a name="8&#xFE0F;&#x20E3;-&#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;" class="anchor-navigation-ex-anchor" href="#8&#xFE0F;&#x20E3;-&#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>8&#xFE0F;&#x20E3; &#x5982;&#x679C;&#x4F60;&#x5728;&#x505A;&#x865A;&#x62DF;&#x5316;&#xFF08;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF09;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x76EE;&#x6807;</th>
+<th>&#x63A8;&#x8350;&#x65B9;&#x5F0F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM &#x7626;&#x8EAB;</td>
+<td><code>qemu-img convert</code></td>
+</tr>
+<tr>
+<td>&#x6A21;&#x677F;&#x590D;&#x5236;</td>
+<td><code>cp --reflink=always</code></td>
+</tr>
+<tr>
+<td>raw &#x7A00;&#x758F;</td>
+<td><code>truncate</code> / <code>dd seek</code></td>
+</tr>
+<tr>
+<td>&#x56DE;&#x6536; 0</td>
+<td><code>virt-sparsify</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>&#x4EE5;&#x4E0B;&#x662F;qcow2&#x7684;&#x9884;&#x5206;&#x914D;&#x7B56;&#x7565;&#xFF0C;raw&#x8FD8;&#x8981;&#x770B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x662F;&#x5426;&#x652F;&#x6301;</strong></p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108160205105.png" alt="image-20260108160205105"></p>
+<pre><code class="lang-shell">qemu-img create -f qcow2 test.qcow2 1g
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108161011430.png" alt="image-20260108161011430"></p>
+<pre><code class="lang-shell">qemu-img create -f qcow2 test1.qcow2 1g -o preallocation=off
+# -o preallocation=off &#x8FD9;&#x4E2A;&#x662F;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x4E00;&#x6761;cli&#x4E00;&#x6837;
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108161119933.png" alt="image-20260108161119933"></p>
+<pre><code class="lang-shell">qemu-img create -f qcow2 test2.qcow2 1g -o preallocation=metadata
+# -o preallocation=metadata &#x5360;&#x7528;&#x6BD4;off&#x9ED8;&#x8BA4;&#x6A21;&#x5F0F; &#x4F1A;&#x591A;&#x4E00;&#x70B9;&#xFF0C;&#x5C5E;&#x4E8E;&#x7A00;&#x758F;&#x6A21;&#x5F0F;&#xFF0C;&#x4E5F;&#x662F;&#x7626;&#x7F6E;&#x5907;&#x3002;
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108161734724.png" alt="image-20260108161734724"></p>
+<pre><code class="lang-shell">qemu-img create -f qcow2 test3.qcow2 1g -o preallocation=falloc
+# -o preallocation=falloc &#x539A;&#x7F6E;&#x5907;&#x5EF6;&#x8FDF;&#x7F6E;0&#xFF0C;&#x8FD9;&#x662F;&#x5206;&#x914D;&#x7684;&#x7A7A;&#x95F4;&#x5168;&#x90E8;&#x5360;&#x7528;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x6E05;0&#xFF0C;&#x6BD4;&#x539A;&#x7F6E;&#x5907;&#x5C11;&#x4E00;&#x4E2A;&#x6E05;0&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x521B;&#x5EFA;&#x901F;&#x5EA6;&#x6BD4;&#x539A;&#x7F6E;&#x5907;&#x7F6E;0&#x8981;&#x5757;&#x4E9B;&#x3002;
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108162140742.png" alt="image-20260108162140742"></p>
+<pre><code class="lang-shell">qemu-img create -f qcow2 test4.qcow2 1g -o preallocation=full
+# -o preallocation=full &#x539A;&#x7F6E;&#x5907;&#x7F6E;0
+</code></pre>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108162412027.png" alt="image-20260108162412027"></p>
+<p>&#x539A;&#x7F6E;&#x5907;&#x7F6E;0&#x7684;&#x901F;&#x5EA6;&#x662F;&#x6162;&#x4E0D;&#x5C11;&#x7684;&#x1F447;</p>
+<p><img src="07.KVM&#x76F8;&#x5173;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x8BF4;&#x660E;.assets/image-20260108162559494.png" alt="image-20260108162559494"></p>
+<p>off , metadata, falloc, full&#xFF0C;&#x4F60;&#x613F;&#x610F;&#x9009;&#x5565;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BB2;&#xFF0C;off &#x521B;&#x5EFA;&#x6700;&#x5FEB;&#xFF0C;&#x6700;&#x7701;&#x7A7A;&#x95F4;&#xFF0C;full&#x7684;&#x8BDD;vm&#x5199;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x518D;&#x53BB;&#x50CF;off&#x4E00;&#x6837;&#x52A8;&#x6001;&#x6269;&#x5C55;&#x5148;&#xFF0C;&#x6240;&#x4EE5;&#x5199;&#x6570;&#x636E;&#x6548;&#x7387;&#x9AD8;&#x3002;</p>
+<p><strong>&#x4EE5;&#x4E0B;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x5F85;&#x68B3;&#x7406;&#xFF1A;</strong></p>
+<p> KVM/QEMU &#x4E0B;&#x521B;&#x5EFA; <strong>qcow2 &#x6216; raw &#x955C;&#x50CF;&#x65F6;&#x7684;&#x9884;&#x5206;&#x914D;&#x6A21;&#x5F0F;</strong>&#xFF0C;&#x6BD4;&#x5982; <code>--preallocation</code> &#x53C2;&#x6570;&#x53EF;&#x9009;&#x7684;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;<code>off</code>&#x3001;<code>metadata</code>&#x3001;<code>falloc</code>&#x3001;<code>full</code>&#x3002;&#x6211;&#x6765;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x6BCF;&#x79CD;&#x7684;&#x7279;&#x70B9;&#x548C;&#x573A;&#x666F;&#xFF0C;&#x5E2E;&#x4F60;&#x5224;&#x65AD;&#x4E00;&#x822C;&#x9009;&#x62E9;&#x54EA;&#x4E2A;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x3002;</p>
+<hr>
+<h3 id="1&#xFE0F;&#x20E3;-off"><a name="1&#xFE0F;&#x20E3;-off" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-off"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; off</h3>
+<ul>
+<li><strong>&#x542B;&#x4E49;</strong>&#xFF1A;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x9884;&#x5206;&#x914D;&#xFF0C;&#x955C;&#x50CF;&#x521B;&#x5EFA;&#x65F6;&#x53EA;&#x662F;&#x6587;&#x4EF6;&#x5934;&#x5360;&#x7528;&#x51E0; KB&#xFF0C;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x968F; VM &#x5199;&#x5165;&#x52A8;&#x6001;&#x589E;&#x52A0;&#x3002;</li>
+<li><strong>&#x4F18;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x521B;&#x5EFA;&#x6700;&#x5FEB;&#x3002;</li>
+<li>&#x521D;&#x59CB;&#x78C1;&#x76D8;&#x51E0;&#x4E4E;&#x4E0D;&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x5199;&#x5165;&#x65F6;&#x53EF;&#x80FD;&#x89E6;&#x53D1;&#x52A8;&#x6001;&#x5206;&#x914D;&#xFF0C;&#x6027;&#x80FD;&#x7565;&#x4F4E;&#x3002;</li>
+<li>&#x5927;&#x91CF;&#x968F;&#x673A;&#x5199;&#x5165;&#x4F1A;&#x5BFC;&#x81F4;&#x78C1;&#x76D8;&#x788E;&#x7247;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x9002;&#x7528;&#x573A;&#x666F;</strong>&#xFF1A;<ul>
+<li>&#x6D4B;&#x8BD5;&#x3001;&#x5F00;&#x53D1;&#x3001;&#x77ED;&#x671F; VM&#x3002;</li>
+<li>&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x7D27;&#x5F20;&#xFF0C;&#x4F18;&#x5148;&#x8282;&#x7EA6;&#x78C1;&#x76D8;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2&#xFE0F;&#x20E3;-metadata"><a name="2&#xFE0F;&#x20E3;-metadata" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-metadata"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; metadata</h3>
+<ul>
+<li><strong>&#x542B;&#x4E49;</strong>&#xFF1A;&#x53EA;&#x9884;&#x5206;&#x914D; qcow2 &#x7684;&#x5143;&#x6570;&#x636E;&#x9875;&#xFF08;metadata blocks&#xFF09;&#xFF0C;&#x800C;&#x4E0D;&#x9884;&#x5206;&#x914D;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x5757;&#x3002;</li>
+<li><strong>&#x4F18;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x521B;&#x5EFA;&#x901F;&#x5EA6;&#x5FEB;&#x3002;</li>
+<li>&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#x4E0D;&#x9700;&#x8981;&#x52A8;&#x6001;&#x6269;&#x5C55;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x6BD4; off &#x7A0D;&#x597D;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x6570;&#x636E;&#x90E8;&#x5206;&#x4ECD;&#x7136;&#x662F;&#x52A8;&#x6001;&#x5206;&#x914D;&#xFF0C;&#x5199;&#x5927;&#x6587;&#x4EF6;&#x4ECD;&#x53EF;&#x80FD;&#x6709;&#x8F7B;&#x5FAE;&#x6027;&#x80FD;&#x635F;&#x5931;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x9002;&#x7528;&#x573A;&#x666F;</strong>&#xFF1A;<ul>
+<li>&#x5927;&#x591A;&#x6570;&#x4E2D;&#x7B49;&#x8D1F;&#x8F7D; VM&#x3002;</li>
+<li>&#x5E0C;&#x671B;&#x5728;&#x4FDD;&#x7559;&#x7A7A;&#x95F4;&#x7684;&#x540C;&#x65F6;&#x907F;&#x514D;&#x5143;&#x6570;&#x636E;&#x6269;&#x5C55;&#x7684;&#x6027;&#x80FD;&#x5F00;&#x9500;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3&#xFE0F;&#x20E3;-falloc"><a name="3&#xFE0F;&#x20E3;-falloc" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-falloc"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; falloc</h3>
+<ul>
+<li><strong>&#x542B;&#x4E49;</strong>&#xFF1A;&#x4F7F;&#x7528; <code>fallocate()</code> &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x9884;&#x5206;&#x914D;&#x6574;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x7A7A;&#x95F4;&#xFF08;&#x6309;&#x5757;&#x5206;&#x914D;&#xFF09;&#x3002;</li>
+<li><strong>&#x4F18;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x521B;&#x5EFA;&#x901F;&#x5EA6;&#x6BD4; full &#x5FEB;&#xFF08;&#x56E0;&#x4E3A;&#x4E0D;&#x5B9E;&#x9645;&#x5199;&#x96F6;&#xFF09;&#x3002;</li>
+<li>&#x5199;&#x5165;&#x65F6;&#x57FA;&#x672C;&#x4E0D;&#x4F1A;&#x518D;&#x89E6;&#x53D1;&#x78C1;&#x76D8;&#x5206;&#x914D;&#xFF0C;&#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x597D;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x4F1A;&#x4E00;&#x6B21;&#x6027;&#x5360;&#x6EE1;&#x3002;</li>
+<li>&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5BF9; <code>fallocate()</code> &#x7684;&#x652F;&#x6301;&#x548C;&#x884C;&#x4E3A;&#x7565;&#x6709;&#x5DEE;&#x5F02;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x9002;&#x7528;&#x573A;&#x666F;</strong>&#xFF1A;<ul>
+<li>&#x5927;&#x578B;&#x6570;&#x636E;&#x5E93;&#x3001;&#x9700;&#x8981;&#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x9AD8;&#x7684; VM&#x3002;</li>
+<li>&#x53EF;&#x63A5;&#x53D7;&#x4E00;&#x6B21;&#x6027;&#x5360;&#x7528;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4&#xFE0F;&#x20E3;-full"><a name="4&#xFE0F;&#x20E3;-full" class="anchor-navigation-ex-anchor" href="#4&#xFE0F;&#x20E3;-full"><i class="fa fa-link" aria-hidden="true"></i></a>4&#xFE0F;&#x20E3; full</h3>
+<ul>
+<li><strong>&#x542B;&#x4E49;</strong>&#xFF1A;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x5199;&#x96F6;&#x586B;&#x5145;&#x6574;&#x4E2A;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x3002;</li>
+<li><strong>&#x4F18;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x5199;&#x5165;&#x6027;&#x80FD;&#x6700;&#x597D;&#xFF0C;&#x4E0D;&#x4F1A;&#x52A8;&#x6001;&#x6269;&#x5C55;&#x3002;</li>
+<li>&#x907F;&#x514D;&#x78C1;&#x76D8;&#x788E;&#x7247;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A;<ul>
+<li>&#x521B;&#x5EFA;&#x6162;&#xFF08;&#x5C24;&#x5176;&#x662F;&#x5927;&#x76D8;&#xFF09;&#x3002;</li>
+<li>&#x5360;&#x7528;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x5927;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x9002;&#x7528;&#x573A;&#x666F;</strong>&#xFF1A;<ul>
+<li>&#x9AD8;&#x6027;&#x80FD;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x3001;&#x6570;&#x636E;&#x5E93; VM&#x3002;</li>
+<li>&#x4E0D;&#x5E0C;&#x671B;&#x5199;&#x5165;&#x65F6;&#x6709;&#x4EFB;&#x4F55;&#x6027;&#x80FD;&#x6296;&#x52A8;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="&#x2705;-&#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;"><a name="&#x2705;-&#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;" class="anchor-navigation-ex-anchor" href="#&#x2705;-&#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x2705; &#x603B;&#x7ED3;&#x9009;&#x62E9;&#x601D;&#x8DEF;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x573A;&#x666F;</th>
+<th>&#x63A8;&#x8350; preallocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x6D4B;&#x8BD5;/&#x5F00;&#x53D1;</td>
+<td><code>off</code> &#x6216; <code>metadata</code></td>
+</tr>
+<tr>
+<td>&#x4E2D;&#x7B49;&#x8D1F;&#x8F7D; VM</td>
+<td><code>metadata</code></td>
+</tr>
+<tr>
+<td>&#x5927;&#x578B;&#x6570;&#x636E;&#x5E93;&#x6216;&#x9AD8;&#x968F;&#x673A;&#x5199;</td>
+<td><code>falloc</code> &#x6216; <code>full</code></td>
+</tr>
+<tr>
+<td>&#x6781;&#x81F4;&#x5199;&#x6027;&#x80FD;&#x8981;&#x6C42;</td>
+<td><code>full</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>&#x4F60;&#x8BF4;&#x5F97;&#x6CA1;&#x9519;&#xFF1A;<strong>off &#x521B;&#x5EFA;&#x6700;&#x5FEB;&#xFF0C;&#x6700;&#x7701;&#x7A7A;&#x95F4;&#xFF0C;&#x4F46;&#x5199;&#x6027;&#x80FD;&#x53EF;&#x80FD;&#x7565;&#x4F4E;&#xFF1B;full &#x5199;&#x6027;&#x80FD;&#x6700;&#x597D;&#xFF0C;&#x4F46;&#x521B;&#x5EFA;&#x6162;&#xFF0C;&#x5360;&#x7528;&#x78C1;&#x76D8;&#x5927;&#x3002;</strong>
+&#x4E2A;&#x4EBA;&#x5728;&#x65E5;&#x5E38;&#x5B9E;&#x9A8C;/&#x6559;&#x5B66;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x6211;&#x901A;&#x5E38;&#x7528; <strong>metadata</strong>&#xFF0C;&#x5728;&#x751F;&#x4EA7;&#x9AD8;&#x8D1F;&#x8F7D;&#x6570;&#x636E;&#x5E93; VM &#x4E0A;&#x4F1A;&#x7528; <strong>falloc</strong>&#x3002;</p>
+</blockquote>
+<hr>
+<table>
+<thead>
+<tr>
+<th>&#x9884;&#x5206;&#x914D;&#x6A21;&#x5F0F;</th>
+<th>&#x521B;&#x5EFA;&#x901F;&#x5EA6;</th>
+<th>&#x521D;&#x59CB;&#x78C1;&#x76D8;&#x5360;&#x7528;</th>
+<th>&#x5199;&#x5165;&#x6027;&#x80FD;&#xFF08;&#x968F;&#x673A;&#x5199;&#xFF09;</th>
+<th>&#x4F18;&#x7F3A;&#x70B9;&#x603B;&#x7ED3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>off</strong></td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x6700;&#x5FEB;</td>
+<td>&#x2B50;&#x2B50;&#x51E0;&#x4E4E;0</td>
+<td>&#x2B50;&#x2B50;&#x4E00;&#x822C;</td>
+<td>&#x521B;&#x5EFA;&#x5FEB;&#x3001;&#x7701;&#x7A7A;&#x95F4;&#xFF1B;&#x5199;&#x65F6;&#x52A8;&#x6001;&#x5206;&#x914D;&#xFF0C;&#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x7565;&#x4F4E;</td>
+</tr>
+<tr>
+<td><strong>metadata</strong></td>
+<td>&#x2B50;&#x2B50;&#x5FEB;</td>
+<td>&#x2B50;&#x2B50;&#x4EC5;&#x5143;&#x6570;&#x636E;</td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x8F83;&#x597D;</td>
+<td>&#x5143;&#x6570;&#x636E;&#x9884;&#x5206;&#x914D;&#xFF0C;&#x5199;&#x5165;&#x5143;&#x6570;&#x636E;&#x65E0;&#x9700;&#x6269;&#x5C55;&#xFF0C;&#x6027;&#x80FD;&#x6BD4; off &#x7A0D;&#x597D;</td>
+</tr>
+<tr>
+<td><strong>falloc</strong></td>
+<td>&#x2B50;&#x2B50;&#x5FEB;</td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x5168;&#x76D8;&#x5360;&#x7528;</td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x9AD8;</td>
+<td>&#x4F7F;&#x7528; fallocate &#x9884;&#x5206;&#x914D;&#xFF0C;&#x4E0D;&#x5199;&#x96F6;&#xFF0C;&#x5199;&#x6027;&#x80FD;&#x9AD8;&#xFF0C;&#x4F46;&#x5360;&#x7528;&#x78C1;&#x76D8;</td>
+</tr>
+<tr>
+<td><strong>full</strong></td>
+<td>&#x2B50;&#x6162;</td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x5168;&#x76D8;&#x5360;&#x7528;</td>
+<td>&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x6700;&#x9AD8;</td>
+<td>&#x5199;&#x96F6;&#x586B;&#x5145;&#x6574;&#x4E2A;&#x955C;&#x50CF;&#xFF0C;&#x521B;&#x5EFA;&#x6162;&#xFF0C;&#x5360;&#x7528;&#x5927;&#xFF0C;&#x4F46;&#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x6700;&#x597D;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>&#x6D4B;&#x8BD5;&#x73AF;&#x5883;</th>
+<th>&#x6D4B;&#x8BD5;&#x7C7B;&#x578B;</th>
+<th>full</th>
+<th>off</th>
+<th>&#x5DEE;&#x8DDD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HDD 7200RPM</td>
+<td>&#x968F;&#x673A; 4K &#x5199;</td>
+<td>100%</td>
+<td>40-60%</td>
+<td>full ~2x faster</td>
+</tr>
+<tr>
+<td>SSD NVMe 1GB/s</td>
+<td>&#x968F;&#x673A; 4K &#x5199;</td>
+<td>100%</td>
+<td>70-90%</td>
+<td>full &#x5FEB; 10-30%</td>
+</tr>
+<tr>
+<td>SSD NVMe</td>
+<td>&#x987A;&#x5E8F;&#x5199; 1MB</td>
+<td>100%</td>
+<td>90-95%</td>
+<td>&#x5DEE;&#x8DDD;&#x5F88;&#x5C0F;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>&#x1F539; &#x603B;&#x7ED3;&#xFF1A;<strong>off vs full</strong></p>
+<ul>
+<li>HDD &#x968F;&#x673A;&#x5199;&#xFF1A;&#x5DEE;&#x8DDD;&#x5F88;&#x660E;&#x663E;&#xFF0C;full &#x53EF;&#x5FEB;&#x4E00;&#x500D;&#x751A;&#x81F3;&#x66F4;&#x591A;&#x3002;</li>
+<li>SSD &#x987A;&#x5E8F;&#x5199;&#xFF1A;&#x5DEE;&#x8DDD;&#x4E0D;&#x5927;&#xFF0C;&#x53EF;&#x80FD; 10-30%&#x3002;</li>
+<li>SSD &#x968F;&#x673A;&#x5199;&#xFF1A;&#x4ECD;&#x6709;&#x6027;&#x80FD;&#x63D0;&#x5347;&#xFF0C;&#x4F46;&#x4E0D;&#x5982; HDD &#x660E;&#x663E;&#x3002;</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;"><a name="&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;" class="anchor-navigation-ex-anchor" href="#&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B9E;&#x8DF5;&#x5EFA;&#x8BAE;</h3>
+<ul>
+<li><strong>&#x6D4B;&#x8BD5;/&#x5F00;&#x53D1; VM</strong>&#xFF1A;off &#x8DB3;&#x591F;&#xFF0C;&#x8282;&#x7701;&#x7A7A;&#x95F4;&#x548C;&#x65F6;&#x95F4;&#x3002;</li>
+<li><strong>&#x751F;&#x4EA7;&#x6570;&#x636E;&#x5E93;/&#x9AD8;&#x968F;&#x673A;&#x5199; VM</strong>&#xFF1A;full &#x6216; falloc&#xFF0C;&#x4FDD;&#x8BC1;&#x5199;&#x6027;&#x80FD;&#x7A33;&#x5B9A;&#x3002;</li>
+<li><strong>SSD + &#x987A;&#x5E8F;&#x5199;</strong>&#xFF1A;off &#x4E5F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#xFF0C;&#x4E0D;&#x5FC5;&#x8FFD;&#x6C42; full&#x3002;</li>
+</ul>
+<p>&#x5B8C;&#x5168;&#x7406;&#x89E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x662F; KVM/&#x865A;&#x62DF;&#x5316;&#x8BBE;&#x8BA1;&#x548C;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x6838;&#x5FC3;&#x2014;&#x2014;&#x4F60;&#x8981;&#x77E5;&#x9053; VM &#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x91CC;&#x5230;&#x5E95;&#x662F; <strong>&#x987A;&#x5E8F;&#x5199;&#x591A;</strong>&#x8FD8;&#x662F; <strong>&#x968F;&#x673A;&#x5199;&#x591A;</strong>&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;&#x3002;&#x6211;&#x4EEC;&#x4ECE;&#x539F;&#x7406;&#x5230;&#x64CD;&#x4F5C;&#x4ED4;&#x7EC6;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x3002;</p>
+<hr>
+<h2 id="1&#xFE0F;&#x20E3;-&#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;"><a name="1&#xFE0F;&#x20E3;-&#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-&#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; &#x5148;&#x533A;&#x5206;&#x5E94;&#x7528;&#x573A;&#x666F;</h2>
+<h3 id="&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><a name="&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;" class="anchor-navigation-ex-anchor" href="#&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x987A;&#x5E8F;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;</h3>
+<ul>
+<li><strong>&#x65E5;&#x5FD7;&#x7C7B;&#x5199;&#x5165;</strong>&#xFF1A;Nginx&#x3001;Apache &#x8BBF;&#x95EE;&#x65E5;&#x5FD7;&#x3001;&#x6570;&#x636E;&#x5E93;&#x4E8C;&#x8FDB;&#x5236;&#x65E5;&#x5FD7;&#xFF08;MySQL binlog&#xFF09;</li>
+<li><strong>&#x5927;&#x6587;&#x4EF6;&#x64CD;&#x4F5C;</strong>&#xFF1A;&#x5907;&#x4EFD;&#x3001;&#x89C6;&#x9891;&#x5199;&#x5165;&#x3001;&#x4E0B;&#x8F7D;&#x5927;&#x6587;&#x4EF6;</li>
+<li><strong>&#x5927;&#x5757;&#x987A;&#x5E8F; IO</strong>&#xFF1A;&#x6570;&#x636E;&#x5E93;&#x5168;&#x8868;&#x626B;&#x63CF;&#x5199;&#x5165;&#x3001;&#x6620;&#x50CF;&#x6216;&#x865A;&#x62DF;&#x78C1;&#x76D8;&#x62F7;&#x8D1D;</li>
+</ul>
+<h3 id="&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><a name="&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;" class="anchor-navigation-ex-anchor" href="#&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x968F;&#x673A;&#x5199;&#x5360;&#x4E3B;&#x5BFC;&#x7684;&#x573A;&#x666F;</h3>
+<ul>
+<li><strong>&#x6570;&#x636E;&#x5E93;&#x5C0F;&#x4E8B;&#x52A1;</strong>&#xFF1A;MySQL/PostgreSQL InnoDB &#x7684; 4K/8K &#x6570;&#x636E;&#x9875;&#x5199;&#x5165;</li>
+<li><strong>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x968F;&#x673A;&#x5199;</strong>&#xFF1A;/var/tmp&#x3001;/tmp&#x3001;/home &#x4E0B;&#x7684;&#x5C0F;&#x6587;&#x4EF6;&#x5199;&#x5165;</li>
+<li><strong>&#x865A;&#x62DF;&#x673A; OS &#x8D1F;&#x8F7D;</strong>&#xFF1A;&#x5927;&#x91CF;&#x5C0F;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x3001;&#x4FEE;&#x6539;</li>
+</ul>
+<blockquote>
+<p>&#x1F539; &#x603B;&#x7ED3;&#xFF1A;</p>
+<ul>
+<li><strong>&#x6570;&#x636E;&#x5E93; VM</strong>&#x3001;<strong>&#x9AD8; IOPS VM</strong> &#x2192; &#x968F;&#x673A;&#x5199;&#x591A;</li>
+<li><strong>&#x5907;&#x4EFD;/&#x5A92;&#x4F53;/&#x5927;&#x6587;&#x4EF6; VM</strong> &#x2192; &#x987A;&#x5E8F;&#x5199;&#x591A;</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="2&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;"><a name="2&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; &#x5982;&#x4F55;&#x76D1;&#x6D4B;&#x771F;&#x5B9E;&#x5199;&#x5165;&#x6A21;&#x5F0F;</h2>
+<p>&#x5728; Linux &#x4E3B;&#x673A;&#x6216; KVM &#x5BBF;&#x4E3B;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x5DE5;&#x5177;&#xFF1A;</p>
+<h3 id="a-iostat"><a name="a-iostat" class="anchor-navigation-ex-anchor" href="#a-iostat"><i class="fa fa-link" aria-hidden="true"></i></a>a) iostat</h3>
+<pre><code class="lang-bash">iostat -x 1
+</code></pre>
+<ul>
+<li>&#x770B; <code>r/s</code> / <code>w/s</code>&#xFF1A;&#x8BFB;&#x5199;&#x6B21;&#x6570;&#xFF08;IOPS&#xFF09;&#xFF0C;&#x591A;&#x4E3A;&#x968F;&#x673A;</li>
+<li>&#x770B; <code>rkB/s</code> / <code>wkB/s</code>&#xFF1A;&#x541E;&#x5410;&#x91CF;&#xFF08;MB/s&#xFF09;&#xFF0C;&#x591A;&#x4E3A;&#x987A;&#x5E8F;</li>
+</ul>
+<blockquote>
+<p><strong>&#x89C4;&#x5F8B;</strong>&#xFF1A;</p>
+<ul>
+<li>&#x9AD8; IOPS + &#x5C0F;&#x541E;&#x5410; &#x2192; &#x968F;&#x673A;&#x5199;&#x591A;</li>
+<li>&#x4F4E; IOPS + &#x9AD8;&#x541E;&#x5410; &#x2192; &#x987A;&#x5E8F;&#x5199;&#x591A;</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="b-blktrace--blkparse"><a name="b-blktrace--blkparse" class="anchor-navigation-ex-anchor" href="#b-blktrace--blkparse"><i class="fa fa-link" aria-hidden="true"></i></a>b) blktrace / blkparse</h3>
+<pre><code class="lang-bash">blktrace <span class="hljs-_">-d</span> /dev/vda -o - | blkparse -i -
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x6B21;&#x5757; IO &#x7684;&#x903B;&#x8F91;&#x5757;&#x53F7;</li>
+<li>&#x8FDE;&#x7EED;&#x903B;&#x8F91;&#x5757;&#x5199; &#x2192; &#x987A;&#x5E8F;&#x5199;</li>
+<li>&#x968F;&#x673A;&#x903B;&#x8F91;&#x5757;&#x5199; &#x2192; &#x968F;&#x673A;&#x5199;</li>
+</ul>
+<hr>
+<h3 id="c-iotop--dstat"><a name="c-iotop--dstat" class="anchor-navigation-ex-anchor" href="#c-iotop--dstat"><i class="fa fa-link" aria-hidden="true"></i></a>c) iotop / dstat</h3>
+<ul>
+<li>&#x5FEB;&#x901F;&#x67E5;&#x770B;&#x54EA;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x5199;</li>
+<li>&#x914D;&#x5408; <code>--io</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x79D2;&#x5199;&#x5165;&#x91CF;&#xFF0C;&#x7ED3;&#x5408;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x63A8;&#x6D4B;&#x987A;&#x5E8F;&#x6216;&#x968F;&#x673A;</li>
+</ul>
+<hr>
+<h3 id="d-fio-&#x6D4B;&#x8BD5;"><a name="d-fio-&#x6D4B;&#x8BD5;" class="anchor-navigation-ex-anchor" href="#d-fio-&#x6D4B;&#x8BD5;"><i class="fa fa-link" aria-hidden="true"></i></a>d) fio &#x6D4B;&#x8BD5;</h3>
+<p>&#x53EF;&#x4EE5;&#x5728; VM &#x5185;&#x6216;&#x5BBF;&#x4E3B;&#x505A;&#x4EFF;&#x771F;&#xFF1A;</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x968F;&#x673A;&#x5199;&#x6D4B;&#x8BD5;</span>
+fio --name=randwrite --filename=testfile --rw=randwrite --bs=4k --size=1G --iodepth=16 --direct=1
+
+<span class="hljs-comment"># &#x987A;&#x5E8F;&#x5199;&#x6D4B;&#x8BD5;</span>
+fio --name=seqwrite --filename=testfile --rw=write --bs=1M --size=1G --iodepth=16 --direct=1
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x5F97;&#x5230; IOPS / &#x541E;&#x5410; / &#x5EF6;&#x8FDF;</li>
+<li>&#x771F;&#x5B9E;&#x573A;&#x666F;&#x4E0B;&#x548C;&#x6D4B;&#x8BD5;&#x7ED3;&#x5408;&#xFF0C;&#x80FD;&#x91CF;&#x5316;&#x987A;&#x5E8F;/&#x968F;&#x673A;&#x6BD4;&#x91CD;</li>
+</ul>
+<hr>
+<h2 id="3&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;"><a name="3&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-&#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; &#x5982;&#x4F55;&#x63A7;&#x5236;&#x6216;&#x4F18;&#x5316;</h2>
+<h3 id="1&#xFE0F;&#x20E3;-qcow2-&#x955C;&#x50CF;&#x9009;&#x62E9;"><a name="1&#xFE0F;&#x20E3;-qcow2-&#x955C;&#x50CF;&#x9009;&#x62E9;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-qcow2-&#x955C;&#x50CF;&#x9009;&#x62E9;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; qcow2 &#x955C;&#x50CF;&#x9009;&#x62E9;</h3>
+<ul>
+<li><strong>&#x968F;&#x673A;&#x5199;&#x591A; &#x2192; full &#x6216; falloc</strong></li>
+<li><strong>&#x987A;&#x5E8F;&#x5199;&#x591A; &#x2192; off &#x6216; metadata</strong></li>
+</ul>
+<h3 id="2&#xFE0F;&#x20E3;-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;"><a name="2&#xFE0F;&#x20E3;-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x4F18;&#x5316;</h3>
+<ul>
+<li>ext4/xfs&#xFF1A;&#x5F00;&#x542F; <code>barrier=0</code>&#xFF08;&#x8C28;&#x614E;&#xFF0C;&#x9700;&#x4FDD;&#x8BC1;&#x7535;&#x6E90;&#x53EF;&#x9760;&#xFF09;</li>
+<li>&#x5F00;&#x542F; <code>noatime</code> &#x51CF;&#x5C11; inode &#x66F4;&#x65B0;</li>
+</ul>
+<h3 id="3&#xFE0F;&#x20E3;-&#x865A;&#x62DF;&#x5316;-io-&#x6A21;&#x578B;"><a name="3&#xFE0F;&#x20E3;-&#x865A;&#x62DF;&#x5316;-io-&#x6A21;&#x578B;" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-&#x865A;&#x62DF;&#x5316;-io-&#x6A21;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; &#x865A;&#x62DF;&#x5316; IO &#x6A21;&#x578B;</h3>
+<ul>
+<li><strong>Virtio-blk / Virtio-scsi + queue=&#x591A;&#x961F;&#x5217;</strong></li>
+<li><strong>IO&#x8C03;&#x5EA6;&#x5668;</strong>&#xFF1A;&#x5BBF;&#x4E3B;&#x7528; <code>noop</code> &#x6216; <code>mq-deadline</code>&#xFF0C;&#x907F;&#x514D; double scheduling</li>
+</ul>
+<h3 id="4&#xFE0F;&#x20E3;-&#x7F13;&#x5B58;&#x7B56;&#x7565;"><a name="4&#xFE0F;&#x20E3;-&#x7F13;&#x5B58;&#x7B56;&#x7565;" class="anchor-navigation-ex-anchor" href="#4&#xFE0F;&#x20E3;-&#x7F13;&#x5B58;&#x7B56;&#x7565;"><i class="fa fa-link" aria-hidden="true"></i></a>4&#xFE0F;&#x20E3; &#x7F13;&#x5B58;&#x7B56;&#x7565;</h3>
+<ul>
+<li><strong>&#x987A;&#x5E8F;&#x5199;&#x591A;</strong>&#xFF1A;&#x53EF;&#x4EE5;&#x8BA9; VM &#x4F7F;&#x7528;&#x5BBF;&#x4E3B; page cache&#xFF0C;&#x987A;&#x5E8F;&#x5199;&#x5408;&#x5E76;</li>
+<li><strong>&#x968F;&#x673A;&#x5199;&#x591A;</strong>&#xFF1A;&#x9002;&#x5F53;&#x5F00;&#x542F; writeback &#x7F13;&#x5B58;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x7528; SSD &#x907F;&#x514D; HDD &#x968F;&#x673A;&#x5199;&#x6027;&#x80FD;&#x74F6;&#x9888;</li>
+</ul>
+<hr>
+<h2 id="4&#xFE0F;&#x20E3;-&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;"><a name="4&#xFE0F;&#x20E3;-&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;" class="anchor-navigation-ex-anchor" href="#4&#xFE0F;&#x20E3;-&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;"><i class="fa fa-link" aria-hidden="true"></i></a>4&#xFE0F;&#x20E3; &#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7ECF;&#x9A8C;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x573A;&#x666F;</th>
+<th>&#x5199;&#x6A21;&#x5F0F;</th>
+<th>&#x63A8;&#x8350; qcow2 &#x9884;&#x5206;&#x914D;</th>
+<th>&#x78C1;&#x76D8;&#x7C7B;&#x578B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x6570;&#x636E;&#x5E93; VM (MySQL/Postgre)</td>
+<td>&#x968F;&#x673A;&#x5199;&#x591A;</td>
+<td>full/falloc</td>
+<td>SSD</td>
+</tr>
+<tr>
+<td>Web/&#x5E94;&#x7528;&#x65E5;&#x5FD7; VM</td>
+<td>&#x987A;&#x5E8F;&#x5199;&#x591A;</td>
+<td>off/metadata</td>
+<td>HDD/SSD</td>
+</tr>
+<tr>
+<td>&#x5907;&#x4EFD;/&#x5927;&#x6587;&#x4EF6;&#x5904;&#x7406; VM</td>
+<td>&#x987A;&#x5E8F;&#x5199;&#x591A;</td>
+<td>off/falloc</td>
+<td>HDD/SSD</td>
+</tr>
+<tr>
+<td>&#x6DF7;&#x5408;&#x5C0F;&#x6587;&#x4EF6; + &#x5927;&#x6587;&#x4EF6;</td>
+<td>&#x6DF7;&#x5408;</td>
+<td>metadata/falloc</td>
+<td>SSD</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>&#x6838;&#x5FC3;&#x539F;&#x5219;</strong>&#xFF1A;</p>
+<ul>
+<li>&#x5148;&#x5206;&#x6790;&#x5E94;&#x7528;&#x5199;&#x6A21;&#x5F0F;&#xFF08;&#x987A;&#x5E8F; vs &#x968F;&#x673A;&#xFF09;</li>
+<li>&#x5BF9;&#x5E94;&#x9009;&#x62E9; qcow2 &#x9884;&#x5206;&#x914D;&#x548C;&#x78C1;&#x76D8;&#x7C7B;&#x578B;</li>
+<li>&#x76D1;&#x63A7;&#x5B9E;&#x9645; IOPS/&#x541E;&#x5410;&#xFF0C;&#x5FC5;&#x8981;&#x65F6;&#x4F18;&#x5316;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x548C; IO &#x8C03;&#x5EA6;</li>
+</ul>
+</blockquote>
+<hr>
+<p>&#x5982;&#x679C;&#x4F60;&#x613F;&#x610F;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x753B;&#x4E00;&#x5F20; <strong>&#x987A;&#x5E8F;&#x5199; vs &#x968F;&#x673A;&#x5199;&#x6BD4;&#x91CD;&#x5728;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x4E0B;&#x7684;&#x76F4;&#x89C2;&#x56FE;</strong>&#xFF0C;&#x8BA9;&#x4F60;&#x4E00;&#x773C;&#x77E5;&#x9053;&#x6570;&#x636E;&#x5E93;&#x3001;&#x65E5;&#x5FD7;&#x3001;&#x5907;&#x4EFD; VM &#x7684;&#x5199;&#x6A21;&#x5F0F;&#x5360;&#x6BD4;&#xFF0C;&#x65B9;&#x4FBF;&#x9009; off/full/falloc&#x3002;</p>
+<p>&#x4F60;&#x5E0C;&#x671B;&#x6211;&#x753B;&#x5417;&#xFF1F;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2024-07-28 14:47:59
+2026-01-09 11:59:41
 </span></footer></body></html>
                                 
                                 </section>
@@ -9624,7 +10411,7 @@
 
             
                 
-                <a href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html" class="navigation navigation-prev " aria-label="Previous page: 06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md">
+                <a href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html" class="navigation navigation-prev " aria-label="Previous page: 06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -9640,7 +10427,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"07.KVM相关管理工具和磁盘格式说明.md","level":"2.3.7","depth":2,"next":{"title":"08.KVM存储管理和默认网络模式.md","level":"2.3.8","depth":2,"path":"41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","ref":"./41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","articles":[]},"previous":{"title":"06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","level":"2.3.6","depth":2,"path":"41-KVM虚拟化/06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","ref":"./41-KVM虚拟化/06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","mtime":"2024-07-28T06:47:59.219Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-12-24T04:02:27.569Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"07.KVM相关管理工具和磁盘格式说明.md","level":"2.3.7","depth":2,"next":{"title":"08.KVM存储管理和默认网络模式.md","level":"2.3.8","depth":2,"path":"41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","ref":"./41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","articles":[]},"previous":{"title":"06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","level":"2.3.6","depth":2,"path":"41-KVM虚拟化/06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","ref":"./41-KVM虚拟化/06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","mtime":"2026-01-09T03:59:41.064Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-16T08:16:46.013Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

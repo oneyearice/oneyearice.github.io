@@ -337,7 +337,7 @@
     * [03.KVM使用virt-manager创建虚拟机.md](./41-KVM虚拟化/03.KVM使用virt-manager创建虚拟机.md)
     * [04.KVM实现自动化创建虚拟机.md](./41-KVM虚拟化/04.KVM实现自动化创建虚拟机.md)
     * [05.KVM虚拟机管理VirtIO驱动安装.md](./41-KVM虚拟化/05.KVM虚拟机管理VirtIO驱动安装.md)
-    * [06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md](./41-KVM虚拟化/06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md)
+    * [06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md](./41-KVM虚拟化/06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md)
     * [07.KVM相关管理工具和磁盘格式说明.md](./41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md)
     * [08.KVM存储管理和默认网络模式.md](./41-KVM虚拟化/08.KVM存储管理和默认网络模式.md)
     * [09.KVM的网络模型和管理.md](./41-KVM虚拟化/09.KVM的网络模型和管理.md)

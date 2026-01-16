@@ -4806,12 +4806,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+        <li class="chapter " data-level="2.3.6" data-path="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
-                <a href="06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.html">
+                <a href="06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.html">
             
                     
-                    06.KVM创建Windows254的模板和libvirt相关工具及虚拟机迁移.md
+                    06.KVM创建Windows的模板和libvirt相关工具及虚拟机迁移.md
             
                 </a>
             
@@ -9594,9 +9594,263 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><b></b>08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.md</a></li></ul></div><h1 id="08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><a name="08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md" class="anchor-navigation-ex-anchor" href="#08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><i class="fa fa-link" aria-hidden="true"></i></a>08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.md</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><b></b>08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.md</a></li><li><span class="title-icon "></span><a href="#1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;"><b></b>1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</a></li><ul><li><span class="title-icon "></span><a href="#&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1"><b></b>&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1</a></li><li><span class="title-icon "></span><a href="#&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728;-rocky-linux-9-vmware-&#x5185;&#xFF09;"><b></b>&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728; Rocky Linux 9 VMware &#x5185;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#vmware-linux-&#x2192;-kvm-&#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;"><b></b>VMware Linux &#x2192; KVM &#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;</a></li><ul><li><span class="title-icon "></span><a href="#1&#xFE0F;&#x20E3;-&#x5728;-vmware-&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;"><b></b>1&#xFE0F;&#x20E3; &#x5728; VMware &#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;</a></li><li><span class="title-icon "></span><a href="#2&#xFE0F;&#x20E3;-&#x4ECE;-vmware-&#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;"><b></b>2&#xFE0F;&#x20E3; &#x4ECE; VMware &#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;</a></li><li><span class="title-icon "></span><a href="#3&#xFE0F;&#x20E3;-&#x653E;&#x5230;-libvirt-&#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;"><b></b>3&#xFE0F;&#x20E3; &#x653E;&#x5230; libvirt &#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;</a></li><li><span class="title-icon "></span><a href="#4&#xFE0F;&#x20E3;-&#x521B;&#x5EFA;-kvm-&#x865A;&#x62DF;&#x673A;"><b></b>4&#xFE0F;&#x20E3; &#x521B;&#x5EFA; KVM &#x865A;&#x62DF;&#x673A;</a></li><li><span class="title-icon "></span><a href="#&#x26A1;-&#x6838;&#x5FC3;&#x539F;&#x5219;"><b></b>&#x26A1; &#x6838;&#x5FC3;&#x539F;&#x5219;</a></li></ul></ul></ul></div><h1 id="08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><a name="08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md" class="anchor-navigation-ex-anchor" href="#08kvm&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;md"><i class="fa fa-link" aria-hidden="true"></i></a>08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.md</h1>
+<h1 id="1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;"><a name="1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;" class="anchor-navigation-ex-anchor" href="#1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#x3001;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</h1>
+<h2 id="&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1"><a name="&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1" class="anchor-navigation-ex-anchor" href="#&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1"><i class="fa fa-link" aria-hidden="true"></i></a>&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;1</h2>
+<p>&#x5C06;vmdk&#x8F6C;&#x6210;qcow2</p>
+<p>&#x628A;windows&#x7684;vmware workstation&#x91CC;&#x7684;&#x865A;&#x62DF;&#x673A;&#x7684;vm&#x590D;&#x5236;&#x5230;linux&#x91CC;</p>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109113508132.png" alt="image-20260109113508132"></p>
+<p>&#x8FD9;&#x9009;&#x62E9;&#x4EC5;&#x5904;&#x7406;base&#x955C;&#x50CF;&#x770B;&#x770B;&#x6548;&#x679C;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;</p>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109114037182.png" alt="image-20260109114037182"></p>
+<p>&#x5148;&#x8BD5;&#x8BD5;&#x770B;</p>
+<pre><code class="lang-shell">qemu-img convert -f vmdk -O qcow2 RockeyLinux-cl3.vmdk vm_trans_01.qcow2
+cp vm_trans_01.qcow2  /var/lib/libvirt/images/
+chmod 600 /var/lib/libvirt/images/vm_trans_01.qcow2
+chown qemu.qemu vm_trans_02.qcow2
+
+
+# --machine pc-q35-rhel9.0.0 &#x662F;&#x5BF9;&#x7684; &#xFF0C;&#x4F46;&#x8981;destroy&#x518D;start&#x624D;&#x80FD;&#x5728;virt-manager&#x6253;&#x5F00;
+virt-install \
+--name vmware-trans-kvm \
+--memory 2048 \
+--vcpus 2 \
+--cpu host-model \
+--machine pc-q35-rhel9.0.0 \
+--os-variant rocky9 \
+--disk path=/var/lib/libvirt/images/vmware-trans-kvm.qcow2,bus=virtio,cache=none \
+--network bridge=br1,model=virtio \
+--network bridge=br2,model=virtio \
+--graphics vnc \
+--console pty,target_type=serial \
+--import &amp;
+</code></pre>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109113644521.png" alt="image-20260109113644521" style="zoom:50%;"></p>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109113928309.png" alt="image-20260109113928309"></p>
+<p>&#x5F00;&#x4E0D;&#x4E86;&#x673A;&#x5668;&#xFF0C;&#x6362;&#x65B9;&#x6848;</p>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109182407864.png" alt="image-20260109182407864"></p>
+<pre><code class="lang-cmd"># vmware-vdiskmanager.exe -r &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5FEB;&#x7167; 
+
+vmware-vdiskmanager.exe -r &quot;D:\Virtual Machines\R4\RockeyLinux-cl3-<span class="hljs-number">000002</span>.vmdk -t <span class="hljs-number">0</span> &quot;E:\all.vmdk&quot;
+
+
+# &#x8FD9;&#x91CC;&#x5F88;&#x5751;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x7528;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x53BB;&#x4F5C;&#x4E3A;&#x6574;&#x5408;&#x7684;&#x7EBF;&#x7D22;&#xFF0C;&#x5426;&#x5219;&#x5F92;&#x52B3;&#xFF1B;&#x8981;&#x4E0D;&#x4F60;&#x5C31;&#x514B;&#x9686;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x4E3A;&#x4E00;&#x4E2A;&#x65B0;&#x7684;VM&#xFF0C;&#x6548;&#x679C;&#x548C;&#x8FD9;&#x4E2A;cli&#x4E00;&#x6837;&#x7684;&#x6548;&#x679C;&#x3002;
+</code></pre>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260109155103150.png" alt="image-20260109155103150"></p>
+<h2 id="&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728;-rocky-linux-9-vmware-&#x5185;&#xFF09;"><a name="&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728;-rocky-linux-9-vmware-&#x5185;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728;-rocky-linux-9-vmware-&#x5185;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;2&#xFF08;&#x5728; Rocky Linux 9 VMware &#x5185;&#xFF09;</strong></h2>
+<ol>
+<li>&#x5B89;&#x88C5; dracut-tools&#xFF1A;</li>
+</ol>
+<pre><code>yum install -y dracut-tools
+</code></pre><ol>
+<li>&#x68C0;&#x67E5; virtio &#x9A71;&#x52A8;&#x662F;&#x5426;&#x53EF;&#x7528;&#xFF1A;</li>
+</ol>
+<pre><code>lsmod | grep virtio
+</code></pre><p>&#x5982;&#x679C;&#x6CA1;&#x52A0;&#x8F7D;&#xFF1A;</p>
+<pre><code>modprobe virtio_pci
+modprobe virtio_blk
+modprobe virtio_scsi
+</code></pre><ol>
+<li>&#x5907;&#x4EFD;&#x539F; initramfs&#xFF1A;</li>
+</ol>
+<pre><code>cp /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak
+</code></pre><ol>
+<li>&#x751F;&#x6210;&#x652F;&#x6301; KVM/virtio &#x7684; initramfs&#xFF1A;</li>
+</ol>
+<pre><code>dracut -f -v --add-drivers &quot;virtio virtio_pci virtio_blk virtio_scsi&quot; /boot/initramfs-$(uname -r)-kvm.img $(uname -r)
+</code></pre><ol>
+<li>&#x9A8C;&#x8BC1; virtio &#x9A71;&#x52A8;&#x662F;&#x5426;&#x5728; initramfs&#xFF1A;</li>
+</ol>
+<pre><code>lsinitrd /boot/initramfs-$(uname -r)-kvm.img | grep virtio
+</code></pre><ol>
+<li>&#x66FF;&#x6362;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4; initramfs&#xFF1A;</li>
+</ol>
+<pre><code>mv /boot/initramfs-$(uname -r)-kvm.img /boot/initramfs-$(uname -r).img
+</code></pre><ol>
+<li>&#x5173;&#x95ED; VMware &#x7CFB;&#x7EDF;&#xFF0C;&#x8F6C; QCOW2&#xFF1A;</li>
+</ol>
+<pre><code>qemu-img convert -f vmdk -O qcow2 all.vmdk vwware_trans_kvm.qcow2
+</code></pre><ol>
+<li>&#x5728; KVM &#x4E0A;&#x5BFC;&#x5165;&#xFF1A;</li>
+</ol>
+<pre><code>virt-install \
+  --name vm_trans_kvm \
+  --memory 2048 \
+  --vcpus 2 \
+  --cpu host-model \
+  --disk path=/var/lib/libvirt/images/vm_kvm.qcow2,bus=virtio,cache=none,format=qcow2 \
+  --network bridge=br0,model=virtio \
+  --graphics none \
+  --console pty,target_type=serial \
+  --import \
+  --os-variant rocky9
+</code></pre><hr>
+<p>&#x1F4A1; <strong>&#x603B;&#x7ED3;</strong>&#xFF1A;</p>
+<ul>
+<li>Rocky Linux 9 &#x5185;&#x6838;&#x81EA;&#x5E26; KVM &#x6A21;&#x5757;&#xFF0C;&#x4E0D;&#x9700;&#x8981; <code>kmod-kvm*</code></li>
+<li>&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x91CD;&#x5EFA; initramfs &#x5E76;&#x52A0;&#x5165; virtio &#x9A71;&#x52A8;</li>
+<li>&#x8F6C; QCOW2 &#x540E;&#xFF0C;virt-install &#x7528; <code>bus=virtio</code> &#x5C31;&#x80FD;&#x542F;&#x52A8;</li>
+</ul>
+<hr>
+<p>&#x6211;&#x7684; root &#x548C; swap &#x90FD;&#x5728; <strong>LVM</strong> &#x91CC;&#xFF1A;</p>
+<pre><code>/dev/mapper/rl-root &#x2192; / (xfs)
+/dev/mapper/rl-swap &#x2192; swap
+</code></pre><p>&#x6240;&#x4EE5; VMware &#x8F6C; KVM &#x540E;&#x9ED1;&#x5C4F; / dracut emergency shell &#x7684;&#x539F;&#x56E0;&#x5C31;&#x662F;&#xFF1A;</p>
+<ol>
+<li>KVM &#x4E0B;&#x78C1;&#x76D8;&#x6539;&#x6210;&#x4E86; <strong>virtio</strong>&#xFF0C;&#x540D;&#x5B57;&#x53D8;&#x4E86;&#xFF0C;&#x4F8B;&#x5982; <code>/dev/vda</code>&#x3002;</li>
+<li>initramfs &#x9700;&#x8981; <strong>&#x5305;&#x542B; virtio_blk / virtio_scsi + lvm2</strong>&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x6FC0;&#x6D3B;&#x5377;&#x7EC4; <code>rl</code>&#x3002;</li>
+<li>&#x5F53;&#x524D; initramfs &#x53EF;&#x80FD;&#x662F;&#x539F; VMware &#x751F;&#x6210;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x4E0D;&#x5B8C;&#x5168;&#x5339;&#x914D; KVM &#x4E0B;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x6240;&#x4EE5;&#x627E;&#x4E0D;&#x5230; <code>/dev/mapper/rl-root</code>&#x3002;</li>
+</ol>
+<hr>
+<p>&#x1F4A1; <strong>&#x89E3;&#x51B3;&#x65B9;&#x6848;</strong></p>
+<ol>
+<li>&#x5728;&#x539F; VMware &#x7CFB;&#x7EDF;&#x91CC;&#xFF0C;&#x751F;&#x6210;&#x652F;&#x6301; KVM &#x7684; initramfs&#xFF1A;</li>
+</ol>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x5B89;&#x88C5;&#x5FC5;&#x8981;&#x5DE5;&#x5177;</span>
+yum install -y dracut dracut-config-generic lvm2
+
+<span class="hljs-comment"># &#x91CD;&#x65B0;&#x751F;&#x6210; initramfs&#xFF0C;&#x52A0;&#x5165; virtio + lvm &#x9A71;&#x52A8;</span>
+dracut <span class="hljs-_">-f</span> -v --add-drivers <span class="hljs-string">&quot;virtio virtio_pci virtio_blk virtio_scsi&quot;</span> --add <span class="hljs-string">&quot;lvm&quot;</span> /boot/initramfs-kvm.img $(uname -r)
+</code></pre>
+<ol>
+<li><p>&#x5728; KVM &#x4E0A;&#xFF0C;&#x628A;&#x65B0;&#x7684; initramfs &#x8BBE;&#x7F6E;&#x4E3A;&#x9ED8;&#x8BA4;&#x542F;&#x52A8;&#xFF1A;  &#x8FD9;&#x6211;&#x7528;&#x7684;&#x8FD8;&#x662F;&#x8986;&#x76D6;</p>
+</li>
+<li><p>&#x5728; virt-install &#x6216; virt-manager &#x91CC;&#x9009;&#x62E9;&#x4F60;&#x7684;&#x78C1;&#x76D8; <code>virtio</code></p>
+</li>
+<li><p>&#x5728; domain XML &#x91CC;&#x6307;&#x5B9A; kernel/initrd&#xFF08;&#x5982;&#x679C;&#x4F7F;&#x7528; <code>--import</code> &#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#x542F;&#x52A8;&#xFF09;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x8FD8;&#x9ED1;&#x5C4F;&#xFF0C;&#x53EF;&#x4EE5;&#x4E34;&#x65F6;&#x5728; kernel &#x547D;&#x4EE4;&#x884C;&#x52A0;&#x4E0A;&#xFF1A;</p>
+</li>
+</ol>
+<pre><code>rd.lvm.lv=rl/root
+</code></pre><p>&#x8FD9;&#x6837; dracut &#x4F1A;&#x6FC0;&#x6D3B; LVM &#x5E76;&#x627E;&#x5230; root&#x3002;</p>
+<hr>
+<p>&#x26A1; <strong>&#x6CE8;&#x610F;</strong></p>
+<ul>
+<li>&#x4E0D;&#x8981;&#x7528; VMware &#x539F;&#x6765;&#x7684; initramfs&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x5305;&#x542B; virtio &#x9A71;&#x52A8;&#x7684;&#x73AF;&#x5883;&#x91CC;&#x751F;&#x6210;&#x3002;</li>
+<li>&#x78C1;&#x76D8;&#x5FC5;&#x987B;&#x662F; <code>virtio</code> &#x7C7B;&#x578B;&#xFF0C;&#x5426;&#x5219; LVM root &#x627E;&#x4E0D;&#x5230;&#x4E5F;&#x542F;&#x52A8;&#x4E0D;&#x4E86;&#x3002;</li>
+</ul>
+<hr>
+<p>&#x6211;&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x5199;&#x4E00;&#x4E2A; <strong>&#x5B8C;&#x6574;&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;</strong>&#xFF0C;&#x4ECE; VMware VM &#x751F;&#x6210; qcow2&#x3001;&#x4FEE;&#x6539; initramfs&#x3001;&#x7136;&#x540E;&#x76F4;&#x63A5;&#x5728; KVM &#x4E0A;&#x542F;&#x52A8;&#xFF0C;&#x4E0D;&#x9ED1;&#x5C4F;&#x3002;</p>
+<p>&#x4F60;&#x5E0C;&#x671B;&#x6211;&#x5199;&#x5417;&#xFF1F;</p>
+<pre><code>&#x6211;&#x73B0;&#x5728;&#x505A;&#x4E86;
+
+yum install -y dracut-tools dracut dracut-config-generic lvm2
+
+modprobe virtio_pci
+modprobe virtio_blk
+modprobe virtio_scsi
+
+lsmod | grep virtio # &#x786E;&#x8BA4;&#x4E0B;
+
+
+dracut -f -v --add-drivers &quot;virtio virtio_pci virtio_blk virtio_scsi&quot; --add &quot;lvm&quot; /boot/initramfs-kvm.img $(uname -r)
+
+mv /boot/initramfs-kvm.img /boot/initramfs-$(uname -r).img
+
+lsinitrd /boot/initramfs-$(uname -r)-kvm.img | grep -E &apos;virtio|lvm&apos;  # &#x786E;&#x8BA4;&#x4E0B;
+
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+
+
+virt-install \
+--name vmware-trans-kvm \
+--memory 2048 \
+--vcpus 2 \
+--cpu host-model \
+--machine pc-q35-rhel9.0.0 \
+--os-variant rocky9 \
+--disk path=/var/lib/libvirt/images/vmware-trans-kvm.qcow2,bus=virtio,cache=none \
+--network bridge=br1,model=virtio \
+--network bridge=br2,model=virtio \
+--graphics vnc \
+--console pty,target_type=serial \
+--import &amp;
+
+virsh destroy vmware-trans-kvm
+virsh start vmware-trans-kvm
+
+&#x641E;&#x5B9A;
+</code></pre><hr>
+<h2 id="vmware-linux-&#x2192;-kvm-&#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;"><a name="vmware-linux-&#x2192;-kvm-&#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#vmware-linux-&#x2192;-kvm-&#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>VMware Linux &#x2192; KVM &#x6B63;&#x786E;&#x8FC1;&#x79FB;&#x6D41;&#x7A0B;</h2>
+<p>&#x8981;&#x8F6C;&#x6362;&#x7684;&#x673A;&#x5668;&#x662F;R5&#xFF0C;&#x6709;&#x5FEB;&#x7167;2&#x4E2A;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x8981;&#x6CE8;&#x610F;&#x4E86;&#xFF0C;&#x6709;&#x5FEB;&#x7167;&#x7684;&#x8981;&#x5408;&#x5E76;&#xFF0C;&#x5408;&#x5E76;&#x6CD5;&#x6709;2&#xFF0C;&#x7528;&#x514B;&#x9686;&#x6700;&#x5FEB;~</p>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260115163904597.png" alt="image-20260115163904597"></p>
+<h3 id="1&#xFE0F;&#x20E3;-&#x5728;-vmware-&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;"><a name="1&#xFE0F;&#x20E3;-&#x5728;-vmware-&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;" class="anchor-navigation-ex-anchor" href="#1&#xFE0F;&#x20E3;-&#x5728;-vmware-&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;"><i class="fa fa-link" aria-hidden="true"></i></a>1&#xFE0F;&#x20E3; &#x5728; VMware &#x865A;&#x62DF;&#x673A;&#x4E2D;&#x51C6;&#x5907;&#x5185;&#x6838;&#x652F;&#x6301;</h3>
+<ol>
+<li>&#x786E;&#x8BA4;&#x5185;&#x6838;&#x91CC; <strong>virtio &#x9A71;&#x52A8; + LVM</strong> &#x53EF;&#x7528;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-bash">lsinitrd /boot/initramfs-$(uname -r).img | grep -i virtio
+</code></pre>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260115164121305.png" alt="image-20260115164121305" style="zoom:50%;"></p>
+<p>&#x53EF;&#x89C1;&#x6CA1;&#x6709;kvm&#x7684;virtio&#x9A71;&#x52A8;&#xFF0C;&#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x8F6C;&#x6210;qcow2&#xFF0C;&#x542F;&#x52A8;&#x4E5F;&#x662F;&#x8BA4;&#x4E0D;&#x5230;&#x76D8;&#x7684;&#x3002;</p>
+<ol>
+<li>&#x5B89;&#x88C5;&#x5FC5;&#x8981;&#x5DE5;&#x5177;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-bash">yum -y install epel-release
+yum install -y dracut-tools dracut dracut-config-generic lvm2
+</code></pre>
+<ol>
+<li>&#x91CD;&#x65B0;&#x751F;&#x6210; initramfs&#xFF0C;&#x52A0;&#x5165; virtio &#x548C; LVM &#x9A71;&#x52A8;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-bash">dracut <span class="hljs-_">-f</span> -v --add-drivers <span class="hljs-string">&quot;virtio virtio_pci virtio_blk virtio_scsi&quot;</span> --add <span class="hljs-string">&quot;lvm&quot;</span> /boot/initramfs-kvm.img $(uname -r)
+cp <span class="hljs-_">-a</span>  /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak
+cp <span class="hljs-_">-a</span> /boot/grub2/grub.cfg //boot/grub2/grub.cfg.bak
+mv /boot/initramfs-kvm.img /boot/initramfs-$(uname -r).img
+grub2-mkconfig -o /boot/grub2/grub.cfg
+</code></pre>
+<p>&#x2705; &#x8FD9;&#x6837;&#x786E;&#x4FDD; KVM &#x542F;&#x52A8;&#x65F6;&#x80FD;&#x8BC6;&#x522B; virtio &#x78C1;&#x76D8;&#x548C; LVM &#x5377;&#x3002;</p>
+<hr>
+<h3 id="2&#xFE0F;&#x20E3;-&#x4ECE;-vmware-&#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;"><a name="2&#xFE0F;&#x20E3;-&#x4ECE;-vmware-&#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;" class="anchor-navigation-ex-anchor" href="#2&#xFE0F;&#x20E3;-&#x4ECE;-vmware-&#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#xFE0F;&#x20E3; &#x4ECE; VMware &#x5BFC;&#x51FA;&#x955C;&#x50CF;&#x5E76;&#x8F6C;&#x6362;</h3>
+<p>R5&#x8FD9;&#x4E2A;VM&#x6709;2&#x5FEB;&#x7167;&#xFF0C;&#x7136;&#x540E;&#x65B0;&#x6570;&#x636E;&#x5176;&#x5B9E;&#x90FD;&#x662F;&#x843D;&#x5728;&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;2&#x91CC;&#x7684;</p>
+<h5 id="&#x5408;&#x5E76;&#x5FEB;&#x7167;&#x7684;&#x65B9;&#x6CD5;1-&#x4F7F;&#x7528;cli&#x9488;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5C31;"><a name="&#x5408;&#x5E76;&#x5FEB;&#x7167;&#x7684;&#x65B9;&#x6CD5;1-&#x4F7F;&#x7528;cli&#x9488;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5C31;" class="anchor-navigation-ex-anchor" href="#&#x5408;&#x5E76;&#x5FEB;&#x7167;&#x7684;&#x65B9;&#x6CD5;1-&#x4F7F;&#x7528;cli&#x9488;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5C31;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5408;&#x5E76;&#x5FEB;&#x7167;&#x7684;&#x65B9;&#x6CD5;1-&#x4F7F;&#x7528;cli&#x9488;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5C31;</h5>
+<p><img src="08.KVM&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x548C;&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;&#x6A21;&#x5F0F;.assets/image-20260115165901973.png" alt="image-20260115165901973" style="zoom:50%;"></p>
+<p>&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684; VDDK &#x540E;&#xFF0C;&#x89E3;&#x538B;&#x5E76;&#x5728; <code>bin</code> &#x76EE;&#x5F55;&#x4E0B;&#x5373;&#x53EF;&#x627E;&#x5230; <code>vmware-vdiskmanager</code></p>
+<p><a href="https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest" target="_blank">https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest</a></p>
+<pre><code># vmware-vdiskmanager.exe -r &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5FEB;&#x7167; 
+
+vmware-vdiskmanager.exe -r &quot;D:\Virtual Machines\R4\RockeyLinux-cl3-000002.vmdk -t 0 &quot;E:\all.vmdk&quot;
+
+
+# &#x8FD9;&#x91CC;&#x5F88;&#x5751;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x7528;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x53BB;&#x4F5C;&#x4E3A;&#x6574;&#x5408;&#x7684;&#x7EBF;&#x7D22;&#xFF0C;&#x5426;&#x5219;&#x5F92;&#x52B3;&#xFF1B;&#x8981;&#x4E0D;&#x4F60;&#x5C31;&#x514B;&#x9686;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x4E3A;&#x4E00;&#x4E2A;&#x65B0;&#x7684;VM&#xFF0C;&#x6548;&#x679C;&#x548C;&#x8FD9;&#x4E2A;cli&#x4E00;&#x6837;&#x7684;&#x6548;&#x679C;&#x3002;
+</code></pre><pre><code class="lang-bash">qemu-img convert <span class="hljs-_">-f</span> vmdk -O qcow2 &#x6E90;VM.vmdk vm_trans.qcow2
+</code></pre>
+<hr>
+<h3 id="3&#xFE0F;&#x20E3;-&#x653E;&#x5230;-libvirt-&#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;"><a name="3&#xFE0F;&#x20E3;-&#x653E;&#x5230;-libvirt-&#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#3&#xFE0F;&#x20E3;-&#x653E;&#x5230;-libvirt-&#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#xFE0F;&#x20E3; &#x653E;&#x5230; libvirt &#x76EE;&#x5F55;&#x5E76;&#x8C03;&#x6574;&#x6743;&#x9650;</h3>
+<pre><code class="lang-bash">cp vm_trans.qcow2 /var/lib/libvirt/images/
+chown qemu.qemu /var/lib/libvirt/images/vm_trans.qcow2
+chmod 600 /var/lib/libvirt/images/vm_trans.qcow2
+</code></pre>
+<hr>
+<h3 id="4&#xFE0F;&#x20E3;-&#x521B;&#x5EFA;-kvm-&#x865A;&#x62DF;&#x673A;"><a name="4&#xFE0F;&#x20E3;-&#x521B;&#x5EFA;-kvm-&#x865A;&#x62DF;&#x673A;" class="anchor-navigation-ex-anchor" href="#4&#xFE0F;&#x20E3;-&#x521B;&#x5EFA;-kvm-&#x865A;&#x62DF;&#x673A;"><i class="fa fa-link" aria-hidden="true"></i></a>4&#xFE0F;&#x20E3; &#x521B;&#x5EFA; KVM &#x865A;&#x62DF;&#x673A;</h3>
+<pre><code class="lang-bash">virt-install \
+  --name vm_trans \
+  --memory 2048 \
+  --vcpus 2 \
+  --cpu host-model \
+  --disk path=/var/lib/libvirt/images/vm_trans.qcow2,bus=virtio,cache=none \
+  --network bridge=br1,model=virtio \
+  --network bridge=br2,model=virtio \
+  --graphics none \
+  --console pty,target_<span class="hljs-built_in">type</span>=serial \
+  --import \
+  --os-variant rocky10
+</code></pre>
+<blockquote>
+<p>&#x53EF;&#x9009;&#xFF1A;&#x5982;&#x679C;&#x5BBF;&#x4E3B;&#x673A;&#x652F;&#x6301; <code>pc-q35-rhel9.0.0</code>&#xFF0C;&#x53EF;&#x4EE5;&#x5728; XML &#x4E2D;&#x624B;&#x52A8;&#x4FEE;&#x6539; <code>&lt;type machine=&apos;pc-q35-rhel9.0.0&apos;&gt;hvm&lt;/type&gt;</code>&#xFF0C;<strong>&#x4F46;&#x4E0D;&#x4E00;&#x5B9A;&#x9700;&#x8981;&#x5728; virt-install &#x547D;&#x4EE4;&#x91CC;&#x6307;&#x5B9A;</strong>&#x3002;</p>
+</blockquote>
+<hr>
+<h3 id="&#x26A1;-&#x6838;&#x5FC3;&#x539F;&#x5219;"><a name="&#x26A1;-&#x6838;&#x5FC3;&#x539F;&#x5219;" class="anchor-navigation-ex-anchor" href="#&#x26A1;-&#x6838;&#x5FC3;&#x539F;&#x5219;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x26A1; &#x6838;&#x5FC3;&#x539F;&#x5219;</h3>
+<ol>
+<li><strong>&#x5148;&#x5728; VMware &#x91CC;&#x751F;&#x6210;&#x652F;&#x6301; virtio &#x7684; initramfs</strong> &#x2192; &#x8F6C; QCOW2</li>
+<li><strong>QCOW2 &#x6587;&#x4EF6;&#x6743;&#x9650;&#x6B63;&#x786E;&#xFF0C;&#x5F52;&#x5C5E; qemu:qemu</strong></li>
+<li>virt-install &#x91CC;&#x7528; <code>host-model</code> CPU&#xFF0C;&#x907F;&#x514D; <code>host</code> &#x62A5;&#x5E9F;&#x5F03;&#x8B66;&#x544A;</li>
+<li>&#x5982;&#x679C; initramfs &#x4E0D;&#x5305;&#x542B; virtio&#xFF0C;&#x542F;&#x52A8;&#x5C31;&#x4F1A;&#x9ED1;&#x5C4F; / &#x627E;&#x4E0D;&#x5230;&#x78C1;&#x76D8;</li>
+</ol>
+<hr>
+<p>&#x6211;&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x753B;&#x4E00;&#x4E2A;<strong>&#x6D41;&#x7A0B;&#x56FE;</strong>&#xFF0C;&#x4E00;&#x773C;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x6574;&#x4E2A;&#x4ECE; VMware &#x5230; KVM &#x7684;&#x6B63;&#x786E;&#x987A;&#x5E8F;&#xFF0C;&#x907F;&#x514D;&#x9ED1;&#x5C4F;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4F60;&#x5E0C;&#x671B;&#x6211;&#x753B;&#x5417;&#xFF1F;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#x1F339; &#xA9; oneyearice@126.com 2022 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x6863;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2025-12-17 11:53:15
+2026-01-15 19:19:49
 </span></footer></body></html>
                                 
                                 </section>
@@ -9640,7 +9894,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"08.KVM存储管理和默认网络模式.md","level":"2.3.8","depth":2,"next":{"title":"09.KVM的网络模型和管理.md","level":"2.3.9","depth":2,"path":"41-KVM虚拟化/09.KVM的网络模型和管理.md","ref":"./41-KVM虚拟化/09.KVM的网络模型和管理.md","articles":[]},"previous":{"title":"07.KVM相关管理工具和磁盘格式说明.md","level":"2.3.7","depth":2,"path":"41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","ref":"./41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","mtime":"2025-12-17T03:53:15.652Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-12-24T04:02:27.569Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"08.KVM存储管理和默认网络模式.md","level":"2.3.8","depth":2,"next":{"title":"09.KVM的网络模型和管理.md","level":"2.3.9","depth":2,"path":"41-KVM虚拟化/09.KVM的网络模型和管理.md","ref":"./41-KVM虚拟化/09.KVM的网络模型和管理.md","articles":[]},"previous":{"title":"07.KVM相关管理工具和磁盘格式说明.md","level":"2.3.7","depth":2,"path":"41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","ref":"./41-KVM虚拟化/07.KVM相关管理工具和磁盘格式说明.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-changyan","-lunr","-search","-livereload","-sharing","expandable-chapters","search-plus","splitter","github","donate","emphasize","include-codeblock","tbfed-pagefooter","back-to-top-button","anchor-navigation-ex","-ad","ace"],"styles":{"website":"styles/style.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright 🌹 &copy oneyearice@126.com 2022","modify_label":"文档更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"ad":{"contentTop":"<div>Ads at the top of the page</div>","contentBottom":"%3Cdiv%3EAds%20at%20the%20bottom%20of%20the%20page%3C/div%3E"},"ace":{},"github":{"url":"https://github.com"},"splitter":{},"donate":{"alipay":"","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"/wx.png","wechatText":"微信扫码"},"changyan":{"appid":"your changyan's appid","conf":"the conf in the code generate by changyan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":false,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"back-to-top-button":{},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","google","douban"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"xxx","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ming","language":"zh-hans","links":{"sidebar":{"学习视频":"https://www.udemy.com/user/chen-yi-ming-8/","紫微斗数自助排盘":"http://35.77.218.192/"}},"gitbook":"*","description":"UI组件库"},"file":{"path":"41-KVM虚拟化/08.KVM存储管理和默认网络模式.md","mtime":"2026-01-15T11:19:49.244Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-16T08:16:46.013Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
